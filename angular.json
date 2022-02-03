@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AlphaCrux-CMS"
+    }
+  },
+  "defaultProject": "AlphaCrux-CMS",
+  "cli": {
+    "analytics": "96939ddc-b10c-450e-b19b-26d21fb96880"
+  }
 }
