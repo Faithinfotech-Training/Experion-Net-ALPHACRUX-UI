@@ -7,6 +7,7 @@ import { PaymentsComponent } from './home/reception/payments/payments.component'
 import { RegisterPatientComponent } from './home/reception/register-patient/register-patient.component';
 import { TransactionsComponent } from './home/reception/transactions/transactions.component';
 import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
+import {AdministratorComponent} from './home/administrator/administrator.component';
 
 const routes: Routes = [
   { path: 'app-home-page', component: HomePageComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
 { path: 'app-register-patient', component: RegisterPatientComponent },
 { path: 'app-transactions', component: TransactionsComponent },
 { path: 'app-update-patient', component: UpdatePatientComponent },
+{ path: 'app-administrator', component: AdministratorComponent },
 { path: '**', component: AppComponent},
 ];
 
