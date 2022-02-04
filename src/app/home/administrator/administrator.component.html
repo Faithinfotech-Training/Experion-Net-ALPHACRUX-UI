@@ -1,0 +1,102 @@
+<header>
+  <!-- Nav bar -->
+  <div class="container-fluid clearfix position-fixed p-0">
+      <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
+          <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                  <h3>Administrator</h3>
+              </a>
+              <form class="d-flex mt-2" action="submit">
+                  <input class="form-control me-2" type="text" placeholder="Search">
+                  <button class="btn btn-outline-success" type="button">Search</button>
+              </form>
+          </div>
+      </nav>
+
+
+
+      <!-- Side bar -->
+      <div class="d-flex align-items-start">
+          <nav class="bg-light navbar-light p-1 mt-3" style="min-width: fit-content;min-height: 100vh;">
+
+              <ul class="navbar-nav ms-2 gap-3">
+                  <li class="navbar-item ">
+                      <a class="navbar-brand" href="#"><i class="bi bi-house-fill"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+
+                  <li class="navbar-item">
+                      <a class="nav-link active" href="#"><i class="bi bi-house"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+                  <li class="navbar-item">
+                      <a class="nav-link" href="#"><i class="bi bi-plus-circle"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+                  <li class="navbar-item">
+                      <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+
+                  <li class="nav-item dropup">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
+                              class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
+                      <ul class="dropdown-menu bg-secondary">
+                          <li><a class="dropdown-item text-white" href="#">First Link</a></li>
+                          <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
+                          <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </nav>
+
+      </div>
+  </div>
+
+</header>
+
+<div class="container-sm m-5">
+  <div class="row  align-items-center "></div>
+  <div class="d-inline-flex row p-1 mt-3">
+      <span class="ms-4"><h1>Add new medicine</h1></span>
+      <div class="col ms-4 ">
+          <form action="" class="form-control p-4">
+          <div class="row form-group my-3">
+                  <label for="name" class="col-sm-3 form-group">Name:</label>
+                  <input type="text" class="col-sm form-control" id="name" placeholder="Medicine Name">
+          </div>
+          <div class="row form-group my-3">
+                  <label for="mfgname" class="col-sm-3 form-group">Mfg: </label>
+                  <input type="text" class="col-sm form-control" id="mfgname" placeholder="Manufacture Name">
+          </div>
+          <div class="row form-group my-3">
+                  <label for="description" class="col-sm-3 form-group">Description: </label>
+                  <input type="text" class="col-sm form-control" id="description" placeholder="Medicine Description">
+          </div>
+          <div class="row form-group my-3">
+                  <label for="quantity" class="col-sm-3 form-group">Quantity: </label>
+                  <input type="number" class="col-sm form-control" id="quantity" placeholder="Stock Quantity">
+          </div>
+          <div class="row form-group my-3">
+                  <label for="exp" class="col-sm-3 form-group">Exp. date: </label>
+                  <input type="date" class="col-sm form-control" id="exp">
+          </div>
+          <div class="row form-group my-3">
+                  <label for="mfg" class="col-sm-3 form-group">Mfg. date: </label>
+                  <input type="date" class="col-sm form-control" id="mfg">
+          </div>
+          <div class="row form-group my-3">
+                  <label for="phone" class="col-sm-3 form-group">Mfg. ph:</label>
+                  <input type="number" class="col-sm form-control" id="phone" placeholder="Manufacture Phone no.">
+          </div>
+          <div class="col d-flex justify-content-end">
+              <button type="submit" class="btn btn-outline-warning mx-2">Clear</button>
+              <button type="submit" class="btn btn-primary px-5">Add</button>
+          </div>
+      </form>
+
+      </div>
+
+
+  </div>
+</div>
