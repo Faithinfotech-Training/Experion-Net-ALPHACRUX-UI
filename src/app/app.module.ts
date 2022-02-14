@@ -10,7 +10,7 @@ import { HomePageComponent } from './reception/home-page/home-page.component';
 import { PaymentsComponent } from './reception/payments/payments.component';
 import { TransactionsComponent } from './reception/transactions/transactions.component';
 import { RegisterPatientComponent } from './reception/register-patient/register-patient.component';
-import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
+import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
 import { ReceptionService } from './shared/reception.service';
 import { ReceptionComponent } from './reception/reception.component';
 
