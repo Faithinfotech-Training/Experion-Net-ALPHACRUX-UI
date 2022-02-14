@@ -23,13 +23,8 @@
         ></a>
       </li>
       <li class="navbar-item">
-        <a class="nav-link active" href="#"
-          ><i class="bi bi-house" style="font-size: 1.5rem"></i
-        ></a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link" href="#"
-          ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
+        <a class="nav-link active" href="reception/transactions"
+          ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
         ></a>
       </li>
       <li class="navbar-item">
@@ -62,11 +57,11 @@
       </div>
       <div class="col-sm-10">
         <form class="d-flex ml-2 mt-3" >
-            <input 
-             type="text" class="form-control me-2 mt-3 mb-2" placeholder="Enter Patient ID/Name/Phone" 
+            <input
+             type="text" class="form-control me-2 mt-3 mb-2" placeholder="Enter Patient ID/Name/Phone"
              [(ngModel)]="patient"  [ngModelOptions]="{standalone: true}">
-            
-            <input type="text" class="form-control me-2 mt-3 mb-2" placeholder="Enter Doctor ID/Name/Phone" 
+
+            <input type="text" class="form-control me-2 mt-3 mb-2" placeholder="Enter Doctor ID/Name/Phone"
             [(ngModel)]="doctor"  [ngModelOptions]="{standalone: true}">
           <button
             class="btn btn-outline-primary form-control me-2 mt-3 mb-2"
@@ -79,14 +74,14 @@
          <div class="col-8" >
           <select
           #Patient = "ngModel"
-          [(ngModel)]="reception.formData.PatientId" 
+          [(ngModel)]="reception.formData.PatientId"
           class="form-control"
           >
            <option *ngFor="let pat of reception.patients | filter: patient" value="pat.PatientId">{{pat.PatientId}} {{pat.PatientName}}</option>
          </select>
          </div>
          <div class="col-8">
-    
+
 
 
         </div>
@@ -112,7 +107,7 @@
                 <td>
                   <button type="button" class="btn btn-outline-info btn-sm">
                       <i class="bi bi-pencil-square"> Edit</i>
-                    
+
                   </button>
                 &nbsp;
                   <button type="button" class="btn btn-outline-danger btn-sm">
