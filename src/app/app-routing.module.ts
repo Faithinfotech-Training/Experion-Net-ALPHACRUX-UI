@@ -10,12 +10,13 @@ import { UpdatePatientComponent } from './home/reception/update-patient/update-p
 import {AdministratorComponent} from './home/administrator/administrator.component';
 
 const routes: Routes = [
-  { path: 'app-home-page', component: HomePageComponent },
-{ path: 'app-home', component: HomeComponent },
-{ path: 'app-payments', component: PaymentsComponent },
-{ path: 'app-register-patient', component: RegisterPatientComponent },
-{ path: 'app-transactions', component: TransactionsComponent },
-{ path: 'app-update-patient', component: UpdatePatientComponent },
+  { path: '', component: HomeComponent },
+  { path: 'reception/home', component: HomePageComponent },
+{ path: 'home', component: HomeComponent },
+{ path: 'reception/payments', component: PaymentsComponent },
+{ path: 'reception/register-patient', component: RegisterPatientComponent },
+{ path: 'reception/transactions', component: TransactionsComponent },
+{ path: 'reception/update-patient', component: UpdatePatientComponent },
 { path: 'app-administrator', component: AdministratorComponent },
 { path: '**', component: AppComponent},
 ];

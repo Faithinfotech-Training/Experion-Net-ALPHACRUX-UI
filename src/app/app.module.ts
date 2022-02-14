@@ -14,6 +14,7 @@ import { PaymentsComponent } from './home/reception/payments/payments.component'
 import { TransactionsComponent } from './home/reception/transactions/transactions.component';
 import { RegisterPatientComponent } from './home/reception/register-patient/register-patient.component';
 import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
+import { ReceptionService } from './shared/reception.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { UpdatePatientComponent } from './home/reception/update-patient/update-p
     Ng2SearchPipeModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ReceptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
