@@ -11,23 +11,24 @@ import { FormsModule } from '@angular/forms';
 >>>>>>> 944220f5eb422ef5be625cb5c8fa09ec75e2c3fb
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HomePageComponent } from './home/reception/home-page/home-page.component';
-import { PaymentsComponent } from './home/reception/payments/payments.component';
-import { TransactionsComponent } from './home/reception/transactions/transactions.component';
-import { RegisterPatientComponent } from './home/reception/register-patient/register-patient.component';
-import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
+import { HomePageComponent } from './reception/home-page/home-page.component';
+import { PaymentsComponent } from './reception/payments/payments.component';
+import { TransactionsComponent } from './reception/transactions/transactions.component';
+import { RegisterPatientComponent } from './reception/register-patient/register-patient.component';
+import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
+import { ReceptionService } from './shared/reception.service';
+import { ReceptionComponent } from './reception/reception.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HomePageComponent,
     PaymentsComponent,
     TransactionsComponent,
     RegisterPatientComponent,
     UpdatePatientComponent,
+    ReceptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ import { UpdatePatientComponent } from './home/reception/update-patient/update-p
     Ng2SearchPipeModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ReceptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

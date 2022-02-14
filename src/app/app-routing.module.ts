@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HomePageComponent } from './home/reception/home-page/home-page.component';
-import { PaymentsComponent } from './home/reception/payments/payments.component';
-import { RegisterPatientComponent } from './home/reception/register-patient/register-patient.component';
-import { TransactionsComponent } from './home/reception/transactions/transactions.component';
-import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
+import { HomePageComponent } from './reception/home-page/home-page.component';
+import { PaymentsComponent } from './reception/payments/payments.component';
+import { RegisterPatientComponent } from './reception/register-patient/register-patient.component';
+import { TransactionsComponent } from './reception/transactions/transactions.component';
+import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
+import {AdministratorComponent} from './administrator/administrator.component';
 
 const routes: Routes = [
-  { path: 'app-home-page', component: HomePageComponent },
-{ path: 'app-home', component: HomeComponent },
-{ path: 'app-payments', component: PaymentsComponent },
-{ path: 'app-register-patient', component: RegisterPatientComponent },
-{ path: 'app-transactions', component: TransactionsComponent },
-{ path: 'app-update-patient', component: UpdatePatientComponent },
-{ path: '**', component: AppComponent},
+  { path: '', component: HomePageComponent },
+  { path: 'reception/home', component: HomePageComponent },
+  { path: 'reception/payments', component: PaymentsComponent },
+  { path: 'reception/register-patient', component: RegisterPatientComponent },
+  { path: 'reception/transactions', component: TransactionsComponent },
+  { path: 'reception/update-patient', component: UpdatePatientComponent },
+  { path: 'app-administrator', component: AdministratorComponent },
+  { path: '**', component: AppComponent },
 ];
 
 @NgModule({
