@@ -36,4 +36,5 @@ export class ReceptionService {
         this.patients = data as Patients[];
       });
   }
+
 }

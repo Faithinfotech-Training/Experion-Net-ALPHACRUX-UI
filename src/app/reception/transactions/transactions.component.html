@@ -25,12 +25,9 @@
                                 style="font-size: 1.5rem;"></i></a>
                     </li>
 
+
                     <li class="navbar-item">
-                        <a class="nav-link active" href="#"><i class="bi bi-house"
-                                style="font-size: 1.5rem;"></i></a>
-                    </li>
-                    <li class="navbar-item">
-                        <a class="nav-link" href="#"><i class="bi bi-plus-circle"
+                        <a class="nav-link active" href="#"><i class="bi bi-bag-check-fill"
                                 style="font-size: 1.5rem;"></i></a>
                     </li>
                     <li class="navbar-item">
@@ -70,61 +67,23 @@
                         <th scope="col">Payment Mode</th>
                     </tr>
                 </thead>
-                    <tr>
-                        <td>Invoice number</td>
-                        <td>Date&Time</td>
-                        <td>Patient ID</td>
-                        <td>Patient Name</td>
-                        <td>Age</td>
-                        <td>Payment Mode</td>
-                    </tr>
-                    <tr>
-                        <td>Invoice number</td>
-                        <td>Date&Time</td>
-                        <td>Patient ID</td>
-                        <td>Patient Name</td>
-                        <td>Age</td>
-                        <td>Payment Mode</td>
-                    </tr>
-                    <tr>
-                        <td>Invoice number</td>
-                        <td>Date&Time</td>
-                        <td>Patient ID</td>
-                        <td>Patient Name</td>
-                        <td>Age</td>
-                        <td>Payment Mode</td>
-                    </tr>
-                    <tr>
-                        <td>Invoice number</td>
-                        <td>Date&Time</td>
-                        <td>Patient ID</td>
-                        <td>Patient Name</td>
-                        <td>Age</td>
-                        <td>Payment Mode</td>
-                    </tr>
-                    <tr>
-                        <td>Invoice number</td>
-                        <td>Date&Time</td>
-                        <td>Patient ID</td>
-                        <td>Patient Name</td>
-                        <td>Age</td>
-                        <td>Payment Mode</td>
-                    </tr>
-                    <tr>
-                        <td>Invoice number</td>
-                        <td>Date&Time</td>
-                        <td>Patient ID</td>
-                        <td>Patient Name</td>
-                        <td>Age</td>
-                        <td>Payment Mode</td>
-                    </tr>
-                <tbody>
-                    <tr>
-                        
-                    </tr>
+                <tbody *ngFor="let Payment of paymentsService.payments|filter:filter|paginate:{itemsPerPage:4,currentPage:page}">
+                  <tr>
+                    <td>{{Payment.InvoiceNumber}}</td>
+                    <td>{{Payment.DateTime}}</td>
+                    <td>{{Payment.PatientId}}</td>
+                    <td>{{Payment.PatientName}}</td>
+                    <td>{{Payment.Age}}</td>
+                    <td>{{Payment.PaymentMode}}</td>
+                </tr>
                 </tbody>
             </table>
         </div>
+        <div class="footer">
+          <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
+      </div>
     </div>
+
 </div>
+
 
