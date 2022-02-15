@@ -52,37 +52,30 @@
   </div>
 
 </header>
+<div class="container-sm m-5 p-4">
+  <div class="row text-center m-2"><h5><strong>Patients</strong></h5></div>
+  <div class="row mt-4">
+    <div class="table">
+        <table class="table table-bordered ms-4">
+            <thead>
+                <tr>
+                    <th scope="col">PatientId</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Last Appointment</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let Patient of patientListService.patientList|filter:filter|paginate:{itemsPerPage:4,currentPage:page}">
+              <tr>
+                <td>{{Patient.PatientId}}</td>
+                <td>{{Patient.PatientName}}</td>
+                <td>{{Patient.PatientGender}}</td>
+                <td>{{Patient.TokenDateTime | date: 'dd-MMM-yy '}}</td>
 
-<div class="card" style="border-radius: 15px;">
-  <div class="card-body">
+            </tr>
+            </tbody>
+          </table>
 
-
-        <div class="table-responsive">
-          <table width="90%" id="table"  cellpadding="0" cellspacing="5" >
-
-  <thead>
-
-    <tr>
-      <th scope="col">PATIENT ID</th>
-      <th scope="col">NAME</th>
-      <th scope="col">GENDER</th>
-      <th scope="col">AGE</th>
-      <th scope="col">LASTVISITED</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tbody>
-      <tr>
-        <td>a</td>
-        <td>b</td>
-        <td>c}</td>
-        <td>{{d}</td>
-        <td>{{Pa</td>
-        <td>{{Pay</td>
-    </tr>
-    </tbody>
-</table>
 </div>
-<div class="footer">
-<pagination-controls (pageChange)="page = ($event)"></pagination-controls>
-</div>
+
+

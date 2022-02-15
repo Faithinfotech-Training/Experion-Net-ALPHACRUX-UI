@@ -13,18 +13,16 @@ import { AppointmentsComponent } from './doctor/appointments/appointments.compon
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 
 const routes: Routes = [
-  { path: '', component: DoctorComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/appointments', component: AppointmentsComponent },
   { path: 'doctor/patients', component: PatientListComponent },
   { path: 'reception/home', component: HomePageComponent },
-  { path: 'reception/payments', component: PaymentsComponent },
+  { path: 'reception/payments/:id', component: PaymentsComponent,data:[{isPat:true}] },
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
   { path: 'app-administrator', component: AdministratorComponent },
   { path: '**', component: AppComponent },
-  {path: 'doctor/patients/list',component: PatientListComponent},
   {path: 'doctor',component:DoctorComponent}
 
 
