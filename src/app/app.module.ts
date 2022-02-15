@@ -22,6 +22,10 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 import { AdviceComponent } from './doctor/advice/advice.component';
+import { CommonModule } from '@angular/common';
+import { UpdatePatientService } from './shared/update-patient.service';
+import { DoctorAdviceService } from './shared/doctor-advice.service';
+
 
 
 
@@ -53,9 +57,10 @@ import { AdviceComponent } from './doctor/advice/advice.component';
     BrowserAnimationsModule,
     NgSelectModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CommonModule
   ],
-  providers: [ReceptionService],
+  providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

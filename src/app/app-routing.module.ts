@@ -12,7 +12,8 @@ import { AdviceComponent } from './doctor/advice/advice.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', component: DoctorComponent },
+  { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent },
   { path: 'reception/register-patient', component: RegisterPatientComponent },
@@ -23,6 +24,9 @@ const routes: Routes = [
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/advice/vitals', component: VitalsComponent },
   { path: '**', component: AppComponent },
+  { path: 'doctor/doctor-advice',component:AdviceComponent},
+  { path: 'doctor',component:DoctorComponent},
+
 ];
 
 @NgModule({
