@@ -17,7 +17,7 @@ import { ReceptionService } from './shared/reception.service';
 import { ReceptionComponent } from './reception/reception.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 
@@ -41,7 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     NgSelectModule,
     ReactiveFormsModule,
-    ToastrModule
+    ToastrModule.forRoot()
   ],
   providers: [ReceptionService],
   bootstrap: [AppComponent],
