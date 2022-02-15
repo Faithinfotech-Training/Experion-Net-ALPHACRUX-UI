@@ -25,6 +25,7 @@ import { AdviceComponent } from './doctor/advice/advice.component';
 import { CommonModule } from '@angular/common';
 import { UpdatePatientService } from './shared/update-patient.service';
 import { DoctorAdviceService } from './shared/doctor-advice.service';
+import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.component';
 
 
 
@@ -44,6 +45,7 @@ import { DoctorAdviceService } from './shared/doctor-advice.service';
     AppointmentsComponent,
     PatientListComponent,
     AdviceComponent,
+    DiagnosisComponent,
 
 
   ],

@@ -10,6 +10,7 @@ import {AdministratorComponent} from './administrator/administrator.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { AdviceComponent } from './doctor/advice/advice.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
+import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.component';
 
 const routes: Routes = [
   { path: '', component: DoctorComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/advice/vitals', component: VitalsComponent },
   { path: '**', component: AppComponent },
+  { path: 'doctor/advice/diagnosis',component:DiagnosisComponent}
 
 
 ];
