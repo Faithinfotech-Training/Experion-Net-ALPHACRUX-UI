@@ -1,23 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
-=======
 import {HttpClientModule} from '@angular/common/http'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
->>>>>>> 944220f5eb422ef5be625cb5c8fa09ec75e2c3fb
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './reception/home-page/home-page.component';
 import { PaymentsComponent } from './reception/payments/payments.component';
 import { TransactionsComponent } from './reception/transactions/transactions.component';
 import { RegisterPatientComponent } from './reception/register-patient/register-patient.component';
-import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
+import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
 import { ReceptionService } from './shared/reception.service';
 import { ReceptionComponent } from './reception/reception.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 @NgModule({
@@ -36,9 +36,12 @@ import { ReceptionComponent } from './reception/reception.component';
     HttpClientModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    NgSelectModule,
+    ReactiveFormsModule
   ],
   providers: [ReceptionService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

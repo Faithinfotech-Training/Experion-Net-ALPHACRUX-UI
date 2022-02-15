@@ -5,8 +5,8 @@ import { HomePageComponent } from './reception/home-page/home-page.component';
 import { PaymentsComponent } from './reception/payments/payments.component';
 import { RegisterPatientComponent } from './reception/register-patient/register-patient.component';
 import { TransactionsComponent } from './reception/transactions/transactions.component';
-import { UpdatePatientComponent } from './home/reception/update-patient/update-patient.component';
-import {AdministratorComponent} from './home/administrator/administrator.component';
+import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
+import {AdministratorComponent} from './administrator/administrator.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
