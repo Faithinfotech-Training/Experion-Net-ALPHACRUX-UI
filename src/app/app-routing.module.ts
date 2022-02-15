@@ -10,6 +10,7 @@ import {AdministratorComponent} from './administrator/administrator.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { AdviceComponent } from './doctor/advice/advice.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
+import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 
 const routes: Routes = [
   { path: '', component: DoctorComponent },
