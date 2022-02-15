@@ -24,9 +24,9 @@ const routes: Routes = [
   { path: 'app-administrator', component: AdministratorComponent },
   { path: 'doctor/home', component: DoctorComponent  },
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'doctor/advice/vitals', component: VitalsComponent },
+  { path: 'doctor/advice/diagnosis', component: DiagnosisComponent },
   { path: '**', component: AppComponent },
-  { path: 'doctor/advice/diagnosis',component:DiagnosisComponent}
+
 
 
 ];
