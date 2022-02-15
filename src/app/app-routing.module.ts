@@ -14,12 +14,13 @@ import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.componen
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
+import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 
 const routes: Routes = [
-  { path: '', component: DoctorComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/home', component: HomePageComponent },
-  { path: 'reception/payments', component: PaymentsComponent },
+  { path: 'reception/payments/:id', component: PaymentsComponent,data:[{isPat:true}] },
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
@@ -30,6 +31,8 @@ const routes: Routes = [
   { path: 'doctor/advice/vitals', component:VitalsComponent},
   { path: 'doctor/advice/medicine', component:MedicineComponent},
   { path: 'doctor/advice/tests', component:TestsComponent},
+  { path: 'lab/home', component:LabTechnicianComponent},
+  { path: 'lab/home/test', component:LabTestReportComponent},
   { path: '**', component: AppComponent },
 
 
