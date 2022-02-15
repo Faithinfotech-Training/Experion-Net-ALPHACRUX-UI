@@ -31,8 +31,7 @@
               "src/styles.scss",
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.scss",
-              "node_modules/ngx-toastr/toastr.css",
-              "~@ng-select/ng-select/themes/material.theme.css"
+              "node_modules/ngx-toastr/toastr.css"
 
 
             ],

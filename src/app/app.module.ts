@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterPatientComponent,
     UpdatePatientComponent,
     ReceptionComponent,
+
   ],
   imports: [
     BrowserModule,
