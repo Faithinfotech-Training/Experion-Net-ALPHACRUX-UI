@@ -28,7 +28,8 @@ import { DoctorAdviceService } from './shared/doctor-advice.service';
 import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.component';
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
-
+import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component'
 
 
 
@@ -50,6 +51,8 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
     DiagnosisComponent,
     MedicineComponent,
     TestsComponent,
+    LabTechnicianComponent,
+    LabTestReportComponent
 
 
   ],

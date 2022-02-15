@@ -14,6 +14,8 @@ import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.componen
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
+import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 
 const routes: Routes = [
   { path: '', component: DoctorComponent },
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'doctor/advice/vitals', component:VitalsComponent},
   { path: 'doctor/advice/medicine', component:MedicineComponent},
   { path: 'doctor/advice/tests', component:TestsComponent},
+  { path: 'lab/home', component:LabTechnicianComponent},
+  { path: 'lab/home/test', component:LabTestReportComponent},
   { path: '**', component: AppComponent },
 
 
