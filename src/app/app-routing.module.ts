@@ -24,8 +24,7 @@ const routes: Routes = [
   { path: 'reception/update-patient', component: UpdatePatientComponent },
   { path: 'app-administrator', component: AdministratorComponent },
   { path: '**', component: AppComponent },
-  { path: 'doctor/doctor-advice',component:AdviceComponent},
-  { path: 'doctor',component:DoctorComponent},
+
 
 ];
 
