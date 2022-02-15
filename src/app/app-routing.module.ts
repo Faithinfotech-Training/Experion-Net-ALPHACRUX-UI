@@ -7,6 +7,9 @@ import { RegisterPatientComponent } from './reception/register-patient/register-
 import { TransactionsComponent } from './reception/transactions/transactions.component';
 import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
 import {AdministratorComponent} from './administrator/administrator.component';
+import { DoctorComponent } from './doctor/doctor.component';
+import { AdviceComponent } from './doctor/advice/advice.component';
+import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
   { path: 'app-administrator', component: AdministratorComponent },
+  { path: 'doctor/home', component: DoctorComponent  },
+  { path: 'doctor/advice', component: AdviceComponent },
+  { path: 'doctor/advice/vitals', component: VitalsComponent },
   { path: '**', component: AppComponent },
 ];
 

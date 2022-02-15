@@ -26,6 +26,7 @@ import { AdviceComponent } from './doctor/advice/advice.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { AdviceComponent } from './doctor/advice/advice.component';
     PatientListComponent,
     AdviceComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { AdviceComponent } from './doctor/advice/advice.component';
     BrowserAnimationsModule,
     NgSelectModule,
     ReactiveFormsModule,
-    ToastrModule
+    ToastrModule.forRoot()
   ],
   providers: [ReceptionService],
   bootstrap: [AppComponent],
