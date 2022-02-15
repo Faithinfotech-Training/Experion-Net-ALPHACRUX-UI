@@ -29,8 +29,9 @@ const routes: Routes = [
   { path: 'doctor/advice/diagnosis', component: DiagnosisComponent },
   { path: 'doctor/advice/vitals', component:VitalsComponent},
   { path: 'doctor/advice/medicine', component:MedicineComponent},
+  { path: 'doctor/advice/tests', component:TestsComponent},
   { path: '**', component: AppComponent },
-  { path: 'doctor/advice/tests', component:TestsComponent}
+
 
 
 
