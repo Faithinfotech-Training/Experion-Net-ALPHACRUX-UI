@@ -7,12 +7,16 @@ import { RegisterPatientComponent } from './reception/register-patient/register-
 import { TransactionsComponent } from './reception/transactions/transactions.component';
 import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
 import {AdministratorComponent} from './administrator/administrator.component';
-import { AdviceComponent } from './doctor/advice/advice.component';
 import { DoctorComponent } from './doctor/doctor.component';
-
+import { AdviceComponent } from './doctor/advice/advice.component';
+import { AppointmentsComponent } from './doctor/appointments/appointments.component';
+import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', component: DoctorComponent },
+  { path: 'doctor/advice', component: AdviceComponent },
+  { path: 'doctor/appointments', component: AppointmentsComponent },
+  { path: 'doctor/patients', component: PatientListComponent },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent },
   { path: 'reception/register-patient', component: RegisterPatientComponent },

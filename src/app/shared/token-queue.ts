@@ -3,5 +3,7 @@ export class TokenQueue {
     PatientName: string = "";
     TokenNumber: number = 0;
     Age: number = 0;
-    DoctorName:string = "";
+    DoctorName: string = "";
+    StaffId: number = 0;
+    TokenNum: number = 0;
 }
