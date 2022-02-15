@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { TokenQueue } from 'src/app/shared/token-queue';
 import { Patients } from 'src/app/shared/patients';
+import { Doctors } from 'src/app/shared/doctors';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,8 @@ export class ReceptionService {
   queueList: TokenQueue[];
   patients: Patients[];
   formData: Patients = new Patients();
+  token: TokenQueue;
+  doctors: Doctors[];
 
   constructor(private client: HttpClient) {}
 
@@ -37,4 +40,14 @@ export class ReceptionService {
       });
   }
 
+  //Get doctor
+  getDoctors() {
+    return this.client
+      .get(environment.apiUrl + 'receptionist/doctors')
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        this.doctors = data as Doctors[];
+      });
+  }
 }
