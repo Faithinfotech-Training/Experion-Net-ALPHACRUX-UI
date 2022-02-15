@@ -30,6 +30,7 @@ import { DoctorAdviceService } from './shared/doctor-advice.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { DoctorAdviceService } from './shared/doctor-advice.service';
     PatientListComponent,
     AdviceComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,6 @@ import { DoctorAdviceService } from './shared/doctor-advice.service';
     NgSelectModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    FormsModule,
     CommonModule
   ],
   providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],

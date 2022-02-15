@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './reception/home-page/home-page.component';
@@ -9,20 +9,20 @@ import { UpdatePatientComponent } from './reception/update-patient/update-patien
 import {AdministratorComponent} from './administrator/administrator.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { AdviceComponent } from './doctor/advice/advice.component';
-import { AppointmentsComponent } from './doctor/appointments/appointments.component';
-import { PatientListComponent } from './doctor/patient-list/patient-list.component';
+import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
 const routes: Routes = [
   { path: '', component: DoctorComponent },
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'doctor/appointments', component: AppointmentsComponent },
-  { path: 'doctor/patients', component: PatientListComponent },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent },
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
   { path: 'app-administrator', component: AdministratorComponent },
+  { path: 'doctor/home', component: DoctorComponent  },
+  { path: 'doctor/advice', component: AdviceComponent },
+  { path: 'doctor/advice/vitals', component: VitalsComponent },
   { path: '**', component: AppComponent },
 
 

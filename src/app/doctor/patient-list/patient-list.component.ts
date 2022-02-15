@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-list.component.scss']
 })
 export class PatientListComponent implements OnInit {
-
+  filter:string;
+  page:number;
   constructor() { }
 
   ngOnInit(): void {
