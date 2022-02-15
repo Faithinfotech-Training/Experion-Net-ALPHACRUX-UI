@@ -1,14 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
-=======
-import {HttpClientModule} from '@angular/common/http'
-import { NgxPaginationModule } from 'ngx-pagination';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
 
-
->>>>>>> 944220f5eb422ef5be625cb5c8fa09ec75e2c3fb
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './reception/home-page/home-page.component';
@@ -18,6 +11,11 @@ import { RegisterPatientComponent } from './reception/register-patient/register-
 import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
 import { ReceptionService } from './shared/reception.service';
 import { ReceptionComponent } from './reception/reception.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -36,7 +34,10 @@ import { ReceptionComponent } from './reception/reception.component';
     HttpClientModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
   ],
   providers: [ReceptionService],
   bootstrap: [AppComponent]
