@@ -32,6 +32,8 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.scss",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/scss/bootstrap.scss"
+
+
             ],
             "scripts": []
           },

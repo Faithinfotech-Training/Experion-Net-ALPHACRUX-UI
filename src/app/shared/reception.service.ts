@@ -13,7 +13,7 @@ export class ReceptionService {
   queueList: TokenQueue[];
   patients: Patients[];
   formData: Patients = new Patients();
-  token: TokenQueue;
+  token: TokenQueue = new TokenQueue();
   doctors: Doctors[];
 
   constructor(private client: HttpClient) {}
@@ -26,6 +26,8 @@ export class ReceptionService {
       .then((data) => {
         console.log(data);
         this.queueList = data as TokenQueue[];
+        this.token = this.queueList[this.queueList.length - 1];
+        console.log(this.token);
       });
   }
 
@@ -49,5 +51,15 @@ export class ReceptionService {
         console.log(data);
         this.doctors = data as Doctors[];
       });
+  }
+
+  //Generate token
+  generateToken(token: TokenQueue) {
+    return this.client.post(environment.apiUrl + 'receptionist/token', token)
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        console.log('Token Generated Successfully');
+       });
   }
 }
