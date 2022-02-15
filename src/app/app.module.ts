@@ -16,6 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
+import { DoctorComponent } from './doctor/doctor.component';
+import { AppointmentsComponent } from './doctor/appointments/appointments.component';
+import { PatientListComponent } from './doctor/patient-list/patient-list.component';
+import { AdviceComponent } from './doctor/advice/advice.component';
+
 
 
 @NgModule({
@@ -27,6 +32,11 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterPatientComponent,
     UpdatePatientComponent,
     ReceptionComponent,
+    DoctorComponent,
+    AppointmentsComponent,
+    PatientListComponent,
+    AdviceComponent,
+
   ],
   imports: [
     BrowserModule,
