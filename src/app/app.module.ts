@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './reception/home-page/home-page.component';
@@ -11,11 +15,15 @@ import { RegisterPatientComponent } from './reception/register-patient/register-
 import { UpdatePatientComponent } from './reception/update-patient/update-patient.component';
 import { ReceptionService } from './shared/reception.service';
 import { ReceptionComponent } from './reception/reception.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { ToastrModule } from 'ngx-toastr';
+import { DoctorComponent } from './doctor/doctor.component';
+import { AppointmentsComponent } from './doctor/appointments/appointments.component';
+import { PatientListComponent } from './doctor/patient-list/patient-list.component';
+import { AdviceComponent } from './doctor/advice/advice.component';
+
+
 
 
 @NgModule({
@@ -27,6 +35,10 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterPatientComponent,
     UpdatePatientComponent,
     ReceptionComponent,
+    DoctorComponent,
+    AppointmentsComponent,
+    PatientListComponent,
+    AdviceComponent,
 
   ],
   imports: [
@@ -37,10 +49,11 @@ import { ToastrModule } from 'ngx-toastr';
     Ng2SearchPipeModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
-
+    NgSelectModule,
+    ReactiveFormsModule,
+    ToastrModule
   ],
   providers: [ReceptionService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
