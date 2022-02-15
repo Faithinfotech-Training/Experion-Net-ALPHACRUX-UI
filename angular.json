@@ -30,14 +30,8 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap-icons/font/bootstrap-icons.scss",
-<<<<<<< HEAD
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/scss/bootstrap.scss"
-=======
-              "node_modules/ngx-toastr/toastr.css"
-
-
->>>>>>> b0630ed932a1ceab803c9bbbc1984d662d70fc25
             ],
             "scripts": []
           },
