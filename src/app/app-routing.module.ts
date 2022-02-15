@@ -12,6 +12,7 @@ import { AdviceComponent } from './doctor/advice/advice.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.component';
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
+import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 
 const routes: Routes = [
   { path: '', component: DoctorComponent },
@@ -25,6 +26,8 @@ const routes: Routes = [
   { path: 'doctor/home', component: DoctorComponent  },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/advice/diagnosis', component: DiagnosisComponent },
+  { path: 'doctor/advice/vitals', component:VitalsComponent},
+  { path: 'doctor/advice/medicine', component:MedicineComponent},
   { path: '**', component: AppComponent },
 
 
