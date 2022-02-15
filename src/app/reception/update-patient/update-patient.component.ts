@@ -13,6 +13,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 })
 export class UpdatePatientComponent implements OnInit {
   patientId:number;
+  NgForm=NgForm;
 
   constructor(public updatePatientService: UpdatePatientService,
     private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
