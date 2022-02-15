@@ -27,6 +27,7 @@ import { UpdatePatientService } from './shared/update-patient.service';
 import { DoctorAdviceService } from './shared/doctor-advice.service';
 import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.component';
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
+import { TestsComponent } from './doctor/advice/tests/tests.component';
 
 
 
@@ -48,6 +49,7 @@ import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
     AdviceComponent,
     DiagnosisComponent,
     MedicineComponent,
+    TestsComponent,
 
 
   ],
