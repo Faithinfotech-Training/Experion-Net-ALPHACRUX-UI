@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
+import {AddpatientService } from 'src/app/shared/addpatient.service';
 
 @Component({
   selector: 'app-register-patient',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-patient.component.scss']
 })
 export class RegisterPatientComponent implements OnInit {
+  page: number=1;
 
-  constructor() { }
+  constructor(public addpatientService:AddpatientService, public app:AppComponent) { }
+
 
   ngOnInit(): void {
+  this.addpatientService
   }
 
 }
