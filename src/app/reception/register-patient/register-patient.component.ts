@@ -14,7 +14,7 @@ export class RegisterPatientComponent implements OnInit {
 
 
   ngOnInit(): void {
-  this.addpatientService
+  
   }
 
 }

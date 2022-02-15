@@ -21,7 +21,7 @@ export class UpdatePatientComponent implements OnInit {
   ngOnInit(): void {
 
     this.patientId = this.route.snapshot.params['patientId'];
-    this.patientId =13
+    this.patientId =1
 
     if (this.patientId != 0 || this.patientId != null) {
 
