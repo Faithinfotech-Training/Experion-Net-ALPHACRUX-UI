@@ -3,16 +3,34 @@
     <h3>DIAGNOSIS</h3>
     <div class="col">
 
-      <form>
-        <div class="form-outline mb-4">
+      <form #form="ngForm" name="ngForm" autocomplete="off"
+          class="form-group p-3" (ngSubmit)="onSubmit(form)">
+
+          <input type="hidden" name="PatientId"
+            [(ngModel)]="diagnosisService.formData.PatientId" />
+
+        <div class="form-group form-outline mb-4">
           <label class="form-label" for="description">Disease & Description</label>
-          <textarea class="form-control" id="description" rows="4"
-            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat tortor ex, sed pellentesque odio tristique in. Nulla id sodales velit. Maecenas auctor purus accumsan venenatis semper. In hac habitasse. "></textarea>
+
+          <textarea class="form-control" id="NoteData" rows="4"
+            placeholder="Disease & Description Type here"
+            name="NoteData" #NoteData="ngModel"
+                [(ngModel)]="diagnosisService.formData.NoteData"
+                 required minlength="5" maxlength="25"
+                [ngClass]="{ 'is-invalid': NoteData.touched && NoteData.invalid }"></textarea>
+                <!--Validation for patient name-->
+                <p *ngIf="NoteData.touched && NoteData.invalid" class="validation-error">
+                  <span *ngIf="NoteData.errors.required" style="color: crimson">
+                  Name is required!</span>
+                  </p>
         </div>
-        <div class="float-end"><button type="submit" class="btn btn-outline-danger">
+
+
+        <div class="float-end">
+          <button type="reset" class="btn btn-outline-danger">
             Clear
           </button>
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" class="btn btn-primary" [disabled]="!(form.valid && form.dirty)">
             Save
           </button>
         </div>
