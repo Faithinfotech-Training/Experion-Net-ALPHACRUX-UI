@@ -19,10 +19,4 @@ export class TransactionsComponent implements OnInit {
 
   }
 
-  //public calculateAge(birthdate: any): number {
-    //return moment().diff(birthdate, 'years');
-  }
-
-
-
-//}
+}

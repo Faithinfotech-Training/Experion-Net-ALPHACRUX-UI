@@ -4,7 +4,7 @@ import { FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PatientListServiceService } from 'src/app/shared/patient-list-service.service';
 import { ReceptionService } from 'src/app/shared/reception.service';
-import {Patients} from 'src/app/shared/patients';
+import { Patients } from 'src/app/shared/patients';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -16,9 +16,6 @@ export class HomePageComponent implements OnInit {
   page: number = 1;
 
   //emits
-
-
-
 
   constructor(
     public reception: ReceptionService,
@@ -41,19 +38,21 @@ export class HomePageComponent implements OnInit {
 
   onSubmit(): void {
     // Process checkout data here
-    this.checkoutForm.patchValue({ TokenNum : this.reception.token.TokenNumber + 1 });
-    console.warn('Your form has been submitted', this.checkoutForm.value);
-    if (this.checkoutForm.value.PatientId != null && this.checkoutForm.value.StaffId != null)
-     {
-    console.log('Done..........');
-    this.reception.generateToken(this.checkoutForm.value);
-    this.reception.pat.PatientId= this.checkoutForm.value.PatientId;
-    this.reception.$isPass.emit(this.reception.pat);
+    this.checkoutForm.patchValue({
+      TokenNum: this.reception.token.TokenNumber + 1,
+    });
+    if (
+      this.checkoutForm.value.PatientId != null &&
+      this.checkoutForm.value.StaffId != null
+    ) {
+      this.toastr.success('Token successfully generayed', 'Successfull!');
+      this.reception.generateToken(this.checkoutForm.value);
+      this.reception.pat.PatientId = this.checkoutForm.value.PatientId;
+      this.reception.$isPass.emit(this.reception.pat);
+      this.router.navigate(['/reception/payments']);
     }
-
+    this.toastr.error('Please select a patient and a doctor', 'Error!');
     this.checkoutForm.reset();
-    this.router.navigate(['/reception/payments']);
-
   }
 
   //Delete token
