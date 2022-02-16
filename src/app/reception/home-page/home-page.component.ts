@@ -11,11 +11,8 @@ import { ReceptionService } from 'src/app/shared/reception.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  myControl = new FormControl();
+  
   page: number = 1;
-  patient: any;
-  doctor: any;
-  age: number = 0;
 
   constructor(
     public reception: ReceptionService,

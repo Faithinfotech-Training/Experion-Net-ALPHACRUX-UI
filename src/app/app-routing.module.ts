@@ -13,7 +13,7 @@ import { AppointmentsComponent } from './doctor/appointments/appointments.compon
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 
 const routes: Routes = [
-  { path: '', component: DoctorComponent },
+  { path: '', component: AppointmentsComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/appointments', component: AppointmentsComponent },
   { path: 'doctor/patients', component: PatientListComponent },
