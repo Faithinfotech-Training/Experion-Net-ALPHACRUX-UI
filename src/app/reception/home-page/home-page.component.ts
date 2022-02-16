@@ -46,4 +46,19 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['/reception/payments']);
   }
 
+
+//Delete token
+  deleteToken(tokenId: number) { 
+    if (confirm('Are you sure you want to DELETE this token?')) {
+      this.reception.deleteToken(tokenId).subscribe(
+        (response) => {
+          this.reception.getTokenQueue();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
 }

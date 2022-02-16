@@ -104,12 +104,8 @@ formControlName="StaffId">
                 <td>{{queue.Age}}</td>
                 <td>{{queue.DoctorName}}</td>
                 <td>
-                  <button type="button" class="btn btn-outline-info btn-sm">
-                      <i class="bi bi-pencil-square"> Edit</i>
-
-                  </button>
                 &nbsp;
-                  <button type="button" class="btn btn-outline-danger btn-sm">
+                  <button type="button" class="btn btn-outline-danger btn-sm" (click)=" deleteToken(queue.TokenId)">
                     <i class="bi bi-trash"> Del</i>
                   </button>
                 </td>
