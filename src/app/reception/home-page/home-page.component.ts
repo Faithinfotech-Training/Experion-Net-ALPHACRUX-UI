@@ -1,8 +1,10 @@
 import { Token } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PatientListServiceService } from 'src/app/shared/patient-list-service.service';
 import { ReceptionService } from 'src/app/shared/reception.service';
+import {Patients} from 'src/app/shared/patients';
 
 
 @Component({
@@ -13,6 +15,10 @@ import { ReceptionService } from 'src/app/shared/reception.service';
 export class HomePageComponent implements OnInit {
 
   page: number = 1;
+
+  //emits
+
+
 
 
   constructor(
@@ -38,12 +44,17 @@ export class HomePageComponent implements OnInit {
     // Process checkout data here
     this.checkoutForm.patchValue({ TokenNum : this.reception.token.TokenNumber + 1 });
     console.warn('Your form has been submitted', this.checkoutForm.value);
-    if (this.checkoutForm.value.PatientId != null && this.checkoutForm.value.StaffId != null) {
+    if (this.checkoutForm.value.PatientId != null && this.checkoutForm.value.StaffId != null)
+     {
     console.log('Done..........');
     this.reception.generateToken(this.checkoutForm.value);
+    this.reception.pat.PatientId= this.checkoutForm.value.PatientId;
+    this.reception.$isPass.emit(this.reception.pat);
     }
+
     this.checkoutForm.reset();
-    this.router.navigate(['reception/payments/:id']);
+    this.router.navigate(['/reception/payments']);
+
   }
 
 
