@@ -1,5 +1,5 @@
 //@ts-check
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { TokenQueue } from 'src/app/shared/token-queue';
@@ -15,6 +15,13 @@ export class ReceptionService {
   formData: Patients = new Patients();
   token: TokenQueue = new TokenQueue();
   doctors: Doctors[];
+
+  $isPass= new EventEmitter();
+  pat:Patients=
+  {
+    PatientId:0,
+    PatientName:''
+  };
 
   constructor(private client: HttpClient) {}
 
@@ -70,4 +77,12 @@ export class ReceptionService {
       environment.apiUrl + 'receptionist/deletetoken/' + tokenId
     );
   }
+/*
+  login(){
+    console.log("Login sample");
+    //this.pat.PatientId="";
+
+    this.$isPass.emit(this.pat.PatientId);
+  }
+  */
 }

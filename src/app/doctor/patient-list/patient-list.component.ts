@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PatientListServiceService} from 'src/app/shared/patient-list-service.service'
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-patient-list',

@@ -11,10 +11,21 @@ export class VitalsService {
   vitals:Vitals[]
 
   constructor(private httpClient:HttpClient) { }
-  //Insert Employee
+  //Insert Vitals
  insertPatient(vitals: Vitals): Observable<any> {
   return this.httpClient.post(
     environment.apiUrl  + 'Receptionist/addpatient',vitals);
 }
+postVitals(vitals:Vitals){
+  return this.httpClient.post(environment.apiUrl + 'doctor/advice/vitals', vitals)
+  .toPromise()
+  .then((data) => {
+    console.log(data);
+
+    console.log('Tests added Successfully');
+   });
+
+ }
+
 
 }
