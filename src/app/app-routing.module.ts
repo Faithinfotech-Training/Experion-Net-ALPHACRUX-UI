@@ -16,8 +16,10 @@ import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
+import { AppointmentsComponent } from './doctor/appointments/appointments.component';
 
 const routes: Routes = [
+  { path: '', component: AppointmentsComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},

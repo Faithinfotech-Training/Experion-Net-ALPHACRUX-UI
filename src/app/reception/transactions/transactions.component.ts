@@ -19,10 +19,10 @@ export class TransactionsComponent implements OnInit {
 
   }
 
-  /*public calculateAge(birthdate: any): number {
-    return moment().diff(birthdate, 'years');
+  //public calculateAge(birthdate: any): number {
+    //return moment().diff(birthdate, 'years');
   }
-*/
 
 
-}
+
+//}

@@ -13,11 +13,8 @@ import {Patients} from 'src/app/shared/patients';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  myControl = new FormControl();
+  
   page: number = 1;
-  patient: any;
-  doctor: any;
-  age: number = 0;
 
   //emits
 
@@ -58,6 +55,21 @@ export class HomePageComponent implements OnInit {
     this.checkoutForm.reset();
     this.router.navigate(['/reception/payments']);
 
+  }
+
+
+//Delete token
+  deleteToken(tokenId: number) { 
+    if (confirm('Are you sure you want to DELETE this token?')) {
+      this.reception.deleteToken(tokenId).subscribe(
+        (response) => {
+          this.reception.getTokenQueue();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
 }

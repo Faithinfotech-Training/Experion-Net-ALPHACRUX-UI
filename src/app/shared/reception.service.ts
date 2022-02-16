@@ -62,12 +62,20 @@ export class ReceptionService {
 
   //Generate token
   generateToken(token: TokenQueue) {
-    return this.client.post(environment.apiUrl + 'receptionist/token', token)
+    return this.client
+      .post(environment.apiUrl + 'receptionist/token', token)
       .toPromise()
       .then((data) => {
         console.log(data);
         console.log('Token Generated Successfully');
-       });
+      });
+  }
+
+  //Delete token
+  deleteToken(tokenId: number) {
+    return this.client.delete(
+      environment.apiUrl + 'receptionist/deletetoken/' + tokenId
+    );
   }
 /*
   login(){
