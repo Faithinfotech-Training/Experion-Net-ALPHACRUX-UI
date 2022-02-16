@@ -15,13 +15,14 @@ export class PaymentsComponent implements OnInit {
 
 
 
-  constructor(private receptionService : ReceptionService) {}
+  constructor(private receptionService : ReceptionService,private router: Router) {}
 
   ngOnInit(): void {
 
     this.receptionService.$isPass
     .subscribe( (data)=>{
       console.log("I got in console",data);
+      this.router.navigateByUrl('/reception/home');
 
     })
   }
