@@ -8,17 +8,19 @@ import { ReceptionService } from 'src/app/shared/reception.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss'],
+  styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
   
   page: number = 1;
 
+
   constructor(
     public reception: ReceptionService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
+  ) {
+    }
 
   ngOnInit(): void {
     this.reception.getTokenQueue();
@@ -43,4 +45,5 @@ export class HomePageComponent implements OnInit {
     this.checkoutForm.reset();
     this.router.navigate(['/reception/payments']);
   }
+
 }

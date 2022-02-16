@@ -1,2 +1,81 @@
-<app-doctor></app-doctor>
+<header>
+  <!-- Nav bar -->
+
+  <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+              <h3>StaffName</h3>
+          </a>
+          <form class="d-flex mt-2" action="submit">
+              <input class="form-control me-2" type="text" placeholder="Search">
+              <button class="btn btn-outline-success" type="button">Search</button>
+          </form>
+      </div>
+  </nav>
+
+
+
+  <!-- Side bar -->
+  <div class="d-flex align-items-start">
+      <div class="container-fluid-sm position-fixed mt-5">
+
+          <nav class="bg-light navbar-light p-1 mt-3" style="min-width: fit-content;min-height: 100vh;">
+
+              <ul class="navbar-nav ms-2 gap-3">
+                  <li class="navbar-item ">
+                      <a class="navbar-brand" href="#"><i class="bi bi-house-fill"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+
+
+                  <li class="navbar-item">
+                      <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+                  <li class="navbar-item">
+                      <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill"
+                              style="font-size: 1.5rem;"></i></a>
+                  </li>
+
+                  <li class="nav-item dropup">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
+                              class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
+                      <ul class="dropdown-menu bg-secondary">
+                          <li><a class="dropdown-item text-white" href="#">First Link</a></li>
+                          <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
+                          <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+  </div>
+
+</header>
+<div class="container-sm m-5 p-4">
+  <div class="row text-center m-2"><h5><strong>Patients</strong></h5></div>
+  <div class="row mt-4">
+    <div class="table">
+        <table class="table table-bordered ms-4">
+            <thead>
+                <tr>
+                    <th scope="col">PatientId</th>
+                    <th scope="col">Patient Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Last Appointment</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let Patient of patientListService.patientList|filter:filter|paginate:{itemsPerPage:4,currentPage:page}">
+              <tr>
+                <td>{{Patient.PatientId}}</td>
+                <td>{{Patient.PatientName}}</td>
+                <td>{{Patient.PatientGender}}</td>
+                <td>{{Patient.TokenDateTime | date: 'dd-MMM-yy '}}</td>
+
+            </tr>
+            </tbody>
+          </table>
+
+</div>
+
 

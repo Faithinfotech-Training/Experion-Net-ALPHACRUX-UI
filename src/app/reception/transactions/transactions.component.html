@@ -63,17 +63,15 @@
                         <th scope="col">Date&Time</th>
                         <th scope="col">Patient ID</th>
                         <th scope="col">Patient Name</th>
-                        <th scope="col">Age</th>
                         <th scope="col">Payment Mode</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let Payment of paymentsService.payments|filter:filter|paginate:{itemsPerPage:4,currentPage:page}">
                   <tr>
                     <td>{{Payment.InvoiceNumber}}</td>
-                    <td>{{Payment.DateTime}}</td>
+                    <td>{{Payment.DateTime | date: 'dd-MMM-yy h:mm a'}}</td>
                     <td>{{Payment.PatientId}}</td>
                     <td>{{Payment.PatientName}}</td>
-                    <td>{{Payment.Age}}</td>
                     <td>{{Payment.PaymentMode}}</td>
                 </tr>
                 </tbody>

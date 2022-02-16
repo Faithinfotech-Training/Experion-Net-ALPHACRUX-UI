@@ -1,0 +1,162 @@
+<header>
+  <!-- Nav bar -->
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <h3>Reception</h3>
+      </a>
+      <form class="d-flex mt-2" action="submit">
+        <input class="form-control me-2" type="text" placeholder="Search" />
+        <button class="btn btn-outline-success" type="button">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Side bar -->
+  <div class="d-flex align-items-start">
+    <div class="container-fluid-sm position-fixed mt-5">
+      <nav
+        class="bg-light navbar-light p-1 mt-3"
+        style="min-width: fit-content; min-height: 100vh"
+      >
+        <ul class="navbar-nav ms-2 gap-3">
+          <li class="navbar-item">
+            <a class="navbar-brand" href="#"
+              ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+
+          <li class="navbar-item">
+            <a class="nav-link active" href="#"
+              ><i class="bi bi-house" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="#"
+              ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="#"
+              ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+
+          <li class="nav-item dropup">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
+            ></a>
+            <ul class="dropdown-menu bg-secondary">
+              <li>
+                <a class="dropdown-item text-white" href="#">First Link</a>
+              </li>
+              <li>
+                <a class="dropdown-item text-white" href="#">Second Link</a>
+              </li>
+              <li>
+                <a class="dropdown-item text-white" href="#">Third Link</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<!--
+      <div class="col p-3" style="margin-left: 10em; max-width: max-content">
+        <div class="row">
+          <form
+            class="d-flex ml-2 mt-3"
+            name="testlistForm"
+            [formGroup]="checkoutForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <ng-select
+              class="col-4 me-3 mt-3"
+              placeholder="Tests"
+              appearance="outline"
+              formControlName="TestId"
+            >
+              <ng-option
+                *ngFor="let pat of doctorAdvice.testLists"
+                [value]="pat.TestId"
+              >
+                {{ pat.TestId }} &nbsp; {{ pat.TestName }} &nbsp;
+              </ng-option>
+            </ng-select>
+
+            <br />
+            <button
+              class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
+              type="submit"
+            ></button>
+          </form>
+        </div>
+      </div>
+
+ -->
+ <div class="container-fluid bg-light bg-opacity-10 float-right mt-4 ml-4 p-3">
+  <div class="row">
+<br><br><br>
+<form
+  class="d-flex ml-4 mt-4"
+  name="testlistForm"
+  [formGroup]="checkoutForm"
+  (ngSubmit)="onSubmit()"
+>
+ &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <!--Using ng-option and for loop-->
+  <ng-select
+    class="col-4 me-3 mt-3"
+    placeholder="Tests"
+    appearance="outline"
+    formControlName="TestId"
+  >
+    <ng-option *ngFor="let doc of doctorAdvice.testLists" [value]="doc.TestId">
+      {{ doc.TestId }} &nbsp; {{ doc.TestName }} &nbsp;
+    </ng-option>
+  </ng-select>
+
+  <button
+    class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
+    type="submit"
+  >
+    Add
+  </button>
+</form>
+
+<div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
+  <table class="table bg-white border table-lg text-center">
+    <br />
+    <thead>
+      <th scope="col">Test ID</th>
+      <th scope="col">Test Name</th>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let testlist of doctorAdvice.testLists
+            | paginate: { itemsPerPage: 5, currentPage: page }
+        "
+      >
+        <th>{{ testlist.TesttId }}</th>
+        <td>{{ testlist.TestName }}</td>
+        <td>
+          &nbsp;
+          <button type="button" class="btn btn-outline-danger btn-sm">
+            <i class="bi bi-trash"> Del</i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="footer d-flex float-end">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>

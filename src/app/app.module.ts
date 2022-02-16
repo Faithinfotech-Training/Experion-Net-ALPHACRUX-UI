@@ -22,6 +22,15 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
 import { PatientListComponent } from './doctor/patient-list/patient-list.component';
 import { AdviceComponent } from './doctor/advice/advice.component';
+import { CommonModule } from '@angular/common';
+import { UpdatePatientService } from './shared/update-patient.service';
+import { DoctorAdviceService } from './shared/doctor-advice.service';
+import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.component';
+import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
+import { TestsComponent } from './doctor/advice/tests/tests.component';
+import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component'
+
 
 
 
@@ -39,6 +48,12 @@ import { AdviceComponent } from './doctor/advice/advice.component';
     AppointmentsComponent,
     PatientListComponent,
     AdviceComponent,
+    DiagnosisComponent,
+    MedicineComponent,
+    TestsComponent,
+    LabTechnicianComponent,
+    LabTestReportComponent
+
 
   ],
   imports: [
@@ -51,9 +66,10 @@ import { AdviceComponent } from './doctor/advice/advice.component';
     BrowserAnimationsModule,
     NgSelectModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CommonModule
   ],
-  providers: [ReceptionService],
+  providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

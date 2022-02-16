@@ -13,6 +13,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 })
 export class UpdatePatientComponent implements OnInit {
   patientId:number;
+  NgForm=NgForm;
 
   constructor(public updatePatientService: UpdatePatientService,
     private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
@@ -20,7 +21,7 @@ export class UpdatePatientComponent implements OnInit {
   ngOnInit(): void {
 
     this.patientId = this.route.snapshot.params['patientId'];
-    this.patientId =13
+    this.patientId =1
 
     if (this.patientId != 0 || this.patientId != null) {
 
