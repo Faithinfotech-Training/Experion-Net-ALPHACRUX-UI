@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PaymentsService} from'src/app/shared/payments.service';
-import * as moment from 'moment';
+//import * as moment from 'moment';
 
 @Component({
   selector: 'app-transactions',
@@ -19,10 +19,10 @@ export class TransactionsComponent implements OnInit {
 
   }
 
-  public calculateAge(birthdate: any): number {
+  /*public calculateAge(birthdate: any): number {
     return moment().diff(birthdate, 'years');
   }
-
+*/
 
 
 }

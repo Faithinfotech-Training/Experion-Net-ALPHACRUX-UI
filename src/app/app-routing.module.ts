@@ -20,7 +20,7 @@ import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-tes
 const routes: Routes = [
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/home', component: HomePageComponent },
-  { path: 'reception/payments/:id', component: PaymentsComponent,data:[{isPat:true}] },
+  { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
