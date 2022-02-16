@@ -20,8 +20,8 @@ export class UpdatePatientComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.patientId = this.route.snapshot.params['patientId'];
-    this.patientId =1
+    this.patientId = this.route.snapshot.params['PatientId'];
+     this.patientId =1
 
     if (this.patientId != 0 || this.patientId != null) {
 
