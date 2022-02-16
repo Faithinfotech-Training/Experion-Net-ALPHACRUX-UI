@@ -56,7 +56,7 @@ export class RegisterPatientComponent implements OnInit {
     //Insert
     this.insertPatientRecord(form);
     this.resetForm(form);
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/reception/home');
 
 
   } else {
@@ -64,7 +64,7 @@ export class RegisterPatientComponent implements OnInit {
     //update
     this.updatePatientRecord(form);
     this.resetForm(form);
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/reception/home');
 
 
   }

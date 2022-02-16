@@ -60,8 +60,32 @@
       <div class="card" style="border-radius: 15px;">
         <div class="card-body">
 
+
+
+          <!-- <form #form="ngForm" name="ngForm" autocomplete="off"
+          class="form-group p-3" (ngSubmit)="onClck(form1)">
+          <div class="px-5 py-4">
+            <input type="number" class="form-control form-control-lg"
+                placeholder="Patient_Id" style="width: 500px;"
+                name="PatientId" #PatientId="ngModel"
+                [(ngModel)]="updatePatientService.formData.PatientId"
+                 required minlength="5" maxlength="25"
+                 />
+
+            <button type="reset" class="btn btn-light">CLEAR</button>
+
+            <button type="submit" class="btn btn-dark" class="btn btn-primary btn-lg"
+            [disabled]="!(form.valid && form.dirty)">SAVE</button>
+          </div>
+
+       </form> -->
+
+
+
+
           <form #form="ngForm" name="ngForm" autocomplete="off"
           class="form-group p-3" (ngSubmit)="onSubmit(form)">
+
             <input type="hidden" name="PatientId"
             [(ngModel)]="updatePatientService.formData.PatientId" />
             <!--Name of patient-->

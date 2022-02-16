@@ -11,7 +11,7 @@ import { ReceptionService } from 'src/app/shared/reception.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  
+
   page: number = 1;
 
 
@@ -43,12 +43,12 @@ export class HomePageComponent implements OnInit {
     this.reception.generateToken(this.checkoutForm.value);
     }
     this.checkoutForm.reset();
-    this.router.navigate(['/reception/payments']);
+    this.router.navigate(['reception/payments/:id']);
   }
 
 
 //Delete token
-  deleteToken(tokenId: number) { 
+  deleteToken(tokenId: number) {
     if (confirm('Are you sure you want to DELETE this token?')) {
       this.reception.deleteToken(tokenId).subscribe(
         (response) => {

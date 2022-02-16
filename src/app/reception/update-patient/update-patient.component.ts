@@ -44,6 +44,10 @@ export class UpdatePatientComponent implements OnInit {
       );
     }
   }
+  // onClck(form1:NgForm){
+
+  // }
+  
  //Submit form
  onSubmit(form: NgForm) {
   console.log(form.value);
