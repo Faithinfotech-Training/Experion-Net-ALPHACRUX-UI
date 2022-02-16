@@ -17,10 +17,10 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
+import { BillingComponent } from './lab-technician/billing/billing.component';
 
 const routes: Routes = [
-  { path: '', component: AppointmentsComponent },
-  { path: 'doctor/advice', component: AdviceComponent },
+  { path: '', component: HomePageComponent },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'doctor/advice/tests', component:TestsComponent},
   { path: 'lab/home', component:LabTechnicianComponent},
   { path: 'lab/home/test', component:LabTestReportComponent},
+  { path: 'lab/home/billing', component:BillingComponent},
   { path: '**', component: AppComponent },
 
 

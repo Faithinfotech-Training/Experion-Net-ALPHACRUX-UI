@@ -29,7 +29,8 @@ import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.componen
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
-import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component'
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
+import { BillingComponent } from './lab-technician/billing/billing.component'
 
 
 
@@ -52,7 +53,8 @@ import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-tes
     MedicineComponent,
     TestsComponent,
     LabTechnicianComponent,
-    LabTestReportComponent
+    LabTestReportComponent,
+    BillingComponent
 
 
   ],
