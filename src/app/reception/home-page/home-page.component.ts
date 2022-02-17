@@ -51,8 +51,10 @@ export class HomePageComponent implements OnInit {
       this.reception.$isPass.emit(this.reception.pat);
       this.router.navigate(['/reception/payments']);
     }
-    this.toastr.error('Please select a patient and a doctor', 'Error!');
-    this.checkoutForm.reset();
+    else {
+      this.toastr.error('Please select a patient and a doctor', 'Error!');
+      this.checkoutForm.reset();
+    }
   }
 
   //Delete token
