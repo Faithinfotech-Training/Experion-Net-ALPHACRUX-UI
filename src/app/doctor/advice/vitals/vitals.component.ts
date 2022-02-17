@@ -8,7 +8,8 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-vitals',
   templateUrl: './vitals.component.html',
-  styleUrls: ['./vitals.component.scss']
+  styleUrls: ['./vitals.component.scss'],
+  
 })
 export class VitalsComponent implements OnInit {
   [x: string]: any;
@@ -24,13 +25,14 @@ export class VitalsComponent implements OnInit {
        this.patientId =1
 
     }
+
  //Submit form
  onSubmit(form: NgForm) {
   console.log(form.value);
   let addId = this.vitalsService.formData.PatientId;
 
   //Insert or update
-  if (addId == 0 || addId == null) {
+  if (addId != 0 || addId != null) {
 
     //Insert
     this.insertPatientRecord(form);
@@ -57,6 +59,8 @@ export class VitalsComponent implements OnInit {
     }
   );
 }
+
+
     }
 
 

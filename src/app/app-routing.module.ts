@@ -37,6 +37,7 @@ const routes: Routes = [
   { path: 'lab/home', component:LabTechnicianComponent},
   { path: 'lab/home/test', component:LabTestReportComponent},
   { path: 'lab/home/billing', component:BillingComponent},
+  { path: 'doctor/app', component:AppointmentsComponent},
   { path: '**', component: AppComponent },
 
 

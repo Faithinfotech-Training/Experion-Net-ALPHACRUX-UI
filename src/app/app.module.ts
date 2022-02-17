@@ -4,8 +4,6 @@ import {HttpClientModule} from '@angular/common/http'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './reception/home-page/home-page.component';
@@ -31,6 +29,7 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { BillingComponent } from './lab-technician/billing/billing.component'
+import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
 
 
@@ -54,7 +53,8 @@ import { BillingComponent } from './lab-technician/billing/billing.component'
     TestsComponent,
     LabTechnicianComponent,
     LabTestReportComponent,
-    BillingComponent
+    BillingComponent,
+    VitalsComponent
 
 
   ],
