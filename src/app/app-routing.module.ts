@@ -21,7 +21,7 @@ import { AppointmentsComponent } from './doctor/appointments/appointments.compon
 const routes: Routes = [
   { path: '', component: AppointmentsComponent },
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'reception/home', component: HomePageComponent },
+  { path: 'reception/c', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
