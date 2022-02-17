@@ -1,112 +1,109 @@
-  <header>
-    <!-- Nav bar -->
+<header>
+  <!-- Nav bar -->
 
-    <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <h3>Reception</h3>
-        </a>
-        <form class="d-flex mt-2" action="submit">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success" type="button">Search</button>
-        </form>
-      </div>
-    </nav>
-
-
-
-    <!-- Side bar -->
-    <div class="d-flex align-items-start">
-      <div class="container-fluid-sm position-fixed mt-5">
-
-        <nav class="bg-light navbar-light p-1 mt-3" style="min-width: fit-content;min-height: 100vh;">
-
-          <ul class="navbar-nav ms-2 gap-3">
-            <li class="navbar-item ">
-              <a class="navbar-brand" href="#"><i class="bi bi-house-fill" style="font-size: 1.5rem;"></i></a>
-            </li>
-
-            <li class="navbar-item">
-              <a class="nav-link active" href="#"><i class="bi bi-house" style="font-size: 1.5rem;"></i></a>
-            </li>
-            <li class="navbar-item">
-              <a class="nav-link" href="#"><i class="bi bi-plus-circle" style="font-size: 1.5rem;"></i></a>
-            </li>
-            <li class="navbar-item">
-              <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem;"></i></a>
-            </li>
-
-            <li class="nav-item dropup">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
-                  class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
-              <ul class="dropdown-menu bg-secondary">
-                <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-                <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-                <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
+  <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <h3>Doctor</h3>
+      </a>
+      <form class="d-flex mt-2" action="submit">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success" type="button">Search</button>
+      </form>
     </div>
-
-  </header>
-  <div class="container-sm">
-    <div class="row mt-5"></div>
-    <div class="row mt-5">
-      <div class="col mt-5">
-        <div class="card" style="border-radius: 15px;">
-          <div class="card-body">
-            <form #form="" name="ngForm" autocomplete="off"
-            class="form-group p-3" (ngSubmit)="onSubmit(form)">
+  </nav>
 
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Vital</th>
-            <th scope="col">Observed value</th>
-            <th scope="col">Unit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Breath Rate</td>
-            <td><input type="text" class="form-control"  placeholder="obtained value"></td>
-            <td>BPM</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Body Temperature</td>
-            <td><input type="number" class="form-control"  placeholder="obtained value"></td>
-            <td>°F</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Blood Pressure</td>
-            <td><input type="text" class="form-control"  placeholder="obtained value"></td>
-            <td>mmHg</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Pulse Rate</td>
-            <td><input type="text" class="form-control"  placeholder="obtained value">
-            </td>
-            <td>BPM</td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit" class="btn btn-primary">
-        Save
-      </button>
-            </form>
-          </div>
+
+  <!-- Side bar -->
+  <div class="d-flex align-items-start">
+    <div class="container-fluid-sm position-fixed mt-5">
+
+      <nav class="bg-light navbar-light p-1 mt-3" style="min-width: fit-content;min-height: 100vh;">
+
+        <ul class="navbar-nav ms-2 gap-3">
+          <li class="navbar-item ">
+            <a class="navbar-brand" href="#"><i class="bi bi-house-fill" style="font-size: 1.5rem;"></i></a>
+          </li>
+
+          <li class="navbar-item">
+            <a class="nav-link active" href="#"><i class="bi bi-house" style="font-size: 1.5rem;"></i></a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="#"><i class="bi bi-plus-circle" style="font-size: 1.5rem;"></i></a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem;"></i></a>
+          </li>
+
+          <li class="nav-item dropup">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
+                class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
+            <ul class="dropdown-menu bg-secondary">
+              <li><a class="dropdown-item text-white" href="#">First Link</a></li>
+              <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
+              <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</header>
+<div class="container-sm">
+  <div class="row mt-5"></div>
+  <div class="row mt-5">
+    <div class="col mt-5">
+      <div class="card" style="border-radius: 15px;">
+        <div class="card-body">
+          <form #form="ngForm" name="ngForm" autocomplete="off"
+          class="form-group p-3" (ngSubmit)="onSubmit(form)">
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Vital</th>
+          <th scope="col">Observed value</th>
+          <th scope="col">Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Breath Rate</td>
+          <td><input type="text" class="form-control"  placeholder="obtained value"></td>
+          <td>BPM</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Body Temperature</td>
+          <td><input type="number" class="form-control"  placeholder="obtained value"></td>
+          <td>°F</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Blood Pressure</td>
+          <td><input type="text" class="form-control"  placeholder="obtained value"></td>
+          <td>mmHg</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Pulse Rate</td>
+          <td><input type="text" class="form-control"  placeholder="obtained value">
+          </td>
+          <td>BPM</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">
+      Save
+    </button>
+          </form>
         </div>
       </div>
     </div>
   </div>
-
-
-
+</div>

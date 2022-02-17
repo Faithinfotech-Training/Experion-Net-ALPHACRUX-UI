@@ -15,7 +15,7 @@ export class VitalsService {
   //Insert Vitals
  insertVitals(insertvitals: Vitals): Observable<any> {
   return this.httpClient.post(
-    environment.apiUrl  + 'doctor/advice/vitals',insertvitals);
+    environment.apiUrl  + 'doctors/vitals',insertvitals);
 }
 
 
