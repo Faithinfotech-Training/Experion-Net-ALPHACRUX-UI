@@ -18,9 +18,11 @@ import { LabTechnicianComponent } from './lab-technician/lab-technician.componen
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: AppointmentsComponent },
+  { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/c', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},

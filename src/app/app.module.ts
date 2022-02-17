@@ -30,7 +30,8 @@ import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
-import { BillingComponent } from './lab-technician/billing/billing.component'
+import { BillingComponent } from './lab-technician/billing/billing.component';
+import { LoginComponent } from './login/login.component'
 
 
 
@@ -54,7 +55,8 @@ import { BillingComponent } from './lab-technician/billing/billing.component'
     TestsComponent,
     LabTechnicianComponent,
     LabTestReportComponent,
-    BillingComponent
+    BillingComponent,
+    LoginComponent
 
 
   ],
