@@ -8,24 +8,15 @@ import { Vitals } from './vitals';
   providedIn: 'root'
 })
 export class VitalsService {
-  vitals:Vitals[]
+  insertvitals:Vitals[];
+  formData:Vitals=new Vitals();
 
   constructor(private httpClient:HttpClient) { }
   //Insert Vitals
- insertPatient(vitals: Vitals): Observable<any> {
+ insertVitals(insertvitals: Vitals): Observable<any> {
   return this.httpClient.post(
-    environment.apiUrl  + 'Receptionist/addpatient',vitals);
+    environment.apiUrl  + 'doctor/advice/vitals',insertvitals);
 }
-postVitals(vitals:Vitals){
-  return this.httpClient.post(environment.apiUrl + 'doctor/advice/vitals', vitals)
-  .toPromise()
-  .then((data) => {
-    console.log(data);
-
-    console.log('Tests added Successfully');
-   });
-
- }
 
 
 }

@@ -20,8 +20,9 @@ import { AppointmentsComponent } from './doctor/appointments/appointments.compon
 import { BillingComponent } from './lab-technician/billing/billing.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'reception/home', component: HomePageComponent },
+  { path: '', component: AppointmentsComponent },
+  { path: 'doctor/advice', component: AdviceComponent },
+  { path: 'reception/c', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
