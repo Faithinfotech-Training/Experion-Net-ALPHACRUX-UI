@@ -1,0 +1,25 @@
+
+
+<div class="container">
+    <div class="row">
+        <h4>Manage staffs</h4>
+
+<nav ngbNav #nav="ngbNav" class="nav-tabs m-3">
+   <ng-container ngbNavItem>
+    <a ngbNavLink  routerLink="edit" routerLinkActive="active">New/Update</a>
+    <ng-template ngbNavContent>
+   <app-new-staff></app-new-staff>
+    </ng-template>
+  </ng-container>
+  <ng-container ngbNavItem>
+    <a ngbNavLink routerLink="list" routerLinkActive="active">List</a>
+    <ng-template ngbNavContent>
+      <app-list-staffs></app-list-staffs>
+    </ng-template>
+  </ng-container>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+    </div>
+    </div>

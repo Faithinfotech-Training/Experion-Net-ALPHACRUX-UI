@@ -1,0 +1,23 @@
+  
+
+  <div class="row">
+        <div class="col my-3 p-0" *ngFor="let staff of admin.staffs">
+<div class="card m-3" style="width: 18rem;">
+  
+  <div class="card-header">
+   ID: {{staff.StaffId}}
+   <i class="bi bi-pencil btn btn-outline-info btn-sm" (click)="editStaff(staff.StaffId)"></i>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Name: {{staff.StaffName}}</li>
+    <li class="list-group-item">Phone: {{staff.StaffPhone}}</li>
+    <li class="list-group-item">DOB: {{staff.StaffDob | date: 'dd-MMM-yyyy'}}</li>
+    <li class="list-group-item">Email: {{staff.StaffEmail}}</li>
+    <li class="list-group-item">Address: {{staff.StaffAddress}}</li>
+    <li class="list-group-item">Role: {{staff.RoleName}}</li>
+    <li class="list-group-item">Qualification: {{staff.QualificationName}}</li>
+    <li class="list-group-item">DOJ: {{staff.StaffJoiningDate | date: 'dd-MMM-yyyy'}}</li>
+  </ul>
+  </div>
+  </div>
+  </div>

@@ -17,29 +17,38 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
+import { StaffsComponent } from './administrator/staffs/staffs.component';
+import { MedicinesComponent } from './administrator/medicines/medicines.component';
+import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
+import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
 
 const routes: Routes = [
-  { path: '', component: AppointmentsComponent },
+  { path: '', component: StaffsComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/home', component: HomePageComponent },
-  { path: 'reception/payments', component: PaymentsComponent},
+  { path: 'reception/payments', component: PaymentsComponent },
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
-  { path: 'app-administrator', component: AdministratorComponent },
-  { path: 'doctor/home', component: DoctorComponent  },
+  { path: 'admin', component: AdministratorComponent },
+  { path: 'admin/medicine', component: MedicinesComponent },
+  {
+    path: 'admin/staffs',
+    component: StaffsComponent,
+    children: [
+      { path: 'list', component: ListStaffsComponent },
+      { path: 'edit', component: NewStaffComponent },
+    ],
+  },
+  { path: 'doctor/home', component: DoctorComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/advice/diagnosis', component: DiagnosisComponent },
-  { path: 'doctor/advice/vitals', component:VitalsComponent},
-  { path: 'doctor/advice/medicine', component:MedicineComponent},
-  { path: 'doctor/advice/tests', component:TestsComponent},
-  { path: 'lab/home', component:LabTechnicianComponent},
-  { path: 'lab/home/test', component:LabTestReportComponent},
+  { path: 'doctor/advice/vitals', component: VitalsComponent },
+  { path: 'doctor/advice/medicine', component: MedicineComponent },
+  { path: 'doctor/advice/tests', component: TestsComponent },
+  { path: 'lab/home', component: LabTechnicianComponent },
+  { path: 'lab/home/test', component: LabTestReportComponent },
   { path: '**', component: AppComponent },
-
-
-
-
 ];
 
 @NgModule({

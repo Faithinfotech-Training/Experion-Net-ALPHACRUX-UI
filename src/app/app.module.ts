@@ -29,7 +29,13 @@ import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.componen
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
-import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component'
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
+import { AdministratorComponent } from './administrator/administrator.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StaffsComponent } from './administrator/staffs/staffs.component';
+import { MedicinesComponent } from './administrator/medicines/medicines.component';
+import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
+import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
 
 
 
@@ -52,7 +58,12 @@ import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-tes
     MedicineComponent,
     TestsComponent,
     LabTechnicianComponent,
-    LabTestReportComponent
+    LabTestReportComponent,
+    AdministratorComponent,
+    StaffsComponent,
+    MedicinesComponent,
+    NewStaffComponent,
+    ListStaffsComponent
 
 
   ],
@@ -67,7 +78,9 @@ import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-tes
     NgSelectModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    CommonModule
+    CommonModule,
+    NgbModule,
+    
   ],
   providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
   bootstrap: [AppComponent],
