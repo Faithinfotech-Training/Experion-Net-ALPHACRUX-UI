@@ -58,11 +58,14 @@ export class LabtestService {
 
     }
   }
-  postBills(lab:Labbills){
+  postBills(lab:any){
     console.log(lab)
+    this.labbills=lab
+    console.log(this.labbills)
     this.httpClient.post(
-      environment.apiUrl + 'labtechnician/add',lab
+      environment.apiUrl + 'labtechnician/add',this.labbills
 
     );
+
 }
 }

@@ -73,9 +73,9 @@ export class BillingComponent implements OnInit {
       this.LabBillDateTime,
       'yyyy-MM-dd'
     );
-    this.TestListId=document.getElementById('TestListId');
-    this.PatientId=document.getElementById('PatientId');
-    this.LabBillAmount=document.getElementById('total');
+    this.TestListId=document.getElementById('TestListId').innerHTML;
+    this.PatientId=document.getElementById('PatientId').innerHTML;
+    this.LabBillAmount=document.getElementById('total').innerHTML;
 
     this.lab={LabBillDateTime:formattedDate,TestListId: this.TestListId,
       PatientId:this.PatientId,LabBillAmount:this.LabBillAmount}
