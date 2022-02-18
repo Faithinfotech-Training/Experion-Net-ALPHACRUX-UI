@@ -34,6 +34,12 @@ import { StaffsComponent } from './administrator/staffs/staffs.component';
 import { MedicinesComponent } from './administrator/medicines/medicines.component';
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
 import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
+import { PharmacistComponent } from './pharmacist/pharmacist.component';
+import { ReportMedicineComponent } from './report-medicine/report-medicine.component';
+import { HomeComponent } from './pharmacist/home/home.component';
+import { BillingComponent } from './lab-technician/billing/billing.component';
+import { LoginComponent } from './login/login.component';
+import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
 
 
@@ -61,7 +67,7 @@ import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-sta
     StaffsComponent,
     MedicinesComponent,
     NewStaffComponent,
-    ListStaffsComponent
+    ListStaffsComponent,
     PharmacistComponent,
     ReportMedicineComponent,
     HomeComponent,
