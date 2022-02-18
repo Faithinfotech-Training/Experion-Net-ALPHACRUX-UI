@@ -27,7 +27,7 @@ export class DoctorAdviceService {
      }
 
      getTestLists(){
-      return this.httpClient.get(environment.apiUrl + 'doctors/viewlists').
+      return this.httpClient.get(environment.updateUrl + 'doctors/viewlists').
       toPromise()
       .then(response=>
         {
@@ -40,7 +40,7 @@ export class DoctorAdviceService {
 
      createTestListId(testAdvice:Testadvice){
        console.log('not returning')
-       return this.httpClient.post(environment.apiUrl + 'doctors/CreateTestListId', testAdvice)
+       return this.httpClient.post(environment.updateUrl + 'doctors/CreateTestListId', testAdvice)
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -50,7 +50,7 @@ export class DoctorAdviceService {
 
      postTests(addTest:Addtest){
        console.log("add test error");
-      return this.httpClient.post(environment.apiUrl + 'doctors/AddTest', addTest)
+      return this.httpClient.post(environment.updateUrl + 'doctors/AddTest', addTest)
       .toPromise()
       .then((data) => {
         console.log(data);

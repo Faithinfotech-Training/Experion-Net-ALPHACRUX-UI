@@ -15,11 +15,12 @@ export class DiagnosisService {
   //Insert Employee
  insertNote(diagnosis: Diagnosis): Observable<any> {
   return this.httpClient.post(
-    environment.apiUrl  + 'doctor/patient/medicalhistory',diagnosis);
+    environment.updateUrl
+      + 'doctor/patient/medicalhistory',diagnosis);
 }
 
   //Get patient by id
   getPatientById(id: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + 'Receptionist/patientid?id=' + id);
+    return this.httpClient.get(environment.updateUrl+ 'Receptionist/patientid?id=' + id);
   }
 }

@@ -59,6 +59,7 @@
         <div class="card-body">
           <form #form="ngForm" name="ngForm" autocomplete="off"
           class="form-group p-3" (ngSubmit)="onSubmit(form)">
+          [(ngModel)]="dvitalsService.formData.PatientId" />
 
 
     <table class="table">
@@ -101,7 +102,9 @@
     <button type="submit" class="btn btn-primary">
       Save
     </button>
+
           </form>
+
         </div>
       </div>
     </div>
