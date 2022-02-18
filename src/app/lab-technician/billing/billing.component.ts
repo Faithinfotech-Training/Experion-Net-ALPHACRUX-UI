@@ -1,34 +1,44 @@
 import { DatePipe } from '@angular/common';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
+import { Labbills } from 'src/app/shared/labbills';
 import { Labtest } from 'src/app/shared/labtest';
-import { LabtestService } from 'src/app/shared/labtest.service';
+import { LabtestService } from '../../shared/labtest.service';
 
 @Component({
-  selector: 'app-lab-test-report',
-  templateUrl: './lab-test-report.component.html',
-  styleUrls: ['./lab-test-report.component.scss']
+  selector: 'app-billing',
+  templateUrl: './billing.component.html',
+  styleUrls: ['./billing.component.scss'],
 })
-export class LabTestReportComponent implements OnInit {
-  patientId:number;
-  NgForm=NgForm;
-  page:number=1;
- labtest: any = new Labtest();
+export class BillingComponent implements OnInit {
+  patientId: number;
+  NgForm = NgForm;
+  page: number = 1;
+  labtest: any = new Labtest();
+  total=0;
+  value;
+  lab:any;
+
+
+  //values
+  LabBillDateTime:any;
+  LabBillAmount:any;
+  TestListId:any;
+  PatientId:any;
 
   constructor(
     public labTestService: LabtestService,
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    public app:AppComponent) { }
+    public app: AppComponent
+  ) {}
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
     console.log(form.value);
@@ -53,6 +63,23 @@ export class LabTestReportComponent implements OnInit {
     } else {
       console.log('Enter valid Patient Id');
     }
+  }
+
+  onClickClick(form: NgForm){
+
+    this.LabBillDateTime=new Date();
+    var datePipe = new DatePipe('en-UK');
+    let formattedDate: any = datePipe.transform(
+      this.LabBillDateTime,
+      'yyyy-MM-dd'
+    );
+    this.TestListId=document.getElementById('TestListId').innerHTML;
+    this.PatientId=document.getElementById('PatientId').innerHTML;
+    this.LabBillAmount=document.getElementById('total').innerHTML;
+
+    this.lab={LabBillDateTime:formattedDate,TestListId: this.TestListId,
+      PatientId:this.PatientId,LabBillAmount:this.LabBillAmount}
+this.post(this.lab);
   }
 
 
@@ -84,15 +111,14 @@ export class LabTestReportComponent implements OnInit {
     console.log('Finding the tests..');
     this.labTestService
       .getTests(this.labTestService.formData.AdviceId)
-      // .subscribe(
-      //   (res) => {
-      //     console.log(res);
+      //this.findsum(this.users);
 
-      //     this.labTestService.formData1 = Object.assign({}, res);
-      //   },
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
   }
+  post(lab){
+
+
+    console.log('Trying to insert values..');
+    this.labTestService.postBills(lab);
+  }
+
 }

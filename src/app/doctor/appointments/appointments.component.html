@@ -49,8 +49,8 @@
         <h1 id="tokenNoId"><b>{{reception.token.TokenNumber}}</b></h1>
       </div>
       <div class="col-sm-10">
-      
-       
+
+
         <div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
           <table class="table bg-white border  table-lg text-center">
             <br />
@@ -71,13 +71,11 @@
                 <td>{{queue.DoctorName}}</td>
                 <td>
                   <button type="button" class="btn btn-outline-info btn-sm">
-                      <i class="bi bi-pencil-square"> Edit</i>
+                      <i  routerLink="/doctor/advice/vitals" class="bi bi-pencil-square"> Vitals</i>
 
                   </button>
                 &nbsp;
-                  <button type="button" class="btn btn-outline-danger btn-sm">
-                    <i class="bi bi-trash"> Del</i>
-                  </button>
+
                 </td>
               </tr>
             </tbody>

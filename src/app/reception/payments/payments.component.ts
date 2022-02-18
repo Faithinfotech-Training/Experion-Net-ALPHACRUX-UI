@@ -15,7 +15,7 @@ export class PaymentsComponent implements OnInit {
 
 
 
-  constructor(private receptionService : ReceptionService) {}
+  constructor(private receptionService : ReceptionService,private router: Router) {}
 
   ngOnInit(): void {
 
@@ -24,6 +24,8 @@ export class PaymentsComponent implements OnInit {
       console.log(data.PatientId);
      // getpatientwithid(data.PatientId);
 
+      console.log("I got in console",data);
+      this.router.navigateByUrl('/reception/home');
 
     })
 

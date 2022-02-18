@@ -20,11 +20,14 @@ import { AppointmentsComponent } from './doctor/appointments/appointments.compon
 import { PharmacistComponent } from './pharmacist/pharmacist.component';
 import { ReportMedicineComponent } from './report-medicine/report-medicine.component';
 import { HomeComponent } from './pharmacist/home/home.component';
+import { BillingComponent } from './lab-technician/billing/billing.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: AppointmentsComponent },
+  { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'reception/home', component: HomePageComponent },
+  { path: 'reception/c', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
@@ -41,6 +44,8 @@ const routes: Routes = [
   { path: 'pharmacist', component: PharmacistComponent },
   {path:'pharmacy/home',component:HomeComponent},
   {path:'pharmacy/reports',component:ReportMedicineComponent},
+  { path: 'lab/home/billing', component:BillingComponent},
+  { path: 'doctor/app', component:AppointmentsComponent},
   { path: '**', component: AppComponent },
 
 ];

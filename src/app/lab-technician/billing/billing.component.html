@@ -69,15 +69,11 @@
   </div>
 </header>
 
-
-
-
 <div class="container-sm">
   <div class="row mt-5">
     <div class="col mt-5">
       <div class="card" style="border-radius: 15px">
         <div class="card-body">
-         
           <form
             #form="ngForm"
             name="ngForm"
@@ -138,6 +134,7 @@
             name="ngForm"
             autocomplete="off"
             class="form-group p-3"
+            (ngSubmit)="onClickClick(form)"
           >
             <div class="form-group row align-items-center">
               <h4>PATIENT DETAILS</h4>
@@ -267,7 +264,7 @@
                   type="submit"
                   class="form-group btn btn-secondary btn-lg me-3 btn-block float-end"
                 >
-                  TEST REPORT
+                  TEST DETAILS
                 </button>
               </div>
               <br />
@@ -283,17 +280,10 @@
                 <thead class="table-lg thead-light">
                   <tr>
                     <th scope="col">Test Name</th>
-                    <th scope="col">Collected Value</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col" rowspan="2">
-                      Biological Reference Interval
-                    </th>
-                    <th></th>
-                    <th scope="col"></th>
+                    <th scope="col">Test Amount</th>
                   </tr>
                 </thead>
-                <tbody class="table" style="background-color: #e7e7e7">
+                <tbody class="table" style="background-color: #f7f7f7">
                   <tr
                     *ngFor="
                       let users of labTestService.labtests2
@@ -302,27 +292,17 @@
                     "
                   >
                     <td>{{ users.TestName }}</td>
-                    <td>
-                      <input
-                        type="number"
-                        class="form-control form-control-s"
-                        placeholder="Add Value"
-                        style="width: 120px"
-                        name="PatientValue"
-                        required
+                    <td>{{ users.TestAmount }}</td>
+                  </tr>
 
-                      />
+                  <tr>
+                    <td colspan="1"><b>Total:</b></td>
+                    <td colspan="1" id="total" name="total">
+                      <b>₹{{ total }}</b>
                     </td>
-
-                    <td>{{ users.TestUnit }}</td>
-                    <td></td>
-                    <td>{{ users.MinimumValue }}</td>
-                    <td>{{ users.MaximumValue }}</td>
-                    <td>{{ users.TestUnit }}</td>
                   </tr>
                 </tbody>
               </table>
-
               <div class="footer">
                 <pagination-controls
                   (pageChange)="page = $event"
