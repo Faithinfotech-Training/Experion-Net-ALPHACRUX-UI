@@ -79,7 +79,9 @@ export class BillingComponent implements OnInit {
 
     this.lab={LabBillDateTime:formattedDate,TestListId: this.TestListId,
       PatientId:this.PatientId,LabBillAmount:this.LabBillAmount}
+
 this.post(this.lab);
+
   }
 
 
@@ -119,6 +121,8 @@ this.post(this.lab);
 
     console.log('Trying to insert values..');
     this.labTestService.postBills(lab);
+    this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
+
   }
 
 }
