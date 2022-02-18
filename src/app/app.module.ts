@@ -29,7 +29,10 @@ import { DiagnosisComponent } from './doctor/advice/diagnosis/diagnosis.componen
 import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
-import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component'
+import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
+import { PharmacistComponent } from './pharmacist/pharmacist.component';
+import { ReportMedicineComponent } from './report-medicine/report-medicine.component';
+import { HomeComponent } from './pharmacist/home/home.component'
 
 
 
@@ -52,7 +55,10 @@ import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-tes
     MedicineComponent,
     TestsComponent,
     LabTechnicianComponent,
-    LabTestReportComponent
+    LabTestReportComponent,
+    PharmacistComponent,
+    ReportMedicineComponent,
+    HomeComponent
 
 
   ],

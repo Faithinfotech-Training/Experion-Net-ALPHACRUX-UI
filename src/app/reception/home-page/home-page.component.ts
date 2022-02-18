@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PatientListServiceService } from 'src/app/shared/patient-list-service.service';
 import { ReceptionService } from 'src/app/shared/reception.service';
 import {Patients} from 'src/app/shared/patients';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {Patients} from 'src/app/shared/patients';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  
+
   page: number = 1;
 
   //emits
@@ -24,7 +25,8 @@ export class HomePageComponent implements OnInit {
   constructor(
     public reception: ReceptionService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     }
 
@@ -48,22 +50,28 @@ export class HomePageComponent implements OnInit {
      {
     console.log('Done..........');
     this.reception.generateToken(this.checkoutForm.value);
+    this.toastr.success('Token Generated Successfully', 'CMS App V2022');
     this.reception.pat.PatientId= this.checkoutForm.value.PatientId;
     this.reception.$isPass.emit(this.reception.pat);
+
     }
 
     this.checkoutForm.reset();
-    this.router.navigate(['/reception/payments']);
+    this.router.navigate(['/reception/home']);
 
   }
 
 
 //Delete token
-  deleteToken(tokenId: number) { 
+  deleteToken(tokenId: number) {
     if (confirm('Are you sure you want to DELETE this token?')) {
       this.reception.deleteToken(tokenId).subscribe(
         (response) => {
+          this.toastr.success('Token Deleted Successfully', 'CMS App V2022');
+          console.log('This is token',response);
           this.reception.getTokenQueue();
+          this.router.navigate(['/reception/home']);
+          
         },
         (error) => {
           console.log(error);
