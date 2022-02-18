@@ -3,7 +3,7 @@
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="http://localhost:4200/lab/home/billing">
         <h3>Lab Technician</h3>
       </a>
       <form class="d-flex mt-2" action="submit">
@@ -22,13 +22,13 @@
       >
         <ul class="navbar-nav ms-2 gap-5">
           <li class="navbar-item">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="http://localhost:4200/lab/home/billing">
               <!-- <h3>Lab Technician</h3> -->
             </a>
           </li>
 
           <li class="navbar-item">
-            <a class="nav-link active" href="#"
+            <a class="nav-link active" href="http://localhost:4200/lab/home/billing"
               ><i class="bi bi-house" style="font-size: 1.5rem"></i
             ></a>
           </li>
@@ -46,20 +46,20 @@
           <li class="nav-item dropup">
             <a
               class="nav-link dropdown-toggle"
-              href="#"
+              href="login"
               role="button"
               data-bs-toggle="dropdown"
               ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
             ></a>
             <ul class="dropdown-menu bg-secondary">
               <li>
-                <a class="dropdown-item text-white" href="#">First Link</a>
+                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">First Link</a>
               </li>
               <li>
-                <a class="dropdown-item text-white" href="#">Second Link</a>
+                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">Second Link</a>
               </li>
               <li>
-                <a class="dropdown-item text-white" href="#">Third Link</a>
+                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">Third Link</a>
               </li>
             </ul>
           </li>
@@ -142,12 +142,12 @@
             </div>
             <hr />
 
-            <form
+            <!-- <form
               #form="ngForm"
               name="ngForm"
               autocomplete="off"
               class="form-group p-3"
-            >
+            > -->
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h6 class="mb-0">ID</h6>
@@ -185,14 +185,29 @@
                 </div>
               </div>
 
-              <input
-                type="hidden"
-                class="form-control form-control-lg"
-                name="TestListId"
-                id="TestListId"
-                #TestListId="ngModel"
-                [(ngModel)]="labTestService.formData.TestListId"
-              />
+
+
+
+              <div class="form-group row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">TEST LIST ID</h6>
+                </div>
+
+                <div class="col-md-9 pe-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Test list Id"
+                    style="width: 500px"
+                    name="TestListId"
+                    #TestListId="ngModel"
+                    id="TestListId"
+                    [(ngModel)]="labTestService.formData.TestListId"
+                  />
+                </div>
+              </div>
+
+
 
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
@@ -246,7 +261,7 @@
                   />
                 </div>
               </div>
-            </form>
+            <!-- </form> -->
             <br />
             <br />
 
@@ -314,10 +329,11 @@
               <button
                 type="submit"
                 class="btn btn-secondary btn-lg me-3 float-end"
+
               >
                 PROCEED
               </button>
-              
+
 
             </div>
           </form>

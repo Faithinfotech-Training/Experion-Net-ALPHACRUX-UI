@@ -1,42 +1,89 @@
-<div class="row">
-  <div class="col">
-    <h3>DIAGNOSIS</h3>
+<app-doctor></app-doctor>
+
+<div class="container-fluid-sm d-flex align-items-stretch">
+  <div class="float-start bg-light navbar-light p-1">
+    <ul class="navbar-nav ms-2 gap-3">
+      <li class="navbar-item">
+        <a class="navbar-brand" href="doctor/appointments"
+          ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="navbar-item">
+        <a class="nav-link active" href="doctor/appointments"
+          ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="navbar-item">
+        <a class="nav-link" href="doctor/appointments"
+          ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login" role="button" data-bs-toggle="dropdown"
+          ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
     <div class="col">
+      <h3>DIAGNOSIS</h3>
+      <div class="col">
+        <form
+          #form="ngForm"
+          name="ngForm"
+          autocomplete="off"
+          class="form-group p-3"
+          (ngSubmit)="onSubmit(form)"
+        >
+          <input
+            type="hidden"
+            name="PatientId"
+            [(ngModel)]="diagnosisService.formData.PatientId"
+          />
 
-      <form #form="ngForm" name="ngForm" autocomplete="off"
-          class="form-group p-3" (ngSubmit)="onSubmit(form)">
+          <div class="form-group form-outline mb-4">
+            <label class="form-label" for="description"
+              >Disease & Description</label
+            >
 
-          <input type="hidden" name="PatientId"
-            [(ngModel)]="diagnosisService.formData.PatientId" />
+            <textarea
+              class="form-control"
+              id="NoteData"
+              rows="4"
+              placeholder="Disease & Description Type here"
+              name="NoteData"
+              #NoteData="ngModel"
+              [(ngModel)]="diagnosisService.formData.NoteData"
+              required
+              minlength="3"
+              maxlength="100"
+              [ngClass]="{ 'is-invalid': NoteData.touched && NoteData.invalid }"
+            ></textarea>
+            <!--Validation for patient name-->
+            <p
+              *ngIf="NoteData.touched && NoteData.invalid"
+              class="validation-error"
+            >
+              <span *ngIf="NoteData.errors.required" style="color: crimson">
+               required!</span
+              >
+            </p>
+          </div>
 
-        <div class="form-group form-outline mb-4">
-          <label class="form-label" for="description">Disease & Description</label>
-
-          <textarea class="form-control" id="NoteData" rows="4"
-            placeholder="Disease & Description Type here"
-            name="NoteData" #NoteData="ngModel"
-                [(ngModel)]="diagnosisService.formData.NoteData"
-                 required minlength="5" maxlength="25"
-                [ngClass]="{ 'is-invalid': NoteData.touched && NoteData.invalid }"></textarea>
-                <!--Validation for patient name-->
-                <p *ngIf="NoteData.touched && NoteData.invalid" class="validation-error">
-                  <span *ngIf="NoteData.errors.required" style="color: crimson">
-                  Name is required!</span>
-                  </p>
-        </div>
-
-
-        <div class="float-end">
-          <button type="reset" class="btn btn-outline-danger">
-            Clear
-          </button>
-          <button type="submit" class="btn btn-primary" [disabled]="!(form.valid && form.dirty)">
-            Save
-          </button>
-        </div>
-      </form>
-
-
+          <div class="float-end">
+            <button type="reset" class="btn btn-outline-danger">Clear</button>
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              [disabled]="!(form.valid && form.dirty)"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

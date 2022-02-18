@@ -54,7 +54,7 @@ export class VitalsComponent implements OnInit {
   this.vitalsService.insertVitals(form.value).subscribe(res => {
     console.log(res);
     this.toastr.success('Patient record Inserted Successfully', 'CMS App V2022');
-    this.router.navigateByUrl('/doctor/advice/diagnosis')
+    this.router.navigateByUrl('doctor/advice/diagnosis')
   },
     err => {
       console.log(err);

@@ -47,7 +47,7 @@ export class UpdatePatientComponent implements OnInit {
   // onClck(form1:NgForm){
 
   // }
-  
+
  //Submit form
  onSubmit(form: NgForm) {
   console.log(form.value);
@@ -58,7 +58,7 @@ export class UpdatePatientComponent implements OnInit {
 
     //Insert
     this.insertPatientRecord(form);
-    this.resetForm(form);
+
     this.router.navigateByUrl('');
 
 
@@ -66,7 +66,7 @@ export class UpdatePatientComponent implements OnInit {
 
     //update
     this.updatePatientRecord(form);
-    this.resetForm(form);
+
     this.router.navigateByUrl('');
 
 
@@ -86,6 +86,14 @@ export class UpdatePatientComponent implements OnInit {
   );
 }
 
+onClick(form:NgForm){
+  console.log("Finding the record....");
+  //let PatientId = this.updatePatientService.formData.PatientId;
+  let PatientId=document.getElementById('PatientId').innerHTML
+  console.log(PatientId);
+
+}
+
  //Update Method
  updatePatientRecord(form?: NgForm) {
   console.log("Updating a record....");
@@ -93,7 +101,9 @@ export class UpdatePatientComponent implements OnInit {
     console.log(res);
     console.log('Success');
     this.toastr.success('Patient record Updated Successfully','CMS App V2022'
+
     );
+    this.router.navigateByUrl('reception/home');
   },
     err => {
       console.log(err);

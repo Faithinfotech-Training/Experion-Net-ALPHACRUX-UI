@@ -23,23 +23,19 @@
         ><i class="bi-plus-circle" style="font-size: 1.5rem"></i
       ></a>
     </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item ">
         <a
-          class="nav-link dropdown-toggle"
-          href="#"
+          class="nav-link active"
+          href="http://localhost:4200/login"
           role="button"
-          data-bs-toggle="dropdown"
+
           ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
         ></a>
-        <ul class="dropdown-menu bg-secondary">
-          <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-          <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-          <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-        </ul>
+
       </li>
     </ul>
   </div>
- 
+
 <div class="container-sm">
     <div class="row mt-5"></div>
     <div class="row mt-5">
@@ -140,7 +136,7 @@
                     <h6 class="mb-0">DOB</h6>
                     </div>
                     <div class="form-group col-md-9 pe-5">
-                      <input type="datetime" class="form-control form-control-lg" name="PatientDob"
+                      <input type="date" class="form-control form-control-lg" name="PatientDob"
                         #PatientDob="ngModel" [(ngModel)]="updatePatientService.formData.PatientDob" required
                         [ngClass]="{ 'is-invalid': PatientDob.touched && PatientDob.invalid }"
                         placeholder="Patient_DOB" style="width: 500px" />
@@ -248,7 +244,7 @@
             <!--Clear Button-->
             <button type="reset" class="btn btn-light">CLEAR</button>
             <!--Submit Button-->
-            <button type="submit" class="btn btn-dark" class="btn btn-primary btn-lg"
+            <button type="submit" class="btn btn-dark" class="btn btn-secondary btn-lg"
             [disabled]="!(form.valid && form.dirty)">SAVE</button>
           </div>
 
