@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   selector: 'app-vitals',
   templateUrl: './vitals.component.html',
   styleUrls: ['./vitals.component.scss'],
-  
+
 })
 export class VitalsComponent implements OnInit {
   [x: string]: any;
@@ -31,13 +31,14 @@ export class VitalsComponent implements OnInit {
   console.log(form.value);
   let addId = this.vitalsService.formData.PatientId;
 
+
   //Insert or update
   if (addId != 0 || addId != null) {
 
     //Insert
     this.insertPatientRecord(form);
     this.resetForm(form);
-    this.router.navigateByUrl('');
+
 
 
   } else {
@@ -53,6 +54,7 @@ export class VitalsComponent implements OnInit {
   this.vitalsService.insertVitals(form.value).subscribe(res => {
     console.log(res);
     this.toastr.success('Patient record Inserted Successfully', 'CMS App V2022');
+    this.router.navigateByUrl('/doctor/advice/diagnosis')
   },
     err => {
       console.log(err);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+
 import { ReceptionService } from 'src/app/shared/reception.service';
 
 
@@ -21,10 +21,26 @@ export class PaymentsComponent implements OnInit {
 
     this.receptionService.$isPass
     .subscribe( (data)=>{
+      console.log(data.PatientId);
+     // getpatientwithid(data.PatientId);
+
       console.log("I got in console",data);
       this.router.navigateByUrl('/reception/home');
 
     })
+
+   /* getpatientwithid(patientId: number) {
+
+        this.reception.getpatientwithid(patientId).subscribe(
+          (response) => {
+            this.reception.getpatientwithid();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }*/
+
   }
 
 }
