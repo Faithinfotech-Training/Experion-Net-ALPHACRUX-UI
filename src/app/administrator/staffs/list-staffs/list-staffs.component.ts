@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/admin.service';
+import { StaffsComponent } from '../staffs.component';
 
 @Component({
   selector: 'app-list-staffs',
@@ -8,7 +9,14 @@ import { AdminService } from 'src/app/shared/admin.service';
   styleUrls: ['./list-staffs.component.scss'],
 })
 export class ListStaffsComponent implements OnInit {
-  constructor(public admin: AdminService, private route: Router) {}
+
+  search: string;
+  constructor(
+    public admin: AdminService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public staffs: StaffsComponent
+  ) {}
 
   ngOnInit(): void {
     this.admin.getStaffs();
@@ -17,8 +25,8 @@ export class ListStaffsComponent implements OnInit {
   //Edit/Update staff
   editStaff(staffId: number) {
     console.log(staffId);
-
+    // this.staffs.edit();
     //Redirects to edit form with staffId
-    this.route.navigate(['admin/staffs', staffId]);
+    this.router.navigate(['admin/staffs/edit', staffId]);
   }
 }

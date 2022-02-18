@@ -49,18 +49,19 @@ export class AdminService {
       });
   }
 
-
   //Add a new staff
-  addStaff(staff: Staffs) { 
-    return this.client.post(environment.apiUrl + 'admin/staff', staff)
-      .toPromise()
-      .then((data) => {
-        console.log(data);
-      });
+  addStaff(staff: Staffs): Observable<any> {
+    return this.client.post(environment.apiUrl + 'admin/staff', staff);
   }
 
   //Get staff by id
-  getStaffById(staffId: number): Observable<any> { 
+  getStaffById(staffId: number): Observable<any> {
     return this.client.get(environment.apiUrl + 'admin/staff/' + staffId);
+  }
+
+  //Update staff
+  updateStaff(staff: Staffs): Observable<any> {
+    return this.client
+      .put(environment.apiUrl + 'admin/updatestaff', staff);
   }
 }

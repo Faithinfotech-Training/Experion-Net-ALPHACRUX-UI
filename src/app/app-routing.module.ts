@@ -38,6 +38,7 @@ const routes: Routes = [
     children: [
       { path: 'list', component: ListStaffsComponent },
       { path: 'edit', component: NewStaffComponent },
+      { path: 'edit/:staffId', component: NewStaffComponent },
     ],
   },
   { path: 'doctor/home', component: DoctorComponent },

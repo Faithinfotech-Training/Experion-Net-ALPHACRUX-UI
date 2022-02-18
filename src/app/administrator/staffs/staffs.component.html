@@ -6,20 +6,23 @@
 
 <nav ngbNav #nav="ngbNav" class="nav-tabs m-3">
    <ng-container ngbNavItem>
-    <a ngbNavLink  routerLink="edit" routerLinkActive="active">New/Update</a>
+    <a ngbNavLink routerLinkActive="active"  (click)="edit()">New/Update</a>
     <ng-template ngbNavContent>
-   <app-new-staff></app-new-staff>
+  
     </ng-template>
   </ng-container>
   <ng-container ngbNavItem>
-    <a ngbNavLink routerLink="list" routerLinkActive="active">List</a>
+    <a ngbNavLink routerLinkActive="active" (click)="list()">List</a>
     <ng-template ngbNavContent>
-      <app-list-staffs></app-list-staffs>
+     
     </ng-template>
   </ng-container>
 </nav>
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
+
     </div>
     </div>
+
+    <router-outlet></router-outlet>
