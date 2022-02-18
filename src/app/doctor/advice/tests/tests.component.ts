@@ -47,6 +47,6 @@ export class TestsComponent implements OnInit {
 
 
     this.checkoutForm.reset();
-    this.router.navigate(['/']);
+   // this.router.navigate(['/']);
   }
 }

@@ -8,4 +8,6 @@ export class Vitals {
   BreathRate:number=0;
 
   PatientId:number=0;
+
+  VitalId:number=0;
 }

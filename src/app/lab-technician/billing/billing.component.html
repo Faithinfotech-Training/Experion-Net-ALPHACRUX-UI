@@ -1,0 +1,328 @@
+<header>
+  <!-- Nav bar -->
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <h3>Lab Technician</h3>
+      </a>
+      <form class="d-flex mt-2" action="submit">
+        <input class="form-control me-2" type="text" placeholder="Search" />
+        <button class="btn btn-outline-success" type="button">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Side bar -->
+  <div class="d-flex align-items-start">
+    <div class="container-fluid-sm position-fixed mt-5">
+      <nav
+        class="bg-light navbar-light p-1"
+        style="min-width: fit-content; min-height: 100vh"
+      >
+        <ul class="navbar-nav ms-2 gap-5">
+          <li class="navbar-item">
+            <a class="navbar-brand" href="#">
+              <!-- <h3>Lab Technician</h3> -->
+            </a>
+          </li>
+
+          <li class="navbar-item">
+            <a class="nav-link active" href="#"
+              ><i class="bi bi-house" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="http://localhost:4200/lab/home/billing"
+              ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="http://localhost:4200/lab/home/test"
+              ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+            ></a>
+          </li>
+
+          <li class="nav-item dropup">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
+            ></a>
+            <ul class="dropdown-menu bg-secondary">
+              <li>
+                <a class="dropdown-item text-white" href="#">First Link</a>
+              </li>
+              <li>
+                <a class="dropdown-item text-white" href="#">Second Link</a>
+              </li>
+              <li>
+                <a class="dropdown-item text-white" href="#">Third Link</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="container-sm">
+  <div class="row mt-5">
+    <div class="col mt-5">
+      <div class="card" style="border-radius: 15px">
+        <div class="card-body">
+          <form
+            #form="ngForm"
+            name="ngForm"
+            autocomplete="off"
+            class="form-group p-3"
+            (ngSubmit)="onSubmit(form)"
+          >
+            <div class="form-group row align-items-center pt-4 pb-3">
+              <div class="col-md-3 ps-5">
+                <h5>PATIENT ID</h5>
+              </div>
+
+              <div class="col-md-9 pe-5">
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  placeholder="Patient_Id"
+                  style="width: 500px"
+                  name="PatientId"
+                  #PatientId="ngModel"
+                  [(ngModel)]="labTestService.formData.PatientId"
+                  required
+                  minlength="1"
+                  maxlength="5"
+                  [ngClass]="{
+                    'is-invalid': PatientId.touched && PatientId.invalid
+                  }"
+                />
+
+                <p
+                  *ngIf="PatientId.touched && PatientId.invalid"
+                  class="validation-error"
+                >
+                  <span
+                    *ngIf="PatientId.errors.required"
+                    style="color: crimson"
+                  >
+                    Please enter patient id</span
+                  >
+                </p>
+
+                <div class="py-4">
+                  <button
+                    type="submit"
+                    class="btn btn-secondary btn-lg me-3"
+                    [disabled]="!(form.valid && form.dirty)"
+                  >
+                    SEARCH</button
+                  ><br /><br />
+                </div>
+              </div>
+            </div>
+          </form>
+          <hr />
+
+          <form
+            #form="ngForm"
+            name="ngForm"
+            autocomplete="off"
+            class="form-group p-3"
+            (ngSubmit)="onClickClick(form)"
+          >
+            <div class="form-group row align-items-center">
+              <h4>PATIENT DETAILS</h4>
+              <br /><br />
+            </div>
+            <hr />
+
+            <form
+              #form="ngForm"
+              name="ngForm"
+              autocomplete="off"
+              class="form-group p-3"
+            >
+              <div class="form-group row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">ID</h6>
+                </div>
+
+                <div class="col-md-9 pe-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Patient_Id"
+                    style="width: 500px"
+                    id="PatientId"
+                    name="PatientId"
+                    #PatientId="ngModel"
+                    [(ngModel)]="labTestService.formData.PatientId"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">NAME</h6>
+                </div>
+
+                <div class="col-md-9 pe-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Patient_Name"
+                    style="width: 500px"
+                    name="PatientName"
+                    #PatientName="ngModel"
+                    [(ngModel)]="labTestService.formData.PatientName"
+                  />
+                </div>
+              </div>
+
+              <input
+                type="hidden"
+                class="form-control form-control-lg"
+                name="TestListId"
+                id="TestListId"
+                #TestListId="ngModel"
+                [(ngModel)]="labTestService.formData.TestListId"
+              />
+
+              <div class="form-group row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">PHONE NUMBER</h6>
+                </div>
+
+                <div class="col-md-9 pe-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Patient_Phone_Number"
+                    style="width: 500px"
+                    name="PatientPhone"
+                    #PatientPhone="ngModel"
+                    [(ngModel)]="labTestService.formData.PatientPhone"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">REF BY</h6>
+                </div>
+
+                <div class="col-md-9 pe-5">
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    placeholder="Patient_StaffName"
+                    style="width: 500px"
+                    name="StaffName"
+                    #StaffName="ngModel"
+                    [(ngModel)]="labTestService.formData.StaffName"
+                  />
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">DATE</h6>
+                </div>
+                <div class="form-group col-md-9 pe-5">
+                  <input
+                    type="datetime"
+                    class="form-control form-control-lg"
+                    name="ReportDateTime"
+                    #ReportDateTime="ngModel"
+                    [(ngModel)]="labTestService.formData.ReportDateTime"
+                    placeholder="Patient_DOB"
+                    style="width: 500px"
+                  />
+                </div>
+              </div>
+            </form>
+            <br />
+            <br />
+
+            <form
+              #form="ngForm"
+              name="ngForm"
+              autocomplete="off"
+              class="form-group p-3"
+              (ngSubmit)="onClick(form)"
+            >
+              <div class="form-group row align-items-center">
+                <!-- <h4>TEST DETAILS</h4> -->
+
+                <button
+                  type="submit"
+                  class="form-group btn btn-secondary btn-lg me-3 btn-block float-end"
+                >
+                  TEST DETAILS
+                </button>
+              </div>
+              <br />
+            </form>
+
+            <form
+              #form="ngForm"
+              name="ngForm"
+              autocomplete="off"
+              class="form-group p-3"
+            >
+              <table class="table table-bordered m-2 table-active">
+                <thead class="table-lg thead-light">
+                  <tr>
+                    <th scope="col">Test Name</th>
+                    <th scope="col">Test Amount</th>
+                  </tr>
+                </thead>
+                <tbody class="table" style="background-color: #f7f7f7">
+                  <tr
+                    *ngFor="
+                      let users of labTestService.labtests2
+                        | filter: this.app.filter
+                        | paginate: { itemsPerPage: 5, currentPage: page }
+                    "
+                  >
+                    <td>{{ users.TestName }}</td>
+                    <td>{{ users.TestAmount }}</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="1"><b>Total:</b></td>
+                    <td colspan="1" id="total" name="total">
+                      <b>₹{{ total }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="footer">
+                <pagination-controls
+                  (pageChange)="page = $event"
+                ></pagination-controls>
+              </div>
+            </form>
+
+            <div class="px-5 py-4">
+              <button
+                type="submit"
+                class="btn btn-secondary btn-lg me-3 float-end"
+              >
+                PROCEED
+              </button>
+              
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

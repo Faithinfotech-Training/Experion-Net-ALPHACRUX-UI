@@ -4,6 +4,8 @@ import { FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PatientListServiceService } from 'src/app/shared/patient-list-service.service';
 import { ReceptionService } from 'src/app/shared/reception.service';
+
+
 import { Patients } from 'src/app/shared/patients';
 import { ToastrService } from 'ngx-toastr';
 
@@ -22,7 +24,8 @@ export class HomePageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) {
+    }
 
   ngOnInit(): void {
     this.reception.getTokenQueue();
@@ -62,7 +65,11 @@ export class HomePageComponent implements OnInit {
     if (confirm('Are you sure you want to DELETE this token?')) {
       this.reception.deleteToken(tokenId).subscribe(
         (response) => {
+          this.toastr.success('Token Deleted Successfully', 'CMS App V2022');
+          console.log('This is token',response);
           this.reception.getTokenQueue();
+          this.router.navigate(['/reception/home']);
+          
         },
         (error) => {
           console.log(error);

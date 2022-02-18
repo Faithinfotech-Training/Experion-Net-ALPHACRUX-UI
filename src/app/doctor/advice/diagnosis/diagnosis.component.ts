@@ -54,7 +54,7 @@ onSubmit(form: NgForm) {
     //Insert
     this.insertDoctorNote(form);
     this.resetForm(form);
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/doctor/advice/tests')
 
 
   } else {
@@ -71,6 +71,7 @@ onSubmit(form: NgForm) {
   this.diagnosisService.insertNote(form.value).subscribe(res => {
     console.log(res);
     this.toastr.success('Patient diagnosis Inserted Successfully', 'CMS App V2022');
+
   },
     err => {
       console.log(err);

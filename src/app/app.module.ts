@@ -4,8 +4,6 @@ import {HttpClientModule} from '@angular/common/http'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './reception/home-page/home-page.component';
@@ -64,6 +62,12 @@ import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-sta
     MedicinesComponent,
     NewStaffComponent,
     ListStaffsComponent
+    PharmacistComponent,
+    ReportMedicineComponent,
+    HomeComponent,
+    BillingComponent,
+    LoginComponent,
+    VitalsComponent
 
 
   ],

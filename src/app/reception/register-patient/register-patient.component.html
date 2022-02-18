@@ -1,235 +1,46 @@
-<!-- <header> -->
-    <!-- Nav bar -->
-<!--
-    <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <h3>Reception</h3>
-        </a>
-        <form class="d-flex mt-2" action="submit">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success" type="button">Search</button>
-        </form>
-      </div>
-    </nav> -->
-
-
-
-    <!-- Side bar -->
-    <!-- <div class="d-flex align-items-start">
-      <div class="container-fluid-sm position-fixed">
-
-        <nav class="bg-light navbar-light p-1 " style="min-width: fit-content;min-height: 100vh;">
-
-          <ul class="navbar-nav ms-2 gap-5">
-            <li class="navbar-item ">
-              <a class="navbar-brand" href="#"><h3>Reception</h3></a>
-            </li>
-
-
-            <li class="navbar-item">
-              <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill" style="font-size: 1.5rem;"></i></a>
-            </li>
-            <li class="navbar-item">
-              <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem;"></i></a>
-            </li>
-
-            <li class="nav-item dropup">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
-                  class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
-              <ul class="dropdown-menu bg-secondary">
-                <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-                <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-                <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header> -->
-
-
-
-  <!-- <div class="container-sm">
-    <div class="row mt-3"></div>
-    <div class="row mt-4">
-      <div class="col mt-5">
-
-    <h1 class>REGISTER NEW PATIENT</h1>
-
-
-
-
-
-
-
-
-    <div class="card" style="border-radius: 15px;">
-      <div class="card-body">
-
-        <div class="row align-items-center pt-4 pb-3">
-          <div class="col-md-3 ps-5">
-
-            <h6 class="mb-0">NAME</h6>
-
-
-          </div>
-
-          <div class="col-md-9 pe-5">
-
-            <input type="text" class="form-control form-control-lg" placeholder="Patient_Name" />
-
-          </div>
-        </div>
-
-        <div class="row align-items-center pt-4 pb-3">
-          <div class="col-md-3 ps-5">
-
-            <h6 class="mb-0">AGE</h6>
-
-
-          </div>
-
-          <div class="col-md-9 pe-5">
-
-            <input type="text" class="form-control form-control-lg" placeholder="Patient_AGE" />
-
-          </div>
-        </div>
-        <div class="row align-items-center pt-4 pb-3">
-          <div class="col-md-3 ps-5">
-
-            <h6 class="mb-0">GENDER</h6>
-
-
-          </div>
-
-          <div class="col-md-9 pe-5">
-
-            <input type="text" class="form-control form-control-lg" placeholder="Patient_Gender" />
-
-          </div>
-        </div>
-
-        <div class="row align-items-center pt-4 pb-3">
-          <div class="col-md-3 ps-5">
-
-            <h6 class="mb-0">BLOOD GROUP</h6>
-
-
-          </div>
-
-          <div class="col-md-9 pe-5">
-
-            <input type="text" class="form-control form-control-lg" placeholder="Patient_Bloodgroup" />
-
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row align-items-center pt-4 pb-3">
-        <div class="col-md-3 ps-5">
-
-          <h6 class="mb-0">PHONE NUMBER</h6>
-
-
-        </div>
-
-        <div class="col-md-9 pe-5">
-
-          <input type="text" class="form-control form-control-lg" placeholder="Patient_Phonenumber" />
-
-        </div>
-      </div>
-      <div class="row align-items-center pt-4 pb-3">
-        <div class="col-md-3 ps-5">
-
-          <h6 class="mb-0">LOCATION</h6>
-
-
-        </div>
-
-        <div class="col-md-9 pe-5">
-
-          <input type="text" class="form-control form-control-lg" placeholder="Patient_Location" />
-
-        </div>
-      </div>
-      <hr class="mx-n3">
-
-      <div class="px-5 py-4">
-        <button type="button" class="btn btn-light">CLEAR</button>
-
-        <button type="button" class="btn btn-dark">REGISTER</button>
-
-      </div>
-
-    </div>
-
-
-
-
+<app-reception></app-reception>
+
+<div class="container-fluid-sm d-flex align-items-stretch">
+  <div class="float-start bg-light navbar-light p-1">
+    <ul class="navbar-nav ms-2 gap-3">
+      <li class="navbar-item">
+        <a class="navbar-brand" href="reception/home"
+          ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="navbar-item">
+        <a class="nav-link active" href="reception/transactions"
+          ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
+        ></a>
+
+      <li class="navbar-item">
+        <a class="nav-link active" href="reception/register-patient"
+          ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+    <li class="navbar-item">
+      <a class="nav-link active" href="reception/update-patient"
+        ><i class="bi-plus-circle" style="font-size: 1.5rem"></i
+      ></a>
+    </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
+        ></a>
+        <ul class="dropdown-menu bg-secondary">
+          <li><a class="dropdown-item text-white" href="#">First Link</a></li>
+          <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
+          <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
-  </div>
-  </div> -->
-  <header>
-    <!-- Nav bar -->
-
-    <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <h3>Reception</h3>
-        </a>
-        <form class="d-flex mt-2" action="submit">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-outline-success" type="button">Search</button>
-        </form>
-      </div>
-    </nav>
-
-
-
-    <!-- Side bar -->
-    <div class="d-flex align-items-start">
-      <div class="container-fluid-sm position-fixed mt-5">
-
-        <nav class="bg-light navbar-light p-1 " style="min-width: fit-content;min-height: 100vh;">
-
-          <ul class="navbar-nav ms-2 gap-5">
-            <li class="navbar-item ">
-              <a class="navbar-brand" href="#">
-                <h3>Reception</h3>
-              </a>
-            </li>
-
-            <li class="navbar-item">
-              <a class="nav-link active" href="#"><i class="bi bi-house" style="font-size: 1.5rem;"></i></a>
-            </li>
-            <li class="navbar-item">
-              <a class="nav-link" href="#"><i class="bi bi-plus-circle" style="font-size: 1.5rem;"></i></a>
-            </li>
-            <li class="navbar-item">
-              <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem;"></i></a>
-            </li>
-
-            <li class="nav-item dropup">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
-                  class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
-              <ul class="dropdown-menu bg-secondary">
-                <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-                <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-                <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <div class="container-sm">
+ 
+<div class="container-sm">
     <div class="row mt-5"></div>
     <div class="row mt-5">
       <div class="col mt-5">
@@ -308,11 +119,6 @@
                     </select>
 
 
-                    <!-- <input type="text" class="form-control form-control-lg" name="PatientGender"
-                      #PatientGender="ngModel" [(ngModel)]="updatePatientService.formData.PatientGender"
-                       required minlength="4" maxlength="6"
-                      [ngClass]="{ 'is-invalid': PatientGender.touched && PatientGender.invalid }"
-                      placeholder="Patient_Gender" style="width: 500px" /> -->
 
                     <!-- Validation -->
                     <p *ngIf="PatientGender.touched && PatientGender.invalid" class="validation-error">
@@ -321,25 +127,7 @@
                     </p>
                   </div>
                 </div>
-                <!-- <div class="col-md-9 pe-5">
-                  <div class="form-check form-check-inline ">
 
-                    <input class="form-check-input" type="radio" name="inlineRadioGender" id="inlineRadio1"
-                      value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioGender" id="inlineRadio2"
-                      value="option2">
-                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioGender" id="inlineRadio3"
-                      value="option3">
-                    <label class="form-check-label" for="inlineRadio3">Other</label>
-                  </div>
-
-                </div> -->
 
 
 

@@ -22,6 +22,17 @@ export class ReceptionService {
     PatientId:0,
     PatientName:''
   };
+  $isDoc=new EventEmitter();
+  doc:Doctors=
+  {
+
+  DoctorId: 0,
+  DoctorName:'',
+  Phone:'',
+  Email: '',
+  RoleName:'',
+  Qualification:''
+  }
 
   constructor(private client: HttpClient) {}
 
@@ -71,18 +82,18 @@ export class ReceptionService {
       });
   }
 
+  getpatientwithid(patientId:number){
+    return this.client.get(
+      environment.apiUrl+'Receptionist/patientid/'+patientId
+
+    );
+  }
+
   //Delete token
   deleteToken(tokenId: number) {
     return this.client.delete(
       environment.apiUrl + 'receptionist/deletetoken/' + tokenId
     );
   }
-/*
-  login(){
-    console.log("Login sample");
-    //this.pat.PatientId="";
 
-    this.$isPass.emit(this.pat.PatientId);
-  }
-  */
 }
