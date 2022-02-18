@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/shared/admin.service';
+import { StaffsComponent } from '../staffs.component';
 
 @Component({
   selector: 'app-new-staff',
