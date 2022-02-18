@@ -28,6 +28,9 @@ import { MedicineComponent } from './doctor/advice/medicine/medicine.component';
 import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
+import { PharmacistComponent } from './pharmacist/pharmacist.component';
+import { ReportMedicineComponent } from './report-medicine/report-medicine.component';
+import { HomeComponent } from './pharmacist/home/home.component'
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component'
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
@@ -54,6 +57,9 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
     TestsComponent,
     LabTechnicianComponent,
     LabTestReportComponent,
+    PharmacistComponent,
+    ReportMedicineComponent,
+    HomeComponent,
     BillingComponent,
     LoginComponent,
     VitalsComponent

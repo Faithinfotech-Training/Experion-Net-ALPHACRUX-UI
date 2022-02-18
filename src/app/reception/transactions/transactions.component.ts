@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PaymentsService} from'src/app/shared/payments.service';
-//import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-transactions',
@@ -19,4 +19,9 @@ export class TransactionsComponent implements OnInit {
 
   }
 
-}
+
+  }
+
+
+
+

@@ -17,6 +17,9 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
+import { PharmacistComponent } from './pharmacist/pharmacist.component';
+import { ReportMedicineComponent } from './report-medicine/report-medicine.component';
+import { HomeComponent } from './pharmacist/home/home.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component';
 
@@ -38,12 +41,12 @@ const routes: Routes = [
   { path: 'doctor/advice/tests', component:TestsComponent},
   { path: 'lab/home', component:LabTechnicianComponent},
   { path: 'lab/home/test', component:LabTestReportComponent},
+  { path: 'pharmacist', component: PharmacistComponent },
+  {path:'pharmacy/home',component:HomeComponent},
+  {path:'pharmacy/reports',component:ReportMedicineComponent},
   { path: 'lab/home/billing', component:BillingComponent},
   { path: 'doctor/app', component:AppointmentsComponent},
   { path: '**', component: AppComponent },
-
-
-
 
 ];
 
