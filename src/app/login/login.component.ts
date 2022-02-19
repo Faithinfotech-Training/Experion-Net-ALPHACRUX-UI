@@ -83,12 +83,12 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
                 this.router.navigateByUrl('reception/home');
 
               }
-              else if(data.StaffId==7
+              else if(data.StaffId==7|| data.StaffId==12|| data.StaffId==13
                 ){
                   this.router.navigateByUrl('pharmacy/home');
 
                 }
-                else if(data.StaffId==8
+                else if(data.StaffId==8|| data.StaffId==14
                   ){
                     this.router.navigateByUrl('lab/home/billing');
 
