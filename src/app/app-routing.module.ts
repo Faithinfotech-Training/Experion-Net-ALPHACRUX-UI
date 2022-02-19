@@ -28,10 +28,10 @@ import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-sta
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
 
 const routes: Routes = [
-  { path: '', component: AppointmentsComponent },
+  { path: 'doctor/appointments', component: AppointmentsComponent },
   { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'reception/c', component: HomePageComponent },
+  { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },

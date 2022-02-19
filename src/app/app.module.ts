@@ -29,7 +29,7 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AdministratorComponent } from './administrator/administrator.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StaffsComponent } from './administrator/staffs/staffs.component';
 import { MedicinesComponent } from './administrator/medicines/medicines.component';
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
@@ -40,6 +40,9 @@ import { HomeComponent } from './pharmacist/home/home.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 
@@ -93,6 +96,8 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
+
+
 
 
   ],

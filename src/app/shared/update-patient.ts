@@ -6,5 +6,5 @@ export class UpdatePatient {
     PatientWeight:number=0;
     PatientGender:string='';
     PatientBlood:string='';
-    PatientDob:Date=new Date();
+    PatientDob:Date;
 }
