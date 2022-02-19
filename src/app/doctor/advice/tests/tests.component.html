@@ -103,16 +103,16 @@
  -->
  <div class="container-fluid bg-light bg-opacity-10 float-right mt-4 ml-4 p-3">
   <div class="row">
-<br><br><br>
+<br><br><br><!--
 <form
   class="d-flex ml-4 mt-4"
   name="testlistForm"
   [formGroup]="checkoutForm"
   (ngSubmit)="onSubmit()"
->
+>-->
  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   <!--Using ng-option and for loop-->
-  <ng-select
+  <!--- <ng-select
     class="col-4 me-3 mt-3"
     placeholder="Tests"
     appearance="outline"
@@ -121,7 +121,7 @@
     <ng-option *ngFor="let doc of doctorAdvice.testLists" [value]="doc.TestId">
       {{ doc.TestId }} &nbsp; {{ doc.TestName }} &nbsp;
     </ng-option>
-  </ng-select>
+  </ng-select>-->
 
   <button
     class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
@@ -129,7 +129,7 @@
   >
     Add
   </button>
-</form>
+><!--</form> -->
 
 <div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
   <table class="table bg-white border table-lg text-center">
@@ -157,6 +157,6 @@
     </tbody>
   </table>
   <div class="footer d-flex float-end">
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <!---  <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
   </div>
 </div>

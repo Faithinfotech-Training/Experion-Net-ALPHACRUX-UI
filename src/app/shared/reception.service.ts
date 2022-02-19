@@ -39,7 +39,7 @@ export class ReceptionService {
   //List token queue
   getTokenQueue() {
     return this.client
-      .get(environment.apiUrl + 'receptionist/tokenqueue')
+      .get(environment.updateUrl + 'receptionist/tokenqueue')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -52,7 +52,7 @@ export class ReceptionService {
   //Get patient
   getPatients() {
     return this.client
-      .get(environment.apiUrl + 'receptionist/patients')
+      .get(environment.updateUrl + 'receptionist/patients')
       .toPromise()
       .then((data) => {
         console.log(data);
