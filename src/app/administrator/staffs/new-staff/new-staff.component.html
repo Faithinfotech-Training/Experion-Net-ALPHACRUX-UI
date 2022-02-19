@@ -16,17 +16,24 @@
       <input
         type="text"
         id="StaffName"
+        name="StaffName"
         formControlName="StaffName"
         class="form-control"
-        required
         placeholder="Enter staff name"
+        [ngClass]="{'is-invalid':myForm.controls.StaffName?.invalid && (myForm.controls.StaffName?.dirty
+    ||myForm.controls.StaffName?.touched)}"
       />
 
       <!-- Validation -->
       <div
     *ngIf="!myForm.controls.StaffName?.valid && (myForm.controls.StaffName?.dirty
     ||myForm.controls.StaffName?.touched)">
+    <div *ngIf="myForm.get('StaffName').hasError('required')">
       <em>Name is required!</em>
+    </div>
+    <div *ngIf="myForm.get('StaffName').hasError('pattern')">
+      <em>Name should contain only alphabets!</em>
+    </div>
   </div>
     </div>
 
@@ -35,17 +42,36 @@
       <input
         type="text"
         id="StaffPhone"
+        name="StaffPhone"
         formControlName="StaffPhone"
         class="form-control"
-        required
         placeholder="xxxxxxxxxx"
+        [ngClass]="{'is-invalid':myForm.controls.StaffPhone?.invalid && (myForm.controls.StaffPhone?.dirty
+    ||myForm.controls.StaffPhone?.touched)}"
       />
       
       <!-- Validation -->
       <div
     *ngIf="!myForm.controls.StaffPhone?.valid && (myForm.controls.StaffPhone?.dirty
     ||myForm.controls.StaffPhone?.touched)">
+    <div *ngIf="myForm.controls.StaffPhone.errors.required">
       <em>Phone is required!</em>
+      </div>
+      <div *ngIf="myForm.controls.StaffPhone.errors.minlength">
+      <em >
+        Phone should be 10 digits!
+      </em>
+      </div>
+      <div *ngIf="myForm.controls.StaffPhone.errors?.maxlength">
+      <em >
+        Phone should not be greater than 12 digits!
+      </em>
+      </div>
+      <div *ngIf="myForm.controls.StaffPhone.errors?.pattern">
+      <em >
+        Phone contains only numbers from 0 to 9!
+      </em>
+      </div>
   </div>
     </div>
 
@@ -57,15 +83,21 @@
           id="StaffEmail"
           formControlName="StaffEmail"
           class="form-control"
-          required
             placeholder="abc@mail.com"
+            [ngClass]="{'is-invalid':myForm.controls.StaffEmail?.invalid && (myForm.controls.StaffEmail?.dirty
+    ||myForm.controls.StaffEmail?.touched)}"
         />
         
       <!-- Validation -->
       <div
     *ngIf="!myForm.controls.StaffEmail?.valid && (myForm.controls.StaffEmail?.dirty
     ||myForm.controls.StaffEmail?.touched)">
+    <div *ngIf="myForm.get('StaffEmail').hasError('required')">
       <em>Email is required!</em>
+      </div>
+    <div *ngIf="myForm.get('StaffEmail').hasError('email')">
+      <em>Not a valid email. Please check!</em>
+      </div>
   </div>
       </div>
     </div>
@@ -78,8 +110,9 @@
           id="StaffAddress"
           formControlName="StaffAddress"
           class="form-control"
-          required
             placeholder="Staff address"
+            [ngClass]="{'is-invalid':myForm.controls.StaffAddress?.invalid && (myForm.controls.StaffAddress?.dirty
+    ||myForm.controls.StaffAddress?.touched)}"
         />
         
       <!-- Validation -->
@@ -100,14 +133,23 @@
         id="StaffDob"
         formControlName="StaffDob"
         class="form-control"
-        required
+        [ngClass]="{'is-invalid':myForm.controls.StaffDob?.invalid && (myForm.controls.StaffDob?.dirty
+    ||myForm.controls.StaffDob?.touched)}"
       />
       
       <!-- Validation -->
       <div
     *ngIf="!myForm.controls.StaffDob?.valid && (myForm.controls.StaffDob?.dirty
     ||myForm.controls.StaffDob?.touched)">
-      <em>Date of Birth is required!</em>
+    <div *ngIf="myForm.get('StaffDob').hasError('required')">
+          <em>Date of Birth is required!</em>
+      </div>
+    <div *ngIf="myForm.get('StaffDob').hasError('min')">
+          <em>Plese choose below 120yrs!</em>
+      </div>
+    <div *ngIf="myForm.get('StaffDob').hasError('max')">
+          <em>DOB cannot be a future date!</em>
+      </div>
   </div>
     </div>
 

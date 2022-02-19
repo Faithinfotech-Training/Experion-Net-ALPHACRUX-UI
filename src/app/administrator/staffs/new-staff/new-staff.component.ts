@@ -19,13 +19,15 @@ export class NewStaffComponent implements OnInit {
   datepipe: DatePipe = new DatePipe('en-US');
   formattedDate: any = this.datepipe.transform(this.date, 'yyyy-MM-dd');
 
+  today = new Date(Date.now());
+
   myForm = this.fb.group({
     StaffId: 0,
-    StaffName: ['', Validators.required],
-    StaffPhone: ['', Validators.required],
+    StaffName: ['',[Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+    StaffPhone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(12), Validators.pattern('^[0-9]*$')]],
     StaffAddress: ['', Validators.required],
-    StaffEmail: ['', Validators.required],
-    StaffDob: ['', Validators.required],
+    StaffEmail: ['', [Validators.required, Validators.email]],
+    StaffDob: ['', [Validators.required, Validators.max(this.date.getFullYear()), Validators.min(this.date.getFullYear()-120)]],
     StaffJoiningDate: [(this.date = this.formattedDate), Validators.required], //Default date is today's date
     RoleId: ['', Validators.required],
     QualificationId: ['', Validators.required],
@@ -40,6 +42,7 @@ export class NewStaffComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  
     this.admin.getRoles();
     this.admin.getQualifications();
 
