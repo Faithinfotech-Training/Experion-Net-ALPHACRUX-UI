@@ -36,6 +36,10 @@ import { StaffsComponent } from './administrator/staffs/staffs.component';
 import { MedicinesComponent } from './administrator/medicines/medicines.component';
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
 import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
+import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
+import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
+import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
+import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
 
 
 
@@ -63,7 +67,11 @@ import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-sta
     StaffsComponent,
     MedicinesComponent,
     NewStaffComponent,
-    ListStaffsComponent
+    ListStaffsComponent,
+    ListMedicinesComponent,
+    NewMedicineComponent,
+    InventoryComponent,
+    ManufacturersComponent
 
 
   ],

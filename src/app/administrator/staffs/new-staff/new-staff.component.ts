@@ -48,7 +48,7 @@ export class NewStaffComponent implements OnInit {
 
     //Get Staff by id
     if (this.staffId != 0 || this.staffId != null) {
-      //Get employee by id
+      //Get stffId by id
       this.admin.getStaffById(this.staffId).subscribe(
         (response) => {
           console.log(response);
