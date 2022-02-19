@@ -45,6 +45,8 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +80,7 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -90,7 +93,8 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
-    
+
+
   ],
   providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
   bootstrap: [AppComponent],

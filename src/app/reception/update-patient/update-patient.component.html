@@ -99,7 +99,7 @@
 
                 <input type="text" class="form-control form-control-lg"
                 placeholder="Patient_Name" style="width: 500px;"
-                name="PatientName" #PatientName="ngModel"
+                name="PatientName" #PatientName="ngModel" required pattern="[a-zA-Z]+"
                 [(ngModel)]="updatePatientService.formData.PatientName"
                  required minlength="5" maxlength="25"
                 [ngClass]="{ 'is-invalid': PatientName.touched && PatientName.invalid }" />
@@ -121,7 +121,7 @@
               <h6 class="mb-0">LOCATION</h6>
               </div>
               <div class="form-group col-md-9 pe-5">
-                <input type="text" class="form-control form-control-lg" name="PatientLocation"
+                <input type="text" class="form-control form-control-lg" name="PatientLocation" required pattern="[a-zA-Z]+"
                   #PatientLocation="ngModel" [(ngModel)]="updatePatientService.formData.PatientLocation"
                   required minlength="5" maxlength="25"
                   [ngClass]="{ 'is-invalid': PatientLocation.touched && PatientLocation.invalid }"
@@ -263,7 +263,7 @@
 
           <div class="col-md-9 pe-5">
 
-            <input type="text" name="PatientPhone" #PatientPhone="ngModel"
+            <input type="text" name="PatientPhone" #PatientPhone="ngModel" required pattern="[0-9]+"
             [(ngModel)]="updatePatientService.formData.PatientPhone"
                required minlength="10" maxlength="10"
               [ngClass]="{ 'is-invalid': PatientPhone.touched && PatientPhone.invalid }"
@@ -289,7 +289,7 @@
           </div>
 
           <div class="col-md-9 pe-5">
-            <input type="text" name="PatientWeight" #PatientWeight="ngModel"
+            <input type="text" name="PatientWeight" #PatientWeight="ngModel" required pattern="[0-9]+"
             [(ngModel)]="updatePatientService.formData.PatientWeight"
               placeholder="Patient_Weight" required minlength="1" maxlength="3"
               [ngClass]="{'is-invalid': PatientWeight.touched && PatientWeight.invalid}"
