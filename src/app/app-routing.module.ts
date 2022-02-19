@@ -22,18 +22,32 @@ import { ReportMedicineComponent } from './report-medicine/report-medicine.compo
 import { HomeComponent } from './pharmacist/home/home.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component';
+import { MedicinesComponent } from './administrator/medicines/medicines.component';
+import { StaffsComponent } from './administrator/staffs/staffs.component';
+import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
+import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
 
 const routes: Routes = [
-  { path: '', component: AppointmentsComponent },
+  { path: 'doctor/appointments', component: AppointmentsComponent },
   { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'reception/c', component: HomePageComponent },
+  { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
-  { path: 'app-administrator', component: AdministratorComponent },
-  { path: 'doctor/home', component: DoctorComponent  },
+  { path: 'admin', component: AdministratorComponent },
+  { path: 'admin/medicine', component: MedicinesComponent },
+  {
+    path: 'admin/staffs',
+    component: StaffsComponent,
+    children: [
+      { path: 'list', component: ListStaffsComponent },
+      { path: 'edit', component: NewStaffComponent },
+      { path: 'edit/:staffId', component: NewStaffComponent },
+    ],
+  },
+  { path: 'doctor/home', component: DoctorComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'doctor/advice/diagnosis', component: DiagnosisComponent },
   { path: 'doctor/advice/vitals', component:VitalsComponent},

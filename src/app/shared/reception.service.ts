@@ -50,15 +50,15 @@ export class ReceptionService {
   }
 
   //Get patient
-  getPatients() {
-    return this.client
-      .get(environment.updateUrl + 'receptionist/patients')
-      .toPromise()
-      .then((data) => {
-        console.log(data);
-        this.patients = data as Patients[];
-      });
-  }
+    getPatients() {
+      return this.client
+        .get(environment.apiUrl + 'receptionist/patients')
+        .toPromise()
+        .then((data) => {
+          console.log(data);
+          this.patients = data as Patients[];
+        });
+    }
 
   //Get doctor
   getDoctors() {

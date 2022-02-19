@@ -48,11 +48,15 @@ export class BillingComponent implements OnInit {
     if (PatientId != 0 || PatientId != null) {
 
       this.getPatientById(form);
+
     }
     else {
       console.log('Enter valid Patient Id');
     }
   }
+
+
+
 
   onClick(form: NgForm) {
     console.log(form.value);
@@ -60,25 +64,33 @@ export class BillingComponent implements OnInit {
     if (AdviceId != 0 || AdviceId != null) {
       //Insert
       this.getTest(form);
+
+
+
+
+
     } else {
       console.log('Enter valid Patient Id');
     }
   }
 
   onClickClick(form: NgForm){
-
+    //console.log('Value of id'+form.value.PatientId)
     this.LabBillDateTime=new Date();
     var datePipe = new DatePipe('en-UK');
     let formattedDate: any = datePipe.transform(
       this.LabBillDateTime,
       'yyyy-MM-dd'
     );
-    this.TestListId=document.getElementById('TestListId').innerHTML;
-    this.PatientId=document.getElementById('PatientId').innerHTML;
-    this.LabBillAmount=document.getElementById('total').innerHTML;
+     //this.TestListId=document.getElementById('TestListId').innerText;
+    // this.PatientId=form.value.PatientId
+     this.LabBillAmount=document.getElementById('total').innerHTML;
 
-    this.lab={LabBillDateTime:formattedDate,TestListId: this.TestListId,
-      PatientId:this.PatientId,LabBillAmount:this.LabBillAmount}
+    //console.log('Value of id'+form.value.PatientId)
+
+    this.lab={LabBillDateTime:formattedDate,TestListId: 1,
+      PatientId:form.value.PatientId,LabBillAmount:this.LabBillAmount}
+      console.log(form.value.TestListId)
 
 this.post(this.lab);
 
@@ -122,6 +134,7 @@ this.post(this.lab);
     console.log('Trying to insert values..');
     this.labTestService.postBills(lab);
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
+
 
   }
 

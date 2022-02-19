@@ -1,0 +1,193 @@
+
+<div class="container">
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="myForm"
+  name="myForm"
+  class="form-group border-bottom border-start p-3"
+  autocomplete="off"
+>
+  <div class="row mx-3 mt-2">
+    <input type="hidden" name="StaffId" formControlName="StaffId" />
+
+    <!-- Staff Name -->
+    <div class="col">
+      <label for="StaffName">Staff Name: </label>
+      <input
+        type="text"
+        id="StaffName"
+        formControlName="StaffName"
+        class="form-control"
+        required
+        placeholder="Enter staff name"
+      />
+
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.StaffName?.valid && (myForm.controls.StaffName?.dirty
+    ||myForm.controls.StaffName?.touched)">
+      <em>Name is required!</em>
+  </div>
+    </div>
+
+    <div class="col me-4">
+      <label for="StaffPhone">Phone: </label>
+      <input
+        type="text"
+        id="StaffPhone"
+        formControlName="StaffPhone"
+        class="form-control"
+        required
+        placeholder="xxxxxxxxxx"
+      />
+      
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.StaffPhone?.valid && (myForm.controls.StaffPhone?.dirty
+    ||myForm.controls.StaffPhone?.touched)">
+      <em>Phone is required!</em>
+  </div>
+    </div>
+
+    <div class="row my-2">
+      <div class="col">
+        <label for="StaffEmail">Email: </label>
+        <input
+          type="email"
+          id="StaffEmail"
+          formControlName="StaffEmail"
+          class="form-control"
+          required
+            placeholder="abc@mail.com"
+        />
+        
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.StaffEmail?.valid && (myForm.controls.StaffEmail?.dirty
+    ||myForm.controls.StaffEmail?.touched)">
+      <em>Email is required!</em>
+  </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="StaffAddress">Address: </label>
+        <input
+          type="text"
+          id="StaffAddress"
+          formControlName="StaffAddress"
+          class="form-control"
+          required
+            placeholder="Staff address"
+        />
+        
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.StaffAddress?.valid && (myForm.controls.StaffAddress?.dirty
+    ||myForm.controls.StaffAddress?.touched)">
+      <em>Address filed is required!</em>
+  </div>
+      </div>
+    </div>
+
+
+<div class="row my-2">
+    <div class="col">
+      <label for="StaffDob">Date of Birth: </label>
+      <input
+        type="date"
+        id="StaffDob"
+        formControlName="StaffDob"
+        class="form-control"
+        required
+      />
+      
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.StaffDob?.valid && (myForm.controls.StaffDob?.dirty
+    ||myForm.controls.StaffDob?.touched)">
+      <em>Date of Birth is required!</em>
+  </div>
+    </div>
+
+    <div class="col">
+      <label for="StaffJoiningDate">Date of Joining: </label>
+      <input
+        type="date"
+        id="StaffJoiningDate"
+        formControlName="StaffJoiningDate"
+        class="form-control"
+      />
+
+       
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.StaffJoiningDate?.valid && (myForm.controls.StaffJoiningDate?.dirty
+    ||myForm.controls.StaffJoiningDate?.touched)">
+      <em>Date of joining is required!</em>
+  </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="RoleId" class="form-label">Role: </label>
+        <select
+          name="RoleId"
+          id="RoleId"
+          class="form-select"
+          formControlName="RoleId"
+          required
+        >
+          <option disabled value="0">Choose...</option>
+          <option *ngFor="let role of admin.roles" value="{{ role.RoleId }}">
+            {{ role.RoleName }}
+          </option>
+        </select>
+
+
+<!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.RoleId?.valid && (myForm.controls.RoleId?.dirty
+    ||myForm.controls.RoleId?.touched)">
+      <em>Please select a role!</em>
+  </div>
+      </div>
+
+      <div class="col">
+        <label for="QualificationId" class="form-label">Qualification: </label>
+        <select
+        name="QualificationId"
+          id="QualificationId"
+          class="form-select"
+          formControlName="QualificationId"
+          required
+        >
+          <option disabled value="0">Choose...</option>
+          <option
+            *ngFor="let qualification of admin.qualifications"
+            value="{{ qualification.QualificationId }}"
+          >
+            {{ qualification.QualificationName }}
+          </option>
+        </select>
+        
+<!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.QualificationId?.valid && (myForm.controls.QualificationId?.dirty
+    ||myForm.controls.QualificationId?.touched)">
+      <em>Please select Qualification!</em>
+  </div>
+      
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">
+        Submit
+      </button>
+    </div>
+  </div>
+</form>
+</div>

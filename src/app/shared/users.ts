@@ -1,6 +1,6 @@
 export class Users {
   UserId:string='';
   UserName:string='';
-  Password:string='';
+  UserPassword:string='';
   StaffId:number=0;
 }
