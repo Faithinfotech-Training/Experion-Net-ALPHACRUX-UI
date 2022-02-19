@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   MedListId:any;
   PatientId:any;
 
-  
+
   constructor(
     public pharmacyService: PharmacistService,
     private router: Router,
@@ -47,6 +47,8 @@ export class HomeComponent implements OnInit {
 
     if (PatientId != 0 || PatientId != null) {
 
+      let PrescriptionId = this.pharmacyService.formData1.PrescriptionId;
+    console.log(PrescriptionId);
       this.getPatientById(form);
     }
     else{
@@ -60,7 +62,7 @@ export class HomeComponent implements OnInit {
     console.log(PrescriptionId);
     if (PrescriptionId != 0 || PrescriptionId != null) {
       this.getTest(form);
-    } else { 
+    } else {
 
       console.log('Enter valid Patient Id')
     }
