@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 import { DoctorAdviceService } from 'src/app/shared/doctor-advice.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class TestsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    public doctorAdvice:DoctorAdviceService) { }
+    public doctorAdvice:DoctorAdviceService,
+    private auth:AuthService) { }
 
     testData ={
       PatientId:13,
@@ -45,5 +47,13 @@ export class TestsComponent implements OnInit {
 
     this.checkoutForm.reset();
    // this.router.navigate(['/']);
+  }
+
+
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
   }
 }

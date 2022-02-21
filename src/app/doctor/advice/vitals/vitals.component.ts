@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { VitalsService } from 'src/app/shared/vitals.service';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/shared/auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class VitalsComponent implements OnInit {
   NgForm=NgForm;
 
   constructor(public vitalsService: VitalsService,
-    private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
+    private router: Router,private route: ActivatedRoute,private toastr: ToastrService,
+    private auth:AuthService) { }
 
     ngOnInit(): void {
 
@@ -59,6 +61,12 @@ export class VitalsComponent implements OnInit {
       console.log(err);
     }
   );
+}
+logout(){
+  console.log('inside logout')
+  this.auth.logOut();
+
+  this.router.navigateByUrl('/login')
 }
 
 

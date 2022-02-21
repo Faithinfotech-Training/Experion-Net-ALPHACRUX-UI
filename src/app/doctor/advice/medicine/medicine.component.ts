@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/app/shared/auth.service';
 import { MedicinedocService } from 'src/app/shared/medicinedoc.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class MedicineComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    public app:AppComponent
+    public app:AppComponent,
+    private auth:AuthService
   ) {
     }
 
@@ -50,6 +52,13 @@ export class MedicineComponent implements OnInit {
       this.toastr.error('Please select a Medicine', 'Error!');
       this.checkoutForm.reset();
     }
+  }
+
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
   }
 
 
