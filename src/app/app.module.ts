@@ -44,6 +44,7 @@ import { ListMedicinesComponent } from './administrator/medicines/list-medicines
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgpSortModule } from 'ngp-sort-pipe';
 
 
 
@@ -96,6 +97,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
+    NgpSortModule,
   ],
   providers: [ReceptionService, UpdatePatientService, DoctorAdviceService],
   bootstrap: [AppComponent],

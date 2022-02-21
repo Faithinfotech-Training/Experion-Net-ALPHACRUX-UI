@@ -3,10 +3,10 @@
   <input type="search" class="form-control" [(ngModel)]="search" name="search" id="search" placeholder="Search...">
   
   <div class="row">
-        <div class="col my-3 p-0" *ngFor="let staff of admin.staffs | filter:search">
+        <div class="col my-3 p-0" *ngFor="let staff of admin.staffs |sortBy: 'desc':'StaffId' | filter:search">
 <div class="card m-3" style="width: 18rem;">
   
-  <div class="card-header">
+  <div class="card-header" >
    ID: {{staff.StaffId}}
    <i class="bi bi-pencil btn btn-outline-info btn-sm" (click)="editStaff(staff.StaffId)"></i>
   </div>
