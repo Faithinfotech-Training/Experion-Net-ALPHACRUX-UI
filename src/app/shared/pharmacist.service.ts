@@ -7,6 +7,9 @@ import { LabTestReportComponent } from '../lab-technician/lab-test-report/lab-te
 import { Medlist } from './medlist';
 import { Pharmacist } from './pharmacist';
 import {Medbills} from '../shared/medbills'
+import { QueryValueType } from '@angular/compiler/src/core';
+import { FormArray } from '@angular/forms';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,12 +19,16 @@ export class PharmacistService {
 
   MedList:Medlist[];
   formData2:Medlist=new Medlist();
-  
+
   users:any
   public total=0;
+  public product=0;
   public value;
   medbills:Medbills[];
   constructor(private httpClient:HttpClient) { }
+  clientProductForm:FormArray
+
+
 
   getPatientById(id: number): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'pharmacist/prescription/' + id);
@@ -35,12 +42,20 @@ export class PharmacistService {
         console.log(res);
         this.MedList=res as Medlist[];
         this.users=this.MedList
+
+     this.findprod(this.users);
      this.findsum(this.users);
 
 
 
       }
     )
+  }
+
+  findprod(data){
+    this.value=data;
+    console.log(this.value.MedicineQuantity);
+
   }
   findsum(data){
 
@@ -61,6 +76,8 @@ export class PharmacistService {
       environment.apiUrl +'pharmacist/add',med
 
     );
+
 }
+
 }
 

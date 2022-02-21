@@ -8,4 +8,6 @@ export class Medlist {
     MedicineId:number=0;
     MedicineQuantity:number=0;
     MedicinePrice:number=0;
+
+    Qty1:number=0;
 }

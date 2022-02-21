@@ -16,6 +16,7 @@ export class RegisterPatientComponent implements OnInit {
   patientId:number;
   NgForm=NgForm;
 
+
   constructor(public updatePatientService: UpdatePatientService,
     private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
 

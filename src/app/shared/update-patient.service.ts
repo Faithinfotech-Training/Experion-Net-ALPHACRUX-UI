@@ -16,7 +16,7 @@ export class UpdatePatientService {
   //Update Patient Details
   UpdatePatient(updatePatient: UpdatePatient): Observable<any> {
     return this.httpClient.put(
-      environment.apiUrl + 'Receptionist/updatepatient',updatePatient);
+      environment.apiUrl + 'Receptionist/updatepatient/',updatePatient);
   }
 
  //Insert Employee
