@@ -23,6 +23,7 @@ export class BillingComponent implements OnInit {
   total=0;
   value;
   lab:any;
+  clicked = false;
 
 
   //values
@@ -71,6 +72,8 @@ export class BillingComponent implements OnInit {
 
 
 
+
+
     } else {
       console.log('Enter valid Patient Id');
     }
@@ -99,9 +102,15 @@ export class BillingComponent implements OnInit {
       "PatientId":form.value.PatientId,"LabBillAmount":numberValue}
       console.log(form.value.TestListId)
 
-      
+      if(form.value.PatientId>0 && numberValue>0){
+        this.post(this.lab);
+      }
+      else{
+        this.toastr.error('Cannot create bill with given information', 'CMS App V2022');
+      }
 
-this.post(this.lab);
+
+
 
 
   }
@@ -147,6 +156,7 @@ this.post(this.lab);
     console.log('Trying to insert values..');
 
     this.labTestService.postBills(lab);
+
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
 
 
@@ -157,6 +167,7 @@ this.post(this.lab);
 
     this.router.navigateByUrl('/login')
   }
+
 
 
 }

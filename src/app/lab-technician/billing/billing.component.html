@@ -154,6 +154,7 @@
                     name="PatientId"
                     #PatientId="ngModel"
                     [(ngModel)]="labTestService.formData.PatientId"
+                    disabled
                   />
                 </div>
               </div>
@@ -172,6 +173,7 @@
                     name="PatientName"
                     #PatientName="ngModel"
                     [(ngModel)]="labTestService.formData.PatientName"
+                    disabled
                   />
                 </div>
               </div>
@@ -194,6 +196,7 @@
                     #TestListId="ngModel"
                     id="TestListId"
                     [(ngModel)]="labTestService.formData.TestListId"
+                    disabled
                   />
                 </div>
               </div>
@@ -214,6 +217,7 @@
                     name="PatientPhone"
                     #PatientPhone="ngModel"
                     [(ngModel)]="labTestService.formData.PatientPhone"
+                    disabled
                   />
                 </div>
               </div>
@@ -232,6 +236,7 @@
                     name="StaffName"
                     #StaffName="ngModel"
                     [(ngModel)]="labTestService.formData.StaffName"
+                    disabled
                   />
                 </div>
               </div>
@@ -247,7 +252,7 @@
                     name="ReportDateTime"
                     #ReportDateTime="ngModel"
                     [(ngModel)]="labTestService.formData.ReportDateTime"
-                    placeholder="Patient_DOB"
+                    disabled
                     style="width: 500px"
                   />
                 </div>

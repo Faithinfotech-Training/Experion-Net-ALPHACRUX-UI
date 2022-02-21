@@ -2,6 +2,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shared/auth.service';
 //import jsPDF from 'jspdf';
 //import pdfMake from 'pdfmake/build/pdfmake';
 //import htmlToPdfmake from 'html-to-pdfmake';
@@ -39,7 +40,8 @@ export class PaymentsComponent implements OnInit {
 
 */
 
-  constructor(public receptionService : ReceptionService,private router: Router,private toastr: ToastrService) {}
+  constructor(public receptionService : ReceptionService,private router: Router,private toastr: ToastrService,
+    private auth:AuthService) {}
 
   ngOnInit(): void {
 
@@ -75,6 +77,12 @@ export class PaymentsComponent implements OnInit {
 
   generatebill(){
     this.toastr.success('Bill generated Successfully', 'CMS App V2022');
+  }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
   }
 
 }
