@@ -1,7 +1,7 @@
 <app-reception></app-reception>
 
-<div class="container-fluid-sm d-flex align-items-stretch">
-  <div class="float-start bg-light navbar-light p-1">
+<div class="container-fluid-sm d-flex align-items-stretch ">
+  <div class="float-start bg-light navbar-light p-1 position-fixed">
     <ul class="navbar-nav ms-2 gap-3">
       <li class="navbar-item">
         <a class="navbar-brand" href="reception/home"
@@ -15,12 +15,12 @@
 
       <li class="navbar-item">
         <a class="nav-link active" href="reception/register-patient"
-          ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+          ><i class="bi bi-person-plus-fill" style="font-size: 1.5rem"></i
         ></a>
       </li>
     <li class="navbar-item">
       <a class="nav-link active" href="reception/update-patient"
-        ><i class="bi-plus-circle" style="font-size: 1.5rem"></i
+        ><i class="bi bi-pencil-square" style="font-size: 1.5rem"></i
       ></a>
     </li>
       <li class="nav-item ">
@@ -40,10 +40,10 @@
 
 
 
-<div class="container-sm m-5 p-4">
+<div class="container-fluid-sm m-5 p-4">
     <div class="row text-center m-2"><h5><strong>Payments</strong></h5></div>
     <div class="row mt-4">
-        <div class="table-responsive">
+        <div class="table">
             <table class="table table-bordered ms-4">
                 <thead>
                     <tr>
@@ -51,7 +51,7 @@
                         <th scope="col">Date&Time</th>
                         <th scope="col">Patient ID</th>
                         <th scope="col">Patient Name</th>
-                        <th scope="col">Payment Mode</th>
+
                     </tr>
                 </thead>
                 <tbody *ngFor="let Payment of paymentsService.payments|filter:filter|paginate:{itemsPerPage:4,currentPage:page}">
@@ -60,7 +60,7 @@
                     <td>{{Payment.DateTime | date: 'dd-MMM-yy h:mm a'}}</td>
                     <td>{{Payment.PatientId}}</td>
                     <td>{{Payment.PatientName}}</td>
-                    <td>{{Payment.PaymentMode}}</td>
+
                 </tr>
                 </tbody>
             </table>

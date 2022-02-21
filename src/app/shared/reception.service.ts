@@ -5,7 +5,9 @@ import { environment } from 'src/environments/environment';
 import { TokenQueue } from 'src/app/shared/token-queue';
 import { Patients } from 'src/app/shared/patients';
 import { Doctors } from 'src/app/shared/doctors';
-
+//import { Token } from '@angular/compiler/src/ml_parser/lexer';
+import { Token } from 'src/app/shared/token';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,23 +18,23 @@ export class ReceptionService {
   token: TokenQueue = new TokenQueue();
   doctors: Doctors[];
 
-  $isPass= new EventEmitter();
-  pat:Patients=
-  {
-    PatientId:0,
-    PatientName:''
-  };
-  $isDoc=new EventEmitter();
-  doc:Doctors=
-  {
+  formData2: Token = new Token();
 
-  DoctorId: 0,
-  DoctorName:'',
-  Phone:'',
-  Email: '',
-  RoleName:'',
-  Qualification:''
-  }
+
+  $isPass = new EventEmitter();
+  pat: Patients = {
+    PatientId: 0,
+    PatientName: '',
+  };
+  $isDoc = new EventEmitter();
+  doc: Doctors = {
+    DoctorId: 0,
+    DoctorName: '',
+    Phone: '',
+    Email: '',
+    RoleName: '',
+    Qualification: '',
+  };
 
   constructor(private client: HttpClient) {}
 
@@ -50,15 +52,15 @@ export class ReceptionService {
   }
 
   //Get patient
-    getPatients() {
-      return this.client
-        .get(environment.apiUrl + 'receptionist/patients')
-        .toPromise()
-        .then((data) => {
-          console.log(data);
-          this.patients = data as Patients[];
-        });
-    }
+  getPatients() {
+    return this.client
+      .get(environment.apiUrl + 'receptionist/patients')
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        this.patients = data as Patients[];
+      });
+  }
 
   //Get doctor
   getDoctors() {
@@ -82,10 +84,9 @@ export class ReceptionService {
       });
   }
 
-  getpatientwithid(patientId:number){
+  getpatientwithid(patientId: number):Observable<any> {
     return this.client.get(
-      environment.apiUrl+'Receptionist/patientid/'+patientId
-
+      environment.apiUrl + 'receptionist/token/patientid/' + patientId
     );
   }
 
@@ -95,5 +96,4 @@ export class ReceptionService {
       environment.apiUrl + 'receptionist/deletetoken/' + tokenId
     );
   }
-
 }

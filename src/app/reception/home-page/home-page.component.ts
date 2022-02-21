@@ -48,7 +48,7 @@ export class HomePageComponent implements OnInit {
       this.checkoutForm.value.PatientId != null &&
       this.checkoutForm.value.StaffId != null
     ) {
-      this.toastr.success('Token successfully generayed', 'Successfull!');
+      this.toastr.success('Token successfully generated', 'Successfull!');
       this.reception.generateToken(this.checkoutForm.value);
       this.reception.pat.PatientId = this.checkoutForm.value.PatientId;
       this.reception.$isPass.emit(this.reception.pat);
@@ -69,7 +69,7 @@ export class HomePageComponent implements OnInit {
           console.log('This is token',response);
           this.reception.getTokenQueue();
           this.router.navigate(['/reception/home']);
-          
+
         },
         (error) => {
           console.log(error);
