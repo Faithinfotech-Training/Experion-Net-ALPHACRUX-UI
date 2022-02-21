@@ -47,7 +47,7 @@
             <a
               class="nav-link dropdown-toggle"
               (click)="logout()"
-          
+
               role="button"
               data-bs-toggle="dropdown"
               ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
@@ -121,11 +121,11 @@
           <hr />
 
           <form
-            #form="ngForm"
-            name="ngForm"
+            #form1="ngForm"
+            name="ngForm1"
             autocomplete="off"
             class="form-group p-3"
-            (ngSubmit)="onClickClick(form)"
+            (ngSubmit)="onClickClick(form1)"
           >
             <div class="form-group row align-items-center">
               <h4>PATIENT DETAILS</h4>
@@ -257,11 +257,11 @@
             <br />
 
             <form
-              #form="ngForm"
+              #form2="ngForm"
               name="ngForm"
               autocomplete="off"
               class="form-group p-3"
-              (ngSubmit)="onClick(form)"
+              (ngSubmit)="onClick(form2)"
             >
               <div class="form-group row align-items-center">
                 <!-- <h4>TEST DETAILS</h4> -->

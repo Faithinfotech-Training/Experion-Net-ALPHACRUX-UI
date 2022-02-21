@@ -82,17 +82,24 @@ export class BillingComponent implements OnInit {
     var datePipe = new DatePipe('en-UK');
     let formattedDate: any = datePipe.transform(
       this.LabBillDateTime,
-      'yyyy-MM-dd'
+      "yyyy-MM-dd"
     );
      //this.TestListId=document.getElementById('TestListId').innerText;
     // this.PatientId=form.value.PatientId
      this.LabBillAmount=document.getElementById('total').innerHTML;
+     this.TestListId=form.value.TestListId
 
-    //console.log('Value of id'+form.value.PatientId)
+    console.log('Value of id'+this.TestListId)
+    var numberValue = Number(this.LabBillAmount);
 
-    this.lab={LabBillDateTime:formattedDate,TestListId: 1,
-      PatientId:form.value.PatientId,LabBillAmount:this.LabBillAmount}
+
+
+
+    this.lab={"LabBillDateTime":formattedDate,"TestListId": this.TestListId,
+      "PatientId":form.value.PatientId,"LabBillAmount":numberValue}
       console.log(form.value.TestListId)
+
+      
 
 this.post(this.lab);
 
@@ -138,6 +145,7 @@ this.post(this.lab);
 
 
     console.log('Trying to insert values..');
+
     this.labTestService.postBills(lab);
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
 
