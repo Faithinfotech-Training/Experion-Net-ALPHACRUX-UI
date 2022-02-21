@@ -44,7 +44,7 @@ export class MedicineComponent implements OnInit {
       this.toastr.success('Medicine List Added', 'Successfull!');
       this.medicineService.pat.MedicineId = this.checkoutForm.value.PatientId;
 
-      this.router.navigate(['/doctor/app']);
+      this.router.navigate(['/doctors/app']);
     }
     else {
       this.toastr.error('Please select a Medicine', 'Error!');

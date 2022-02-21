@@ -32,17 +32,17 @@ export class MedicinedocService {
   //Get Medicine
   getMedicines() {
     return this.client
-      .get(environment.updateUrl + 'doctor/viewMedicinelists')
+      .get(environment.updateUrl + 'doctors/viewMedicinelists')
       .toPromise()
       .then((data) => {
         console.log(data);
-        this.patients = data as Patients[];
+        this.medicines = data as Medicinedoc[];
       });
   }
 
 
   //Generate Medicnes
-  generateMedicne(medicines: Medicinedoc) {
+  generateMedicine(medicines: Medicinedoc) {
     return this.client
       .post(environment.apiUrl + 'doctor/advice/medicine', medicines)
       .toPromise()
