@@ -21,18 +21,25 @@
       <label for="MedicineName">Medicine Name: </label>
       <input
         type="text"
+        name="MedicineName"
         id="MedicineName"
         formControlName="MedicineName"
         class="form-control"
-        required
         placeholder="Enter Medicine Name"
+        [ngClass]="{'is-invalid': !myForm.controls.MedicineName?.valid && (myForm.controls.MedicineName?.dirty
+    ||myForm.controls.MedicineName?.touched)}"
       />
 
       <!-- Validation -->
       <div
     *ngIf="!myForm.controls.MedicineName?.valid && (myForm.controls.MedicineName?.dirty
     ||myForm.controls.MedicineName?.touched)">
-      <em>Name is required!</em>
+    <div *ngIf="myForm.get('MedicineName').hasError('pattern')">
+      <em>Name should contain only alphabets and Numbers!</em>
+    </div>
+    <div *ngIf="myForm.get('MedicineName').hasError('required')">
+            <em>Name is required!</em>
+    </div>
   </div>
     </div>
 
@@ -41,17 +48,24 @@
       <input
         type="number"
         id="MedicinePrice"
+   
         formControlName="MedicinePrice"
         class="form-control"
-        required
         placeholder="₹"
+        [ngClass]="{'is-invalid': !myForm.controls.MedicinePrice?.valid && (myForm.controls.MedicinePrice?.dirty
+    ||myForm.controls.MedicinePrice?.touched)}"
       />
       
       <!-- Validation -->
       <div
     *ngIf="!myForm.controls.MedicinePrice?.valid && (myForm.controls.MedicinePrice?.dirty
     ||myForm.controls.MedicinePrice?.touched)">
-      <em>Price is required!</em>
+    <div *ngIf="myForm.get('MedicinePrice').hasError('pattern')">
+      <em>Price should be positive Numbers!</em>
+    </div>
+    <div *ngIf="myForm.get('MedicinePrice').hasError('required')">
+                 <em>Price is required!</em>
+    </div>
   </div>
     </div>
 
@@ -63,7 +77,8 @@
         id="ExpiryDate"
         formControlName="ExpiryDate"
         class="form-control"
-        required
+        [ngClass]="{'is-invalid': !myForm.controls.ExpiryDate?.valid && (myForm.controls.ExpiryDate?.dirty
+    ||myForm.controls.ExpiryDate?.touched)}"
       />
       
       <!-- Validation -->
@@ -81,6 +96,8 @@
         id="ManufacturingDate"
         formControlName="ManufacturingDate"
         class="form-control"
+        [ngClass]="{'is-invalid': !myForm.controls.ManufacturingDate?.valid && (myForm.controls.ManufacturingDate?.dirty
+    ||myForm.controls.ManufacturingDate?.touched)}"
       />
 
        
