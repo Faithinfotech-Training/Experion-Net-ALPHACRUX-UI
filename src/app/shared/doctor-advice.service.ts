@@ -27,7 +27,7 @@ export class DoctorAdviceService {
      }
 
      getTestLists(){
-      return this.httpClient.get(environment.updateUrl + 'doctor/viewlists').
+      return this.httpClient.get(environment.updateUrl + 'doctors/viewlists').
       toPromise()
       .then(response=>
         {

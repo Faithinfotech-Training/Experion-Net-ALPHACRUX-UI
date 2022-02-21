@@ -18,7 +18,7 @@
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor = "let medicine of admin.medicines |filter: filter | paginate:{itemsPerPage:5, currentPage: page}">
+                    <tr *ngFor = "let medicine of admin.medicines |sortBy: 'desc':'InventoryId'  |filter: filter | paginate:{itemsPerPage:5, currentPage: page}">
                         <td>{{medicine.InventoryId}}</td>
                         <td>{{medicine.MedicineName}}</td>
                         <td>{{medicine.MedicineQuantity}}</td>

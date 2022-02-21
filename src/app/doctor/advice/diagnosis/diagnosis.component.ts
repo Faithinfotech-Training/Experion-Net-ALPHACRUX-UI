@@ -56,7 +56,7 @@ onSubmit(form: NgForm) {
     //Insert
     this.insertDoctorNote(form);
     this.resetForm(form);
-    this.router.navigateByUrl('/doctor/advice/tests')
+    this.router.navigateByUrl('/doctor/advice/medicine')
 
 
   } else {
