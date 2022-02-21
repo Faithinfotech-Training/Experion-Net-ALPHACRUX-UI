@@ -1,57 +1,37 @@
 <header>
   <!-- Nav bar -->
-  <div class="container-fluid clearfix position-fixed p-0">
-      <nav class="navbar navbar-expand-sm  bg-dark navbar-dark fixed-top">
+      <nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
           <div class="container-fluid">
               <a class="navbar-brand" href="#">
                   <h3>Administrator</h3>
               </a>
-              <form class="d-flex mt-2" action="submit">
-                  <input class="form-control me-2" type="text" placeholder="Search">
-                  <button class="btn btn-outline-success" type="button">Search</button>
-              </form>
+<ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="admin/staffs/edit">Staffs</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="admin/medicine">Medicines</a>
+      </li>
+</ul>
+           <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+      <ul class="navbar-nav ms-auto me-3">
+        <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+            Profile
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action 2</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
           </div>
       </nav>
-
-
-
-      <!-- Side bar -->
-      <div class="d-flex align-items-start">
-          <nav class="bg-light navbar-light p-1 mt-3" style="min-width: fit-content;min-height: 100vh;">
-
-              <ul class="navbar-nav ms-2 gap-3">
-                  <li class="navbar-item ">
-                      <a class="navbar-brand" href="#"><i class="bi bi-house-fill"
-                              style="font-size: 1.5rem;"></i></a>
-                  </li>
-
-                  <li class="navbar-item">
-                      <a class="nav-link active" href="#"><i class="bi bi-house"
-                              style="font-size: 1.5rem;"></i></a>
-                  </li>
-                  <li class="navbar-item">
-                      <a class="nav-link" href="#"><i class="bi bi-plus-circle"
-                              style="font-size: 1.5rem;"></i></a>
-                  </li>
-                  <li class="navbar-item">
-                      <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill"
-                              style="font-size: 1.5rem;"></i></a>
-                  </li>
-
-                  <li class="nav-item dropup">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
-                              class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
-                      <ul class="dropdown-menu bg-secondary">
-                          <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-                          <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-                          <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-                      </ul>
-                  </li>
-              </ul>
-          </nav>
-
-      </div>
-  </div>
-
+      
 </header>
-<div class="row m-5"></div>
+
+
+<div class="row m-3"></div>

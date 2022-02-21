@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
   error = '';
 
   loginUser: any = new Users();
+  //isAuthenticate = false;
 
 
 
@@ -64,59 +65,65 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
         data => {
           this.error='';
           console.log(data);
-          //this.loginUser = data;
+          this.loginUser = data;
 
-          //Username, Role and Token
+          if(this.loginUser.StaffId==1||this.loginUser.StaffId==2||
+            this.loginUser.StaffId==3
+            ||this.loginUser.StaffId==4){
 
-          //sessionStorage.setItem('JwtTOKEN', this.loginUser.token);
-          //console.log(data.StaffId);
 
-          if(data.StaffId==1||data.StaffId==2||
-            data.StaffId==3
-            ||data.StaffId==4){
+              console.log("Redirecting to Doctor Page");
+              localStorage.setItem("USERNAME", this.loginUser.UserName);
+              localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+              sessionStorage.setItem("USERNAME", this.loginUser.UserName);
               this.router.navigateByUrl('doctor/appointments');
 
             }
-            else if(data.StaffId==5||data.StaffId==6||
-              data.StaffId==11
+            else if(this.loginUser.StaffId==5||this.loginUser.StaffId==6||
+              this.loginUser.StaffId==11
               ){
+                console.log("Redirecting to Receptionist Page");
+                localStorage.setItem("USERNAME", this.loginUser.UserName);
+                localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                sessionStorage.setItem("USERNAME", this.loginUser.UserName);
                 this.router.navigateByUrl('reception/home');
 
               }
-              else if(data.StaffId==7|| data.StaffId==12|| data.StaffId==13
+              else if(this.loginUser.StaffId==7|| this.loginUser.StaffId==12|| this.loginUser.StaffId==13
                 ){
+                  console.log("Redirecting to pharmacist Page");
+                  localStorage.setItem("USERNAME", this.loginUser.UserName);
+                  localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                  sessionStorage.setItem("USERNAME", this.loginUser.UserName);
                   this.router.navigateByUrl('pharmacy/home');
 
                 }
-                else if(data.StaffId==8|| data.StaffId==14
+                else if(this.loginUser.StaffId==8|| this.loginUser.StaffId==14
                   ){
-                    this.router.navigateByUrl('lab/home/billing');
+                    console.log("Redirecting to Lab Technician Page");
+                    localStorage.setItem("USERNAME", this.loginUser.UserName);
+                    localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                    sessionStorage.setItem("USERNAME", this.loginUser.UserName);
+                   this.router.navigateByUrl('lab/home/billing');
+
 
                   }
-                  else if (data.StaffId==9||data.StaffId==10
+                  else if (this.loginUser.StaffId==9||this.loginUser.StaffId==10
                     ){
+                      console.log("Redirecting to Admin Page");
+                      localStorage.setItem("USERNAME", this.loginUser.UserName);
+                      localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                      sessionStorage.setItem("USERNAME", this.loginUser.UserName);
                       this.router.navigateByUrl('admin/staffs/edit');
 
                     }
                     else{
+
                       alert('Invalid Username or password')
                     }
 
 
-          //Check the role based and redirects to respective pages
 
-
-          // if (this.loginForm.value.UserUsername == "binitha"&&
-          // this.loginForm.value.UserPassword=='binitha') {
-
-          //   console.log("Redirecting to Admin Page");
-          //   localStorage.setItem("USERNAME", this.loginUser.UserUsername);
-          //   this.router.navigateByUrl('/users');
-          // }
-
-          // else {
-          //   this.error = "You are not authorized to access this page.";
-          //  }
         },
         error => {
           this.error = "Invalid username or password! try again...";

@@ -1,0 +1,123 @@
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">New Medicine: </h3>
+            <div class="card-text" >
+
+                <form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="myForm"
+  name="myForm"
+  class="form-group p-3"
+  autocomplete="off"
+>
+    <input type="hidden" name="MedicineId" formControlName="MedicineId" />
+
+  <div class="row m-3 mt-2" >
+
+    <!-- Medicine Name -->
+    <div class="col">
+      <label for="MedicineName">Medicine Name: </label>
+      <input
+        type="text"
+        name="MedicineName"
+        id="MedicineName"
+        formControlName="MedicineName"
+        class="form-control"
+        placeholder="Enter Medicine Name"
+        [ngClass]="{'is-invalid': !myForm.controls.MedicineName?.valid && (myForm.controls.MedicineName?.dirty
+    ||myForm.controls.MedicineName?.touched)}"
+      />
+
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.MedicineName?.valid && (myForm.controls.MedicineName?.dirty
+    ||myForm.controls.MedicineName?.touched)">
+    <div *ngIf="myForm.get('MedicineName').hasError('pattern')">
+      <em>Name should contain only alphabets and Numbers!</em>
+    </div>
+    <div *ngIf="myForm.get('MedicineName').hasError('required')">
+            <em>Name is required!</em>
+    </div>
+  </div>
+    </div>
+
+    <div class="col">
+      <label for="MedicinePrice">Price: </label>
+      <input
+        type="number"
+        id="MedicinePrice"
+   
+        formControlName="MedicinePrice"
+        class="form-control"
+        placeholder="₹"
+        [ngClass]="{'is-invalid': !myForm.controls.MedicinePrice?.valid && (myForm.controls.MedicinePrice?.dirty
+    ||myForm.controls.MedicinePrice?.touched)}"
+      />
+      
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.MedicinePrice?.valid && (myForm.controls.MedicinePrice?.dirty
+    ||myForm.controls.MedicinePrice?.touched)">
+    <div *ngIf="myForm.get('MedicinePrice').hasError('pattern')">
+      <em>Price should be positive Numbers!</em>
+    </div>
+    <div *ngIf="myForm.get('MedicinePrice').hasError('required')">
+                 <em>Price is required!</em>
+    </div>
+  </div>
+    </div>
+
+
+    <div class="col">
+      <label for="ExpiryDate">Expiry Date: </label>
+      <input
+        type="date"
+        id="ExpiryDate"
+        formControlName="ExpiryDate"
+        class="form-control"
+        [ngClass]="{'is-invalid': !myForm.controls.ExpiryDate?.valid && (myForm.controls.ExpiryDate?.dirty
+    ||myForm.controls.ExpiryDate?.touched)}"
+      />
+      
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.ExpiryDate?.valid && (myForm.controls.ExpiryDate?.dirty
+    ||myForm.controls.ExpiryDate?.touched)">
+      <em>Exp.Date is required!</em>
+  </div>
+    </div>
+
+    <div class="col">
+      <label for="ManufacturingDate">Manufacture Date: </label>
+      <input
+        type="date"
+        id="ManufacturingDate"
+        formControlName="ManufacturingDate"
+        class="form-control"
+        [ngClass]="{'is-invalid': !myForm.controls.ManufacturingDate?.valid && (myForm.controls.ManufacturingDate?.dirty
+    ||myForm.controls.ManufacturingDate?.touched)}"
+      />
+
+       
+      <!-- Validation -->
+      <div
+    *ngIf="!myForm.controls.ManufacturingDate?.valid && (myForm.controls.ManufacturingDate?.dirty
+    ||myForm.controls.ManufacturingDate?.touched)">
+      <em>Mfg.Date is required!</em>
+  </div>
+    </div>
+    </div>
+    <div class="col m-4">
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">
+        Submit
+      </button>
+    </div>
+</form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, NumberValueAccessor } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shared/auth.service';
 import { DiagnosisService } from '../../../shared/diagnosis.service'
 
 @Component({
@@ -16,7 +17,8 @@ export class DiagnosisComponent implements OnInit {
   NgForm=NgForm;
 
   constructor(public diagnosisService: DiagnosisService,
-    private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
+    private router: Router,private route: ActivatedRoute,private toastr: ToastrService,
+    private auth:AuthService) { }
 
   ngOnInit(): void {this.patientId = this.route.snapshot.params['patientId'];
   this.patientId =13;
@@ -54,7 +56,7 @@ onSubmit(form: NgForm) {
     //Insert
     this.insertDoctorNote(form);
     this.resetForm(form);
-    this.router.navigateByUrl('/doctor/advice/tests')
+    this.router.navigateByUrl('/doctor/advice/medicine')
 
 
   } else {
@@ -86,6 +88,14 @@ resetForm(form?: NgForm) {
   if (form != null) {
     form.resetForm();
   }
+}
+
+
+logout(){
+  console.log('inside logout')
+  this.auth.logOut();
+
+  this.router.navigateByUrl('/login')
 }
   }
 

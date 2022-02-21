@@ -41,7 +41,7 @@ export class ReceptionService {
   //List token queue
   getTokenQueue() {
     return this.client
-      .get(environment.apiUrl + 'receptionist/tokenqueue')
+      .get(environment.updateUrl + 'receptionist/tokenqueue')
       .toPromise()
       .then((data) => {
         console.log(data);

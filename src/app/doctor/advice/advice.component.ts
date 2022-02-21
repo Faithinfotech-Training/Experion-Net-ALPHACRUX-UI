@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shared/auth.service';
 import { DoctorAdviceService } from '../../shared/doctor-advice.service'
 
 @Component({
@@ -15,7 +16,8 @@ export class AdviceComponent implements OnInit {
   NgForm=NgForm;
 
   constructor(public doctorAdviceService: DoctorAdviceService,
-    private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
+    private router: Router,private route: ActivatedRoute,private toastr: ToastrService,
+    private auth:AuthService) { }
 
   ngOnInit(): void {
   this.patientId = this.route.snapshot.params['patientId'];
@@ -44,7 +46,12 @@ export class AdviceComponent implements OnInit {
 }
 
 
+logout(){
+  console.log('inside logout')
+  this.auth.logOut();
 
+  this.router.navigateByUrl('/login')
+}
 
 
 

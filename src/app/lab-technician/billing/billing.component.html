@@ -46,22 +46,13 @@
           <li class="nav-item dropup">
             <a
               class="nav-link dropdown-toggle"
-              href="login"
+              (click)="logout()"
+          
               role="button"
               data-bs-toggle="dropdown"
               ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
             ></a>
-            <ul class="dropdown-menu bg-secondary">
-              <li>
-                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">First Link</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">Second Link</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">Third Link</a>
-              </li>
-            </ul>
+
           </li>
         </ul>
       </nav>

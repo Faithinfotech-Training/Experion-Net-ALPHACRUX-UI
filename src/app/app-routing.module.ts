@@ -26,18 +26,30 @@ import { MedicinesComponent } from './administrator/medicines/medicines.componen
 import { StaffsComponent } from './administrator/staffs/staffs.component';
 import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
+import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
+import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
+import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
+import { CanActivateGuard } from './shared/can-activate.guard';
 
 const routes: Routes = [
-  { path: 'doctor/appointments', component: AppointmentsComponent },
+  { path: 'doctor/appointments', component: AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'login', component:LoginComponent},
-  { path: 'doctor/advice', component: AdviceComponent },
+  { path: 'doctor/advice', component: AdviceComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
   { path: 'admin', component: AdministratorComponent },
-  { path: 'admin/medicine', component: MedicinesComponent },
+  {
+    path: 'admin/medicine',
+    component: MedicinesComponent,
+    children: [
+      { path: 'list', component: ListMedicinesComponent },
+      { path: 'inventory', component: InventoryComponent },
+      { path: 'new', component: NewMedicineComponent },
+    ],
+  },
   {
     path: 'admin/staffs',
     component: StaffsComponent,
@@ -47,19 +59,19 @@ const routes: Routes = [
       { path: 'edit/:staffId', component: NewStaffComponent },
     ],
   },
-  { path: 'doctor/home', component: DoctorComponent },
-  { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'doctor/advice/diagnosis', component: DiagnosisComponent },
-  { path: 'doctor/advice/vitals', component:VitalsComponent},
-  { path: 'doctor/advice/medicine', component:MedicineComponent},
-  { path: 'doctor/advice/tests', component:TestsComponent},
+  { path: 'doctor/home', component: DoctorComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/advice', component: AdviceComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/advice/diagnosis', component: DiagnosisComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/advice/vitals', component:VitalsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
+  { path: 'doctor/advice/medicine', component:MedicineComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
+  { path: 'doctor/advice/tests', component:TestsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: 'lab/home', component:LabTechnicianComponent},
-  { path: 'lab/home/test', component:LabTestReportComponent},
+  { path: 'lab/home/test', component:LabTestReportComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
   { path: 'pharmacist', component: PharmacistComponent },
   {path:'pharmacy/home',component:HomeComponent},
   {path:'pharmacy/reports',component:ReportMedicineComponent},
-  { path: 'lab/home/billing', component:BillingComponent},
-  { path: 'doctor/app', component:AppointmentsComponent},
+  { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
+  { path: 'doctor/app', component:AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: '**', component: AppComponent },
 
 ];

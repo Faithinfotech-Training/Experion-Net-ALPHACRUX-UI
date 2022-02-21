@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Labbills } from 'src/app/shared/labbills';
 import { Labtest } from 'src/app/shared/labtest';
 import { LabtestService } from '../../shared/labtest.service';
@@ -35,7 +36,8 @@ export class BillingComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    public app: AppComponent
+    public app: AppComponent,
+    private auth:AuthService
   ) {}
 
   ngOnInit(): void {}
@@ -94,7 +96,11 @@ export class BillingComponent implements OnInit {
 
 this.post(this.lab);
 
+
   }
+
+
+
 
 
   getPatientById(form?: NgForm) {
@@ -137,5 +143,12 @@ this.post(this.lab);
 
 
   }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
+  }
+
 
 }

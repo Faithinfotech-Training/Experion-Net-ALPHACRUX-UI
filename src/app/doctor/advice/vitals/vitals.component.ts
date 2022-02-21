@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { VitalsService } from 'src/app/shared/vitals.service';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/shared/auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class VitalsComponent implements OnInit {
   NgForm=NgForm;
 
   constructor(public vitalsService: VitalsService,
-    private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
+    private router: Router,private route: ActivatedRoute,private toastr: ToastrService,
+    private auth:AuthService) { }
 
     ngOnInit(): void {
 
@@ -28,18 +30,17 @@ export class VitalsComponent implements OnInit {
 
  //Submit form
  onSubmit(form: NgForm) {
-  console.log(form.value);
-  let addId = this.vitalsService.formData.PatientId;
-
+  //console.log(form.value);
+ // let addId = this.vitalsService.formData.PatientId;
+ let addId =1;
 
   //Insert or update
   if (addId != 0 || addId != null) {
 
     //Insert
+    console.log("Inserting a record....");
     this.insertPatientRecord(form);
-    this.resetForm(form);
-
-
+    //this.resetForm(form);
 
   } else {
 
@@ -60,6 +61,12 @@ export class VitalsComponent implements OnInit {
       console.log(err);
     }
   );
+}
+logout(){
+  console.log('inside logout')
+  this.auth.logOut();
+
+  this.router.navigateByUrl('/login')
 }
 
 

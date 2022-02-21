@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Labtest } from 'src/app/shared/labtest';
 import { LabtestService } from 'src/app/shared/labtest.service';
 
@@ -23,7 +24,8 @@ export class LabTestReportComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    public app:AppComponent) { }
+    public app:AppComponent,
+    private auth:AuthService) { }
 
   ngOnInit(): void {
 
@@ -84,6 +86,8 @@ export class LabTestReportComponent implements OnInit {
     console.log('Finding the tests..');
     this.labTestService
       .getTests(this.labTestService.formData.AdviceId)
+      this.toastr.success('Report created Successfully', 'CMS App V2022');
+
       // .subscribe(
       //   (res) => {
       //     console.log(res);
@@ -94,5 +98,11 @@ export class LabTestReportComponent implements OnInit {
       //     console.log(err);
       //   }
       // );
+  }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
   }
 }

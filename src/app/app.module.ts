@@ -40,11 +40,12 @@ import { HomeComponent } from './pharmacist/home/home.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
+import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
+import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
+import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
-
+import { CanActivateGuard } from './shared/can-activate.guard';
+//import { NgpSortModule } from 'ngp-sort-pipe';
 
 
 
@@ -78,9 +79,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     BillingComponent,
     LoginComponent,
-    VitalsComponent
-
-
+    VitalsComponent,
+    ListMedicinesComponent,
+    NewMedicineComponent,
+    InventoryComponent,
   ],
   imports: [
 
@@ -95,13 +97,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     CommonModule,
-    NgbModule,
-
-
-
-
+    NgbModule
   ],
-  providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
+  providers: [ReceptionService, UpdatePatientService, DoctorAdviceService,CanActivateGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

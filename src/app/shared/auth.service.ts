@@ -12,9 +12,29 @@ export class AuthService {
   password:string;
 
   constructor(private httClient:HttpClient){}
-  public login(user:Users):Observable<any>{
+  public login(user:Users){
+
     this.userName=user.UserName;
     this.password=user.UserPassword;
     return this.httClient.get(environment.apiUrl+'labtechnician/login/'+this.userName+'&'+this.password);
+
 }
+//LOGOUT
+
+public logOut() {
+  
+  console.log('inside logout from lab tech')
+
+  localStorage.removeItem("USERNAME");
+
+  localStorage.removeItem("ACCESSROLE");
+
+  localStorage.removeItem("ACCESSID");
+
+  sessionStorage.removeItem("USERNAME");
+
+  // sessionStorage.removeItem("jwtToken");
+
+}
+
 }

@@ -37,13 +37,9 @@
           </li>
 
           <li class="nav-item dropup">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
+            <a class="nav-link dropdown-toggle" (click)="logout()" role="button" data-bs-toggle="dropdown"><i
                 class="bi bi-person-circle" style="font-size: 1.5rem;"></i></a>
-            <ul class="dropdown-menu bg-secondary">
-              <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-              <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-              <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-            </ul>
+
           </li>
         </ul>
       </nav>
@@ -57,8 +53,10 @@
     <div class="col mt-5">
       <div class="card" style="border-radius: 15px;">
         <div class="card-body">
-          <form #form="ngForm" name="ngForm" autocomplete="off"
-          class="form-group p-3" (ngSubmit)="onSubmit(form)">
+          <form  name="ngForm" autocomplete="off"
+          class="form-group p-3" (ngSubmit)="onSubmit(form)"
+          #form="ngForm"
+       >
 
 
     <table class="table">
@@ -74,25 +72,29 @@
         <tr>
           <th scope="row">1</th>
           <td>Breath Rate</td>
-          <td><input type="text" class="form-control"  placeholder="obtained value"></td>
+          <td><input type="text"  #BreathRate="ngModel"
+            [(ngModel)]="vitalsService.formData.BreathRate" class="form-control"  placeholder="obtained value" name="BreathRate"></td>
           <td>BPM</td>
         </tr>
         <tr>
           <th scope="row">2</th>
           <td>Body Temperature</td>
-          <td><input type="number" class="form-control"  placeholder="obtained value"></td>
+          <td><input type="number" #BreathRate="ngModel"
+            [(ngModel)]="vitalsService.formData.BodyTemp"  class="form-control"  placeholder="obtained value" name="BodyTemp"></td>
           <td>°F</td>
         </tr>
         <tr>
           <th scope="row">3</th>
           <td>Blood Pressure</td>
-          <td><input type="text" class="form-control"  placeholder="obtained value"></td>
+          <td><input type="text" #BreathRate="ngModel"
+            [(ngModel)]="vitalsService.formData.BloodPressure" class="form-control"  placeholder="obtained value" name="BloodPressure"></td>
           <td>mmHg</td>
         </tr>
         <tr>
           <th scope="row">4</th>
           <td>Pulse Rate</td>
-          <td><input type="text" class="form-control"  placeholder="obtained value">
+          <td><input type="text" #BreathRate="ngModel"
+            [(ngModel)]="vitalsService.formData.PulseRate" class="form-control"  placeholder="obtained value" name="PulseRate">
           </td>
           <td>BPM</td>
         </tr>
