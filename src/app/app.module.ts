@@ -40,6 +40,9 @@ import { HomeComponent } from './pharmacist/home/home.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component';
 import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
+import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
+import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
+import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 
 
 
@@ -73,9 +76,10 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
     HomeComponent,
     BillingComponent,
     LoginComponent,
-    VitalsComponent
-
-
+    VitalsComponent,
+    ListMedicinesComponent,
+    NewMedicineComponent,
+    InventoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,9 +94,10 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
-    
+  
+  
   ],
-  providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
+  providers: [ReceptionService, UpdatePatientService, DoctorAdviceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

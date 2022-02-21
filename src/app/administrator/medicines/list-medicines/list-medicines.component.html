@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <input type="text" class="form-control m-2" placeholder="Search text here..." [(ngModel)]="filter">
+               <p>{{filter}}</p>
+            </div>
+            <table class="table mt-5">
+                <thead>
+                    <th>ID</th>
+                    <th>Medicine Name</th>
+                    <th>Quantity</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Manufacture</th>
+                    <th>Mfg. Date</th>
+                    <th>Exp. Date</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let medicine of admin.medicines |filter: filter | paginate:{itemsPerPage:5, currentPage: page}">
+                        <td>{{medicine.InventoryId}}</td>
+                        <td>{{medicine.MedicineName}}</td>
+                        <td>{{medicine.MedicineQuantity}}</td>
+                        <td>{{medicine.MedicineType}}</td>
+                        <td>{{medicine.MedicinePrice}}</td>
+                        <td>{{medicine.ManufactureName}}</td>
+                        <td>{{medicine.ManufacturingDate | date: 'dd-MMM-yy'}}</td>
+                        <td>{{medicine.ExpiryDate | date: 'dd-MMM-yy'}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-info" >Edit</button> 
+                            &nbsp;
+                            <button class="btn btn-sm btn-outline-danger" >Del</button> 
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footer">
+                <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+   
+</div>
