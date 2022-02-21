@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
   error = '';
 
   loginUser: any = new Users();
+  isAuthenticate = false;
 
 
 
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
 
       //Form controlName fields
 
-      UserUsername: ['',[Validators.required]],
+      UserName: ['',[Validators.required]],
 
       UserPassword: ['',[Validators.required]]
 
@@ -64,24 +65,67 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
         data => {
           this.error='';
           console.log(data);
-          this.loginUser = data;
+          //this.loginUser = data;
 
           //Username, Role and Token
 
-          sessionStorage.setItem('JwtTOKEN', this.loginUser.token);
+          //sessionStorage.setItem('JwtTOKEN', this.loginUser.token);
+          //console.log(data.StaffId);
+
+          if(data.StaffId==1||data.StaffId==2||
+            data.StaffId==3
+            ||data.StaffId==4){
+              this.isAuthenticate = true;
+
+              this.router.navigateByUrl('doctor/appointments');
+
+            }
+            else if(data.StaffId==5||data.StaffId==6||
+              data.StaffId==11
+              ){
+                this.isAuthenticate = true;
+                this.router.navigateByUrl('reception/home');
+
+              }
+              else if(data.StaffId==7|| data.StaffId==12|| data.StaffId==13
+                ){
+                  this.isAuthenticate = true;
+                  this.router.navigateByUrl('pharmacy/home');
+
+                }
+                else if(data.StaffId==8|| data.StaffId==14
+                  ){
+                    this.isAuthenticate = true;
+                    this.router.navigateByUrl('lab/home/billing');
+                    return this.isAuthenticate;
+
+                  }
+                  else if (data.StaffId==9||data.StaffId==10
+                    ){
+                      this.isAuthenticate = true;
+                      this.router.navigateByUrl('admin/staffs/edit');
+
+                    }
+                    else{
+                      this.isAuthenticate = false;
+                      alert('Invalid Username or password')
+                    }
+
 
           //Check the role based and redirects to respective pages
-          if (this.loginForm.value.UserUsername == "binitha"&&
-          this.loginForm.value.UserPassword=='binitha') {
 
-            console.log("Redirecting to Admin Page");
-            localStorage.setItem("USERNAME", this.loginUser.UserUsername);
-            this.router.navigateByUrl('/users');
-          }
 
-          else {
-            this.error = "You are not authorized to access this page.";
-           }
+          // if (this.loginForm.value.UserUsername == "binitha"&&
+          // this.loginForm.value.UserPassword=='binitha') {
+
+          //   console.log("Redirecting to Admin Page");
+          //   localStorage.setItem("USERNAME", this.loginUser.UserUsername);
+          //   this.router.navigateByUrl('/users');
+          // }
+
+          // else {
+          //   this.error = "You are not authorized to access this page.";
+          //  }
         },
         error => {
           this.error = "Invalid username or password! try again...";

@@ -28,18 +28,17 @@ export class VitalsComponent implements OnInit {
 
  //Submit form
  onSubmit(form: NgForm) {
-  console.log(form.value);
-  let addId = this.vitalsService.formData.PatientId;
-
+  //console.log(form.value);
+ // let addId = this.vitalsService.formData.PatientId;
+ let addId =1;
 
   //Insert or update
   if (addId != 0 || addId != null) {
 
     //Insert
+    console.log("Inserting a record....");
     this.insertPatientRecord(form);
-    this.resetForm(form);
-
-
+    //this.resetForm(form);
 
   } else {
 
@@ -54,7 +53,7 @@ export class VitalsComponent implements OnInit {
   this.vitalsService.insertVitals(form.value).subscribe(res => {
     console.log(res);
     this.toastr.success('Patient record Inserted Successfully', 'CMS App V2022');
-    this.router.navigateByUrl('/doctor/advice/diagnosis')
+    this.router.navigateByUrl('doctor/advice/diagnosis')
   },
     err => {
       console.log(err);

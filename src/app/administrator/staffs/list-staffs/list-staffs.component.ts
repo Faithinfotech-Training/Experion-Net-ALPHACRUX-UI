@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/shared/admin.service';
 import { StaffsComponent } from '../staffs.component';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-list-staffs',

@@ -29,7 +29,7 @@ import { TestsComponent } from './doctor/advice/tests/tests.component';
 import { LabTechnicianComponent } from './lab-technician/lab-technician.component';
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AdministratorComponent } from './administrator/administrator.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StaffsComponent } from './administrator/staffs/staffs.component';
 import { MedicinesComponent } from './administrator/medicines/medicines.component';
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
@@ -43,6 +43,7 @@ import { VitalsComponent } from './doctor/advice/vitals/vitals.component';
 import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -82,6 +83,7 @@ import { InventoryComponent } from './administrator/medicines/inventory/inventor
     InventoryComponent,
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -94,8 +96,6 @@ import { InventoryComponent } from './administrator/medicines/inventory/inventor
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
-  
-  
   ],
   providers: [ReceptionService, UpdatePatientService, DoctorAdviceService],
   bootstrap: [AppComponent],

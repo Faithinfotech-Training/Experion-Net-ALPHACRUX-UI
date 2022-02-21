@@ -1,73 +1,35 @@
-<header>
-  <!-- Nav bar -->
+<app-doctor></app-doctor>
 
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <h3>Docotor</h3>
-      </a>
-      <form class="d-flex mt-2" action="submit">
-        <input class="form-control me-2" type="text" placeholder="Search" />
-        <button class="btn btn-outline-success" type="button">Search</button>
-      </form>
-    </div>
-  </nav>
+<div class="container-fluid-sm d-flex align-items-stretch">
+  <div class="float-start bg-light navbar-light p-1">
+    <ul class="navbar-nav ms-2 gap-3">
+      <li class="navbar-item">
+        <a class="navbar-brand" href="doctor/appointments"
+          ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="navbar-item">
+        <a class="nav-link active" href="doctor/appointments"
+          ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="navbar-item">
+        <a class="nav-link" href="doctor/appointments"
+          ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+        ></a>
+      </li>
+      <li class="nav-item ">
+        <a
+          class="nav-link "
+          href="login"
+          role="button"
+          data-bs-toggle="dropdown"
+          ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
+        ></a>
 
-  <!-- Side bar -->
-  <div class="d-flex align-items-start">
-    <div class="container-fluid-sm position-fixed mt-5">
-      <nav
-        class="bg-light navbar-light p-1 mt-3"
-        style="min-width: fit-content; min-height: 100vh"
-      >
-        <ul class="navbar-nav ms-2 gap-3">
-          <li class="navbar-item">
-            <a class="navbar-brand" href="#"
-              ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-
-          <li class="navbar-item">
-            <a class="nav-link active" href="#"
-              ><i class="bi bi-house" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <li class="navbar-item">
-            <a class="nav-link" href="#"
-              ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <li class="navbar-item">
-            <a class="nav-link" href="#"
-              ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-
-          <li class="nav-item dropup">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
-            ></a>
-            <ul class="dropdown-menu bg-secondary">
-              <li>
-                <a class="dropdown-item text-white" href="#">First Link</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="#">Second Link</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="#">Third Link</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      </li>
+    </ul>
   </div>
-</header>
 <!--
       <div class="col p-3" style="margin-left: 10em; max-width: max-content">
         <div class="row">
@@ -103,16 +65,16 @@
  -->
  <div class="container-fluid bg-light bg-opacity-10 float-right mt-4 ml-4 p-3">
   <div class="row">
-<br><br><br>
+<!-- <br><br><br>
 <form
   class="d-flex ml-4 mt-4"
   name="testlistForm"
   [formGroup]="checkoutForm"
   (ngSubmit)="onSubmit()"
->
+> -->
  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   <!--Using ng-option and for loop-->
-  <ng-select
+  - <ng-select
     class="col-4 me-3 mt-3"
     placeholder="Tests"
     appearance="outline"
@@ -129,7 +91,7 @@
   >
     Add
   </button>
-</form>
+><!--</form> -->
 
 <div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
   <table class="table bg-white border table-lg text-center">
@@ -157,6 +119,6 @@
     </tbody>
   </table>
   <div class="footer d-flex float-end">
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  -  <pagination-controls (pageChange)="page = $event"></pagination-controls>
   </div>
 </div>

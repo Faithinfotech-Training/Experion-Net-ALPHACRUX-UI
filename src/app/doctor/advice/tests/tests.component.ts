@@ -35,9 +35,6 @@ export class TestsComponent implements OnInit {
   checkoutForm = this.formBuilder.group({
     TestId: null,
     TestName: null,
-
-
-
   });
 
 

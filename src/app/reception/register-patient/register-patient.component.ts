@@ -22,7 +22,7 @@ export class RegisterPatientComponent implements OnInit {
   ngOnInit(): void {
 
     this.patientId = this.route.snapshot.params['patientId'];
-     this.patientId =0
+     //this.patientId =0
 
     if (this.patientId != 0 || this.patientId != null) {
 
@@ -91,6 +91,7 @@ export class RegisterPatientComponent implements OnInit {
     console.log('Success');
     this.toastr.success('Patient record Updated Successfully','CMS App V2022'
     );
+    this.router.navigateByUrl('reception/home');
   },
     err => {
       console.log(err);

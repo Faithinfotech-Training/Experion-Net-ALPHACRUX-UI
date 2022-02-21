@@ -31,9 +31,10 @@ import { NewMedicineComponent } from './administrator/medicines/new-medicine/new
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 
 const routes: Routes = [
-  
+  { path: 'doctor/appointments', component: AppointmentsComponent },
+  { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent },
-  { path: 'reception/c', component: HomePageComponent },
+  { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent},
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent },
