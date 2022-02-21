@@ -11,7 +11,7 @@ export class MedicinedocService {
   patients: Patients[];
   formData: Patients = new Patients();
   medicines: Medicinedoc[];
-  
+
   $isPass= new EventEmitter();
   pat:Medicinedoc=
   {
@@ -32,7 +32,7 @@ export class MedicinedocService {
   //Get Medicine
   getMedicines() {
     return this.client
-      .get(environment.updateUrl + 'doctors/viewMedicinelists')
+      .get(environment.updateUrl + 'doctor/viewMedicinelists')
       .toPromise()
       .then((data) => {
         console.log(data);

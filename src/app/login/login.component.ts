@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
   error = '';
 
   loginUser: any = new Users();
+  isAuthenticate = false;
 
 
 
@@ -74,31 +75,39 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
           if(data.StaffId==1||data.StaffId==2||
             data.StaffId==3
             ||data.StaffId==4){
+              this.isAuthenticate = true;
+
               this.router.navigateByUrl('doctor/appointments');
 
             }
             else if(data.StaffId==5||data.StaffId==6||
               data.StaffId==11
               ){
+                this.isAuthenticate = true;
                 this.router.navigateByUrl('reception/home');
 
               }
               else if(data.StaffId==7|| data.StaffId==12|| data.StaffId==13
                 ){
+                  this.isAuthenticate = true;
                   this.router.navigateByUrl('pharmacy/home');
 
                 }
                 else if(data.StaffId==8|| data.StaffId==14
                   ){
+                    this.isAuthenticate = true;
                     this.router.navigateByUrl('lab/home/billing');
+                    return this.isAuthenticate;
 
                   }
                   else if (data.StaffId==9||data.StaffId==10
                     ){
+                      this.isAuthenticate = true;
                       this.router.navigateByUrl('admin/staffs/edit');
 
                     }
                     else{
+                      this.isAuthenticate = false;
                       alert('Invalid Username or password')
                     }
 
