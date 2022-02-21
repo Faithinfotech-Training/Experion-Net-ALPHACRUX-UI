@@ -35,14 +35,20 @@ export class LabTestReportComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let PatientId = this.labTestService.formData.PatientId;
+    if(PatientId<=0){
+      this.toastr.error('Invalid Patient Id', 'CMS App V2022');
+      this.resetForm(form);
+    }
 
 
-    if (PatientId != 0 || PatientId != null) {
+    else if (PatientId != 0 || PatientId != null) {
 
       this.getPatientById(form);
+
     }
     else {
       console.log('Enter valid Patient Id');
+
     }
   }
 
@@ -78,6 +84,8 @@ export class LabTestReportComponent implements OnInit {
         },
         (err) => {
           console.log(err);
+          this.toastr.error('Patient not found', 'CMS App V2022');
+          this.resetForm(form);
         }
       );
   }
@@ -86,7 +94,7 @@ export class LabTestReportComponent implements OnInit {
     console.log('Finding the tests..');
     this.labTestService
       .getTests(this.labTestService.formData.AdviceId)
-      this.toastr.success('Report created Successfully', 'CMS App V2022');
+
 
       // .subscribe(
       //   (res) => {
@@ -104,5 +112,10 @@ export class LabTestReportComponent implements OnInit {
     this.auth.logOut();
 
     this.router.navigateByUrl('/login')
+  }
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
   }
 }

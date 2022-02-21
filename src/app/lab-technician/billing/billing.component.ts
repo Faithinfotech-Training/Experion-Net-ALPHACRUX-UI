@@ -46,9 +46,13 @@ export class BillingComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let PatientId = this.labTestService.formData.PatientId;
+    if(PatientId<=0){
+      this.toastr.error('Invalid Patient Id', 'CMS App V2022');
+      this.resetForm(form);
+    }
 
 
-    if (PatientId != 0 || PatientId != null) {
+    else if (PatientId != 0 || PatientId != null) {
 
       this.getPatientById(form);
 
@@ -107,6 +111,7 @@ export class BillingComponent implements OnInit {
       }
       else{
         this.toastr.error('Cannot create bill with given information', 'CMS App V2022');
+
       }
 
 
@@ -139,6 +144,8 @@ export class BillingComponent implements OnInit {
         },
         (err) => {
           console.log(err);
+          this.toastr.error('Patient not found', 'CMS App V2022');
+          this.resetForm(form);
         }
       );
   }
@@ -158,6 +165,8 @@ export class BillingComponent implements OnInit {
     this.labTestService.postBills(lab);
 
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
+    this.router.navigateByUrl('lab/home/test')
+
 
 
   }
@@ -166,6 +175,12 @@ export class BillingComponent implements OnInit {
     this.auth.logOut();
 
     this.router.navigateByUrl('/login')
+  }
+
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
   }
 
 
