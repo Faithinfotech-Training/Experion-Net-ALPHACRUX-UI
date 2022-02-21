@@ -69,9 +69,7 @@ import { InventoryComponent } from './administrator/medicines/inventory/inventor
     ListStaffsComponent,
     ListMedicinesComponent,
     NewMedicineComponent,
-    InventoryComponent
-
-
+    InventoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,9 +84,10 @@ import { InventoryComponent } from './administrator/medicines/inventory/inventor
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
-    
+  
+  
   ],
-  providers: [ReceptionService,UpdatePatientService,DoctorAdviceService],
+  providers: [ReceptionService, UpdatePatientService, DoctorAdviceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
