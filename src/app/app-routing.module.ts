@@ -26,6 +26,9 @@ import { MedicinesComponent } from './administrator/medicines/medicines.componen
 import { StaffsComponent } from './administrator/staffs/staffs.component';
 import { ListStaffsComponent } from './administrator/staffs/list-staffs/list-staffs.component';
 import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.component';
+import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
+import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
+import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 
 const routes: Routes = [
   { path: 'doctor/appointments', component: AppointmentsComponent },
@@ -37,7 +40,15 @@ const routes: Routes = [
   { path: 'reception/transactions', component: TransactionsComponent },
   { path: 'reception/update-patient', component: UpdatePatientComponent },
   { path: 'admin', component: AdministratorComponent },
-  { path: 'admin/medicine', component: MedicinesComponent },
+  {
+    path: 'admin/medicine',
+    component: MedicinesComponent,
+    children: [
+      { path: 'list', component: ListMedicinesComponent },
+      { path: 'inventory', component: InventoryComponent },
+      { path: 'new', component: NewMedicineComponent },
+    ],
+  },
   {
     path: 'admin/staffs',
     component: StaffsComponent,
