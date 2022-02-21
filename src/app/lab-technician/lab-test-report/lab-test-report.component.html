@@ -133,10 +133,12 @@
           <hr />
 
           <form
-            #form="ngForm"
+            #form1="ngForm"
             name="ngForm"
             autocomplete="off"
             class="form-group p-3"
+            (ngSubmit)="proceed(form1)"
+
           >
             <div class="form-group row align-items-center">
               <h4>PATIENT DETAILS</h4>
@@ -288,7 +290,7 @@
                 <thead class="table-lg thead-light">
                   <tr>
                     <th scope="col" colspan="3"></th>
-                    <th scope="col" colspan="3">Biological reference range</th>
+                    <th scope="col" colspan="3" style="text-align: center;">Biological reference range</th>
 
 
 
@@ -314,7 +316,7 @@
                         | paginate: { itemsPerPage: 5, currentPage: page }
                     "
                   >
-                    <td>{{ users.TestName }}</td>
+                    <td [value]="users.TestName" id="TestName">{{ users.TestName }}</td>
                     <td>
                       <input
                         type="number"
@@ -323,7 +325,7 @@
                         style="width: 120px"
                         name="PatientValue"
                         required
-                      
+
                       />
 
 

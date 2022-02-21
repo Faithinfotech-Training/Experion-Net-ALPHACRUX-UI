@@ -18,6 +18,7 @@ export class LabTestReportComponent implements OnInit {
   NgForm=NgForm;
   page:number=1;
  labtest: any = new Labtest();
+ value:any[];
 
   constructor(
     public labTestService: LabtestService,
@@ -45,6 +46,7 @@ export class LabTestReportComponent implements OnInit {
 
       this.getPatientById(form);
 
+
     }
     else {
       console.log('Enter valid Patient Id');
@@ -62,7 +64,14 @@ export class LabTestReportComponent implements OnInit {
       console.log('Enter valid Patient Id');
     }
   }
+proceed(form?: NgForm){
+  console.log('generating bill..');
+  this.toastr.success('Test Report generated successfully', 'CMS App V2022');
 
+
+  this.resetForm(form);
+
+}
 
   getPatientById(form?: NgForm) {
     console.log('Finding the patient..');
@@ -71,6 +80,7 @@ export class LabTestReportComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.toastr.success('Patient details found successfully', 'CMS App V2022');
 
           //Format date
           var datePipe = new DatePipe('en-UK');
@@ -81,6 +91,7 @@ export class LabTestReportComponent implements OnInit {
           res.ReportDateTime = formattedDate;
           //Assign this response to updatePatientservice formData
           this.labTestService.formData = Object.assign({}, res);
+          //this.toastr.success('Patient details found successfully', 'CMS App V2022');
         },
         (err) => {
           console.log(err);

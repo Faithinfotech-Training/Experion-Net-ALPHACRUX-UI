@@ -160,11 +160,13 @@ this.post(this.lab);
         console.log(count);
           this.totalPrice += this.Med[count].MedicinePrice;
           this.totalQty += (this.Med[count].MedicineQuantity);
+
           this.GrandtotalPrice += this.Med[count].MedicinePrice * this.Med[count].MedicineQuantity;
           console.log(this.GrandtotalPrice);
 
       }
       console.log(this.GrandtotalPrice);
+      
 
 
   }

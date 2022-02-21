@@ -56,6 +56,7 @@ export class BillingComponent implements OnInit {
 
       this.getPatientById(form);
 
+
     }
     else {
       console.log('Enter valid Patient Id');
@@ -131,6 +132,7 @@ export class BillingComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.toastr.success('Patient details found successfully', 'CMS App V2022');
 
           //Format date
           var datePipe = new DatePipe('en-UK');
@@ -141,6 +143,7 @@ export class BillingComponent implements OnInit {
           res.ReportDateTime = formattedDate;
           //Assign this response to updatePatientservice formData
           this.labTestService.formData = Object.assign({}, res);
+
         },
         (err) => {
           console.log(err);
