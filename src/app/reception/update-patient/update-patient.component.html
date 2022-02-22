@@ -43,7 +43,9 @@
                   {{pat.PatientPhone}}
                 </ng-option>
               </ng-select>
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button type="submit" class="btn btn-secondary btn-lg me-3"
+                      >
+                      SEARCH</button>
             </form>
           </div>
           <br>
@@ -123,11 +125,6 @@
                     </select>
 
 
-                    <!-- <input type="text" class="form-control form-control-lg" name="PatientGender"
-                    #PatientGender="ngModel" [(ngModel)]="updatePatientService.formData.PatientGender"
-                     required minlength="4" maxlength="6"
-                    [ngClass]="{ 'is-invalid': PatientGender.touched && PatientGender.invalid }"
-                    placeholder="Patient_Gender" style="width: 500px" /> -->
 
                     <!-- Validation -->
                     <p *ngIf="PatientGender.touched && PatientGender.invalid" class="validation-error">
@@ -136,27 +133,6 @@
                     </p>
                   </div>
                 </div>
-                <!-- <div class="col-md-9 pe-5">
-                <div class="form-check form-check-inline ">
-
-                  <input class="form-check-input" type="radio" name="inlineRadioGender" id="inlineRadio1"
-                    value="option1">
-                  <label class="form-check-label" for="inlineRadio1">Male</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioGender" id="inlineRadio2"
-                    value="option2">
-                  <label class="form-check-label" for="inlineRadio2">Female</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioGender" id="inlineRadio3"
-                    value="option3">
-                  <label class="form-check-label" for="inlineRadio3">Other</label>
-                </div>
-
-              </div> -->
-
-
 
                 <!-- Date of birth -->
                 <div class="row align-items-center pt-4 pb-3">
@@ -206,10 +182,7 @@
                       <option value="O-ve">O-ve</option>
                     </select>
 
-                    <!-- <option value="0" disabled>Select Blood group</option>
-                  <option *ngFor="let dpt of updatePatientService.PatientBlood" value="{{ dpt.PatientBlood }}">
-                    {{ dpt.PatientBlood }}
-                  </option> -->
+
 
                     <!-- Validation -->
                     <p *ngIf="PatientBlood.touched && PatientBlood.invalid" class="validation-error">

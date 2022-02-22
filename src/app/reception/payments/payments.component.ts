@@ -61,17 +61,6 @@ export class PaymentsComponent implements OnInit {
 
     })
 
-   /* getpatientwithid(patientId: number) {
-
-        this.reception.getpatientwithid(patientId).subscribe(
-          (response) => {
-            this.reception.getpatientwithid();
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      }*/
 
   }
 

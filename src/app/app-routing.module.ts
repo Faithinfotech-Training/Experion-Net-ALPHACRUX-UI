@@ -18,7 +18,7 @@ import { LabTechnicianComponent } from './lab-technician/lab-technician.componen
 import { LabTestReportComponent } from './lab-technician/lab-test-report/lab-test-report.component';
 import { AppointmentsComponent } from './doctor/appointments/appointments.component';
 import { PharmacistComponent } from './pharmacist/pharmacist.component';
-import { ReportMedicineComponent } from './report-medicine/report-medicine.component';
+
 import { HomeComponent } from './pharmacist/home/home.component';
 import { BillingComponent } from './lab-technician/billing/billing.component';
 import { LoginComponent } from './login/login.component';
@@ -74,7 +74,7 @@ const routes: Routes = [
   { path: 'lab/home/test', component:LabTestReportComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
   { path: 'pharmacist', component: PharmacistComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'}  },
   {path:'pharmacy/home',component:HomeComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'} },
-  {path:'pharmacy/reports',component:ReportMedicineComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'} },
+
   { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
   { path: 'doctor/app', component:AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: '**', component: AppComponent },
