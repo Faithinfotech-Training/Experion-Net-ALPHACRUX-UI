@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-administrator',
@@ -6,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./administrator.component.scss'],
 })
 export class AdministratorComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private router: Router,
+    private auth:AuthService
+  ) {}
 
   ngOnInit(): void {}
   collapsed = true;
+
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
+  }
 }

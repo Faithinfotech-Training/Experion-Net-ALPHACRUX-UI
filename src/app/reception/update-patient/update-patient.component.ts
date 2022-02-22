@@ -1,122 +1,117 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UpdatePatientService } from '../../shared/update-patient.service';
+import { UpdatePatient } from '../../shared/update-patient';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-
+import { ReceptionService } from 'src/app/shared/reception.service';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-update-patient',
   templateUrl: './update-patient.component.html',
-  styleUrls: ['./update-patient.component.scss']
+  styleUrls: ['./update-patient.component.scss'],
 })
 export class UpdatePatientComponent implements OnInit {
-  patientId:number;
-  NgForm=NgForm;
+  patientId: number;
+  NgForm = NgForm;
+  Patient = new UpdatePatient();
 
-  constructor(public updatePatientService: UpdatePatientService,
-    private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
+  constructor(
+    public updatePatientService: UpdatePatientService,
+    public reception: ReceptionService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
+    private auth:AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.reception.getPatients();
+  }
+  checkoutForm = this.formBuilder.group({
+    PatientId: null,
+  });
 
-    this.patientId = this.route.snapshot.params['PatientId'];
-     this.patientId =1
+  //Submit form
+  onSubmit(form:NgForm): void {
+    //console.log(form.value);
+    //let addId = this.updatePatientService.formData.PatientId;
 
-    if (this.patientId != 0 || this.patientId != null) {
+    //Insert or update
+    if (this.checkoutForm.value.PatientId != null){
+      this.updatePatientRecord(form);
+      this.resetForm(form);
 
-      //Get patient by id
-      this.updatePatientService.getPatientById(this.patientId).subscribe(
-          response =>{
-          console.log(response);
 
-          //Format date
-          var datePipe = new DatePipe("en-UK");
-          let formattedDate:any =datePipe.transform(response.PatientDob, 'yyyy-MM-dd');
-          response.DateOfJoining = formattedDate;
-          //Assign this response to updatePatientservice formData
-          this.updatePatientService.formData = Object.assign({}, response);
-        },
-        error => {
-          console.log(error);
-        }
-
+    } else {
+      //Update
+      //Insert
+      this.insertPatientRecord(form);
+      this.resetForm(form);
+      this.toastr.success(
+        'Patient record Not Found, Please Register',
+        'CMS App V2022'
       );
+      //this.router.navigateByUrl('employee-list');
     }
   }
-  // onClck(form1:NgForm){
 
-  // }
-
- //Submit form
- onSubmit(form: NgForm) {
-  console.log(form.value);
-  let addId = this.updatePatientService.formData.PatientId;
-
-  //Insert or update
-  if (addId == 0 || addId == null) {
-
-    //Insert
-    this.insertPatientRecord(form);
-
-    this.router.navigateByUrl('');
-
-
-  } else {
-
-    //update
-    this.updatePatientRecord(form);
-
-    this.router.navigateByUrl('');
-
-
-  }
-}
-
- //Insert Method
- insertPatientRecord(form?: NgForm) {
-  console.log("Inserting a record....");
-  this.updatePatientService.insertPatient(form.value).subscribe(res => {
-    console.log(res);
-    this.toastr.success('Patient record Inserted Successfully', 'CMS App V2022');
-  },
-    err => {
-      console.log(err);
-    }
-  );
-}
-
-onClick(form:NgForm){
-  console.log("Finding the record....");
-  //let PatientId = this.updatePatientService.formData.PatientId;
-  let PatientId=document.getElementById('PatientId').innerHTML
-  console.log(PatientId);
-
-}
-
- //Update Method
- updatePatientRecord(form?: NgForm) {
-  console.log("Updating a record....");
-  this.updatePatientService.UpdatePatient(form.value).subscribe(res => {
-    console.log(res);
-    console.log('Success');
-    this.toastr.success('Patient record Updated Successfully','CMS App V2022'
-
+  //Insert Method
+  insertPatientRecord(form?: NgForm) {
+    console.log('Inserting a record....');
+    this.updatePatientService.insertPatient(form.value).subscribe(
+      (res) => {
+        console.log(res);
+        this.toastr.success(
+          'Patient record Inserted Successfully',
+          'CMS App V2022'
+        );
+      },
+      (err) => {
+        console.log(err);
+      }
     );
-    this.router.navigateByUrl('reception/home');
-  },
-    err => {
-      console.log(err);
+  }
+
+  onClick(form: NgForm) {
+    console.log('Finding the record....');
+    //let PatientId = this.updatePatientService.formData.PatientId;
+    let PatientId = document.getElementById('PatientId').innerHTML;
+    console.log(PatientId);
+  }
+
+  //Update Method
+  updatePatientRecord(form?: NgForm) {
+    console.log('Updating a record....');
+    this.updatePatientService.UpdatePatient(form.value).subscribe(
+      (res) => {
+        console.log(res);
+        console.log('Success');
+        this.toastr.success(
+          'Patient record Updated Successfully',
+          'CMS App V2022'
+        );
+        this.router.navigateByUrl('reception/home');
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  //Clear all contents after submit
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
     }
-  );
-}
+  }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
 
-//Clear all contents after submit
-resetForm(form?: NgForm) {
-  if (form != null) {
-    form.resetForm();
+    this.router.navigateByUrl('/login')
   }
 }
-  }
-
-

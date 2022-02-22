@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:44383/api/',
+ apiUrl: 'https://localhost:44383/api/',
   updateUrl: 'https://localhost:44383/api/'
 
   /*apiUrl: 'https://localhost:44363/api/',
-  updateUrl: 'https://localhost:44363/api/',*/
+  updateUrl: 'https://localhost:44363/api/'*/
 };
 
 /*

@@ -1,7 +1,7 @@
 <app-reception></app-reception>
 
-<div class="container-fluid-sm d-flex align-items-stretch">
-  <div class="float-start bg-light navbar-light p-1">
+<div class="container-fluid-sm d-flex align-items-stretch ">
+  <div class="float-start bg-light navbar-light p-1 position-fixed">
     <ul class="navbar-nav ms-2 gap-3">
       <li class="navbar-item">
         <a class="navbar-brand" href="reception/home"
@@ -15,7 +15,7 @@
 
       <li class="navbar-item">
         <a class="nav-link active" href="reception/register-patient"
-          ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
+          ><i class="bi bi-person-plus-fill" style="font-size: 1.5rem"></i
         ></a>
       </li>
     <li class="navbar-item">
@@ -26,25 +26,21 @@
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
-          href="#"
+          (click)="logout()"
           role="button"
           data-bs-toggle="dropdown"
           ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
         ></a>
-        <ul class="dropdown-menu bg-secondary">
-          <li><a class="dropdown-item text-white" href="#">First Link</a></li>
-          <li><a class="dropdown-item text-white" href="#">Second Link</a></li>
-          <li><a class="dropdown-item text-white" href="#">Third Link</a></li>
-        </ul>
+
       </li>
     </ul>
   </div>
-</div>
 
 
 
 
-<div class="container-sm p-2">
+
+<div class="container-fluid-sm p-2">
     <div class="row mt-5"></div>
     <div class="row mt-4">
 
@@ -53,77 +49,46 @@
         <div class="col-sm-6 p-4 ms-3 border rounded border-bottom-0">
             <h3>Payment details</h3>
 
-            <div class="table-responsive border mt-4 rounded">
+            <div class="table border mt-4 rounded">
                 <table class="table table-borderless">
 
                       <tbody>
                         <tr>
                           <th scope="row">Patient id:</th>
-                          <td>PatientId</td>
+                          <td>{{receptionService.formData2.PatientId}}</td>
                         </tr>
                         <tr>
                           <th scope="row">Patient name:</th>
-                          <td>{{patientName}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">gender:</th>
-                          <td>M/F/T</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Age:</th>
-                          <td>32</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Patient phone:</th>
-                          <td>xxxxxxxxxx</td>
+                          <td>{{receptionService.formData2.PatientName}}</td>
                         </tr>
                         <tr>
                           <th scope="row">Doctor name: </th>
-                          <td>Jacob</td>
+                          <td>{{receptionService.formData2.DoctorName}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Amount:</th>
+                          <td ><h6>200 &#x20b9;</h6> </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Bill Date:</th>
+                          <td>{{Billdate | date: 'dd-MMM-yy HH:mm:ss'}}</td>
                         </tr>
                       </tbody>
                 </table>
+
+
               </div>
-
+&nbsp;<br>
+              <button class="btn btn-secondary" (click)=" generatebill()">
+                Print Bill
+              </button>
 
         </div>
 
-        <div class="col align-self-end m-5  ">
-            <h3>Payment mode</h3>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                    value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    Cash
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                    value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    Card
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                    value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    UPI/Net Banking
-                </label>
-            </div>
-            <div class="row my-5 p-2">
-                <div class="col align-self-end">
-                    <a href="#" class="btn btn-outline-warning btn-lg m-2" role="button"
-                        aria-pressed="true">Cancel</a>
-                    <a href="#" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Bill&Generate
-                        Token</a>
-                </div>
-            </div>
-        </div>
 
 
     </div>
-
+  </div>
 
 </div>
 

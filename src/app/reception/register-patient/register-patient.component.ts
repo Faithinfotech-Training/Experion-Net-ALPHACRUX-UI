@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
 import {AddpatientService } from 'src/app/shared/addpatient.service';
+import { AuthService } from 'src/app/shared/auth.service';
 import { UpdatePatientService } from 'src/app/shared/update-patient.service';
 
 @Component({
@@ -16,8 +17,10 @@ export class RegisterPatientComponent implements OnInit {
   patientId:number;
   NgForm=NgForm;
 
+
   constructor(public updatePatientService: UpdatePatientService,
-    private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
+    private router: Router,private route: ActivatedRoute,private toastr: ToastrService,
+    private auth:AuthService) { }
 
   ngOnInit(): void {
 
@@ -104,6 +107,12 @@ resetForm(form?: NgForm) {
   if (form != null) {
     form.resetForm();
   }
+}
+logout(){
+  console.log('inside logout')
+  this.auth.logOut();
+
+  this.router.navigateByUrl('/login')
 }
   }
 

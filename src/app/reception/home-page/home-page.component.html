@@ -1,42 +1,32 @@
 <app-reception></app-reception>
 
-<div class="container-fluid-sm d-flex align-items-stretch">
-  <div class="float-start bg-light navbar-light p-1">
+<div class="container-fluid-sm d-flex align-items-stretch ">
+  <div class="float-start bg-light navbar-light p-1 position-fixed">
     <ul class="navbar-nav ms-2 gap-3">
       <li class="navbar-item">
-        <a class="navbar-brand" href="reception/home"
-          ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="navbar-brand" href="reception/home"><i class="bi bi-house-fill" style="font-size: 1.5rem"></i></a>
       </li>
       <li class="navbar-item">
-        <a class="nav-link active" href="reception/transactions"
-          ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill"
+            style="font-size: 1.5rem"></i></a>
 
       <li class="navbar-item">
-        <a class="nav-link active" href="reception/register-patient"
-          ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="nav-link active" href="reception/register-patient"><i class="bi bi-person-plus-fill"
+            style="font-size: 1.5rem"></i></a>
       </li>
-    <li class="navbar-item">
-      <a class="nav-link active" href="reception/update-patient"
-        ><i class="bi-plus-circle" style="font-size: 1.5rem"></i
-      ></a>
-    </li>
+      <li class="navbar-item">
+        <a class="nav-link active" href="reception/update-patient"><i class="bi bi-pencil-square"
+            style="font-size: 1.5rem"></i></a>
+      </li>
       <li class="nav-item ">
-        <a
-          class="nav-link active"
-          href="http://localhost:4200/login"
-          role="button"
-
-          ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="nav-link active" href="http://localhost:4200/login" role="button"><i class="bi bi-person-circle"
+            style="font-size: 1.5rem"></i></a>
 
       </li>
     </ul>
   </div>
 
-  
+
 
   <div class="container-fluid bg-light bg-opacity-10 float-right">
     <div class="row">
@@ -52,38 +42,31 @@
         <h1 id="tokenNoId"><b>{{reception.token.TokenNumber}}</b></h1>
       </div>
       <div class="col-sm-10">
-        <form class="d-flex ml-2 mt-3"
-        name="tokenForm"
-        [formGroup]="checkoutForm"
-        (ngSubmit)="onSubmit()"
-        >
+        <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
           <!--Using ng-option and for loop-->
-<ng-select class="col-4 me-3 mt-3" placeholder="Patient ID/Name/Location/Phone" appearance="outline"
-formControlName="PatientId">
-   <ng-option *ngFor="let pat of reception.patients" [value]="pat.PatientId">
-    {{pat.PatientId}} &nbsp;
-    {{pat.PatientName}} &nbsp;
-    {{pat.PatientLocation}} &nbsp;
-    {{pat.PatientPhone}}
-  </ng-option>
-</ng-select>
+          <ng-select class="col-4 me-3 mt-3" placeholder="Patient ID/Name/Location/Phone" appearance="outline"
+            formControlName="PatientId">
+            <ng-option *ngFor="let pat of reception.patients" [value]="pat.PatientId">
+              {{pat.PatientId}} &nbsp;
+              {{pat.PatientName}} &nbsp;
+              {{pat.PatientLocation}} &nbsp;
+              {{pat.PatientPhone}}
+            </ng-option>
+          </ng-select>
           <!--Using ng-option and for loop-->
-<ng-select class="col-4 me-3 mt-3" placeholder="Doctor ID/Name/Phone" appearance="outline"
-formControlName="StaffId">
-   <ng-option *ngFor="let doc of reception.doctors" [value]="doc.DoctorId">
-    {{doc.DoctorId}} &nbsp;
-    {{doc.DoctorName}} &nbsp;
-    {{doc.Phone}} &nbsp;
-    {{doc.Qualification}}
-  </ng-option>
-</ng-select>
+          <ng-select class="col-4 me-3 mt-3" placeholder="Doctor ID/Name/Phone" appearance="outline"
+            formControlName="StaffId">
+            <ng-option *ngFor="let doc of reception.doctors" [value]="doc.DoctorId">
+              {{doc.DoctorId}} &nbsp;
+              {{doc.DoctorName}} &nbsp;
+              {{doc.Phone}} &nbsp;
+              {{doc.Qualification}}
+            </ng-option>
+          </ng-select>
 
 
-          <button
-            class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
-            type="submit"
-          >
+          <button class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0" type="submit">
             Generate Token
           </button>
         </form>
@@ -92,12 +75,12 @@ formControlName="StaffId">
           <table class="table bg-white border  table-lg text-center">
             <br />
             <thead>
-                <th scope="col">Patient ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Token</th>
-                <th scope="col">Age</th>
-                <th scope="col">Doctor</th>
-                <th scope="col">Action</th>
+              <th scope="col">Patient ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Token</th>
+              <th scope="col">Age</th>
+              <th scope="col">Doctor</th>
+              <th scope="col">Action</th>
             </thead>
             <tbody>
               <tr *ngFor="let queue of reception.queueList | paginate:{itemsPerPage:5, currentPage:page}">
@@ -107,7 +90,7 @@ formControlName="StaffId">
                 <td>{{queue.Age}}</td>
                 <td>{{queue.DoctorName}}</td>
                 <td>
-                &nbsp;
+                  &nbsp;
                   <button type="button" class="btn btn-outline-danger btn-sm" (click)=" deleteToken(queue.TokenId)">
                     <i class="bi bi-trash"> Del</i>
                   </button>
@@ -116,12 +99,10 @@ formControlName="StaffId">
             </tbody>
           </table>
           <div class="footer d-flex float-end">
-                <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
-            </div>
+            <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

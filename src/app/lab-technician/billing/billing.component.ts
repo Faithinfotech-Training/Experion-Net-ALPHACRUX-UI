@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Labbills } from 'src/app/shared/labbills';
 import { Labtest } from 'src/app/shared/labtest';
 import { LabtestService } from '../../shared/labtest.service';
@@ -22,6 +23,7 @@ export class BillingComponent implements OnInit {
   total=0;
   value;
   lab:any;
+  clicked = false;
 
 
   //values
@@ -35,7 +37,8 @@ export class BillingComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    public app: AppComponent
+    public app: AppComponent,
+    private auth:AuthService
   ) {}
 
   ngOnInit(): void {}
@@ -43,11 +46,16 @@ export class BillingComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let PatientId = this.labTestService.formData.PatientId;
+    if(PatientId<=0){
+      this.toastr.error('Invalid Patient Id', 'CMS App V2022');
+      this.resetForm(form);
+    }
 
 
-    if (PatientId != 0 || PatientId != null) {
+    else if (PatientId != 0 || PatientId != null) {
 
       this.getPatientById(form);
+
 
     }
     else {
@@ -69,6 +77,8 @@ export class BillingComponent implements OnInit {
 
 
 
+
+
     } else {
       console.log('Enter valid Patient Id');
     }
@@ -80,21 +90,39 @@ export class BillingComponent implements OnInit {
     var datePipe = new DatePipe('en-UK');
     let formattedDate: any = datePipe.transform(
       this.LabBillDateTime,
-      'yyyy-MM-dd'
+      "yyyy-MM-dd"
     );
      //this.TestListId=document.getElementById('TestListId').innerText;
     // this.PatientId=form.value.PatientId
      this.LabBillAmount=document.getElementById('total').innerHTML;
+     this.TestListId=form.value.TestListId
 
-    //console.log('Value of id'+form.value.PatientId)
+    console.log('Value of id'+this.TestListId)
+    var numberValue = Number(this.LabBillAmount);
 
-    this.lab={LabBillDateTime:formattedDate,TestListId: 1,
-      PatientId:form.value.PatientId,LabBillAmount:this.LabBillAmount}
+
+
+
+    this.lab={"LabBillDateTime":formattedDate,"TestListId": this.TestListId,
+      "PatientId":form.value.PatientId,"LabBillAmount":numberValue}
       console.log(form.value.TestListId)
 
-this.post(this.lab);
+      if(form.value.PatientId>0 && numberValue>0){
+        this.post(this.lab);
+      }
+      else{
+        this.toastr.error('Cannot create bill with given information', 'CMS App V2022');
+
+      }
+
+
+
+
 
   }
+
+
+
 
 
   getPatientById(form?: NgForm) {
@@ -104,6 +132,7 @@ this.post(this.lab);
       .subscribe(
         (res) => {
           console.log(res);
+          this.toastr.success('Patient details found successfully', 'CMS App V2022');
 
           //Format date
           var datePipe = new DatePipe('en-UK');
@@ -114,9 +143,12 @@ this.post(this.lab);
           res.ReportDateTime = formattedDate;
           //Assign this response to updatePatientservice formData
           this.labTestService.formData = Object.assign({}, res);
+
         },
         (err) => {
           console.log(err);
+          this.toastr.error('Patient not found', 'CMS App V2022');
+          this.resetForm(form);
         }
       );
   }
@@ -132,10 +164,28 @@ this.post(this.lab);
 
 
     console.log('Trying to insert values..');
+
     this.labTestService.postBills(lab);
+
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
+    this.router.navigateByUrl('lab/home/test')
+
 
 
   }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
+  }
+
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
+  }
+
+
 
 }

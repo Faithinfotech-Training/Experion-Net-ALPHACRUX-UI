@@ -46,22 +46,13 @@
           <li class="nav-item dropup">
             <a
               class="nav-link dropdown-toggle"
-              href="login"
+              (click)="logout()"
+
               role="button"
               data-bs-toggle="dropdown"
               ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
             ></a>
-            <ul class="dropdown-menu bg-secondary">
-              <li>
-                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">First Link</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">Second Link</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="http://localhost:4200/lab/home/test">Third Link</a>
-              </li>
-            </ul>
+
           </li>
         </ul>
       </nav>
@@ -130,11 +121,11 @@
           <hr />
 
           <form
-            #form="ngForm"
-            name="ngForm"
+            #form1="ngForm"
+            name="ngForm1"
             autocomplete="off"
             class="form-group p-3"
-            (ngSubmit)="onClickClick(form)"
+            (ngSubmit)="onClickClick(form1)"
           >
             <div class="form-group row align-items-center">
               <h4>PATIENT DETAILS</h4>
@@ -163,6 +154,7 @@
                     name="PatientId"
                     #PatientId="ngModel"
                     [(ngModel)]="labTestService.formData.PatientId"
+                    disabled
                   />
                 </div>
               </div>
@@ -181,6 +173,7 @@
                     name="PatientName"
                     #PatientName="ngModel"
                     [(ngModel)]="labTestService.formData.PatientName"
+                    disabled
                   />
                 </div>
               </div>
@@ -203,6 +196,7 @@
                     #TestListId="ngModel"
                     id="TestListId"
                     [(ngModel)]="labTestService.formData.TestListId"
+                    disabled
                   />
                 </div>
               </div>
@@ -223,6 +217,7 @@
                     name="PatientPhone"
                     #PatientPhone="ngModel"
                     [(ngModel)]="labTestService.formData.PatientPhone"
+                    disabled
                   />
                 </div>
               </div>
@@ -241,6 +236,7 @@
                     name="StaffName"
                     #StaffName="ngModel"
                     [(ngModel)]="labTestService.formData.StaffName"
+                    disabled
                   />
                 </div>
               </div>
@@ -256,7 +252,7 @@
                     name="ReportDateTime"
                     #ReportDateTime="ngModel"
                     [(ngModel)]="labTestService.formData.ReportDateTime"
-                    placeholder="Patient_DOB"
+                    disabled
                     style="width: 500px"
                   />
                 </div>
@@ -266,11 +262,11 @@
             <br />
 
             <form
-              #form="ngForm"
+              #form2="ngForm"
               name="ngForm"
               autocomplete="off"
               class="form-group p-3"
-              (ngSubmit)="onClick(form)"
+              (ngSubmit)="onClick(form2)"
             >
               <div class="form-group row align-items-center">
                 <!-- <h4>TEST DETAILS</h4> -->

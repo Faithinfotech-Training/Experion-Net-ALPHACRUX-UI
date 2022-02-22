@@ -44,6 +44,7 @@ import { ListMedicinesComponent } from './administrator/medicines/list-medicines
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CanActivateGuard } from './shared/can-activate.guard';
 import { NgpSortModule } from 'ngp-sort-pipe';
 
 
@@ -97,9 +98,9 @@ import { NgpSortModule } from 'ngp-sort-pipe';
     ToastrModule.forRoot(),
     CommonModule,
     NgbModule,
-    NgpSortModule,
+    NgpSortModule 
   ],
-  providers: [ReceptionService, UpdatePatientService, DoctorAdviceService],
+  providers: [ReceptionService, UpdatePatientService, DoctorAdviceService,CanActivateGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

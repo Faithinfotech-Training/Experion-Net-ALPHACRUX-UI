@@ -14,5 +14,6 @@ export class ReceptionComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
