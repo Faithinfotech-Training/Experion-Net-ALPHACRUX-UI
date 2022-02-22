@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Medicinedoc } from './medicinedoc';
 import { Patients } from './patients';
@@ -11,6 +12,7 @@ export class MedicinedocService {
   patients: Patients[];
   formData: Patients = new Patients();
   medicines: Medicinedoc[];
+  insertmedicine:Medicinedoc[];
 
   $isPass= new EventEmitter();
   pat:Medicinedoc=
@@ -25,6 +27,7 @@ export class MedicinedocService {
  MedicineId: 0,
  MedicineName:''
  }
+  httpClient: any;
 
   constructor(private client: HttpClient) {}
 
@@ -44,7 +47,7 @@ export class MedicinedocService {
   //Generate Medicnes
   generateMedicine(medicines: Medicinedoc) {
     return this.client
-      .post(environment.apiUrl + 'doctor/advice/medicine', medicines)
+      .post(environment.apiUrl + 'doctors/medicine', medicines)
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -53,6 +56,10 @@ export class MedicinedocService {
   }
 
 
-
+  //Insert Vitals
+ insertMedicine(insertmedicine: Medicinedoc): Observable<any> {
+  return this.httpClient.post(
+    environment.updateUrl  + 'doctors/medicine',insertmedicine);
+  }
 
 }

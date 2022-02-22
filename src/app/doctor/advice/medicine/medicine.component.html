@@ -43,18 +43,16 @@
      <!--<h1 id="tokenNoId"><b>{{reception.token.TokenNumber}}</b></h1> -->
       </div>
       <div class="col-sm-10">
-        <form class="d-flex ml-2 mt-3"
-        name="tokenForm"
-        [formGroup]="checkoutForm"
-        (ngSubmit)="onSubmit()"
-        >
+       <form class="d-flex ml-2 mt-3" name="MedicineId" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
 
           <!--Using ng-option and for loop-->
 <ng-select class="col-4 me-3 mt-3" placeholder="Medicine Name" appearance="outline"
-formControlName="MedicineId" name="MedicineId">
-  <ng-option *ngFor="let pat of medicineService.medicines" value="pat.MedicineId">
-    {{pat.MedicinetId}} &nbsp;
-    {{pat.MedicineName}} &nbsp;
+formControlName="MedicineId">
+  <ng-option *ngFor="let pat of medicineService.medicines" [value]="pat.MedicineId">
+    <!--value="pat.MedicineId"-->
+    {{pat.MedicinetId}}
+    {{pat.MedicineName}}
 
   </ng-option>
 </ng-select>
@@ -76,16 +74,10 @@ formControlName="MedicineId" name="MedicineId">
                 <th scope="col">Medicine Name</th>
 
             <tbody>
-            <tr *ngFor="let queue of medicineService.medicines| paginate:{itemsPerPage:5, currentPage:page}">
+            <tr *ngFor="let queue of medicineService.insertMedicine| paginate:{itemsPerPage:5, currentPage:page}">
                 <th>{{queue.MedicineId}}</th>
                 <td>{{queue.MedicineName}}</td>
 
-                <td>
-                &nbsp;
-                  <button type="button" class="btn btn-outline-danger btn-sm" (click)=" deleteToken(queue.TokenId)">
-                    <i class="bi bi-trash"> Del</i>
-                  </button>
-                </td>
               </tr>
             </tbody>
           </table>-->

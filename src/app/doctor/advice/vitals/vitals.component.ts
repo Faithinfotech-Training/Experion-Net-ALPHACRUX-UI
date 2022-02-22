@@ -24,7 +24,7 @@ export class VitalsComponent implements OnInit {
     ngOnInit(): void {
 
       this.patientId = this.route.snapshot.params['patientId'];
-       this.patientId =1
+       
 
     }
 
