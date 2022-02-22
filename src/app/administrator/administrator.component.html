@@ -1,37 +1,46 @@
 <header>
   <!-- Nav bar -->
-      <nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
+      <nav class="navbar navbar-expand-sm m-0 p-0 bg-dark navbar-dark">
           <div class="container-fluid">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="admin">
                   <h3>Administrator</h3>
               </a>
-<ul class="navbar-nav mr-auto">
+          </div>
+      </nav>      
+</header>
+
+<!-- As a link -->
+<nav class="navbar navbar-light bg-light me-4 d-flex align-content-start" style="height: 100%; float: left;">
+  <ul class=" navbar-nav m-auto gap-3" style="font-size: 25px;">
       <li class="nav-item active">
-        <a class="nav-link" href="admin/staffs/edit">Staffs</a>
+        <a class="nav-link" href="admin"><i class="bi bi-house-fill"></i></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="admin/medicine">Medicines</a>
+        <a class="nav-link" href="admin/staffs/edit"><i class="bi bi-person-badge"></i></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="admin/medicine"><i class="bi bi-journal-medical"></i></a>
+      </li>
+     
 </ul>
-           <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
-      <ul class="navbar-nav ms-auto me-3">
+
+
+<div class="container-fluid p-0 m-0" style="font-size: 25px;">
+      <ul class="navbar-nav m-auto">
+        <hr>
         <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
           <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
-            Profile
+           <i class="bi bi-person-circle"></i>
           </a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action 2</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Logout</a>
+            <a ngbDropdownItem  (click)="logout()">Logout</a>
           </div>
         </li>
       </ul>
     </div>
-
-          </div>
-      </nav>
-      
-</header>
+</nav>
 
 
 <div class="row m-3"></div>
