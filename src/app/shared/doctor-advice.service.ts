@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UpdatePatient } from './update-patient';
 import { TestLists } from './test-lists';
 import { Testadvice } from './testadvice';
 import { Addtest } from './addtest';
+import { Patients } from './patients';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,21 @@ export class DoctorAdviceService {
   testLists:TestLists[];
   testAdvice:Testadvice[];
   listid:string;
+  patients: Patients[];
+
+  tests: TestLists[];
+  testList: TestLists[];
+  insertTest: TestLists[];
 
 
   formData:UpdatePatient=new UpdatePatient();
+  $isPass= new EventEmitter();
+  pat:TestLists=
+  {
+    TestId:0,
+  TestName:'',
+  };
+
 
   constructor(private httpClient:HttpClient) { }
 
@@ -59,7 +72,43 @@ export class DoctorAdviceService {
        });
 
      }
+//Get Test
+getTest() {
+  return this.httpClient
+    .get(environment.updateUrl + 'doctors/viewlists')
+    .toPromise()
+    .then((data) => {
+      console.log(data);
+      this.tests = data as TestLists[];
+    });
+}
 
+//Generate Test
+generateTest(tests: TestLists) {
+return this.httpClient
+  .post(environment.apiUrl + 'doctors/medicine', tests)
+  .toPromise()
+  .then((data) => {
+    console.log(data);
+    console.log('Test added sucessfully');
+  });
+}
+//InsertTest
+insertMedicine(insertTest: TestLists): Observable<any> {
+return this.httpClient.post(
+  environment.updateUrl  + 'doctors/AddMedicine',insertTest);
+}
+
+ //Get Selected medicine
+ getSelectedTest() {
+  return this.httpClient
+    .get(environment.updateUrl + 'doctors/Getmedicine')
+    .toPromise()
+    .then((data) => {
+      console.log(data);
+      this.testList = data as TestLists[];
+    });
+}
    }
 
 
