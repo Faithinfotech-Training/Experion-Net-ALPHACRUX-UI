@@ -97,12 +97,6 @@
                     <input type="radio" value="Male" name="gender" ngModel> Male
                     <input type="radio" value="Female" name="gender" ngModel> Female
 
-                    <!-- <input id="gender" type="radio" name="Male" formControlName="PatientGender" />
-                <label class="radio-label me-3" value="Male"> Male</label>
-
-
-                <input id="gender" type="radio" name="Female" formControlName="PatientGender" />
-                <label class="radio-label" value="Female">Female</label> -->
 
                   </div>
 
@@ -167,10 +161,7 @@
                     <option value="O-ve">O-ve</option>
                   </select>
 
-                  <!-- <option value="0" disabled>Select Blood group</option>
-                    <option *ngFor="let dpt of updatePatientService.PatientBlood" value="{{ dpt.PatientBlood }}">
-                      {{ dpt.PatientBlood }}
-                    </option> -->
+
 
                   <!-- Validation -->
                   <p *ngIf="PatientBlood.touched && PatientBlood.invalid" class="validation-error">
