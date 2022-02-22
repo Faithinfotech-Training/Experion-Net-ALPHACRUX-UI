@@ -49,7 +49,7 @@ export class MedicineComponent implements OnInit {
     ) {
 
       this.medicineService.generateMedicine(this.checkoutForm.value);
-      console.log(this.checkoutForm.value);
+      console.log('med val'+this.checkoutForm.value);
       this.toastr.success('Medicine Added', 'Successfull!');
       //this.medicineService.pat.MedicineId = this.checkoutForm.value.PatientId;
       this.insertPatientMedicineRecord();
