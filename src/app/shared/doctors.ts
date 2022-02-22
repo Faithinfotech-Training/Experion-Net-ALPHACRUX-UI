@@ -5,4 +5,6 @@ export class Doctors {
   Email: string = '';
   RoleName: string = '';
   Qualification: string = '';
+  TestId: number=0;
+        TestName: string='';
 }

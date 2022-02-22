@@ -1,4 +1,4 @@
-<app-doctor></app-doctor>
+<app-reception></app-reception>
 
 <div class="container-fluid-sm d-flex align-items-stretch">
   <div class="float-start bg-light navbar-light p-1">
@@ -12,15 +12,20 @@
         <a class="nav-link active" href="doctor/appointments"
           ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
         ></a>
-      </li>
+
       <li class="navbar-item">
-        <a class="nav-link" href="doctor/appointments"
+        <a class="nav-link active" href="doctor/appointments"
           ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
         ></a>
       </li>
-      <li class="nav-item ">
+    <li class="navbar-item">
+      <a class="nav-link active" href="reception/update-patient"
+        ><i class="bi-plus-circle" style="font-size: 1.5rem"></i
+      ></a>
+    </li>
+      <li class="nav-item dropdown">
         <a
-          class="nav-link "
+          class="nav-link dropdown-toggle"
           (click)="logout()"
           role="button"
           data-bs-toggle="dropdown"
@@ -30,95 +35,57 @@
       </li>
     </ul>
   </div>
-<!--
-      <div class="col p-3" style="margin-left: 10em; max-width: max-content">
-        <div class="row">
-          <form
-            class="d-flex ml-2 mt-3"
-            name="testlistForm"
-            [formGroup]="checkoutForm"
-            (ngSubmit)="onSubmit()"
-          >
-            <ng-select
-              class="col-4 me-3 mt-3"
-              placeholder="Tests"
-              appearance="outline"
-              formControlName="TestId"
-            >
-              <ng-option
-                *ngFor="let pat of doctorAdvice.testLists"
-                [value]="pat.TestId"
-              >
-                {{ pat.TestId }} &nbsp; {{ pat.TestName }} &nbsp;
-              </ng-option>
-            </ng-select>
 
+  <div class="container-fluid bg-light bg-opacity-10 float-right">
+    <div class="row">
+
+      <div class="text-center col-sm-2 mt-5 pt-5">
+     <!--<h1 id="tokenNoId"><b>{{reception.token.TokenNumber}}</b></h1> -->
+      </div>
+      <div class="col-sm-10">
+       <form class="d-flex ml-2 mt-3" name="TestName" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+
+          <!--Using ng-option and for loop-->
+<ng-select class="col-4 me-3 mt-3" placeholder="Test Name" appearance="outline"
+formControlName="TestName">
+  <ng-option *ngFor="let pat of testService.tests" [value]="pat.TestName">
+    <!--value="pat.MedicineId"-->
+    {{pat.TestId}}
+    {{pat.TestName}}
+
+  </ng-option>
+</ng-select>
+
+
+          <button
+            class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
+            type="submit"
+          >
+            Add Test
+          </button>
+       </form>
+
+        <div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
+          <table class="table bg-white border  table-lg text-center">
             <br />
-            <button
-              class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
-              type="submit"
-            ></button>
-          </form>
+            <thead>
+                <th scope="col">Test ID</th>
+                <th scope="col">Test Name</th>
+
+            <tbody>
+            <tr *ngFor="let queue of testService.testList  |sortBy: 'desc':'MedicineListId' | paginate:{itemsPerPage:5, currentPage:page}">
+                <th>{{queue.TestId}}</th>
+                <td>{{queue.TestName}}</td>
+
+              </tr>
+            </tbody>
+          </table>-->
+          <div class="footer d-flex float-end">
+                <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
- -->
- <div class="container-fluid bg-light bg-opacity-10 float-right mt-4 ml-4 p-3">
-  <div class="row">
-<!-- <br><br><br>
-<form
-  class="d-flex ml-4 mt-4"
-  name="testlistForm"
-  [formGroup]="checkoutForm"
-  (ngSubmit)="onSubmit()"
-> -->
- &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  <!--Using ng-option and for loop-->
-  - <ng-select
-    class="col-4 me-3 mt-3"
-    placeholder="Tests"
-    appearance="outline"
-    formControlName="TestId"
-  >
-    <ng-option *ngFor="let doc of doctorAdvice.testLists" [value]="doc.TestId">
-      {{ doc.TestId }} &nbsp; {{ doc.TestName }} &nbsp;
-    </ng-option>
-  </ng-select>
-
-  <button
-    class="btn btn-outline-primary form-control me-2 mt-3 mb-2 p-0"
-    type="submit"
-  >
-    Add
-  </button>
-><!--</form> -->
-
-<div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
-  <table class="table bg-white border table-lg text-center">
-    <br />
-    <thead>
-      <th scope="col">Test ID</th>
-      <th scope="col">Test Name</th>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="
-          let testlist of doctorAdvice.testLists
-            | paginate: { itemsPerPage: 5, currentPage: page }
-        "
-      >
-        <th>{{ testlist.TesttId }}</th>
-        <td>{{ testlist.TestName }}</td>
-        <td>
-          &nbsp;
-          <button type="button" class="btn btn-outline-danger btn-sm">
-            <i class="bi bi-trash"> Del</i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="footer d-flex float-end">
-  -  <pagination-controls (pageChange)="page = $event"></pagination-controls>
-  </div>
-</div>
+    </div>
