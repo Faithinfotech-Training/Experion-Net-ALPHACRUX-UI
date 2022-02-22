@@ -89,6 +89,7 @@
                   <div class="col-md-9 pe-5">
                     <input type="text" class="form-control form-control-lg" placeholder="Patient_Id"
                       style="width: 500px" id="PatientId" name="PatientId" #PatientId="ngModel"
+                      disabled
                       [(ngModel)]="pharmacyService.formData1.PatientId" />
                   </div>
                 </div>
@@ -101,6 +102,7 @@
                   <div class="col-md-9 pe-5">
                     <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
                       style="width: 500px" name="PatientName" #PatientName="ngModel"
+                      disabled
                       [(ngModel)]="pharmacyService.formData1.PatientName" />
                   </div>
                 </div>
@@ -118,6 +120,7 @@
                   <div class="col-md-9 pe-5">
                     <input type="text" class="form-control form-control-lg" placeholder="Patient_StaffName"
                       style="width: 500px" name="StaffName" #StaffName="ngModel"
+                      disabled
                       [(ngModel)]="pharmacyService.formData1.StaffName" />
                   </div>
                 </div>
@@ -129,7 +132,8 @@
                   <div class="form-group col-md-9 pe-5">
                     <input type="datetime" class="form-control form-control-lg" name="ReportDateTime"
                       #ReportDateTime="ngModel" [(ngModel)]="pharmacyService.formData1.PrescriptionDateTime"
-                      placeholder="Patient_DOB" style="width: 500px" />
+                      placeholder="Date"
+                      disabled style="width: 500px" />
                   </div>
                 </div>
               </form>
