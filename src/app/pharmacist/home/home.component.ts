@@ -4,6 +4,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Medlist } from 'src/app/shared/medlist';
 import { Pharmacist } from 'src/app/shared/pharmacist';
 import { PharmacistService } from '../../shared/pharmacist.service';
@@ -47,7 +48,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    public app:AppComponent) { }
+    public app:AppComponent,
+    private auth:AuthService) { }
 
 
 
@@ -158,11 +160,13 @@ this.post(this.lab);
         console.log(count);
           this.totalPrice += this.Med[count].MedicinePrice;
           this.totalQty += (this.Med[count].MedicineQuantity);
+
           this.GrandtotalPrice += this.Med[count].MedicinePrice * this.Med[count].MedicineQuantity;
           console.log(this.GrandtotalPrice);
 
       }
       console.log(this.GrandtotalPrice);
+      
 
 
   }
@@ -174,7 +178,12 @@ this.post(this.lab);
   this. router. onSameUrlNavigation = 'reload';
   this. router. navigate([currentUrl]);
   }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
 
+    this.router.navigateByUrl('/login')
+  }
 
   }
 

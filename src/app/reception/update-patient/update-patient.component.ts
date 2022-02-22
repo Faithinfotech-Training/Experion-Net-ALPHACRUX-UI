@@ -6,6 +6,7 @@ import { UpdatePatientService } from '../../shared/update-patient.service';
 import { UpdatePatient } from '../../shared/update-patient';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ReceptionService } from 'src/app/shared/reception.service';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-update-patient',
@@ -23,7 +24,8 @@ export class UpdatePatientComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -105,5 +107,11 @@ export class UpdatePatientComponent implements OnInit {
     if (form != null) {
       form.resetForm();
     }
+  }
+  logout(){
+    console.log('inside logout')
+    this.auth.logOut();
+
+    this.router.navigateByUrl('/login')
   }
 }

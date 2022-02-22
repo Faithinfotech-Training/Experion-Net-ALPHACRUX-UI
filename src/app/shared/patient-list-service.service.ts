@@ -14,7 +14,7 @@ export class PatientListServiceService {
 
   bindListPatientList()
   {
-    return this.httpClient.get(environment.updateUrl + 'doctors/patient/getpatient').toPromise().then(response=>
+    return this.httpClient.get(environment.updateUrl + 'doctor/patient/getpatient').toPromise().then(response=>
     {
       console.log('from service');
       console.log(response);

@@ -82,6 +82,12 @@
 
               <div class="col-md-9 pe-5">
                 <input
+                minlength="1"
+                maxlength="4"
+                min="1"
+                max="100"
+
+
                   type="number"
                   class="form-control form-control-lg"
                   placeholder="Patient_Id"
@@ -114,6 +120,9 @@
                     type="submit"
                     class="btn btn-secondary btn-lg me-3"
                     [disabled]="!(form.valid && form.dirty)"
+
+
+
                   >
                     SEARCH</button
                   ><br /><br />
@@ -124,10 +133,12 @@
           <hr />
 
           <form
-            #form="ngForm"
+            #form1="ngForm"
             name="ngForm"
             autocomplete="off"
             class="form-group p-3"
+            (ngSubmit)="proceed(form1)"
+
           >
             <div class="form-group row align-items-center">
               <h4>PATIENT DETAILS</h4>
@@ -155,6 +166,7 @@
                     id="PatientId"
                     name="PatientId"
                     #PatientId="ngModel"
+                    disabled
                     [(ngModel)]="labTestService.formData.PatientId"
                   />
                 </div>
@@ -173,6 +185,7 @@
                     style="width: 500px"
                     name="PatientName"
                     #PatientName="ngModel"
+                    disabled
                     [(ngModel)]="labTestService.formData.PatientName"
                   />
                 </div>
@@ -200,6 +213,7 @@
                     style="width: 500px"
                     name="PatientPhone"
                     #PatientPhone="ngModel"
+                    disabled
                     [(ngModel)]="labTestService.formData.PatientPhone"
                   />
                 </div>
@@ -218,6 +232,7 @@
                     style="width: 500px"
                     name="StaffName"
                     #StaffName="ngModel"
+                    disabled
                     [(ngModel)]="labTestService.formData.StaffName"
                   />
                 </div>
@@ -231,10 +246,12 @@
                   <input
                     type="datetime"
                     class="form-control form-control-lg"
+                    placeholder="Report_Date"
                     name="ReportDateTime"
                     #ReportDateTime="ngModel"
+                    disabled
                     [(ngModel)]="labTestService.formData.ReportDateTime"
-                    placeholder="Patient_DOB"
+
                     style="width: 500px"
                   />
                 </div>
@@ -272,15 +289,23 @@
               <table class="table table-bordered m-2 table-active">
                 <thead class="table-lg thead-light">
                   <tr>
+                    <th scope="col" colspan="3"></th>
+                    <th scope="col" colspan="3" style="text-align: center;">Biological reference range</th>
+
+
+
+                  </tr>
+                  <tr>
                     <th scope="col">Test Name</th>
                     <th scope="col">Collected Value</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col" rowspan="2">
-                      Biological Reference Interval
-                    </th>
-                    <th></th>
-                    <th scope="col"></th>
+                    <th scope="col">Unit</th>
+                    <th scope="col">Minimum</th>
+                    <th scope="col">Maximum</th>
+
+                    <th scope="col">Unit</th>
+
+
+
                   </tr>
                 </thead>
                 <tbody class="table" style="background-color: #e7e7e7">
@@ -291,7 +316,7 @@
                         | paginate: { itemsPerPage: 5, currentPage: page }
                     "
                   >
-                    <td>{{ users.TestName }}</td>
+                    <td [value]="users.TestName" id="TestName">{{ users.TestName }}</td>
                     <td>
                       <input
                         type="number"
@@ -302,10 +327,18 @@
                         required
 
                       />
+
+
+
+
+
+
+
+
                     </td>
 
                     <td>{{ users.TestUnit }}</td>
-                    <td></td>
+
                     <td>{{ users.MinimumValue }}</td>
                     <td>{{ users.MaximumValue }}</td>
                     <td>{{ users.TestUnit }}</td>

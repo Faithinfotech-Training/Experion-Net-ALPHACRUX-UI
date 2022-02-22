@@ -2,7 +2,7 @@
   <!-- Nav bar -->
       <nav class="navbar navbar-expand-sm  bg-dark navbar-dark">
           <div class="container-fluid">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="admin/staffs/edit">
                   <h3>Administrator</h3>
               </a>
 <ul class="navbar-nav mr-auto">
@@ -22,7 +22,7 @@
           <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action 2</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Logout</a>
+            <a ngbDropdownItem  (click)="logout()">Logout</a>
           </div>
         </li>
       </ul>
@@ -30,7 +30,7 @@
 
           </div>
       </nav>
-      
+
 </header>
 
 

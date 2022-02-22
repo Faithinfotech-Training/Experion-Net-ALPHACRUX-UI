@@ -11,5 +11,6 @@ export class ReportMedicineComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }

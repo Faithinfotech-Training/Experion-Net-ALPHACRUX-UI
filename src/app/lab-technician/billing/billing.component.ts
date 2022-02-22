@@ -23,6 +23,7 @@ export class BillingComponent implements OnInit {
   total=0;
   value;
   lab:any;
+  clicked = false;
 
 
   //values
@@ -45,11 +46,16 @@ export class BillingComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form.value);
     let PatientId = this.labTestService.formData.PatientId;
+    if(PatientId<=0){
+      this.toastr.error('Invalid Patient Id', 'CMS App V2022');
+      this.resetForm(form);
+    }
 
 
-    if (PatientId != 0 || PatientId != null) {
+    else if (PatientId != 0 || PatientId != null) {
 
       this.getPatientById(form);
+
 
     }
     else {
@@ -66,6 +72,8 @@ export class BillingComponent implements OnInit {
     if (AdviceId != 0 || AdviceId != null) {
       //Insert
       this.getTest(form);
+
+
 
 
 
@@ -99,9 +107,16 @@ export class BillingComponent implements OnInit {
       "PatientId":form.value.PatientId,"LabBillAmount":numberValue}
       console.log(form.value.TestListId)
 
-      
+      if(form.value.PatientId>0 && numberValue>0){
+        this.post(this.lab);
+      }
+      else{
+        this.toastr.error('Cannot create bill with given information', 'CMS App V2022');
 
-this.post(this.lab);
+      }
+
+
+
 
 
   }
@@ -117,6 +132,7 @@ this.post(this.lab);
       .subscribe(
         (res) => {
           console.log(res);
+          this.toastr.success('Patient details found successfully', 'CMS App V2022');
 
           //Format date
           var datePipe = new DatePipe('en-UK');
@@ -127,9 +143,12 @@ this.post(this.lab);
           res.ReportDateTime = formattedDate;
           //Assign this response to updatePatientservice formData
           this.labTestService.formData = Object.assign({}, res);
+
         },
         (err) => {
           console.log(err);
+          this.toastr.error('Patient not found', 'CMS App V2022');
+          this.resetForm(form);
         }
       );
   }
@@ -147,7 +166,10 @@ this.post(this.lab);
     console.log('Trying to insert values..');
 
     this.labTestService.postBills(lab);
+
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
+    this.router.navigateByUrl('lab/home/test')
+
 
 
   }
@@ -157,6 +179,13 @@ this.post(this.lab);
 
     this.router.navigateByUrl('/login')
   }
+
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
+  }
+
 
 
 }
