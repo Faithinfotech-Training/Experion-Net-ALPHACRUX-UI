@@ -14,6 +14,7 @@
 .navbar{
   background-color: #0a193d;
   color: white !important;
+  
 }
 
 .nav-item a{
@@ -37,10 +38,13 @@
 
 #banner-container{
   background-color: #0a193d;
-  color: white !important;
+font-size: larger;
+color: seashell;
   padding-top: 80px;
   padding-bottom: 80px;
-
+background-image: url("../../assets/Images/bg.jpg");
+background-size: cover;
+background-blend-mode: overlay;
 }
 
 #banner-row img{
@@ -59,6 +63,7 @@
 #banner-row a{
   background-color: white !important;
   color: black !important;
+  filter: blur(10px);
   border: none;
   margin-left: 20px;
   margin-top: 20px;
