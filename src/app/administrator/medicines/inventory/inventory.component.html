@@ -28,7 +28,7 @@
     <table class="table table-bordered" formArrayName="quantities">
       <tr>
         <th colspan="2">Medicines: </th>
-        <th  width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary"
+        <th  width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary my-3"
           style="color: rgb(184, 157, 8);">Add</button></th>
       </tr>
       <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
