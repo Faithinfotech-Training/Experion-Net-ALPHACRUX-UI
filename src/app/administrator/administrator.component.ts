@@ -14,7 +14,7 @@ export class AdministratorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-  collapsed = true;
+  
 
   logout(){
     console.log('inside logout')
