@@ -12,6 +12,7 @@ export class MedicinedocService {
   patients: Patients[];
   formData: Patients = new Patients();
   medicines: Medicinedoc[];
+  medicineList:Medicinedoc[];
   insertmedicine:Medicinedoc[];
 
   $isPass= new EventEmitter();
@@ -56,10 +57,21 @@ export class MedicinedocService {
   }
 
 
-  //Insert Vitals
+  //Insert Medicine
  insertMedicine(insertmedicine: Medicinedoc): Observable<any> {
   return this.httpClient.post(
     environment.updateUrl  + 'doctors/medicine',insertmedicine);
+  }
+
+  //Get Selected medicine
+  getSelectedMedicines() {
+    return this.client
+      .get(environment.updateUrl + 'doctors/Getmedicine')
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        this.medicineList = data as Medicinedoc[];
+      });
   }
 
 }

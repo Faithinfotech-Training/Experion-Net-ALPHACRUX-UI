@@ -43,13 +43,13 @@
      <!--<h1 id="tokenNoId"><b>{{reception.token.TokenNumber}}</b></h1> -->
       </div>
       <div class="col-sm-10">
-       <form class="d-flex ml-2 mt-3" name="MedicineId" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+       <form class="d-flex ml-2 mt-3" name="MedicineName" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
 
           <!--Using ng-option and for loop-->
 <ng-select class="col-4 me-3 mt-3" placeholder="Medicine Name" appearance="outline"
-formControlName="MedicineId">
-  <ng-option *ngFor="let pat of medicineService.medicines" [value]="pat.MedicineId">
+formControlName="MedicineName">
+  <ng-option *ngFor="let pat of medicineService.medicines" [value]="pat.MedicineName">
     <!--value="pat.MedicineId"-->
     {{pat.MedicinetId}}
     {{pat.MedicineName}}
@@ -74,8 +74,8 @@ formControlName="MedicineId">
                 <th scope="col">Medicine Name</th>
 
             <tbody>
-            <tr *ngFor="let queue of medicineService.insertMedicine| paginate:{itemsPerPage:5, currentPage:page}">
-                <th>{{queue.MedicineId}}</th>
+            <tr *ngFor="let queue of medicineService.medicineList  |sortBy: 'desc':'MedicineListId' | paginate:{itemsPerPage:5, currentPage:page}">
+                <th>{{queue.MedicineListId}}</th>
                 <td>{{queue.MedicineName}}</td>
 
               </tr>

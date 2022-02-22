@@ -30,12 +30,13 @@ export class MedicineComponent implements OnInit {
 
   ngOnInit(): void {
     this.medicineService. getMedicines();
-    this.medicineService = this.route.snapshot.params['MedicineId'];
+    this.medicineService.getSelectedMedicines();
+    //this.medicineService = this.route.snapshot.params['MedicineId'];
 
   }
 
   checkoutForm = this.formBuilder.group({
-   MedicineId: null,
+   MedicineName: null,
 
   });
 
@@ -44,12 +45,14 @@ export class MedicineComponent implements OnInit {
     // Process checkout data here
 
     if (
-      this.checkoutForm.value.MedicineId!= null
+      this.checkoutForm.value.MedicineName!= null
     ) {
 
-      console.log(this.checkoutForm.value.MedicineId)
+      this.medicineService.generateMedicine(this.checkoutForm.value);
+      console.log(this.checkoutForm.value);
       this.toastr.success('Medicine Added', 'Successfull!');
-      this.medicineService.pat.MedicineId = this.checkoutForm.value.PatientId;
+      //this.medicineService.pat.MedicineId = this.checkoutForm.value.PatientId;
+      this.insertPatientMedicineRecord();
 
 
       //this.router.navigate(['/doctors/app']);
@@ -60,9 +63,10 @@ export class MedicineComponent implements OnInit {
     }
   }
 
-  insertPatientMedicineRecord(form?: NgForm) {
+  insertPatientMedicineRecord() {
     console.log("Inserting a record....");
-    this.medicineService.insertMedicine(form.value).subscribe(res => {
+    console.log(this.checkoutForm.value)
+    this.medicineService.insertMedicine(this.checkoutForm.value).subscribe(res => {
       console.log(res);
       this.toastr.success('Patient record Inserted Successfully', 'CMS App V2022');
       this.router.navigateByUrl('/')
@@ -79,11 +83,6 @@ export class MedicineComponent implements OnInit {
 
     this.router.navigateByUrl('/login')
   }
-
-  // postMedicine(){
-  //   this.medicineService.generateMedicine()
-  // }
-
 
 }
 
