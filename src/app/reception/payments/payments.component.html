@@ -4,91 +4,83 @@
   <div class="float-start bg-light navbar-light p-1 position-fixed">
     <ul class="navbar-nav ms-2 gap-3">
       <li class="navbar-item">
-        <a class="navbar-brand" href="reception/home"
-          ><i class="bi bi-house-fill" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="navbar-brand" href="reception/home"><i class="bi bi-house-fill" style="font-size: 1.5rem"></i></a>
       </li>
       <li class="navbar-item">
-        <a class="nav-link active" href="reception/transactions"
-          ><i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill"
+            style="font-size: 1.5rem"></i></a>
 
       <li class="navbar-item">
-        <a class="nav-link active" href="reception/register-patient"
-          ><i class="bi bi-person-plus-fill" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="nav-link active" href="reception/register-patient"><i class="bi bi-person-plus-fill"
+            style="font-size: 1.5rem"></i></a>
       </li>
-    <li class="navbar-item">
-      <a class="nav-link active" href="reception/update-patient"
-        ><i class="bi-plus-circle" style="font-size: 1.5rem"></i
-      ></a>
-    </li>
+      <li class="navbar-item">
+        <a class="nav-link active" href="reception/update-patient"><i class="bi-plus-circle"
+            style="font-size: 1.5rem"></i></a>
+      </li>
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          (click)="logout()"
-          role="button"
-          data-bs-toggle="dropdown"
-          ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
-        ></a>
+        <a class="nav-link dropdown-toggle" (click)="logout()" role="button" data-bs-toggle="dropdown"><i
+            class="bi bi-person-circle" style="font-size: 1.5rem"></i></a>
 
       </li>
     </ul>
-  </div>
+    </div>
 
+    <div class="container-sm container-fluid">
+      <div class="row mt-5"></div>
+      <div class="row mt-5">
+        <div class="col mt-5">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body">
 
+          <h1>Payment</h1>
 
-
-
-<div class="container-fluid-sm p-2">
-    <div class="row mt-5"></div>
-    <div class="row mt-4">
-
-        <h1>Payment</h1>
-
-        <div class="col-sm-6 p-4 ms-3 border rounded border-bottom-0">
+          <div class="col-sm-6 p-4 ms-3 border rounded border-bottom-0">
             <h3>Payment details</h3>
 
             <div class="table border mt-4 rounded">
-                <table class="table table-borderless">
+              <table class="table table-borderless">
 
-                      <tbody>
-                        <tr>
-                          <th scope="row">Patient id:</th>
-                          <td>{{receptionService.formData2.PatientId}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Patient name:</th>
-                          <td>{{receptionService.formData2.PatientName}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Doctor name: </th>
-                          <td>{{receptionService.formData2.DoctorName}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Amount:</th>
-                          <td ><h6>200 &#x20b9;</h6> </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Bill Date:</th>
-                          <td>{{Billdate | date: 'dd-MMM-yy HH:mm:ss'}}</td>
-                        </tr>
-                      </tbody>
-                </table>
+                <tbody>
+                  <tr>
+                    <th scope="row">Patient id:</th>
+                    <td>{{receptionService.formData2.PatientId}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Patient name:</th>
+                    <td>{{receptionService.formData2.PatientName}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Doctor name: </th>
+                    <td>{{receptionService.formData2.DoctorName}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Amount:</th>
+                    <td>
+                      <h6>200 &#x20b9;</h6>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Bill Date:</th>
+                    <td>{{Billdate | date: 'dd-MMM-yy HH:mm:ss'}}</td>
+                  </tr>
+                </tbody>
+              </table>
 
 
-              </div>
-&nbsp;<br>
-              <button class="btn btn-secondary" (click)=" generatebill()">
-                Print Bill
-              </button>
+            </div>
+            &nbsp;<br>
+            <button class="btn btn-secondary" (click)=" generatebill()">
+              Print Bill
+            </button>
+
+          </div>
 
         </div>
 
-
-
+      </div>
     </div>
-  </div>
+    </div>
 
 </div>
 

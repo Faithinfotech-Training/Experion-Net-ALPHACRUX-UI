@@ -27,14 +27,14 @@ export class ReceptionService {
     PatientName: '',
   };
   $isDoc = new EventEmitter();
-  doc: Doctors = {
-    DoctorId: 0,
-    DoctorName: '',
-    Phone: '',
-    Email: '',
-    RoleName: '',
-    Qualification: '',
-  };
+  // doc: Doctors = {
+  //   DoctorId: 0,
+  //   DoctorName: '',
+  //   Phone: '',
+  //   Email: '',
+  //   RoleName: '',
+  //   Qualification: '',
+  // };
 
   constructor(private client: HttpClient) {}
 
