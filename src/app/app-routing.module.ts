@@ -26,7 +26,6 @@ import { NewMedicineComponent } from './administrator/medicines/new-medicine/new
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 
 const routes: Routes = [
-  { path: '', component: MedicinesComponent },
   { path: 'doctor/advice', component: AdviceComponent },
   { path: 'reception/home', component: HomePageComponent },
   { path: 'reception/payments', component: PaymentsComponent },
@@ -60,7 +59,7 @@ const routes: Routes = [
   { path: 'doctor/advice/tests', component: TestsComponent },
   { path: 'lab/home', component: LabTechnicianComponent },
   { path: 'lab/home/test', component: LabTestReportComponent },
-  { path: '**', component: AppComponent },
+  { path: '**', component: MedicinesComponent },
 ];
 
 @NgModule({
