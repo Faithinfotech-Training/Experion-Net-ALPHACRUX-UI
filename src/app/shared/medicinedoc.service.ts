@@ -66,7 +66,7 @@ export class MedicinedocService {
   //Get Selected medicine
   getSelectedMedicines() {
     return this.client
-      .get(environment.updateUrl + 'doctor/Getmedicine')
+      .get(environment.updateUrl + 'doctors/Getmedicine')
       .toPromise()
       .then((data) => {
         console.log(data);
