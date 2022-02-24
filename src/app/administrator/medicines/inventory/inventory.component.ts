@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/shared/admin.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { AdminService } from 'src/app/shared/admin.service';
 export class InventoryComponent implements OnInit {
   medicineForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public admin: AdminService) {
+  constructor(
+    private fb: FormBuilder,
+    public admin: AdminService,
+    private toast: ToastrService
+  ) {
     this.medicineForm = this.fb.group({
       InventoryId: 0,
       ManufactureId: 0,
@@ -21,6 +26,7 @@ export class InventoryComponent implements OnInit {
   ngOnInit(): void {
     this.admin.getMfgs();
     this.admin.getMedicineDetails();
+    this.addQuantity();
   }
 
   quantities(): FormArray {
@@ -29,9 +35,15 @@ export class InventoryComponent implements OnInit {
 
   newQuantity(): FormGroup {
     return this.fb.group({
-      MedicineQuantity: 0,
+      MedicineQuantity: [
+        0,
+        [Validators.required, Validators.pattern('^[0-9]*$')],
+      ],
       MedicineId: 0,
-      MedicineType: '',
+      MedicineType: [
+        '',
+        [Validators.required, Validators.pattern('^[a-zA-Z ]*$')],
+      ],
     });
   }
 
@@ -45,5 +57,18 @@ export class InventoryComponent implements OnInit {
 
   onSubmit() {
     console.log(this.medicineForm.value);
+    this.addInventory(this.medicineForm.value);
+  }
+
+  addInventory(medicineForm) {
+    this.admin.addInventory(medicineForm).subscribe(
+      (response) => {
+        console.log(response);
+        this.toast.success('Inventory Added Successfully', 'Success');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

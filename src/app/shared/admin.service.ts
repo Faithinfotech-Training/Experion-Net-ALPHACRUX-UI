@@ -8,6 +8,7 @@ import { Qualifications } from './qualifications';
 import { MedicineDetails } from './medicine-details';
 import { Manufactures } from './manufactures';
 import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -107,4 +108,21 @@ export class AdminService {
   addMedicine(medicine: MedicineDetails): Observable<any> {
     return this.client.post(environment.apiUrl + 'admin/addmedicine', medicine);
   }
+
+  //Delete Inventory
+  deleteInventory(id: number) {
+    return this.client.delete(
+      environment.apiUrl + 'admin/deleteinventory/' + id
+    );
+  }
+
+  //Add to inventory
+  addInventory(form : NgForm): Observable<any> {
+    return this.client.post(environment.apiUrl + 'admin/inventory', form);
+  }
+
+  //Get Inventory by id
+  getInventoryById(id: number): Observable<any>{ 
+    return this.client.get(environment.apiUrl + 'admin/inventory/' + id);
+}
 }
