@@ -26,61 +26,74 @@
     </ul>
     </div>
 
-    <div class="container-sm container-fluid">
-      <div class="row mt-5"></div>
-      <div class="row mt-5">
-        <div class="col mt-5">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body">
+  <div class="container-sm container-fluid">
+    <div class="row mt-5"></div>
+    <div class="row mt-5">
+      <div class="col mt-5">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body">
 
-          <h1>Payment</h1>
+            <h1>Payment</h1>
+            <div>
+            <div id="bill">
+            <button class="btn btn-secondary "  (click)=" generatebill()">
+              Save Bill
+            </button>
+            <br>
+            </div>
+            <div id="pdf" >
+              <button class="btn btn-primary " (click)="makePDF()">Download pdf</button>
+            </div>
+          </div>
+          <br>
+          <br>
+          <form [formGroup]="checkoutForm">
+            <div id="content" #content>
+              <div id="content" #content class="col-sm-6 p-4 ms-3 border rounded border-bottom-0">
+                <h3>Payment details</h3>
 
-          <div class="col-sm-6 p-4 ms-3 border rounded border-bottom-0">
-            <h3>Payment details</h3>
+                <div class="table border mt-4 rounded">
+                  <table class="table table-borderless">
 
-            <div class="table border mt-4 rounded">
-              <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Patient id:</th>
+                        <td>{{receptionService.token.PatientId}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Patient name:</th>
+                        <td>{{receptionService.token.PatientName}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Doctor name: </th>
+                        <td>{{receptionService.token.DoctorName}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Amount:</th>
+                        <td>
+                          <h6>200 &#x20b9;</h6>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Bill Date:</th>
+                        <td>{{Billdate | date: 'dd-MMM-yy HH:mm:ss'}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-                <tbody>
-                  <tr>
-                    <th scope="row">Patient id:</th>
-                    <td>{{receptionService.formData2.PatientId}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Patient name:</th>
-                    <td>{{receptionService.formData2.PatientName}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Doctor name: </th>
-                    <td>{{receptionService.formData2.DoctorName}}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Amount:</th>
-                    <td>
-                      <h6>200 &#x20b9;</h6>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Bill Date:</th>
-                    <td>{{Billdate | date: 'dd-MMM-yy HH:mm:ss'}}</td>
-                  </tr>
-                </tbody>
-              </table>
+
+                </div>
+              </div>
+              &nbsp;<br>
 
 
             </div>
-            &nbsp;<br>
-            <button class="btn btn-secondary" (click)=" generatebill()">
-              Print Bill
-            </button>
+          </form>
 
           </div>
 
         </div>
-
       </div>
     </div>
-    </div>
 
-</div>
-
+  </div>

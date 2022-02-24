@@ -1,81 +1,88 @@
-//import { Token } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/shared/auth.service';
-//import jsPDF from 'jspdf';
-//import pdfMake from 'pdfmake/build/pdfmake';
-//import htmlToPdfmake from 'html-to-pdfmake';
+//import { AuthService } from 'src/app/shared/auth.service';
+import { jsPDF } from 'jspdf';
 import { ReceptionService } from 'src/app/shared/reception.service';
 import { Token } from 'src/app/shared/token';
-
+import { TokenQueue } from 'src/app/shared/token-queue';
+import { FormBuilder } from '@angular/forms';
+import { PaymentsService } from 'src/app/shared/payments.service';
 
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
-  styleUrls: ['./payments.component.scss']
+  styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit {
-  patientID:number;
-  patientName:string;
-  StaffName:string;
-  Amount:number;
-  Billdate:Date=new Date();
-  Token:any=  new Token();
-/*
-  @ViewChild('pdfTable') pdfTable: ElementRef;
+  patientID: number;
+  patientName: string;
+  StaffName: string;
+  Amount: number;
+  Billdate: Date = new Date();
+  queueList: any = new TokenQueue();
 
-  public downloadAsPDF() {
-    const doc = new jsPDF();
-    //get table html
-    const pdfTable = this.pdfTable.nativeElement;
-    //html to pdf format
-    var html = htmlToPdfmake(pdfTable.innerHTML);
+  @ViewChild('content', { static: false }) el1: ElementRef;
 
-    const documentDefinition = { content: html };
-    pdfMake.createPdf(documentDefinition).open();
-
+  makePDF() {
+    let pdf = new jsPDF('p', 'pt', 'a4');
+    pdf.html(this.el1.nativeElement, {
+      callback: (pdf) => {
+        pdf.save('Reception-Bill.pdf');
+      },
+    });
 
   }
 
-*/
-
-  constructor(public receptionService : ReceptionService,private router: Router,private toastr: ToastrService,
-    private auth:AuthService) {}
+  constructor(
+    public receptionService: ReceptionService,
+    private router: Router,
+    private toastr: ToastrService,
+    private formBuilder:FormBuilder,
+    private paymentService: PaymentsService
+  ) //private auth:AuthService
+  {}
 
   ngOnInit(): void {
-
-    this.receptionService.$isPass
-    .subscribe( (data)=>{
-      console.log("I got in console",data.PatientId);
-      this.receptionService.getpatientwithid(data.PatientId).subscribe(res=>{console.log(res);
-      this.receptionService.formData2=Object.assign({},res);
-    })
-     // getpatientwithid(data.PatientId);
-      console.log("From payment service");
-      console.log("I got in console",data.PatientId);
-      console.log("PatientId");
-      console.log(data.PatientId);
-     ;
-      this.router.navigateByUrl('/reception/home');
-
-    })
-
-
+    this.receptionService.$isPass.subscribe((data) => {
+      console.log('I got in console', data.PatientId);
+      this.receptionService
+        .getpatientwithid(data.PatientId)
+        .subscribe((res) => {
+          console.log(res);
+          this.receptionService.token = Object.assign({}, res);
+        });
+    });
   }
+  checkoutForm = this.formBuilder.group({
+  ConsultationDateTime:null,
+  ConsultationAmount:200,
+  PatientId: null,
+  PatientName:null,
+  StaffId: null,
+  StaffName: null,
+  });
 
-  generatebill(){
-    this.toastr.success('Bill generated Successfully', 'CMS App V2022');
+  generatebill() {
+    if (
+      this.checkoutForm.value.PatientId != null &&
+      this.checkoutForm.value.StaffId != null
+    ) {
+      this.toastr.success('Bill Saved Successfully', 'CMS App V2022');
+      this.paymentService.savebill(this.checkoutForm.value);
+     this.router.navigate(['/reception/payments']);
+    }
+    else {
+      this.toastr.error('Please select a patient and a doctor', 'Error!');
+      this.checkoutForm.reset();
+    }
+
+    this.router.navigateByUrl('/reception/home');
   }
-  logout(){
-    console.log('inside logout')
-    this.auth.logOut();
+  logout() {
+    console.log('inside logout');
+    //this.auth.logOut();
 
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/login');
   }
-
 }
-function htmlToPdfmake(innerHTML: any) {
-  throw new Error('Function not implemented.');
-}
-

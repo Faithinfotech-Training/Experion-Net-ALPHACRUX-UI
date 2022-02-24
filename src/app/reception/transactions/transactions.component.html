@@ -47,19 +47,21 @@
             <table class="table table-bordered ms-4">
                 <thead>
                     <tr>
-                        <th scope="col">Invoice number</th>
-                        <th scope="col">Date&Time</th>
+                        <th scope="col">Bill Id</th>
+                        <th scope="col">Date & Time</th>
                         <th scope="col">Patient ID</th>
                         <th scope="col">Patient Name</th>
+                        <th scope="col">Doctor Name</th>
 
                     </tr>
                 </thead>
                 <tbody *ngFor="let Payment of paymentsService.payments|filter:filter|paginate:{itemsPerPage:4,currentPage:page}">
                   <tr>
-                    <td>{{Payment.InvoiceNumber}}</td>
-                    <td>{{Payment.DateTime | date: 'dd-MMM-yy h:mm a'}}</td>
+                    <td>{{Payment.ConsultationBillId}}</td>
+                    <td>{{Payment.ConsultationDateTime | date: 'dd-MMM-yy h:mm a'}}</td>
                     <td>{{Payment.PatientId}}</td>
                     <td>{{Payment.PatientName}}</td>
+                    <td>{{Payment.StaffName}}</td>
 
                 </tr>
                 </tbody>

@@ -27,7 +27,7 @@ export class UpdatePatientService {
 
   //Get patient by id
   getPatientById(id: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + 'Receptionist/patientid' + id);
+    return this.httpClient.get(environment.apiUrl + 'receptionist/patient/' + id);
   }
 
 
