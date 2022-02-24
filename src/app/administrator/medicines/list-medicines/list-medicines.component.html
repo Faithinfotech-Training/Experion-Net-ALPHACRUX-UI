@@ -28,9 +28,9 @@
                         <td>{{medicine.ManufacturingDate | date: 'dd-MMM-yy'}}</td>
                         <td>{{medicine.ExpiryDate | date: 'dd-MMM-yy'}}</td>
                         <td>
-                            <button class="btn btn-sm btn-outline-info" >Edit</button> 
+                            <button class="btn btn-sm btn-outline-info" (click)="open(content,medicine.InventoryId)">Edit</button> 
                             &nbsp;
-                            <button class="btn btn-sm btn-outline-danger" >Del</button> 
+                            <button class="btn btn-sm btn-outline-danger" (click)="del(medicine.InventoryId)">Del</button> 
 
                         </td>
                     </tr>
@@ -43,3 +43,25 @@
     </div>
    
 </div>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Inventory</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="quantity">Quantity</label>
+        <div class="input-group">
+          <input id="quantity" class="form-control" placeholder="" name="quantity" type="number" min="0">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+  </div>
+</ng-template>

@@ -16,7 +16,7 @@ export class DiagnosisService {
  insertNote(diagnosis: Diagnosis): Observable<any> {
   return this.httpClient.post(
     environment.apiUrl
-      + 'doctor/patient/medicalhistory',diagnosis);
+      + 'doctors/patient/medicalhistory',diagnosis);
 }
 
   //Get patient by id
