@@ -127,7 +127,7 @@ export class UpdatePatientComponent implements OnInit {
   }
   logout() {
     console.log('inside logout');
-    //this.auth.logOut();
+    this.auth.logOut();
 
     this.router.navigateByUrl('/login');
   }

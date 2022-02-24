@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-//import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService } from 'src/app/shared/auth.service';
 import { jsPDF } from 'jspdf';
 import { ReceptionService } from 'src/app/shared/reception.service';
 import { Token } from 'src/app/shared/token';
@@ -39,8 +39,9 @@ export class PaymentsComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private formBuilder:FormBuilder,
-    private paymentService: PaymentsService
-  ) //private auth:AuthService
+    private paymentService: PaymentsService,
+    private auth:AuthService
+  )
   {}
 
   ngOnInit(): void {
@@ -64,24 +65,14 @@ export class PaymentsComponent implements OnInit {
   });
 
   generatebill() {
-    if (
-      this.checkoutForm.value.PatientId != null &&
-      this.checkoutForm.value.StaffId != null
-    ) {
+
       this.toastr.success('Bill Saved Successfully', 'CMS App V2022');
       this.paymentService.savebill(this.checkoutForm.value);
-     this.router.navigate(['/reception/payments']);
-    }
-    else {
-      this.toastr.error('Please select a patient and a doctor', 'Error!');
-      this.checkoutForm.reset();
-    }
-
     this.router.navigateByUrl('/reception/home');
   }
   logout() {
     console.log('inside logout');
-    //this.auth.logOut();
+    this.auth.logOut();
 
     this.router.navigateByUrl('/login');
   }

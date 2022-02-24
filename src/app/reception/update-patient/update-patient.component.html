@@ -58,7 +58,7 @@
 
 
                   <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3"
-                    (ngSubmit)="onSubmit(form)">
+                    (ngSubmit)="updatePatientRecord(form)">
 
                     <input type="hidden" name="PatientId" [(ngModel)]="Patient.PatientId" />
                     <!--Name of patient-->
@@ -67,34 +67,30 @@
                         <h3 class="mb-0">NAME</h3>
                       </div>
                       <div class="col-md-9 pe-5">
-
-
-                        <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
-                          style="width: 500px;" name="PatientName" #PatientName="ngModel" required pattern="[a-zA-Z]"
-                          [(ngModel)]="Patient.PatientName" required minlength="5" maxlength="25"
-                          [ngClass]="{ 'is-invalid': PatientName.touched && PatientName.invalid }" />
+                        <input type="text" class="form-control form-control-lg" placeholder="Enter patient name"
+                          style="width: 500px;" name="PatientName" #PatientName="ngModel" required
+                          pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" [(ngModel)]="Patient.PatientName" required minlength="3"
+                          maxlength="25" />
                       </div>
                     </div>
-
-                    <input type="hidden" name="PatientId" [(ngModel)]="Patient.PatientId" />
-                    <!--Name of patient-->
+                    <!--Location-->
                     <div class="form-group row align-items-center pt-4 pb-3">
+                      <div class="col-md-3 ps-5">
+                        <h3 class="mb-0">LOCATION</h3>
+                      </div>
 
-                      <h3 class="mb-0">LOCATION</h3>
-                    </div>
-
-                    <div class="form-group col-md-9 pe-5">
-                      <input type="text" class="form-control form-control-lg" name="PatientLocation" required
-                        pattern="[a-zA-Z]+" #PatientLocation="ngModel"
-                        [(ngModel)]="updatePatientService.formData.PatientLocation" required minlength="5"
-                        maxlength="25" [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
-                        [ngClass]="{ 'is-invalid': PatientLocation.touched && PatientLocation.invalid }"
-                        placeholder="Patient_Location" style="width: 500px" />
-                      <!-- Validation -->
-                      <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
-                        <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
-                          required!</span>
-                      </p>
+                      <div class="form-group col-md-9 pe-5">
+                        <input type="text" class="form-control form-control-lg" name="PatientLocation" required
+                          pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" #PatientLocation="ngModel"
+                          [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
+                          [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
+                          placeholder="Patient_Location" style="width: 500px" />
+                        <!-- Validation -->
+                        <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
+                          <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
+                            required!</span>
+                        </p>
+                      </div>
                     </div>
 
 
@@ -104,20 +100,20 @@
                         <h3 class="mb-0">GENDER</h3>
                       </div>
                       <div class="form-group col-md-9 pe-5">
+                        <div class="radio-inline" [(ngModel)]="Patient.PatientGender" name="PatientGender"
+                          id="PatientGender" placeholder="Patient_Gender" #PatientGender="ngModel" required
+                          style="width: 500px">
 
 
-                        <select class="form-select" [(ngModel)]="Patient.PatientGender" name="PatientGender"
-                          id="PatientGender" placeholder="Patient_Gender" class="form-control" #PatientGender="ngModel"
-                          required aria-label="Default select" style="width: 500px">
-                          <option selected>Select Gender</option>
-                          <option value="Female">Female</option>
-                          <option value="Male">Male</option>
-                        </select>
-                        <!-- Validation -->
-                        <p *ngIf="PatientGender.touched && PatientGender.invalid" class="validation-error">
-                          <span *ngIf="PatientGender.errors.required" style="color: crimson">Gender is
-                            required!</span>
-                        </p>
+                          <input type="radio" value="Male" name="gender" ngModel> Male
+                          <input type="radio" value="Female" name="gender" ngModel> Female
+                          <input type="radio" value="Other" name="gender" ngModel> Other
+
+
+                        </div>
+
+
+
                       </div>
                     </div>
                     <!-- Date of birth -->
@@ -129,7 +125,6 @@
                         <input type="date" class="form-control form-control-lg" name="PatientDob" #PatientDob="ngModel"
                           [(ngModel)]="Patient.PatientDob" required
                           onfocus="this.max=new Date().toISOString().split('T')[0]" min="1915-01-01"
-                          [ngClass]="{ 'is-invalid': PatientDob.touched && PatientDob.invalid }"
                           placeholder="Patient_DOB" style="width: 500px" />
                       </div>
                     </div>
@@ -143,6 +138,14 @@
                           name="PatientBlood" id="PatientBlood" placeholder="Patient_Blood group" class="form-control"
                           #PatientBlood="ngModel" required aria-label="Default select" style="width: 500px">
                           <option selected>Select Blood Group</option>
+                          <option value="A+ve">A+ve</option>
+                          <option value="A-ve">A-ve</option>
+                          <option value="B+ve">B+ve</option>
+                          <option value="B-ve">B-ve</option>
+                          <option value="AB+ve">AB+ve</option>
+                          <option value="AB-ve">AB-ve</option>
+                          <option value="O+ve">O+ve</option>
+                          <option value="O-ve">O-ve</option>
                         </select>
                       </div>
                     </div>
@@ -155,22 +158,30 @@
 
                         <input type="text" name="PatientPhone" #PatientPhone="ngModel" required pattern="[0-9]+"
                           [(ngModel)]="Patient.PatientPhone" required minlength="10" maxlength="10"
-                          [ngClass]="{ 'is-invalid': PatientPhone.touched && PatientPhone.invalid }"
                           class="  form-control form-control-lg" placeholder="Patient_Phonenumber"
                           style="width: 500px" />
                       </div>
                     </div>
                     <div class="row align-items-center pt-4 pb-3">
                       <div class="col-md-3 ps-5">
-                        <h6 class="mb-0">WEIGHT</h6>
+                        <h3 class="mb-0">WEIGHT</h3>
                       </div>
 
                       <div class="col-md-9 pe-5">
                         <input type="text" name="PatientWeight" #PatientWeight="ngModel" required pattern="[0-9]+"
                           [(ngModel)]="Patient.PatientWeight" placeholder="Patient_Weight" required minlength="1"
-                          maxlength="3" [ngClass]="{'is-invalid': PatientWeight.touched && PatientWeight.invalid}"
-                          class="form-control form-control-lg" style="width: 500px" />
+                          maxlength="3" class="form-control form-control-lg" style="width: 500px" />
                       </div>
+                    </div>
+
+                    <hr class="mx-n3">
+
+                    <div class="px-5 py-4">
+                      <!--Clear Button-->
+                      <button type="reset" class="btn btn-light">CLEAR</button>
+                      <!--Submit Button-->
+                      <button type="submit" class="btn btn-dark" class="btn btn-primary btn-lg"
+                        [disabled]="!(form.valid )">SAVE</button>
                     </div>
                   </form>
                 </div>
