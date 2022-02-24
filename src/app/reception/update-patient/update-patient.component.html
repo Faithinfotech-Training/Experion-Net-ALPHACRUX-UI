@@ -31,11 +31,14 @@
       <div class="row mt-5">
         <div class="col mt-5">
           <div class="card">
-            <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm" (ngSubmit)="onSubmit(form)">
+            <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm"
+            (ngSubmit)="onSubmit(checkoutForm.value)" >
 
               <!--Using ng-option and for loop-->
               <ng-select class="col-4 me-3 mt-3" placeholder="Patient ID/Name/Location/Phone" appearance="outline"
                 formControlName="PatientId">
+                
+
                 <ng-option *ngFor="let pat of reception.patients" [value]="pat.PatientId">
                   {{pat.PatientId}} &nbsp;
                   {{pat.PatientName}} &nbsp;
@@ -43,9 +46,16 @@
                   {{pat.PatientPhone}}
                 </ng-option>
               </ng-select>
-              <button type="submit" class="btn btn-secondary btn-lg me-3"
+
+              <!-- (click)="onClick(checkoutForm.value)"  -->
+              <button type="submit"
+               
+               class="btn btn-secondary btn-lg me-3"
                       >
                       SEARCH</button>
+
+             
+
             </form>
           </div>
           <br>
@@ -59,7 +69,7 @@
 
               <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3" (ngSubmit)="onSubmit(form)">
 
-                <input type="hidden" name="PatientId" [(ngModel)]="updatePatientService.formData.PatientId" />
+                <input type="hidden" name="PatientId" [(ngModel)]="Patient.PatientId" />
                 <!--Name of patient-->
                 <div class="form-group row align-items-center pt-4 pb-3">
 
@@ -71,7 +81,7 @@
 
                     <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
                       style="width: 500px;" name="PatientName" #PatientName="ngModel" required pattern="[a-zA-Z]+"
-                      [(ngModel)]="updatePatientService.formData.PatientName" required minlength="5" maxlength="25"
+                      [(ngModel)]="Patient.PatientName" required minlength="5" maxlength="25"
                       [ngClass]="{ 'is-invalid': PatientName.touched && PatientName.invalid }" />
 
 
@@ -93,7 +103,7 @@
                   <div class="form-group col-md-9 pe-5">
                     <input type="text" class="form-control form-control-lg" name="PatientLocation" required
                       pattern="[a-zA-Z]+" #PatientLocation="ngModel"
-                      [(ngModel)]="updatePatientService.formData.PatientLocation" required minlength="5" maxlength="25"
+                      [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
                       [ngClass]="{ 'is-invalid': PatientLocation.touched && PatientLocation.invalid }"
                       placeholder="Patient_Location" style="width: 500px" />
 
@@ -116,7 +126,7 @@
                   </div>
                   <div class="form-group col-md-9 pe-5">
 
-                    <select class="form-select" [(ngModel)]="updatePatientService.formData.PatientGender"
+                    <select class="form-select" [(ngModel)]="Patient.PatientGender"
                       name="PatientGender" id="PatientGender" placeholder="Patient_Gender" class="form-control"
                       #PatientGender="ngModel" required aria-label="Default select" style="width: 500px">
                       <option selected>Select Gender</option>
@@ -144,7 +154,7 @@
                   </div>
                   <div class="form-group col-md-9 pe-5">
                     <input type="date" class="form-control form-control-lg" name="PatientDob" #PatientDob="ngModel"
-                      [(ngModel)]="updatePatientService.formData.PatientDob" required
+                      [(ngModel)]="Patient.PatientDob" required
                       onfocus="this.max=new Date().toISOString().split('T')[0]" min="1915-01-01"
                       [ngClass]="{ 'is-invalid': PatientDob.touched && PatientDob.invalid }" placeholder="Patient_DOB"
                       style="width: 500px" />
@@ -168,7 +178,7 @@
 
                   </div>
                   <div class="col-md-9 pe-5">
-                    <select class="form-select" [(ngModel)]="updatePatientService.formData.PatientBlood"
+                    <select class="form-select" [(ngModel)]="Patient.PatientBlood" [value]="Patient.PatientBlood"
                       name="PatientBlood" id="PatientBlood" placeholder="Patient_Blood group" class="form-control"
                       #PatientBlood="ngModel" required aria-label="Default select" style="width: 500px">
                       <option selected>Select Blood Group</option>
@@ -203,7 +213,7 @@
                   <div class="col-md-9 pe-5">
 
                     <input type="text" name="PatientPhone" #PatientPhone="ngModel" required pattern="[0-9]+"
-                      [(ngModel)]="updatePatientService.formData.PatientPhone" required minlength="10" maxlength="10"
+                      [(ngModel)]="Patient.PatientPhone" required minlength="10" maxlength="10"
                       [ngClass]="{ 'is-invalid': PatientPhone.touched && PatientPhone.invalid }"
                       class="  form-control form-control-lg" placeholder="Patient_Phonenumber" style="width: 500px" />
 
@@ -227,7 +237,7 @@
 
                   <div class="col-md-9 pe-5">
                     <input type="text" name="PatientWeight" #PatientWeight="ngModel" required pattern="[0-9]+"
-                      [(ngModel)]="updatePatientService.formData.PatientWeight" placeholder="Patient_Weight" required
+                      [(ngModel)]="Patient.PatientWeight" placeholder="Patient_Weight" required
                       minlength="1" maxlength="3"
                       [ngClass]="{'is-invalid': PatientWeight.touched && PatientWeight.invalid}"
                       class="form-control form-control-lg" style="width: 500px" />
