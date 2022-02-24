@@ -48,7 +48,7 @@ export class MedicinedocService {
   //Generate Medicnes
   generateMedicine(medicines: Medicinedoc) {
     return this.client
-      .post(environment.apiUrl + 'doctor/medicine', medicines)
+      .post(environment.apiUrl + 'doctor/addmedicine', medicines)
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -60,13 +60,13 @@ export class MedicinedocService {
   //Insert Medicine
  insertMedicine(insertmedicine: Medicinedoc): Observable<any> {
   return this.httpClient.post(
-    environment.updateUrl  + 'doctor/medicine',insertmedicine);
+    environment.updateUrl  + 'doctors/addmedicine',insertmedicine);
   }
 
   //Get Selected medicine
   getSelectedMedicines() {
     return this.client
-      .get(environment.updateUrl + 'doctor/Getmedicine')
+      .get(environment.updateUrl + 'doctors/Getmedicine')
       .toPromise()
       .then((data) => {
         console.log(data);
