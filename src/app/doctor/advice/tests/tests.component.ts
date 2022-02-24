@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/shared/auth.service';
-import { DoctorAdviceService } from 'src/app/shared/doctor-advice.service';
+import { TestService} from 'src/app/shared/test.service';
 
 @Component({
   selector: 'app-tests',
@@ -12,13 +12,14 @@ import { DoctorAdviceService } from 'src/app/shared/doctor-advice.service';
   styleUrls: ['./tests.component.scss']
 })
 export class TestsComponent implements OnInit {
+
   page: number = 1;
   route: any;
 
   //emits
 
   constructor(
-    public testService: DoctorAdviceService,
+    public testService: TestService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
@@ -30,12 +31,11 @@ export class TestsComponent implements OnInit {
   ngOnInit(): void {
     this.testService. getTest();
     this.testService.getSelectedTest();
-    //this.medicineService = this.route.snapshot.params['MedicineId'];
 
   }
 
   checkoutForm = this.formBuilder.group({
-   MedicineName: null,
+   TestName: null,
 
   });
 
@@ -44,14 +44,13 @@ export class TestsComponent implements OnInit {
     // Process checkout data here
 
     if (
-      this.checkoutForm.value.TestId== null
+      this.checkoutForm.value.TestName!= null
     ) {
 
-     // this.testService.generateTest(this.checkoutForm.value);
-      console.log(this.checkoutForm.value);
+      this.testService.generateTest(this.checkoutForm.value);
+      console.log('tes val'+this.checkoutForm.value);
       this.toastr.success('Test Added', 'Successfull!');
-      //this.medicineService.pat.MedicineId = this.checkoutForm.value.PatientId;
-      this.insertPatientMedicineRecord();
+      this.insertPatientTestRecord();
 
 
       //this.router.navigate(['/doctors/app']);
@@ -62,10 +61,10 @@ export class TestsComponent implements OnInit {
     }
   }
 
-  insertPatientMedicineRecord() {
+  insertPatientTestRecord() {
     console.log("Inserting a record....");
     console.log(this.checkoutForm.value)
-    this.testService.insertMedicine(this.checkoutForm.value).subscribe(res => {
+    this.testService.insertTest(this.checkoutForm.value).subscribe(res => {
       console.log(res);
       this.toastr.success('Patient record Inserted Successfully', 'CMS App V2022');
       this.router.navigateByUrl('/')
@@ -84,4 +83,3 @@ export class TestsComponent implements OnInit {
   }
 
 }
-

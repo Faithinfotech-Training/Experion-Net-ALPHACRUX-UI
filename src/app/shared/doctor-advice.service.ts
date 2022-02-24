@@ -75,7 +75,7 @@ export class DoctorAdviceService {
 //Get Test
 getTest() {
   return this.httpClient
-    .get(environment.updateUrl + 'doctors/viewlists')
+    .get(environment.updateUrl + 'doctor/viewlists')
     .toPromise()
     .then((data) => {
       console.log(data);
@@ -86,7 +86,7 @@ getTest() {
 //Generate Test
 generateTest(tests: TestLists) {
 return this.httpClient
-  .post(environment.apiUrl + 'doctors/medicine', tests)
+  .post(environment.apiUrl + 'doctor/medicine', tests)
   .toPromise()
   .then((data) => {
     console.log(data);
@@ -96,13 +96,13 @@ return this.httpClient
 //InsertTest
 insertMedicine(insertTest: TestLists): Observable<any> {
 return this.httpClient.post(
-  environment.updateUrl  + 'doctors/AddMedicine',insertTest);
+  environment.updateUrl  + 'doctor/AddMedicine',insertTest);
 }
 
  //Get Selected medicine
  getSelectedTest() {
   return this.httpClient
-    .get(environment.updateUrl + 'doctors/Getmedicine')
+    .get(environment.updateUrl + 'doctor/Getmedicine')
     .toPromise()
     .then((data) => {
       console.log(data);

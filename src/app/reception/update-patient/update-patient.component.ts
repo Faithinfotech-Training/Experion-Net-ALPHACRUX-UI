@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./update-patient.component.scss'],
 })
 export class UpdatePatientComponent implements OnInit {
-  patientId: number=0;
+  patientId: number = 0;
   NgForm = NgForm;
   Patient = new UpdatePatient();
 
@@ -37,12 +37,22 @@ export class UpdatePatientComponent implements OnInit {
 
   //Submit form
   onSubmit(form: NgForm): void {
-
-
     //Insert or update
     console.log(this.checkoutForm.value.PatientId);
-    //this.getPatientwithPatientId();
+      this.getPatientwithPatientId();
 
+
+    if (this.checkoutForm.value.PatientId != null) {
+    } else {
+      //Update
+      //Insert
+      this.insertPatientRecord(form);
+      this.resetForm(form);
+      this.toastr.success(
+        'Patient record Not Found, Please Register',
+        'CMS App V2022'
+      );
+    }
   }
 
   //Insert Method
@@ -62,8 +72,10 @@ export class UpdatePatientComponent implements OnInit {
     );
   }
 
-  onClick(patientId:number) {
+  onClick(patientId: number) {
     console.log('Finding the record....');
+
+    // let PatientId = document.getElementById('PatientId').innerHTML;
     console.log(patientId);
   }
 
@@ -87,7 +99,25 @@ export class UpdatePatientComponent implements OnInit {
         }
       );
   }
-
+  getPatientwithPatientId() {
+      this.updatePatientService.getPatientById(
+        this.checkoutForm.value.PatientId
+      ).toPromise().then((data) => {
+        //Format date
+        var datePipe = new DatePipe('en-UK');
+        let formattedDate: any = datePipe.transform(
+          data.PatientDob,
+          'yyyy-MM-dd'
+        );
+        data.PatientDob = formattedDate;
+        //Assign this response to empservice formData
+        this.Patient = Object.assign({}, data);
+        console.log(this.Patient);
+      },
+      (err) => {
+        console.log(err);
+      });
+  }
 
   //Clear all contents after submit
   resetForm(form?: NgForm) {

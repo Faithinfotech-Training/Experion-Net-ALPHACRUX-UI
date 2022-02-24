@@ -60,7 +60,7 @@ export class MedicinedocService {
   //Insert Medicine
  insertMedicine(insertmedicine: Medicinedoc): Observable<any> {
   return this.httpClient.post(
-    environment.updateUrl  + 'doctors/medicine',insertmedicine);
+    environment.updateUrl  + 'doctors/addmedicine',insertmedicine);
   }
 
   //Get Selected medicine

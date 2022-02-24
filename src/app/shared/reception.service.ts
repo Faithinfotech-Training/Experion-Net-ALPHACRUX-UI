@@ -27,6 +27,7 @@ export class ReceptionService {
     PatientName: '',
   };
 
+
   constructor(private client: HttpClient) {}
 
   //List token queue

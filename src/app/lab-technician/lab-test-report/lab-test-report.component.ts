@@ -18,7 +18,10 @@ export class LabTestReportComponent implements OnInit {
   NgForm=NgForm;
   page:number=1;
  labtest: any = new Labtest();
+ newDate:Date;
  value:any[];
+report: {} = { ReportDate: "", PatientId: "" ,StaffId:""}
+
 
   constructor(
     public labTestService: LabtestService,
@@ -31,20 +34,50 @@ export class LabTestReportComponent implements OnInit {
   ngOnInit(): void {
 
   }
+on(form:NgForm){
+  //this.resetForm(form);
+}
+testReport(form:NgForm){
+
+console.log('staffid'+form.value.StaffId)
+this.newDate=new Date();
+    var datePipe = new DatePipe('en-UK');
+    let formattedDate: any = datePipe.transform(
+      this.newDate,
+      "yyyy-MM-dd"
+    );
 
 
-  onSubmit(form: NgForm) {
-    console.log(form.value);
-    let PatientId = this.labTestService.formData.PatientId;
-    if(PatientId<=0){
+this.report={ReportDate:formattedDate,PatientId:form.value.PatientId,
+  StaffId:form.value.StaffId}
+
+  console.log(this.report);
+  this.createTestReport(this.report);
+
+
+
+}
+
+
+save(form:NgForm){
+ var patientValue=Number(document.getElementById('PatientValue').innerText)
+console.log('by getelement'+patientValue);
+//console.log('form'+this.labTestService.testReport.PatientValue)
+
+}
+
+
+  onSubmit(patientId: number) {
+    console.log(patientId);
+    if(patientId<=0){
       this.toastr.error('Invalid Patient Id', 'CMS App V2022');
-      this.resetForm(form);
+      //this.resetForm();
     }
 
 
-    else if (PatientId != 0 || PatientId != null) {
+    else if (patientId != 0 || patientId != null) {
 
-      this.getPatientById(form);
+      this.getPatientById(patientId);
 
 
     }
@@ -54,29 +87,23 @@ export class LabTestReportComponent implements OnInit {
     }
   }
 
-  onClick(form: NgForm) {
-    console.log(form.value);
-    let AdviceId = this.labTestService.formData.AdviceId;
-    if (AdviceId != 0 || AdviceId != null) {
+  onClick(testList: Number) {
+    console.log(testList);
+   // let AdviceId = this.labTestService.formData.AdviceId;
+    if (testList != 0 || testList != null) {
       //Insert
-      this.getTest(form);
+      this.getTest(testList);
     } else {
       console.log('Enter valid Patient Id');
     }
   }
-proceed(form?: NgForm){
-  console.log('generating bill..');
-  this.toastr.success('Test Report generated successfully', 'CMS App V2022');
 
 
-  this.resetForm(form);
-
-}
-
-  getPatientById(form?: NgForm) {
+  getPatientById(patientId:number) {
     console.log('Finding the patient..');
+    console.log(patientId);
     this.labTestService
-      .getPatientById(this.labTestService.formData.PatientId)
+      .getPatientById(Number(patientId))
       .subscribe(
         (res) => {
           console.log(res);
@@ -96,27 +123,15 @@ proceed(form?: NgForm){
         (err) => {
           console.log(err);
           this.toastr.error('Patient not found', 'CMS App V2022');
-          this.resetForm(form);
+          //this.resetForm(form);
         }
       );
   }
 
-  getTest(form?: NgForm) {
+  getTest(testList: Number) {
     console.log('Finding the tests..');
     this.labTestService
-      .getTests(this.labTestService.formData.AdviceId)
-
-
-      // .subscribe(
-      //   (res) => {
-      //     console.log(res);
-
-      //     this.labTestService.formData1 = Object.assign({}, res);
-      //   },
-      //   (err) => {
-      //     console.log(err);
-      //   }
-      // );
+      . getTestForReport(this.labTestService.formData.AdviceId)
   }
   logout(){
     console.log('inside logout')
@@ -128,5 +143,13 @@ proceed(form?: NgForm){
     if (form != null) {
       form.resetForm();
     }
+  }
+
+  createTestReport(obj:any){
+    console.log('Trying to insert values..');
+
+    this.labTestService.createTestReport(obj)
+    console.log('Report id created successfully');
+
   }
 }

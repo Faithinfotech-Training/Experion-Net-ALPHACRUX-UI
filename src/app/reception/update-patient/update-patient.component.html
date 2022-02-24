@@ -27,12 +27,12 @@
       <div class="row mt-5">
         <div class="col mt-5">
           <div class="card">
-            <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm" (ngSubmit)="onSubmit(form)">
+            <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm"
+              (ngSubmit)="onSubmit(checkoutForm.value)">
 
               <!--Using ng-option and for loop-->
               <ng-select class="col-4 me-3 mt-3" placeholder="Patient ID/Name/Location/Phone" appearance="outline"
                 formControlName="PatientId">
-
 
                 <ng-option *ngFor="let pat of reception.patients" [value]="pat.PatientId">
                   {{pat.PatientId}} &nbsp;
@@ -41,11 +41,10 @@
                   {{pat.PatientPhone}}
                 </ng-option>
               </ng-select>
-              <div class="d-flex ml-2 mt-3">
-                <button type="submit" class="btn btn-secondary btn-lg me-3">
-                  SEARCH</button>
-              </div>
 
+              <!-- (click)="onClick(checkoutForm.value)"  -->
+              <button type="submit" class="btn btn-secondary btn-lg me-3">
+                SEARCH</button>
 
 
 
@@ -77,26 +76,27 @@
                       </div>
                     </div>
 
+                    <input type="hidden" name="PatientId" [(ngModel)]="Patient.PatientId" />
+                    <!--Name of patient-->
                     <div class="form-group row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
 
-                        <h3 class="mb-0">LOCATION</h3>
-                      </div>
-
-                      <div class="form-group col-md-9 pe-5">
-                        <input type="text" class="form-control form-control-lg" name="PatientLocation" required
-                          pattern="[a-zA-Z]+" #PatientLocation="ngModel"
-                          [(ngModel)]="updatePatientService.formData.PatientLocation" required minlength="5"
-                          maxlength="25" [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
-                          [ngClass]="{ 'is-invalid': PatientLocation.touched && PatientLocation.invalid }"
-                          placeholder="Patient_Location" style="width: 500px" />
-                        <!-- Validation -->
-                        <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
-                          <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
-                            required!</span>
-                        </p>
-                      </div>
+                      <h3 class="mb-0">LOCATION</h3>
                     </div>
+
+                    <div class="form-group col-md-9 pe-5">
+                      <input type="text" class="form-control form-control-lg" name="PatientLocation" required
+                        pattern="[a-zA-Z]+" #PatientLocation="ngModel"
+                        [(ngModel)]="updatePatientService.formData.PatientLocation" required minlength="5"
+                        maxlength="25" [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
+                        [ngClass]="{ 'is-invalid': PatientLocation.touched && PatientLocation.invalid }"
+                        placeholder="Patient_Location" style="width: 500px" />
+                      <!-- Validation -->
+                      <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
+                        <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
+                          required!</span>
+                      </p>
+                    </div>
+
 
                     <!--Gender-->
                     <div class="row align-items-center pt-4 pb-3">
@@ -172,8 +172,6 @@
                           class="form-control form-control-lg" style="width: 500px" />
                       </div>
                     </div>
-
-
                   </form>
                 </div>
               </div>
