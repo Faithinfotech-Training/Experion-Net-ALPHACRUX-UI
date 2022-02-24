@@ -61,7 +61,8 @@ const routes: Routes = [
       { path: 'edit/:staffId', component: NewStaffComponent,canActivate: [CanActivateGuard],data:{StaffId:'10'}  },
     ],
   },
-  { path: 'doctor/home', component: DoctorComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/home', component: DoctorComponent},
+  //canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'doctor/advice', component: AdviceComponent},
   //canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'doctor/advice/diagnosis', component: DiagnosisComponent},
@@ -78,7 +79,8 @@ const routes: Routes = [
   {path:'pharmacy/home',component:HomeComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'} },
 
   { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
-  { path: 'doctor/app', component:AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
+  { path: 'doctor/app', component:AppointmentsComponent},
+  //canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: '**', component: AppComponent },
 
 ];

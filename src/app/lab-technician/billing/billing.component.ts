@@ -22,8 +22,10 @@ export class BillingComponent implements OnInit {
   labtest: any = new Labtest();
   total=0;
   value;
-  lab:any;
+  //lab:any;
   clicked = false;
+ lab: {} = { LabBillDateTime: "", TestListId: "" ,PatientId:"", LabBillAmount:""}
+
 
 
   //values
@@ -92,6 +94,7 @@ export class BillingComponent implements OnInit {
       this.LabBillDateTime,
       "yyyy-MM-dd"
     );
+    console.log(form.form.value.StaffName)
      //this.TestListId=document.getElementById('TestListId').innerText;
     // this.PatientId=form.value.PatientId
      this.LabBillAmount=document.getElementById('total').innerHTML;
@@ -103,9 +106,11 @@ export class BillingComponent implements OnInit {
 
 
 
-    this.lab={"LabBillDateTime":formattedDate,"TestListId": this.TestListId,
-      "PatientId":form.value.PatientId,"LabBillAmount":numberValue}
+    this.lab={LabBillDateTime:formattedDate,TestListId: this.TestListId,
+      PatientId:form.value.PatientId,LabBillAmount:numberValue}
+
       console.log(form.value.TestListId)
+
 
       if(form.value.PatientId>0 && numberValue>0){
         this.post(this.lab);
@@ -160,19 +165,26 @@ export class BillingComponent implements OnInit {
       //this.findsum(this.users);
 
   }
-  post(lab){
+  post(obj:any){
 
 
     console.log('Trying to insert values..');
 
-    this.labTestService.postBills(lab);
+    this.labTestService.postBills(obj).subscribe((result1) => {
+      console.log(result1);
 
     this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
-    this.router.navigateByUrl('lab/home/test')
+    // this.router.navigateByUrl('lab/home/test')
+    },(error) =>   {console.log(error);
 
 
 
-  }
+  });
+
+}
+
+
+
   logout(){
     console.log('inside logout')
     this.auth.logOut();

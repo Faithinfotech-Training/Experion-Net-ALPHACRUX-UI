@@ -36,7 +36,7 @@ export class MedicinedocService {
   //Get Medicine
   getMedicines() {
     return this.client
-      .get(environment.updateUrl + 'doctor/viewMedicinelists')
+      .get(environment.updateUrl + 'doctors/viewMedicinelists')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -48,7 +48,7 @@ export class MedicinedocService {
   //Generate Medicnes
   generateMedicine(medicines: Medicinedoc) {
     return this.client
-      .post(environment.apiUrl + 'doctor/addmedicine', medicines)
+      .post(environment.apiUrl + 'doctors/medicine', medicines)
       .toPromise()
       .then((data) => {
         console.log(data);

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Labtest } from './labtest';
 import { Labtests2 } from './labtests2';
 import { Labbills } from './labbills';
+import { Testreport } from './testreport';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class LabtestService {
   public total=0;
   public value;
   labbills:Labbills[];
+  testReport:Testreport[];
 
 
   constructor(private httpClient:HttpClient) { }
@@ -45,6 +47,19 @@ export class LabtestService {
       }
     )
   }
+  getTestForReport(id:number){
+    this.httpClient.get(environment.apiUrl+'labtechnician/GetTestDetails?id='+id)
+   .toPromise().then(
+     res=>{
+       console.log("from service");
+       console.log(res);
+       this.labtests2=res as Labtests2[];
+       this.users=this.labtests2
+
+     }
+   )
+   
+ }
   findsum(data){
 
     this.value=data
@@ -58,14 +73,27 @@ export class LabtestService {
 
     }
   }
-  postBills(lab:any){
-    console.log(lab)
-    this.labbills=lab
-    console.log(this.labbills)
-    this.httpClient.post(
-      environment.apiUrl + 'labtechnician/add',this.labbills
+
+
+  postBills(lab:Labtest): Observable<any>{
+    console.log('inside service'+lab)
+    return this.httpClient.post(
+     environment.apiUrl + 'labtechnician/add',lab
 
     );
+
+
+
+}
+createTestReport(test:Testreport){
+  console.log('inside service'+test)
+  this.httpClient.post(
+   environment.apiUrl + 'labtechnician/reportid',test).subscribe((result1) => {
+    console.log(result1);
+
+  },(error) =>   {
+    console.log(error);
+   });
 
 }
 }
