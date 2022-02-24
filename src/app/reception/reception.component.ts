@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceptionComponent implements OnInit {
 
-
+filter:string;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  
+
 
 }

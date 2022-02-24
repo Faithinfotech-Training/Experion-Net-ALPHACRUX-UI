@@ -36,11 +36,11 @@ const routes: Routes = [
   { path: 'doctor/appointments', component: AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
-  { path: 'reception/home', component: HomePageComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
-  { path: 'reception/payments', component: PaymentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'} },
-  { path: 'reception/register-patient', component: RegisterPatientComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
-  { path: 'reception/transactions', component: TransactionsComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
-  { path: 'reception/update-patient', component: UpdatePatientComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
+  { path: 'reception/home', component: HomePageComponent},
+  { path: 'reception/payments', component: PaymentsComponent },
+  { path: 'reception/register-patient', component: RegisterPatientComponent },
+  { path: 'reception/transactions', component: TransactionsComponent  },
+  { path: 'reception/update-patient', component: UpdatePatientComponent},
   { path: 'admin', component: AdministratorComponent },
 
   {
@@ -74,8 +74,8 @@ const routes: Routes = [
   //canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: 'lab/home', component:LabTechnicianComponent},
   { path: 'lab/home/test', component:LabTestReportComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
-  { path: 'pharmacist', component: PharmacistComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'}  },
-  {path:'pharmacy/home',component:HomeComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'} },
+  { path: 'pharmacist', component: PharmacistComponent  },
+  {path:'pharmacy/home',component:HomeComponent },
 
   { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
   { path: 'doctor/app', component:AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},

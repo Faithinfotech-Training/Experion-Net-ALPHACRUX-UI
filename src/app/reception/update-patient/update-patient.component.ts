@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./update-patient.component.scss'],
 })
 export class UpdatePatientComponent implements OnInit {
-  patientId: number;
+  patientId: number=0;
   NgForm = NgForm;
   Patient = new UpdatePatient();
 
@@ -32,7 +32,7 @@ export class UpdatePatientComponent implements OnInit {
     this.reception.getPatients();
   }
   checkoutForm = this.formBuilder.group({
-    PatientId: null,
+    PatientId: this.patientId,
   });
 
   //Submit form
@@ -40,21 +40,9 @@ export class UpdatePatientComponent implements OnInit {
 
 
     //Insert or update
-    if (this.checkoutForm.value.PatientId != null) {
-      this.getPatientwithPatientId(this.checkoutForm.value.PatientId);
+    console.log(this.checkoutForm.value.PatientId);
+    //this.getPatientwithPatientId();
 
-      this.resetForm(form);
-    } else {
-      //Update
-      //Insert
-      this.insertPatientRecord(form);
-      this.resetForm(form);
-      this.toastr.success(
-        'Patient record Not Found, Please Register',
-        'CMS App V2022'
-      );
-
-    }
   }
 
   //Insert Method
@@ -74,11 +62,9 @@ export class UpdatePatientComponent implements OnInit {
     );
   }
 
-  onClick(form: NgForm) {
+  onClick(patientId:number) {
     console.log('Finding the record....');
-
-    let PatientId = document.getElementById('PatientId').innerHTML;
-    console.log(PatientId);
+    console.log(patientId);
   }
 
   //Update Method
@@ -101,13 +87,7 @@ export class UpdatePatientComponent implements OnInit {
         }
       );
   }
-  getPatientwithPatientId(form: NgForm) {
-    if (this.checkoutForm.value.PatientId != null) {
-      this.updatePatientService.getPatientById(
-        this.checkoutForm.value.PatientId
-      );
-    }
-  }
+
 
   //Clear all contents after submit
   resetForm(form?: NgForm) {
