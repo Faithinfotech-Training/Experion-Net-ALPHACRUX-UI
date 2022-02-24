@@ -57,18 +57,7 @@ export class InventoryComponent implements OnInit {
 
   onSubmit() {
     console.log(this.medicineForm.value);
-    this.addInventory(this.medicineForm.value);
-  }
-
-  addInventory(medicineForm) {
-    this.admin.addInventory(medicineForm).subscribe(
-      (response) => {
-        console.log(response);
-        this.toast.success('Inventory Added Successfully', 'Success');
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.medicineForm.reset();
+    this.toast.success('Inventory Added Successfully', 'Success');
   }
 }
