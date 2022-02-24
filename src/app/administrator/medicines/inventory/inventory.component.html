@@ -28,7 +28,8 @@
     <table class="table table-bordered" formArrayName="quantities">
       <tr>
         <th colspan="2">Medicines: </th>
-        <th  width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add</button></th>
+        <th  width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary my-3"
+          style="color: rgb(184, 157, 8);">Add</button></th>
       </tr>
       <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
           <td>
@@ -49,21 +50,19 @@
         <td>
             Quantity :
             <input type="number" formControlName="MedicineQuantity" class="form-control">
+
         </td>
         <td>
             Type:
             <input type="text" formControlName="MedicineType" class="form-control">
         </td>
         <td>
-            <button (click)="removeQuantity(i)" class="btn btn-danger p-1">Remove</button>
+            <button (click)="removeQuantity(i)" class="btn btn-danger p-1" style="color: brown;">Remove</button>
         </td>
       </tr>
     </table>
    
-    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="submit" class="btn btn-success"[disabled]="medicineForm.invalid" >Submit</button>
     
   </form>
-    
-  <br/>
-  {{this.medicineForm.value | json}}
 </div>
