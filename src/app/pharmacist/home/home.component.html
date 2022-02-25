@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <ul class="navbar-nav">
         <li class="nav-item active mt-1">
-          <a class="navbar-brand" >Pharmacy</a>
+          <a class="navbar-brand">Pharmacy</a>
         </li>
       </ul>
       <form class="d-flex ml-2">
@@ -22,16 +22,11 @@
       <!--<li class="navbar-item">
         <a class="nav-link active" href="pharmacy/reports"><i class="bi bi-book-half" style="font-size: 1.5rem"></i></a>
       -->
-        <li class="nav-item dropup">
-          <a
-            class="nav-link dropdown-toggle"
-            (click)="logout()"
-            role="button"
-            data-bs-toggle="dropdown"
-            ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
-          ></a>
+      <li class="nav-item dropup">
+        <a class="nav-link dropdown-toggle" (click)="logout()" role="button" data-bs-toggle="dropdown"><i
+            class="bi bi-person-circle" style="font-size: 1.5rem"></i></a>
 
-        </li>
+      </li>
 
     </ul>
   </div>
@@ -51,8 +46,8 @@
                 </div>
 
                 <div class="col-md-9 pe-5">
-                  <input type="text" class="form-control form-control-lg" placeholder="Patient_Id"
-                    style="width: 500px" name="PatientId" #PatientId="ngModel" pattern="[0-9]+"
+                  <input type="text" class="form-control form-control-lg" placeholder="Patient_Id" style="width: 500px"
+                    name="PatientId" #PatientId="ngModel" pattern="[0-9]+"
                     [(ngModel)]="pharmacyService.formData1.PatientId" required minlength="1" maxlength="5" [ngClass]="{
                       'is-invalid': PatientId.touched && PatientId.invalid
                     }" />
@@ -74,139 +69,142 @@
 
             <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3"
               (ngSubmit)="onClickClick(form)">
-              <div class="form-group row align-items-center">
-                <h1>PATIENT DETAILS</h1>
-                <br /><br />
-              </div>
-              <hr />
-
-              <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3">
-                <div class="form-group row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">ID</h2>
-                  </div>
-
-                  <div class="col-md-9 pe-5">
-                    <input type="text" class="form-control form-control-lg" placeholder="Patient_Id"
-                      style="width: 500px" id="PatientId" name="PatientId" #PatientId="ngModel"
-                      disabled
-                      [(ngModel)]="pharmacyService.formData1.PatientId" />
-                  </div>
-                </div>
-
-                <div class="form-group row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">NAME</h2>
-                  </div>
-
-                  <div class="col-md-9 pe-5">
-                    <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
-                      style="width: 500px" name="PatientName" #PatientName="ngModel"
-                      disabled
-                      [(ngModel)]="pharmacyService.formData1.PatientName" />
-                  </div>
-                </div>
-
-                <input type="hidden" class="form-control form-control-lg" name="MedicineListId" id="MedicineListId"
-                  #TestListId="ngModel" [(ngModel)]="pharmacyService.formData1.MedicineListId" />
-
-
-
-                <div class="form-group row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">REF BY</h2>
-                  </div>
-
-                  <div class="col-md-9 pe-5">
-                    <input type="text" class="form-control form-control-lg" placeholder="Patient_StaffName"
-                      style="width: 500px" name="StaffName" #StaffName="ngModel"
-                      disabled
-                      [(ngModel)]="pharmacyService.formData1.StaffName" />
-                  </div>
-                </div>
-
-                <div class="row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">DATE</h2>
-                  </div>
-                  <div class="form-group col-md-9 pe-5">
-                    <input type="datetime" class="form-control form-control-lg" name="ReportDateTime"
-                      #ReportDateTime="ngModel" [(ngModel)]="pharmacyService.formData1.PrescriptionDateTime"
-                      placeholder="Date"
-                      disabled style="width: 500px" />
-                  </div>
-                </div>
-              </form>
-              <br />
-              <br />
-
-              <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3" (ngSubmit)="onClick(form)">
+              <div id="medbill" #medbill>
                 <div class="form-group row align-items-center">
-                  <!-- <h4>TEST DETAILS</h4> -->
 
-                  <button type="submit" class="form-group btn btn-secondary btn-lg me-3 btn-block float-end">
-                    MEDICINE DETAILS
-                  </button>
+                  <h4>PATIENT DETAILS</h4>
+                  <br /><br />
                 </div>
+                <hr />
+
+                <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3">
+                  <div class="form-group row align-items-center pt-4 pb-3">
+                    <div class="col-md-3 ps-5">
+                      <h6 class="mb-0">ID</h6>
+                    </div>
+
+                    <div class="col-md-9 pe-5">
+                      <input type="text" class="form-control form-control-lg" placeholder="Patient_Id"
+                        style="width: 500px" id="PatientId" name="PatientId" #PatientId="ngModel"
+                        [(ngModel)]="pharmacyService.formData1.PatientId" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row align-items-center pt-4 pb-3">
+                    <div class="col-md-3 ps-5">
+                      <h6 class="mb-0">NAME</h6>
+                    </div>
+
+                    <div class="col-md-9 pe-5">
+                      <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
+                        style="width: 500px" name="PatientName" #PatientName="ngModel"
+                        [(ngModel)]="pharmacyService.formData1.PatientName" />
+                    </div>
+                  </div>
+
+                  <input type="hidden" class="form-control form-control-lg" name="MedicineListId" id="MedicineListId"
+                    #TestListId="ngModel" [(ngModel)]="pharmacyService.formData1.MedicineListId" />
+
+
+
+                  <div class="form-group row align-items-center pt-4 pb-3">
+                    <div class="col-md-3 ps-5">
+                      <h6 class="mb-0">REF BY</h6>
+                    </div>
+
+                    <div class="col-md-9 pe-5">
+                      <input type="text" class="form-control form-control-lg" placeholder="Patient_StaffName"
+                        style="width: 500px" name="StaffName" #StaffName="ngModel"
+                        [(ngModel)]="pharmacyService.formData1.StaffName" />
+                    </div>
+                  </div>
+
+                  <div class="row align-items-center pt-4 pb-3">
+                    <div class="col-md-3 ps-5">
+                      <h6 class="mb-0">DATE</h6>
+                    </div>
+                    <div class="form-group col-md-9 pe-5">
+                      <input type="datetime" class="form-control form-control-lg" name="ReportDateTime"
+                        #ReportDateTime="ngModel" [(ngModel)]="pharmacyService.formData1.PrescriptionDateTime"
+                        placeholder="Patient_DOB" style="width: 500px" />
+                    </div>
+                  </div>
+                </form>
                 <br />
-              </form>
-              <div class="bg-modal" id="bg-modal">
-                <form name="form"  #form="ngForm" (ngSubmit)="onSubmitted(form)"autocomplete="off" class="form-group p-3">
-                  <table class="table table-bordered m-2 table-active">
-                    <thead class="table-lg thead-light">
-                      <tr>
-                        <th scope="col">Medicine Name</th>
-                        <th scope="col">Dosage</th>
-                        <th scope="col">Duration</th>
-                        <th scope="col">Medicine Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table" style="background-color: #f7f7f7">
-                      <tr *ngFor="
+                <br />
+
+                <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3" (ngSubmit)="onClick(form)">
+                  <div class="form-group row align-items-center">
+                    <!-- <h4>TEST DETAILS</h4> -->
+
+                    <button type="submit" class="form-group btn btn-secondary btn-lg me-3 btn-block float-end">
+                      MEDICINE DETAILS
+                    </button>
+                  </div>
+                  <br />
+                </form>
+                <div class="bg-modal" id="bg-modal">
+                  <form name="form" #form="ngForm" (ngSubmit)="onSubmitted(form)" autocomplete="off"
+                    class="form-group p-3">
+                    <table class="table table-bordered m-2 table-active">
+                      <thead class="table-lg thead-light">
+                        <tr>
+                          <th scope="col">Medicine Name</th>
+                          <th scope="col">Dosage</th>
+                          <th scope="col">Duration</th>
+                          <th scope="col">Medicine Price</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Total Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table" style="background-color: #f7f7f7">
+                        <tr *ngFor="
                         let users of pharmacyService.MedList
                           | filter: this.app.filter
                           | paginate: { itemsPerPage: 5, currentPage: page }
                       ">
-                        <td>{{ users.MedicineName }}</td>
-                        <td>{{ users.Dosage }}</td>
-                        <td>{{users.Duration}}</td>
-                        <td>{{users.MedicinePrice}}</td>
-                        <td><input type="text" id="ProQty" class="form-control my-n1" name="productQty" value="users.Qty1" required pattern="[0-9]+" [(ngModel)]="users.MedicineQuantity" /></td>
+                          <td>{{ users.MedicineName }}</td>
+                          <td>{{ users.Dosage }}</td>
+                          <td>{{users.Duration}}</td>
+                          <td>{{users.MedicinePrice}}</td>
+                          <td><input type="text" id="productQty" class="form-control my-n1" name="productQty"
+                              value="users.Qty1" required pattern="[0-9]+" [(ngModel)]="users.MedicineQuantity"  /></td>
 
-                        <td>
-                          <span type="text" id="amnt">{{users.MedicinePrice*users.MedicineQuantity}}</span>
-                        </td>
-                      </tr>
-                       <tr>
-                        <td colspan="1"><b>Total:</b></td>
-                        <td colspan="1" id="total" name="total">
-                          <b>{{GrandtotalPrice }}</b>
+                          <td>
+                            <span type="text" id="amnt">{{users.MedicinePrice*users.MedicineQuantity}}</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="1"><b>Total:</b></td>
+                          <td colspan="1" id="total" name="total">
+                            <b>{{GrandtotalPrice}}</b>
 
-                        </td>
+                          </td>
 
-                      </tr>
-                    </tbody>
-                  </table>
+                        </tr>
+                      </tbody>
+                    </table>
 
+                  </form>
+                </div>
 
+              <div>
 
-                  <div class="footer">
-                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
-                  </div>
-                </form>
+                <button type="btn btn primary btn-lg me-3 float-end" (click)="makePDF()">Print bill</button>
               </div>
-
+              <br>
               <div class="px-5 py-4">
                 <button type="submit" class="btn btn-secondary btn-lg me-3 float-end" (click)="onProceed()">
                   PROCEED
                 </button>
               </div>
-            </form>
+              </div>
+              </form>
+
+
+
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

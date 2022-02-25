@@ -1,5 +1,6 @@
 <app-reception></app-reception>
 
+
 <div class="container-fluid-sm d-flex align-items-stretch ">
   <div class="float-start bg-light navbar-light p-1 position-fixed">
     <ul class="navbar-nav ms-2 gap-3">
@@ -83,7 +84,7 @@
               <th scope="col">Action</th>
             </thead>
             <tbody>
-              <tr *ngFor="let queue of reception.queueList | paginate:{itemsPerPage:5, currentPage:page}">
+              <tr *ngFor="let queue of reception.queueList | filter:filter|paginate:{itemsPerPage:5, currentPage:page}">
                 <th>{{queue.PatientId}}</th>
                 <td>{{queue.PatientName}}</td>
                 <td>{{queue.TokenNumber}}</td>

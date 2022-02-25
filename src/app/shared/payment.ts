@@ -1,8 +1,10 @@
 export class Payment {
-  InvoiceNumber:number=0;
-        DateTime: Date=new Date();
-        PatientId:number=0;
-        PatientName: string='';
-        Age: number=0;
-        PaymentMode: string='';
+  ConsultationBillId:number=0;
+  ConsultationDateTime: Date=new Date();
+  ConsultationAmount:number=0;
+  PatientId:number=0;
+  PatientName: string='';
+  StaffId:number=0;
+  StaffName: string='';
+
 }

@@ -15,12 +15,23 @@ export class PaymentsService {
 
   bindListPayments()
   {
-    return this.httpClient.get(environment.apiUrl + 'receptionist/payments').toPromise().then(response=>
+    return this.httpClient.get(environment.apiUrl + 'receptionist/reception/bills').toPromise().then(response=>
     {
       console.log('from service');
       console.log(response);
       this.payments= response as Payment[];
 
     });
+  }
+
+  savebill(id:number)
+  {
+    return this.httpClient
+      .post(environment.apiUrl + 'receptionist/token', id)
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        console.log('Token Generated Successfully');
+      });
   }
 }
