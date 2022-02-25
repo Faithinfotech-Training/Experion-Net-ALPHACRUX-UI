@@ -183,19 +183,21 @@ this.post(this.lab);
 
 
   }
-  onProceed(){
+  onProceed(form?: NgForm){
     this.toastr.success('Bill generated Successfully', 'CMS App V2022');
-    let currentUrl = this. router. url;
-    console.log(currentUrl);
-  this. router. routeReuseStrategy. shouldReuseRoute = () => true;
-  this. router. onSameUrlNavigation = 'reload';
-  this. router. navigate([currentUrl]);
+    window.location.reload();
+    this.resetForm(form);
   }
   logout(){
     console.log('inside logout')
     this.auth.logOut();
 
     this.router.navigateByUrl('/login')
+  }
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
   }
 
   }

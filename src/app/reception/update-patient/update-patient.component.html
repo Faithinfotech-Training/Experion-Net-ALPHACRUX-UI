@@ -84,7 +84,7 @@
                           pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" #PatientLocation="ngModel"
                           [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
                           [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
-                          placeholder="Patient_Location" style="width: 500px" />
+                          placeholder="Patient Location" style="width: 500px" />
                         <!-- Validation -->
                         <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
                           <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
@@ -101,7 +101,7 @@
                       </div>
                       <div class="form-group col-md-9 pe-5">
                         <div class="radio-inline" [(ngModel)]="Patient.PatientGender" name="PatientGender"
-                          id="PatientGender" placeholder="Patient_Gender" #PatientGender="ngModel" required
+                          id="PatientGender" placeholder="Patient Gender" #PatientGender="ngModel" required
                           style="width: 500px">
 
 
@@ -125,7 +125,7 @@
                         <input type="date" class="form-control form-control-lg" name="PatientDob" #PatientDob="ngModel"
                           [(ngModel)]="Patient.PatientDob" required
                           onfocus="this.max=new Date().toISOString().split('T')[0]" min="1915-01-01"
-                          placeholder="Patient_DOB" style="width: 500px" />
+                          placeholder="Patient DOB" style="width: 500px" />
                       </div>
                     </div>
                     <div class="row align-items-center pt-4 pb-3">
@@ -135,7 +135,7 @@
                       </div>
                       <div class="col-md-9 pe-5">
                         <select class="form-select" [(ngModel)]="Patient.PatientBlood" [value]="Patient.PatientBlood"
-                          name="PatientBlood" id="PatientBlood" placeholder="Patient_Blood group" class="form-control"
+                          name="PatientBlood" id="PatientBlood" placeholder="Patient Blood group" class="form-control"
                           #PatientBlood="ngModel" required aria-label="Default select" style="width: 500px">
                           <option selected>Select Blood Group</option>
                           <option value="A+ve">A+ve</option>
@@ -169,7 +169,7 @@
 
                       <div class="col-md-9 pe-5">
                         <input type="text" name="PatientWeight" #PatientWeight="ngModel" required pattern="[0-9]+"
-                          [(ngModel)]="Patient.PatientWeight" placeholder="Patient_Weight" required minlength="1"
+                          [(ngModel)]="Patient.PatientWeight" placeholder="Patient Weight" required minlength="1"
                           maxlength="3" class="form-control form-control-lg" style="width: 500px" />
                       </div>
                     </div>

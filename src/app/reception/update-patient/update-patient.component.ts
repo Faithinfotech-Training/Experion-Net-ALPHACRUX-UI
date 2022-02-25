@@ -83,7 +83,7 @@ export class UpdatePatientComponent implements OnInit {
   updatePatientRecord(form?: NgForm) {
     console.log('Updating a record....');
     this.updatePatientService
-      .UpdatePatient(this.checkoutForm.value.PatientId)
+      .UpdatePatient(form.value)
       .subscribe(
         (res) => {
           console.log(res);
