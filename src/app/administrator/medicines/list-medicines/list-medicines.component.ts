@@ -10,7 +10,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class ListMedicinesComponent implements OnInit {
   page: number = 1;
   filter: string;
-
+  id: number = 0;
+  inventory: any = [];
 
   constructor(public admin: AdminService, private modalService: NgbModal) {}
 
@@ -37,7 +38,25 @@ export class ListMedicinesComponent implements OnInit {
   open(content, id:number) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' });
-    this.admin.getInventoryById(id);
+    this.admin.getInventoryById(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.inventory = response;
+      }
+    );
+  }
+
+  updateQuantity(quantity: number) {
+    this.inventory.MedicineQuantity = quantity;
+    this.admin.updateInventory(this.inventory).subscribe(
+      (response) => {
+        console.log(response);
+        this.admin.getMedicines();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   //Delete Inventory

@@ -52,16 +52,16 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
-    <form>
+    <form >
       <div class="mb-3">
         <label for="quantity">Quantity</label>
         <div class="input-group">
-          <input id="quantity" class="form-control" placeholder="" name="quantity" type="number" min="0">
+          <input id="quantity" class="form-control" placeholder="" [(ngModel)]="inventory.MedicineQuantity" name="quantity" type="number" min="0">
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+    <button class="btn btn-outline-dark" (click)=" updateQuantity(inventory.MedicineQuantity)">Save</button>
   </div>
 </ng-template>

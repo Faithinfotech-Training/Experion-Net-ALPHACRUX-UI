@@ -117,12 +117,17 @@ export class AdminService {
   }
 
   //Add to inventory
-  addInventory(form : NgForm): Observable<any> {
+  addInventory(form: NgForm): Observable<any> {
     return this.client.post(environment.apiUrl + 'admin/inventory', form);
   }
 
   //Get Inventory by id
-  getInventoryById(id: number): Observable<any>{ 
+  getInventoryById(id: number): Observable<any> {
     return this.client.get(environment.apiUrl + 'admin/inventory/' + id);
-}
+  }
+
+  //Update Inventory
+  updateInventory(medicines: Medicines): Observable<any> {
+    return this.client.put(environment.apiUrl + 'admin/inventory/' + medicines.InventoryId, medicines);
+  }
 }

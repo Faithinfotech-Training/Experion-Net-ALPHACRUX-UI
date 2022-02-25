@@ -7,4 +7,6 @@ export class Medicines {
   ExpiryDate: Date = new Date();
   ManufacturingDate: Date = new Date();
   ManufactureName: string = '';
+  MedicineId: number = 0;
+  ManufactureId: number = 0;
 }
