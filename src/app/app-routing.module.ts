@@ -24,6 +24,8 @@ import { NewStaffComponent } from './administrator/staffs/new-staff/new-staff.co
 import { ListMedicinesComponent } from './administrator/medicines/list-medicines/list-medicines.component';
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
+import { MedicineDetailsComponent } from './administrator/medicines/medicine-details/medicine-details.component';
+import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
 
 const routes: Routes = [
   { path: 'doctor/advice', component: AdviceComponent },
@@ -40,6 +42,8 @@ const routes: Routes = [
       { path: 'list', component: ListMedicinesComponent },
       { path: 'inventory', component: InventoryComponent },
       { path: 'new', component: NewMedicineComponent },
+      { path: 'medicines', component: MedicineDetailsComponent },
+      { path: 'manufacturers', component: ManufacturersComponent },
     ],
   },
   {

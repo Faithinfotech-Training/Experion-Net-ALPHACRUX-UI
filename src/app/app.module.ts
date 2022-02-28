@@ -40,6 +40,8 @@ import { ListMedicinesComponent } from './administrator/medicines/list-medicines
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { NgpSortModule } from 'ngp-sort-pipe';
+import { MedicineDetailsComponent } from './administrator/medicines/medicine-details/medicine-details.component';
+import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
 
 
 
@@ -71,6 +73,8 @@ import { NgpSortModule } from 'ngp-sort-pipe';
     ListMedicinesComponent,
     NewMedicineComponent,
     InventoryComponent,
+    MedicineDetailsComponent,
+    ManufacturersComponent,
   ],
   imports: [
     BrowserModule,

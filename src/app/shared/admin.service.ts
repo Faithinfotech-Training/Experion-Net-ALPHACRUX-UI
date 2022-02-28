@@ -20,7 +20,7 @@ export class AdminService {
   qualifications: Qualifications[];
   mfgs: Manufactures[];
   medicineDetails: MedicineDetails[];
-  formData: Staffs = new Staffs();
+  formData: Medicines = new Medicines();
   constructor(private client: HttpClient) {}
 
   //List roles
@@ -116,9 +116,23 @@ export class AdminService {
     );
   }
 
+  //Delete Medicine
+  deleteMedicine(id: number) {
+    return this.client.delete(
+      environment.apiUrl + 'admin/medicinedetails/' + id
+    );
+  }
+
+  //Delete Manufacture
+  deleteManufacture(id: number) {
+    return this.client.delete(
+      environment.apiUrl + 'admin/mfgs/' + id
+    );
+  }
+
   //Add to inventory
-  addInventory(form: NgForm): Observable<any> {
-    return this.client.post(environment.apiUrl + 'admin/inventory', form);
+  addInventory(formData: Medicines): Observable<any> {
+    return this.client.post(environment.apiUrl + 'admin/inventory', formData);
   }
 
   //Get Inventory by id
@@ -128,6 +142,9 @@ export class AdminService {
 
   //Update Inventory
   updateInventory(medicines: Medicines): Observable<any> {
-    return this.client.put(environment.apiUrl + 'admin/inventory/' + medicines.InventoryId, medicines);
+    return this.client.put(
+      environment.apiUrl + 'admin/inventory/' + medicines.InventoryId,
+      medicines
+    );
   }
 }
