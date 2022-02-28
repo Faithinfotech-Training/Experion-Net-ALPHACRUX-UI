@@ -163,30 +163,12 @@ this.post(this.lab);
 
     }
 
-    //to calculate and display the total price information in Shopping cart.
-    getItemTotalresult() {
-      this.totalPrice = 0;
-      this.totalQty = 0;
-      this.GrandtotalPrice =0;
-      var count: number = 0;
-      for (count = 0; count < this.Med.length; count++) {
-        console.log(count);
-          this.totalPrice += this.Med[count].MedicinePrice;
-          this.totalQty += (this.Med[count].MedicineQuantity);
 
-          this.GrandtotalPrice += this.Med[count].MedicinePrice * this.Med[count].MedicineQuantity;
-          console.log(this.GrandtotalPrice);
+  onProceed(){
 
-      }
-      console.log(this.GrandtotalPrice);
+     this.toastr.success('Data Saved Successfully', 'CMS App V2022');
+     this.router.navigateByUrl('pharmacy/meddata');
 
-
-
-  }
-  onProceed(form?: NgForm){
-    this.toastr.success('Bill generated Successfully', 'CMS App V2022');
-    window.location.reload();
-    this.resetForm(form);
   }
   logout(){
     console.log('inside logout')

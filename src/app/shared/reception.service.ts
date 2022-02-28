@@ -86,7 +86,7 @@ export class ReceptionService {
   //Delete token
   deleteToken(tokenId: number) {
     return this.client.delete(
-      environment.apiUrl + 'receptionist/deletetoken/' + tokenId
+      environment.apiUrl + 'receptionist/token/' + tokenId
     );
   }
 

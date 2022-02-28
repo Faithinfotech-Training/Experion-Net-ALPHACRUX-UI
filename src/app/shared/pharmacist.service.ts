@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment';
 import { LabTestReportComponent } from '../lab-technician/lab-test-report/lab-test-report.component';
 import { Medlist } from './medlist';
 import { Pharmacist } from './pharmacist';
-import {Medbills} from '../shared/medbills'
+import {Medbills} from '../shared/medbills';
+import {MedPrescriptionList} from '../shared/med-prescription-list'
 import { QueryValueType } from '@angular/compiler/src/core';
 import { FormArray } from '@angular/forms';
 
@@ -18,6 +19,7 @@ export class PharmacistService {
   formData1: Pharmacist=new Pharmacist();
 
   MedList:Medlist[];
+  medicineList:MedPrescriptionList[];
   formData2:Medlist=new Medlist();
 
   users:any
@@ -35,7 +37,7 @@ export class PharmacistService {
   }
 
   getTests(id:number){
-    this.httpClient.get(environment.apiUrl+'pharmacist/getmedicinelist/'+id)
+    this.httpClient.get(environment.apiUrl+'pharmacist/medicinelist/'+id)
     .toPromise().then(
       res=>{
         console.log("from service");
@@ -70,13 +72,26 @@ export class PharmacistService {
 
     }
   }
-  postBills(med:Medbills){
+  postBills(med:any){
     console.log(med)
     this.httpClient.post(
       environment.apiUrl +'pharmacist/add',med
 
     );
 
+}
+getAllMedicines(){
+  return this.httpClient
+      .get(environment.updateUrl + 'pharmacist/prescribed-medicine')
+      .toPromise()
+      .then((data) => {
+        console.log(data);
+        this.medicineList = data as MedPrescriptionList[];
+      });
+}
+
+deletePrescription(id:number){
+  return this.httpClient.delete(environment.apiUrl + '/api/employees/' + id);
 }
 
 }

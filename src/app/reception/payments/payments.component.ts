@@ -6,8 +6,9 @@ import { jsPDF } from 'jspdf';
 import { ReceptionService } from 'src/app/shared/reception.service';
 import { Token } from 'src/app/shared/token';
 import { TokenQueue } from 'src/app/shared/token-queue';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { PaymentsService } from 'src/app/shared/payments.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-payments',
@@ -21,6 +22,13 @@ export class PaymentsComponent implements OnInit {
   Amount: number;
   Billdate: Date = new Date();
   queueList: any = new TokenQueue();
+  today: Date;
+  Bill: {} = {
+    ConsultationDateTime: '',
+    ConsultationAmount: 200,
+    PatientId: '',
+    StaffId: '',
+  };
 
   @ViewChild('content', { static: false }) el1: ElementRef;
 
@@ -31,18 +39,17 @@ export class PaymentsComponent implements OnInit {
         pdf.save('Reception-Bill.pdf');
       },
     });
-
   }
+  checkoutForm = this.formBuilder.group({});
 
   constructor(
     public receptionService: ReceptionService,
     private router: Router,
     private toastr: ToastrService,
-    private formBuilder:FormBuilder,
-    private paymentService: PaymentsService,
-    private auth:AuthService
-  )
-  {}
+    private formBuilder: FormBuilder,
+    public paymentService: PaymentsService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.receptionService.$isPass.subscribe((data) => {
@@ -55,21 +62,29 @@ export class PaymentsComponent implements OnInit {
         });
     });
   }
-  checkoutForm = this.formBuilder.group({
-  ConsultationDateTime:null,
-  ConsultationAmount:200,
-  PatientId: null,
-  PatientName:null,
-  StaffId: null,
-  StaffName: null,
-  });
 
-  generatebill() {
+  savebill(patientId: number, staffId: number) {
+    this.today = new Date();
+    var datePipe = new DatePipe('en-UK');
 
-      this.toastr.success('Bill Saved Successfully', 'CMS App V2022');
-      this.paymentService.savebill(this.checkoutForm.value);
-    this.router.navigateByUrl('/reception/home');
+    let formattedDate: any = datePipe.transform(
+      this.today,
+
+      'yyyy-MM-dd'
+    );
+    this.Bill = {
+      ConsultationDateTime: formattedDate,
+      ConsultationAmount: 200,
+      PatientId: patientId,
+      StaffId: 1,
+    };
+    console.log('From console', this.Bill);
+    this.paymentService.savebill(this.Bill);
+
+    this.toastr.success('Bill Saved');
+    this.router.navigateByUrl('reception/home');
   }
+
   logout() {
     console.log('inside logout');
     this.auth.logOut();

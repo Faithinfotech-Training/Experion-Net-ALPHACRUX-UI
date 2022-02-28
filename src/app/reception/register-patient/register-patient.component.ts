@@ -60,6 +60,7 @@ export class RegisterPatientComponent implements OnInit {
     this.insertPatientRecord(form);
     this.resetForm(form);
     this.router.navigateByUrl('/reception/home');
+    window.location.reload();
 
 
   } else {
