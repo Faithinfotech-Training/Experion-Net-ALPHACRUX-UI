@@ -79,7 +79,7 @@ const routes: Routes = [
   {path:'pharmacy/home',component:HomeComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'} },
 
   { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
-  { path: 'doctor/app', component:AppointmentsComponent},
+  { path: 'login/doctor/app', component:AppointmentsComponent},
   //canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: '**', component: AppComponent },
 

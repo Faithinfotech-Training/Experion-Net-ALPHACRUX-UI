@@ -41,7 +41,7 @@ export class ReceptionService {
   //List token queue
   getTokenQueue() {
     return this.client
-      .get(environment.updateUrl + 'receptionist/tokenqueue')
+      .get(environment.newUrl + 'receptionist/tokenqueue')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -54,7 +54,7 @@ export class ReceptionService {
   //Get patient
   getPatients() {
     return this.client
-      .get(environment.apiUrl + 'receptionist/patients')
+      .get(environment.newUrl + 'receptionist/patients')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -65,7 +65,7 @@ export class ReceptionService {
   //Get doctor
   getDoctors() {
     return this.client
-      .get(environment.apiUrl + 'receptionist/doctors')
+      .get(environment.newUrl + 'receptionist/doctors')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -76,7 +76,7 @@ export class ReceptionService {
   //Generate token
   generateToken(token: TokenQueue) {
     return this.client
-      .post(environment.apiUrl + 'receptionist/token', token)
+      .post(environment.newUrl + 'receptionist/token', token)
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -86,14 +86,14 @@ export class ReceptionService {
 
   getpatientwithid(patientId: number):Observable<any> {
     return this.client.get(
-      environment.apiUrl + 'receptionist/token/patientid/' + patientId
+      environment.newUrl+ 'receptionist/token/patientid/' + patientId
     );
   }
 
   //Delete token
   deleteToken(tokenId: number) {
     return this.client.delete(
-      environment.apiUrl + 'receptionist/deletetoken/' + tokenId
+      environment.newUrl + 'receptionist/deletetoken/' + tokenId
     );
   }
 }
