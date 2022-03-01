@@ -48,7 +48,7 @@ export class AdminService {
   //list Staffs
   getStaffs() {
     return this.client
-      .get(environment.apiUrl + 'admin/liststaffs')
+      .get(environment.apiUrl + 'admin/staff-details')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -58,17 +58,17 @@ export class AdminService {
 
   //Add a new staff
   addStaff(staff: Staffs): Observable<any> {
-    return this.client.post(environment.apiUrl + 'admin/staff', staff);
+    return this.client.post(environment.apiUrl + 'admin/staffs', staff);
   }
 
   //Get staff by id
   getStaffById(staffId: number): Observable<any> {
-    return this.client.get(environment.apiUrl + 'admin/staff/' + staffId);
+    return this.client.get(environment.apiUrl + 'admin/staffs/' + staffId);
   }
 
   //Update staff
   updateStaff(staff: Staffs): Observable<any> {
-    return this.client.put(environment.apiUrl + 'admin/updatestaff', staff);
+    return this.client.put(environment.apiUrl + 'admin/staffs', staff);
   }
 
   //List Medicines
@@ -96,7 +96,7 @@ export class AdminService {
   //List Medicine Detials
   getMedicineDetails() {
     return this.client
-      .get(environment.apiUrl + 'admin/medicinedetails')
+      .get(environment.apiUrl + 'admin/medicine-details')
       .toPromise()
       .then((data) => {
         console.log(data);
@@ -106,20 +106,20 @@ export class AdminService {
 
   //Add a new medicine
   addMedicine(medicine: MedicineDetails): Observable<any> {
-    return this.client.post(environment.apiUrl + 'admin/addmedicine', medicine);
+    return this.client.post(environment.apiUrl + 'admin/medicines', medicine);
   }
 
   //Delete Inventory
   deleteInventory(id: number) {
     return this.client.delete(
-      environment.apiUrl + 'admin/deleteinventory/' + id
+      environment.apiUrl + 'admin/inventory/' + id
     );
   }
 
   //Delete Medicine
   deleteMedicine(id: number) {
     return this.client.delete(
-      environment.apiUrl + 'admin/medicinedetails/' + id
+      environment.apiUrl + 'admin/medicine-details/' + id
     );
   }
 
