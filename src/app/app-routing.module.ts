@@ -30,17 +30,18 @@ import { ListMedicinesComponent } from './administrator/medicines/list-medicines
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { CanActivateGuard } from './shared/can-activate.guard';
+import { ListComponent } from './pharmacist/list/list.component';
 
 const routes: Routes = [
   {path:'',component:AppHomeComponent},
   { path: 'doctor/appointments', component: AppointmentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
-  { path: 'reception/home', component: HomePageComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
-  { path: 'reception/payments', component: PaymentsComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'} },
-  { path: 'reception/register-patient', component: RegisterPatientComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
-  { path: 'reception/transactions', component: TransactionsComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
-  { path: 'reception/update-patient', component: UpdatePatientComponent,canActivate: [CanActivateGuard],data:{StaffId:'6'}  },
+  { path: 'reception/home', component: HomePageComponent},
+  { path: 'reception/payments', component: PaymentsComponent  },
+  { path: 'reception/register-patient', component: RegisterPatientComponent },
+  { path: 'reception/transactions', component: TransactionsComponent},
+  { path: 'reception/update-patient', component: UpdatePatientComponent},
   { path: 'admin', component: AdministratorComponent },
 
   {
@@ -61,22 +62,19 @@ const routes: Routes = [
       { path: 'edit/:staffId', component: NewStaffComponent,canActivate: [CanActivateGuard],data:{StaffId:'10'}  },
     ],
   },
-  { path: 'doctor/home', component: DoctorComponent},
-  //canActivate: [CanActivateGuard],data:{StaffId:'1'} },
-  { path: 'doctor/advice', component: AdviceComponent},
-  //canActivate: [CanActivateGuard],data:{StaffId:'1'} },
-  { path: 'doctor/advice/diagnosis', component: DiagnosisComponent},
-  //canActivate: [CanActivateGuard],data:{StaffId:'1'} },
-  { path: 'doctor/advice/vitals', component:VitalsComponent},
-  //canActivate: [CanActivateGuard],data:{StaffId:'1'}},
-  { path: 'doctor/advice/medicine', component:MedicineComponent},
-  //canActivate: [CanActivateGuard],data:{StaffId:'1'}},
-  { path: 'doctor/advice/tests', component:TestsComponent},
-  //canActivate: [CanActivateGuard],data:{StaffId:'1'}},
+  { path: 'doctor/home', component: DoctorComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/advice', component: AdviceComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/advice/diagnosis', component: DiagnosisComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
+  { path: 'doctor/advice/vitals', component:VitalsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
+  { path: 'doctor/advice/medicine', component:MedicineComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
+  { path: 'doctor/advice/tests', component:TestsComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'}},
   { path: 'lab/home', component:LabTechnicianComponent},
   { path: 'lab/home/test', component:LabTestReportComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
-  { path: 'pharmacist', component: PharmacistComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'}  },
-  {path:'pharmacy/home',component:HomeComponent,canActivate: [CanActivateGuard],data:{StaffId:'7'} },
+  { path: 'pharmacist', component: PharmacistComponent},
+
+  {path:'pharmacy/meddata',component:ListComponent },
+  {path:'pharmacy/home',component:HomeComponent },
+
 
   { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{StaffId:'8'}},
   { path: 'login/doctor/app', component:AppointmentsComponent},

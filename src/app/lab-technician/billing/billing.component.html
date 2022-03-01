@@ -22,37 +22,41 @@
       >
         <ul class="navbar-nav ms-2 gap-5">
           <li class="navbar-item">
-            <a class="navbar-brand" href="http://localhost:4200/lab/home/billing">
-              <!-- <h3>Lab Technician</h3> -->
+            <a
+              class="navbar-brand"
+              href="http://localhost:4200/lab/home/billing"
+            >
             </a>
           </li>
-
+          <!--Home page-->
           <li class="navbar-item">
-            <a class="nav-link active" href="http://localhost:4200/lab/home/billing"
+            <a
+              class="nav-link active"
+              href="http://localhost:4200/lab/home/billing"
               ><i class="bi bi-house" style="font-size: 1.5rem"></i
             ></a>
           </li>
+          <!--Billing page-->
           <li class="navbar-item">
             <a class="nav-link" href="http://localhost:4200/lab/home/billing"
               ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
             ></a>
           </li>
+          <!--Test Report page-->
           <li class="navbar-item">
             <a class="nav-link" href="http://localhost:4200/lab/home/test"
               ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
             ></a>
           </li>
-
+          <!--Logout-->
           <li class="nav-item dropup">
             <a
               class="nav-link dropdown-toggle"
               (click)="logout()"
-
               role="button"
               data-bs-toggle="dropdown"
               ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
             ></a>
-
           </li>
         </ul>
       </nav>
@@ -72,6 +76,7 @@
             class="form-group p-3"
             (ngSubmit)="onSubmit(form)"
           >
+            <!--Patient Id-->
             <div class="form-group row align-items-center pt-4 pb-3">
               <div class="col-md-3 ps-5">
                 <h2>PATIENT ID</h2>
@@ -93,6 +98,7 @@
                     'is-invalid': PatientId.touched && PatientId.invalid
                   }"
                 />
+                <!--Patient Id validation-->
 
                 <p
                   *ngIf="PatientId.touched && PatientId.invalid"
@@ -105,7 +111,7 @@
                     Please enter patient id</span
                   >
                 </p>
-
+                <!--Search Patient details-->
                 <div class="py-4">
                   <button
                     type="submit"
@@ -117,47 +123,17 @@
                 </div>
               </div>
             </div>
-          </form>
-          <hr />
 
-          <form
-            #form1="ngForm"
-            name="ngForm1"
-            autocomplete="off"
-            class="form-group p-3"
-            (ngSubmit)="onClickClick(form1)"
-          >
-            <div class="form-group row align-items-center">
-              <h1>PATIENT DETAILS</h1>
-              <br /><br />
-            </div>
             <hr />
 
-            <!-- <form
-              #form="ngForm"
-              name="ngForm"
-              autocomplete="off"
-              class="form-group p-3"
-            > -->
-              <div class="form-group row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <h2 class="mb-0">ID</h2>
-                </div>
-
-                <div class="col-md-9 pe-5">
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    placeholder="Patient_Id"
-                    style="width: 500px"
-                    id="PatientId"
-                    name="PatientId"
-                    #PatientId="ngModel"
-                    [(ngModel)]="labTestService.formData.PatientId"
-                    disabled
-                  />
-                </div>
+            <div #bill id="bill">
+              <!--Patient details-->
+              <div class="form-group row align-items-center">
+                <h1>PATIENT DETAILS</h1>
+                <br /><br />
               </div>
+              <hr />
+              <!--Patient Name-->
 
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
@@ -177,32 +153,17 @@
                   />
                 </div>
               </div>
-
-
-
-
-              <div class="form-group row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <h2 class="mb-0">TEST LIST ID</h2>
-                </div>
-
-                <div class="col-md-9 pe-5">
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    placeholder="Test list Id"
-                    style="width: 500px"
-                    name="TestListId"
-                    #TestListId="ngModel"
-                    id="TestListId"
-                    [(ngModel)]="labTestService.formData.TestListId"
-                    disabled
-                  />
-                </div>
-              </div>
-
-
-
+              <!--Test List Id-->
+              <input
+                type="hidden"
+                class="form-control form-control-lg"
+                name="TestListId"
+                #TestListId="ngModel"
+                id="TestListId"
+                [(ngModel)]="labTestService.formData.TestListId"
+                disabled
+              />
+              <!--Phone Number-->
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h2 class="mb-0">PHONE NUMBER</h2>
@@ -221,6 +182,7 @@
                   />
                 </div>
               </div>
+              <!--Doctor Name-->
 
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
@@ -240,7 +202,7 @@
                   />
                 </div>
               </div>
-
+              <!--Visitd date-->
               <div class="row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h2 class="mb-0">DATE</h2>
@@ -257,36 +219,21 @@
                   />
                 </div>
               </div>
-            <!-- </form> -->
-            <br />
-            <br />
+              <br />
+              <br />
 
-            <form
-              #form2="ngForm"
-              name="ngForm"
-              autocomplete="off"
-              class="form-group p-3"
-              (ngSubmit)="onClick(form2)"
-            >
+              <!--Test details-->
               <div class="form-group row align-items-center">
-                <!-- <h4>TEST DETAILS</h4> -->
-
                 <button
                   type="submit"
+                  (click)="onClick(form)"
                   class="form-group btn btn-secondary btn-lg me-3 btn-block float-end"
                 >
                   TEST DETAILS
                 </button>
               </div>
               <br />
-            </form>
 
-            <form
-              #form="ngForm"
-              name="ngForm"
-              autocomplete="off"
-              class="form-group p-3"
-            >
               <table class="table table-bordered m-2 table-active">
                 <thead class="table-lg thead-light">
                   <tr>
@@ -302,10 +249,12 @@
                         | paginate: { itemsPerPage: 5, currentPage: page }
                     "
                   >
+                    <!--Display Test name-->
                     <td>{{ users.TestName }}</td>
+                    <!--Display Test amount-->
                     <td>{{ users.TestAmount }}</td>
                   </tr>
-
+                  <!--Display Total amount-->
                   <tr>
                     <td colspan="1"><b>Total:</b></td>
                     <td colspan="1" id="total" name="total">
@@ -319,18 +268,25 @@
                   (pageChange)="page = $event"
                 ></pagination-controls>
               </div>
-            </form>
 
-            <div class="px-5 py-4">
-              <button
-                type="submit"
-                class="btn btn-secondary btn-lg me-3 float-end"
-
-              >
-                PROCEED
-              </button>
-
-
+              <div class="px-5 py-4">
+                <!--Button to insert bill details to database-->
+                <button
+                  type="submit"
+                  (click)="onClickClick(form)"
+                  class="btn btn-secondary btn-lg me-3 float-end"
+                >
+                  PROCEED
+                </button>
+                <!--Button to generate pdf-->
+                <button
+                  (click)="generatePDF()"
+                  type="submit"
+                  class="btn btn-secondary btn-lg me-3 float-end"
+                >
+                  DOWNLOAD PDF
+                </button>
+              </div>
             </div>
           </form>
         </div>

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import {Payment} from './payment';
 
@@ -15,7 +17,7 @@ export class PaymentsService {
 
   bindListPayments()
   {
-    return this.httpClient.get(environment.apiUrl + 'receptionist/payments').toPromise().then(response=>
+    return this.httpClient.get(environment.apiUrl + 'receptionist/reception/bills').toPromise().then(response=>
     {
       console.log('from service');
       console.log(response);
@@ -23,4 +25,20 @@ export class PaymentsService {
 
     });
   }
+
+  savebill(payments:any)
+  {
+    return this.httpClient
+      .post(environment.apiUrl + 'receptionist/bill', payments)
+      ;
+  }
+/*
+  insertPayment(payment:Payment): Observable<any>{
+    return this.httpClient.post(
+      environment.apiUrl+'receptionist/bill',
+      payment
+
+    )
+  }
+  */
 }

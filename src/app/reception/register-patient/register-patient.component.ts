@@ -60,6 +60,7 @@ export class RegisterPatientComponent implements OnInit {
     this.insertPatientRecord(form);
     this.resetForm(form);
     this.router.navigateByUrl('/reception/home');
+    window.location.reload();
 
 
   } else {
@@ -94,6 +95,7 @@ export class RegisterPatientComponent implements OnInit {
     console.log('Success');
     this.toastr.success('Patient record Updated Successfully','CMS App V2022'
     );
+    window.location.reload();
     this.router.navigateByUrl('reception/home');
   },
     err => {

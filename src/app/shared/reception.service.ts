@@ -26,15 +26,7 @@ export class ReceptionService {
     PatientId: 0,
     PatientName: '',
   };
-  $isDoc = new EventEmitter();
-  // doc: Doctors = {
-  //   DoctorId: 0,
-  //   DoctorName: '',
-  //   Phone: '',
-  //   Email: '',
-  //   RoleName: '',
-  //   Qualification: '',
-  // };
+
 
   constructor(private client: HttpClient) {}
 
@@ -85,6 +77,7 @@ export class ReceptionService {
   }
 
   getpatientwithid(patientId: number):Observable<any> {
+    //window.location.reload();
     return this.client.get(
       environment.newUrl+ 'receptionist/token/patientid/' + patientId
     );
@@ -96,4 +89,6 @@ export class ReceptionService {
       environment.newUrl + 'receptionist/deletetoken/' + tokenId
     );
   }
+
+
 }

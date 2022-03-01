@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./update-patient.component.scss'],
 })
 export class UpdatePatientComponent implements OnInit {
-  patientId: number;
+  patientId: number = 0;
   NgForm = NgForm;
   Patient = new UpdatePatient();
 
@@ -32,18 +32,17 @@ export class UpdatePatientComponent implements OnInit {
     this.reception.getPatients();
   }
   checkoutForm = this.formBuilder.group({
-    PatientId: null,
+    PatientId: this.patientId,
   });
 
   //Submit form
   onSubmit(form: NgForm): void {
-
-
     //Insert or update
-    if (this.checkoutForm.value.PatientId != null) {
-      this.getPatientwithPatientId(this.checkoutForm.value.PatientId);
+    console.log(this.checkoutForm.value.PatientId);
+      this.getPatientwithPatientId();
 
-      this.resetForm(form);
+
+    if (this.checkoutForm.value.PatientId != null) {
     } else {
       //Update
       //Insert
@@ -53,7 +52,6 @@ export class UpdatePatientComponent implements OnInit {
         'Patient record Not Found, Please Register',
         'CMS App V2022'
       );
-
     }
   }
 
@@ -74,18 +72,18 @@ export class UpdatePatientComponent implements OnInit {
     );
   }
 
-  onClick(form: NgForm) {
+  onClick(patientId: number) {
     console.log('Finding the record....');
 
-    let PatientId = document.getElementById('PatientId').innerHTML;
-    console.log(PatientId);
+    // let PatientId = document.getElementById('PatientId').innerHTML;
+    console.log(patientId);
   }
 
   //Update Method
   updatePatientRecord(form?: NgForm) {
     console.log('Updating a record....');
     this.updatePatientService
-      .UpdatePatient(this.checkoutForm.value.PatientId)
+      .UpdatePatient(form.value)
       .subscribe(
         (res) => {
           console.log(res);
@@ -101,12 +99,24 @@ export class UpdatePatientComponent implements OnInit {
         }
       );
   }
-  getPatientwithPatientId(form: NgForm) {
-    if (this.checkoutForm.value.PatientId != null) {
+  getPatientwithPatientId() {
       this.updatePatientService.getPatientById(
         this.checkoutForm.value.PatientId
-      );
-    }
+      ).toPromise().then((data) => {
+        //Format date
+        var datePipe = new DatePipe('en-UK');
+        let formattedDate: any = datePipe.transform(
+          data.PatientDob,
+          'yyyy-MM-dd'
+        );
+        data.PatientDob = formattedDate;
+        //Assign this response to empservice formData
+        this.Patient = Object.assign({}, data);
+        console.log(this.Patient);
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
   //Clear all contents after submit
@@ -117,7 +127,7 @@ export class UpdatePatientComponent implements OnInit {
   }
   logout() {
     console.log('inside logout');
-    //this.auth.logOut();
+    this.auth.logOut();
 
     this.router.navigateByUrl('/login');
   }

@@ -1,13 +1,12 @@
 import { Token } from '@angular/compiler';
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PatientListServiceService } from 'src/app/shared/patient-list-service.service';
 import { ReceptionService } from 'src/app/shared/reception.service';
-
-
-import { Patients } from 'src/app/shared/patients';
+import { TokenQueue } from 'src/app/shared/token-queue';
 import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-home-page',
@@ -16,8 +15,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomePageComponent implements OnInit {
   page: number = 1;
-
-  //emits
+  queueList:any=new  TokenQueue();
+  filter:string;
 
   constructor(
     public reception: ReceptionService,
@@ -41,7 +40,7 @@ export class HomePageComponent implements OnInit {
 
   onSubmit(): void {
     // Process checkout data here
-    this.checkoutForm.patchValue({
+   this.checkoutForm.patchValue({
       TokenNum: this.reception.token.TokenNumber + 1,
     });
     if (
@@ -63,6 +62,7 @@ export class HomePageComponent implements OnInit {
   //Delete token
   deleteToken(tokenId: number) {
     if (confirm('Are you sure you want to DELETE this token?')) {
+      console.log(tokenId);
       this.reception.deleteToken(tokenId).subscribe(
         (response) => {
           this.toastr.success('Token Deleted Successfully', 'CMS App V2022');

@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 import { Labbills } from 'src/app/shared/labbills';
 import { Labtest } from 'src/app/shared/labtest';
 import { LabtestService } from '../../shared/labtest.service';
+import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-billing',
@@ -16,21 +17,19 @@ import { LabtestService } from '../../shared/labtest.service';
   styleUrls: ['./billing.component.scss'],
 })
 export class BillingComponent implements OnInit {
-  patientId: number;
-  NgForm = NgForm;
+  //Variables
+
   page: number = 1;
-  labtest: any = new Labtest();
-  total=0;
-  value;
-  lab:any;
-  clicked = false;
-
-
-  //values
-  LabBillDateTime:any;
-  LabBillAmount:any;
-  TestListId:any;
-  PatientId:any;
+  total = 0;
+  lab: {} = {
+    LabBillDateTime: '',
+    TestListId: '',
+    PatientId: '',
+    LabBillAmount: '',
+  };
+  LabBillDateTime: any;
+  LabBillAmount: any;
+  TestListId: any;
 
   constructor(
     public labTestService: LabtestService,
@@ -38,93 +37,81 @@ export class BillingComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService,
     public app: AppComponent,
-    private auth:AuthService
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {}
 
+  //calling function to get patient details
+
   onSubmit(form: NgForm) {
+    //prints value in console
     console.log(form.value);
     let PatientId = this.labTestService.formData.PatientId;
-    if(PatientId<=0){
+    //patient id validation
+    if (PatientId <= 0) {
+      //invaid
       this.toastr.error('Invalid Patient Id', 'CMS App V2022');
       this.resetForm(form);
-    }
-
-
-    else if (PatientId != 0 || PatientId != null) {
-
+    } else if (PatientId != 0 || PatientId != null) {
+      //valid
       this.getPatientById(form);
-
-
-    }
-    else {
-      console.log('Enter valid Patient Id');
     }
   }
 
-
-
+  //calling function to get test details
 
   onClick(form: NgForm) {
+    //printing value in console
     console.log(form.value);
     let AdviceId = this.labTestService.formData.AdviceId;
+    //adviceid validation
     if (AdviceId != 0 || AdviceId != null) {
-      //Insert
+      //Valid
       this.getTest(form);
-
-
-
-
-
-
-
     } else {
+      //invalid
       console.log('Enter valid Patient Id');
     }
   }
-
-  onClickClick(form: NgForm){
-    //console.log('Value of id'+form.value.PatientId)
-    this.LabBillDateTime=new Date();
+  //to call function to insert billing details to database
+  onClickClick(form: NgForm) {
+    //date at the time of insertion
+    this.LabBillDateTime = new Date();
     var datePipe = new DatePipe('en-UK');
+    //formattig date
     let formattedDate: any = datePipe.transform(
       this.LabBillDateTime,
-      "yyyy-MM-dd"
+      'yyyy-MM-dd'
     );
-     //this.TestListId=document.getElementById('TestListId').innerText;
-    // this.PatientId=form.value.PatientId
-     this.LabBillAmount=document.getElementById('total').innerHTML;
-     this.TestListId=form.value.TestListId
+    console.log(form.form.value.StaffName);
+    //getting total from html page
+    this.LabBillAmount = document.getElementById('total').innerHTML;
+    //getting value from form
+    this.TestListId = form.value.TestListId;
 
-    console.log('Value of id'+this.TestListId)
+    console.log('Value of id' + this.TestListId);
     var numberValue = Number(this.LabBillAmount);
+    //formatting to json
+    this.lab = {
+      LabBillDateTime: formattedDate,
+      TestListId: this.TestListId,
+      PatientId: form.value.PatientId,
+      LabBillAmount: numberValue,
+    };
 
-
-
-
-    this.lab={"LabBillDateTime":formattedDate,"TestListId": this.TestListId,
-      "PatientId":form.value.PatientId,"LabBillAmount":numberValue}
-      console.log(form.value.TestListId)
-
-      if(form.value.PatientId>0 && numberValue>0){
-        this.post(this.lab);
-      }
-      else{
-        this.toastr.error('Cannot create bill with given information', 'CMS App V2022');
-
-      }
-
-
-
-
-
+    console.log(form.value.TestListId);
+    //validation
+    if (form.value.PatientId > 0 && numberValue > 0) {
+      this.post(this.lab);
+    } else {
+      this.toastr.error(
+        'Cannot create bill with given information',
+        'CMS App V2022'
+      );
+    }
   }
-
-
-
-
-
+  //function to get details of patient
   getPatientById(form?: NgForm) {
     console.log('Finding the patient..');
     this.labTestService
@@ -132,18 +119,19 @@ export class BillingComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
-          this.toastr.success('Patient details found successfully', 'CMS App V2022');
+          this.toastr.success(
+            'Patient details found successfully',
+            'CMS App V2022'
+          );
 
-          //Format date
           var datePipe = new DatePipe('en-UK');
           let formattedDate: any = datePipe.transform(
             res.ReportDateTime,
             'yyyy-MM-dd'
           );
           res.ReportDateTime = formattedDate;
-          //Assign this response to updatePatientservice formData
-          this.labTestService.formData = Object.assign({}, res);
 
+          this.labTestService.formData = Object.assign({}, res);
         },
         (err) => {
           console.log(err);
@@ -152,40 +140,51 @@ export class BillingComponent implements OnInit {
         }
       );
   }
-
+  //function to get detailsof tests prescribed by doctor
   getTest(form?: NgForm) {
     console.log('Finding the tests..');
-    this.labTestService
-      .getTests(this.labTestService.formData.AdviceId)
-      //this.findsum(this.users);
-
+    this.labTestService.getTests(this.labTestService.formData.AdviceId);
   }
-  post(lab){
-
-
+  post(obj: any) {
     console.log('Trying to insert values..');
 
-    this.labTestService.postBills(lab);
+    this.labTestService.postBills(obj).subscribe(
+      (result1) => {
+        console.log(result1);
 
-    this.toastr.success('Billing record Inserted Successfully', 'CMS App V2022');
-    this.router.navigateByUrl('lab/home/test')
-
-
-
+        this.toastr.success(
+          'Billing record Inserted Successfully',
+          'CMS App V2022'
+        );
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
-  logout(){
-    console.log('inside logout')
+  //function to logout from lab tecnician page
+  logout() {
+    console.log('inside logout');
     this.auth.logOut();
 
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/login');
   }
-
+  //function to reset page after inserting data
   resetForm(form?: NgForm) {
     if (form != null) {
       form.resetForm();
     }
   }
+  //function to generate pdf
+  @ViewChild('bill', { static: false }) el1: ElementRef;
 
+  generatePDF() {
+    let pdf = new jsPDF('p', 'pt', 'a3');
 
-
+    pdf.html(this.el1.nativeElement, {
+      callback: (pdf) => {
+        pdf.save('Lab-Bill.pdf');
+      },
+    });
+  }
 }

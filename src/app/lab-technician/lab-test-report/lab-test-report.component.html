@@ -21,28 +21,35 @@
         style="min-width: fit-content; min-height: 100vh"
       >
         <ul class="navbar-nav ms-2 gap-5">
+          <!--Home page-->
           <li class="navbar-item">
-            <a class="navbar-brand" href="http://localhost:4200/lab/home/billing">
-              <!-- <h3>Lab Technician</h3> -->
+            <a
+              class="navbar-brand"
+              href="http://localhost:4200/lab/home/billing"
+            >
             </a>
           </li>
-
+          <!--Home page-->
           <li class="navbar-item">
-            <a class="nav-link active" href="http://localhost:4200/lab/home/billing"
+            <a
+              class="nav-link active"
+              href="http://localhost:4200/lab/home/billing"
               ><i class="bi bi-house" style="font-size: 1.5rem"></i
             ></a>
           </li>
+          <!--Billing page-->
           <li class="navbar-item">
             <a class="nav-link" href="http://localhost:4200/lab/home/billing"
               ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
             ></a>
           </li>
+          <!--Test report page-->
           <li class="navbar-item">
             <a class="nav-link" href="http://localhost:4200/lab/home/test"
               ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
             ></a>
           </li>
-
+          <!--Logout -->
           <li class="nav-item dropup">
             <a
               class="nav-link dropdown-toggle"
@@ -51,7 +58,6 @@
               data-bs-toggle="dropdown"
               ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
             ></a>
-
           </li>
         </ul>
       </nav>
@@ -59,22 +65,18 @@
   </div>
 </header>
 
-
-
-
 <div class="container-sm">
   <div class="row mt-5">
     <div class="col mt-5">
       <div class="card" style="border-radius: 15px">
         <div class="card-body">
-
           <form
             #form="ngForm"
             name="ngForm"
             autocomplete="off"
             class="form-group p-3"
-            (ngSubmit)="onSubmit(form)"
           >
+            <!--to get patient id-->
             <div class="form-group row align-items-center pt-4 pb-3">
               <div class="col-md-3 ps-5">
                 <h2>PATIENT ID</h2>
@@ -82,12 +84,10 @@
 
               <div class="col-md-9 pe-5">
                 <input
-                minlength="1"
-                maxlength="4"
-                min="1"
-                max="100"
-
-
+                  minlength="1"
+                  maxlength="4"
+                  min="1"
+                  max="100"
                   type="number"
                   class="form-control form-control-lg"
                   placeholder="Patient_Id"
@@ -102,7 +102,7 @@
                     'is-invalid': PatientId.touched && PatientId.invalid
                   }"
                 />
-
+                <!--patient id validation-->
                 <p
                   *ngIf="PatientId.touched && PatientId.invalid"
                   class="validation-error"
@@ -116,62 +116,27 @@
                 </p>
 
                 <div class="py-4">
+                  <!--button to get details of patient-->
                   <button
                     type="submit"
                     class="btn btn-secondary btn-lg me-3"
-                    [disabled]="!(form.valid && form.dirty)"
-
-
-
+                    (click)="onSubmit(PatientId.value)"
                   >
                     SEARCH</button
                   ><br /><br />
                 </div>
               </div>
             </div>
-          </form>
-          <hr />
 
-          <form
-            #form1="ngForm"
-            name="ngForm"
-            autocomplete="off"
-            class="form-group p-3"
-            (ngSubmit)="proceed(form1)"
-
-          >
-            <div class="form-group row align-items-center">
-              <h1>PATIENT DETAILS</h1>
-              <br /><br />
-            </div>
             <hr />
-
-            <form
-              #form="ngForm"
-              name="ngForm"
-              autocomplete="off"
-              class="form-group p-3"
-            >
-              <div class="form-group row align-items-center pt-4 pb-3">
-                <div class="col-md-3 ps-5">
-                  <h2 class="mb-0">ID</h2>
-                </div>
-
-                <div class="col-md-9 pe-5">
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    placeholder="Patient_Id"
-                    style="width: 500px"
-                    id="PatientId"
-                    name="PatientId"
-                    #PatientId="ngModel"
-                    disabled
-                    [(ngModel)]="labTestService.formData.PatientId"
-                  />
-                </div>
+            <div #report id="report">
+              <!--Patient details-->
+              <div class="form-group row align-items-center">
+                <h1>PATIENT DETAILS</h1>
+                <br /><br />
               </div>
-
+              <hr />
+              <!--patient name-->
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h2 class="mb-0">NAME</h2>
@@ -185,21 +150,12 @@
                     style="width: 500px"
                     name="PatientName"
                     #PatientName="ngModel"
-                    disabled
                     [(ngModel)]="labTestService.formData.PatientName"
+                    disabled
                   />
                 </div>
               </div>
-
-              <input
-                type="hidden"
-                class="form-control form-control-lg"
-                name="TestListId"
-                id="TestListId"
-                #TestListId="ngModel"
-                [(ngModel)]="labTestService.formData.TestListId"
-              />
-
+              <!--Patient phone number-->
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h2 class="mb-0">PHONE NUMBER</h2>
@@ -213,11 +169,12 @@
                     style="width: 500px"
                     name="PatientPhone"
                     #PatientPhone="ngModel"
-                    disabled
                     [(ngModel)]="labTestService.formData.PatientPhone"
+                    disabled
                   />
                 </div>
               </div>
+              <!--Name of the doctor-->
 
               <div class="form-group row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
@@ -232,12 +189,12 @@
                     style="width: 500px"
                     name="StaffName"
                     #StaffName="ngModel"
-                    disabled
                     [(ngModel)]="labTestService.formData.StaffName"
+                    disabled
                   />
                 </div>
               </div>
-
+              <!--Date of visit-->
               <div class="row align-items-center pt-4 pb-3">
                 <div class="col-md-3 ps-5">
                   <h2 class="mb-0">DATE</h2>
@@ -246,66 +203,59 @@
                   <input
                     type="datetime"
                     class="form-control form-control-lg"
-                    placeholder="Report_Date"
                     name="ReportDateTime"
                     #ReportDateTime="ngModel"
-                    disabled
                     [(ngModel)]="labTestService.formData.ReportDateTime"
-
+                    disabled
                     style="width: 500px"
                   />
                 </div>
               </div>
-            </form>
-            <br />
-            <br />
+              <!--test list id hidden-->
+              <input
+                type="hidden"
+                class="form-control form-control-lg"
+                name="TestListId"
+                id="TestListId"
+                #TestListId="ngModel"
+                [(ngModel)]="labTestService.formData.TestListId"
+              />
+              <!--staffid hidden-->
+              <input
+                type="hidden"
+                class="form-control form-control-lg"
+                name="StaffId"
+                id="StaffId"
+                #StaffId="ngModel"
+                [(ngModel)]="labTestService.formData.StaffId"
+              />
 
-            <form
-              #form="ngForm"
-              name="ngForm"
-              autocomplete="off"
-              class="form-group p-3"
-              (ngSubmit)="onClick(form)"
-            >
+              <br />
+              <br />
+
               <div class="form-group row align-items-center">
-                <!-- <h4>TEST DETAILS</h4> -->
-
+                <!--button to get test details-->
                 <button
+                  (click)="onClick(TestListId.value)"
                   type="submit"
                   class="form-group btn btn-secondary btn-lg me-3 btn-block float-end"
                 >
-                  TEST REPORT
+                  TEST DETAILS
                 </button>
               </div>
               <br />
-            </form>
 
-            <form
-              #form="ngForm"
-              name="ngForm"
-              autocomplete="off"
-              class="form-group p-3"
-            >
               <table class="table table-bordered m-2 table-active">
                 <thead class="table-lg thead-light">
                   <tr>
-                    <th scope="col" colspan="3"></th>
-                    <th scope="col" colspan="3" style="text-align: center;">Biological reference range</th>
-
-
-
-                  </tr>
-                  <tr>
+                    <th scope="col">Test Id</th>
                     <th scope="col">Test Name</th>
                     <th scope="col">Collected Value</th>
                     <th scope="col">Unit</th>
-                    <th scope="col">Minimum</th>
-                    <th scope="col">Maximum</th>
+                    <th scope="col" colspan="2">Reference Range</th>
 
                     <th scope="col">Unit</th>
-
-
-
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody class="table" style="background-color: #e7e7e7">
@@ -316,7 +266,13 @@
                         | paginate: { itemsPerPage: 5, currentPage: page }
                     "
                   >
-                    <td [value]="users.TestName" id="TestName">{{ users.TestName }}</td>
+                    <td [value]="users.TestId" id="TestId">
+                      {{ users.TestId }}
+                    </td>
+                    <!--to insert observed value-->
+                    <td [value]="users.TestName" id="TestName">
+                      {{ users.TestName }}
+                    </td>
                     <td>
                       <input
                         type="number"
@@ -324,17 +280,9 @@
                         placeholder="Add Value"
                         style="width: 120px"
                         name="PatientValue"
+                        id="PatientValue"
                         required
-
                       />
-
-
-
-
-
-
-
-
                     </td>
 
                     <td>{{ users.TestUnit }}</td>
@@ -342,6 +290,16 @@
                     <td>{{ users.MinimumValue }}</td>
                     <td>{{ users.MaximumValue }}</td>
                     <td>{{ users.TestUnit }}</td>
+                    <td>
+                      <!--button to save observed value to database-->
+                      <button
+                        type="submit"
+                        class="btn btn-secondary btn-xs me-3"
+                        (click)="save(form)"
+                      >
+                        SAVE
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -351,14 +309,29 @@
                   (pageChange)="page = $event"
                 ></pagination-controls>
               </div>
-            </form>
+            </div>
+
+            <br />
+            <br />
+
+            <br />
 
             <div class="px-5 py-4">
+              <!--button to submit-->
               <button
+                (click)="testReport(form)"
                 type="submit"
                 class="btn btn-secondary btn-lg me-3 float-end"
               >
                 PROCEED
+              </button>
+              <!--button to generate pdf-->
+              <button
+                (click)="generatePDF()"
+                type="submit"
+                class="btn btn-secondary btn-lg me-3 float-end"
+              >
+                DOWNLOAD PDF
               </button>
             </div>
           </form>

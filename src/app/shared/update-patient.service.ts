@@ -16,18 +16,18 @@ export class UpdatePatientService {
   //Update Patient Details
   UpdatePatient(updatePatient: UpdatePatient): Observable<any> {
     return this.httpClient.put(
-      environment.apiUrl + 'Receptionist/updatepatient/',updatePatient);
+      environment.apiUrl + 'receptionist/patient',updatePatient);
   }
 
  //Insert Employee
  insertPatient(updatePatient: UpdatePatient): Observable<any> {
   return this.httpClient.post(
-    environment.apiUrl  + 'Receptionist/addpatient',updatePatient);
+    environment.apiUrl  + 'receptionist/patient',updatePatient);
 }
 
   //Get patient by id
   getPatientById(id: number): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + 'Receptionist/patientid' + id);
+    return this.httpClient.get(environment.apiUrl + 'receptionist/patients/' + id);
   }
 
 

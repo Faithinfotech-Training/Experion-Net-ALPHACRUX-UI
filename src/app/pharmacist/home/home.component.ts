@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 import { Medlist } from 'src/app/shared/medlist';
 import { Pharmacist } from 'src/app/shared/pharmacist';
 import { PharmacistService } from '../../shared/pharmacist.service';
-
+import {jsPDF} from 'jspdf';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,6 +24,19 @@ export class HomeComponent implements OnInit {
   value;
   lab:any;
   public Med:Medlist[]=[];
+
+  @ViewChild('medbill',{static:false}) el2:ElementRef;
+  //emits
+
+  makePDF(){
+    let pdf= new jsPDF('p','pt','a2');
+    pdf.setFontSize(3);
+    pdf.html(this.el2.nativeElement,{
+      callback:(pdf)=>{
+        pdf.save("Pharmacy-Bill.pdf");
+      }
+    });
+  }
 
 
   //For calculate Total Price,Qty and Grand Total price
@@ -150,39 +163,23 @@ this.post(this.lab);
 
     }
 
-    //to calculate and display the total price information in Shopping cart.
-    getItemTotalresult() {
-      this.totalPrice = 0;
-      this.totalQty = 0;
-      this.GrandtotalPrice = 0;
-      var count: number = 0;
-      for (count = 0; count < this.Med.length; count++) {
-        console.log(count);
-          this.totalPrice += this.Med[count].MedicinePrice;
-          this.totalQty += (this.Med[count].MedicineQuantity);
 
-          this.GrandtotalPrice += this.Med[count].MedicinePrice * this.Med[count].MedicineQuantity;
-          console.log(this.GrandtotalPrice);
-
-      }
-      console.log(this.GrandtotalPrice);
-      
-
-
-  }
   onProceed(){
-    this.toastr.success('Bill generated Successfully', 'CMS App V2022');
-    let currentUrl = this. router. url;
-    console.log(currentUrl);
-  this. router. routeReuseStrategy. shouldReuseRoute = () => true;
-  this. router. onSameUrlNavigation = 'reload';
-  this. router. navigate([currentUrl]);
+
+     this.toastr.success('Data Saved Successfully', 'CMS App V2022');
+     this.router.navigateByUrl('pharmacy/meddata');
+
   }
   logout(){
     console.log('inside logout')
     this.auth.logOut();
 
     this.router.navigateByUrl('/login')
+  }
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+    }
   }
 
   }
