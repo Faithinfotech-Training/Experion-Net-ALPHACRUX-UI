@@ -67,52 +67,45 @@ export class LoginComponent implements OnInit {loginForm!: FormGroup;
           console.log(data);
           this.loginUser = data;
 
-          if(this.loginUser.StaffId==1||this.loginUser.StaffId==2||
-            this.loginUser.StaffId==3
-            ||this.loginUser.StaffId==4){
+          if(this.loginUser.RoleId==2){
 
 
               console.log("Redirecting to Doctor Page");
               localStorage.setItem("USERNAME", this.loginUser.UserName);
-              localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+              localStorage.setItem("ACCESSID", this.loginUser.RoleId);
               sessionStorage.setItem("USERNAME", this.loginUser.UserName);
               this.router.navigateByUrl('doctor/appointments');
 
             }
-            else if(this.loginUser.StaffId==5||this.loginUser.StaffId==6||
-              this.loginUser.StaffId==11
-              ){
+            else if(this.loginUser.RoleId==1){
                 console.log("Redirecting to Receptionist Page");
                 localStorage.setItem("USERNAME", this.loginUser.UserName);
-                localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                localStorage.setItem("ACCESSID", this.loginUser.RoleId);
                 sessionStorage.setItem("USERNAME", this.loginUser.UserName);
                 this.router.navigateByUrl('reception/home');
 
               }
-              else if(this.loginUser.StaffId==7|| this.loginUser.StaffId==12|| this.loginUser.StaffId==13
-                ){
+              else if(this.loginUser.RoleId==3){
                   console.log("Redirecting to pharmacist Page");
                   localStorage.setItem("USERNAME", this.loginUser.UserName);
-                  localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                  localStorage.setItem("ACCESSID", this.loginUser.RoleId);
                   sessionStorage.setItem("USERNAME", this.loginUser.UserName);
                   this.router.navigateByUrl('pharmacy/home');
 
                 }
-                else if(this.loginUser.StaffId==8|| this.loginUser.StaffId==14
-                  ){
+                else if(this.loginUser.RoleId==4){
                     console.log("Redirecting to Lab Technician Page");
                     localStorage.setItem("USERNAME", this.loginUser.UserName);
-                    localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                    localStorage.setItem("ACCESSID", this.loginUser.RoleId);
                     sessionStorage.setItem("USERNAME", this.loginUser.UserName);
-                   this.router.navigateByUrl('lab/home/billing');
+                   this.router.navigateByUrl('lab/home/reports');
 
 
                   }
-                  else if (this.loginUser.StaffId==9||this.loginUser.StaffId==10
-                    ){
+                  else if (this.loginUser.RoleId==5){
                       console.log("Redirecting to Admin Page");
                       localStorage.setItem("USERNAME", this.loginUser.UserName);
-                      localStorage.setItem("ACCESSID", this.loginUser.StaffId);
+                      localStorage.setItem("ACCESSID", this.loginUser.RoleId);
                       sessionStorage.setItem("USERNAME", this.loginUser.UserName);
                       this.router.navigateByUrl('admin/staffs/edit');
 

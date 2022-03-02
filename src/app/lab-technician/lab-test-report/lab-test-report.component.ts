@@ -17,8 +17,11 @@ import { jsPDF } from 'jspdf';
 export class LabTestReportComponent implements OnInit {
   //variables
   page: number = 1;
+
   newDate: Date;
   report: {} = { ReportDate: '', PatientId: '', StaffId: '' };
+  reportData: {} = { PatientValue: '', ReportId: '', TestId: '' };
+  reportId:any;
 
   constructor(
     public labTestService: LabtestService,
@@ -29,26 +32,26 @@ export class LabTestReportComponent implements OnInit {
     private auth: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   //to call function to create a test report Id
 
   testReport(form: NgForm) {
-    console.log('staffid' + form.value.StaffId);
-    //curret date
-    this.newDate = new Date();
-    var datePipe = new DatePipe('en-UK');
-    //formats date
-    let formattedDate: any = datePipe.transform(this.newDate, 'yyyy-MM-dd');
-    //formats to json
-    this.report = {
-      ReportDate: formattedDate,
-      PatientId: form.value.PatientId,
-      StaffId: form.value.StaffId,
-    };
+    if(this.reportId>0){
 
-    console.log(this.report);
-    this.createTestReport(this.report);
+      this.router.navigateByUrl('/lab/home/report/'+this.reportId)
+
+    }
+    else{
+      this.toastr.warning('Report Id is not generated')
+
+
+
+    }
+
+
   }
   //function to generate pdf
 
@@ -65,25 +68,38 @@ export class LabTestReportComponent implements OnInit {
   }
   //to get observed values of patient from table
 
-  save(form: NgForm) {
-    var patientValue = Number(
-      document.getElementById('PatientValue').innerText
-    );
-    console.log('by getelement' + patientValue);
+  save(form: NgForm,testId:number) {
+
+    console.log('by'+this.labTestService.testReport.PatientValue)
+    this.reportData = {
+      PatientValue: this.labTestService.testReport.PatientValue,
+      ReportId: this.reportId,
+      // TestId: this.labTestService.users.TestId.Value,
+      testId:testId
+    };
+    console.log(this.reportData);
+    this.InsertValues(this.reportData)
+
   }
   //to call the function to get patient details
-  onSubmit(patientId: number) {
+  onSubmit(form:NgForm,patientId: number) {
     console.log(patientId);
     if (patientId <= 0) {
-      this.toastr.error('Invalid Patient Id', 'CMS App V2022');
-    } else if (patientId != 0 || patientId != null) {
+
+      this.toastr.error('Invalid Patient Id');
+      this.resetForm(form);
+
+    } else if(patientId > 0 || patientId != null)
+    {
       this.getPatientById(patientId);
-    } else {
-      console.log('Enter valid Patient Id');
-    }
+
+ }
+
+
+
   }
   //to call the function to get test details
-  onClick(testList: Number) {
+  onClick(testList: Number,form: NgForm,event:any) {
     console.log(testList);
 
     if (testList != 0 || testList != null) {
@@ -91,6 +107,33 @@ export class LabTestReportComponent implements OnInit {
     } else {
       console.log('Enter valid Patient Id');
     }
+
+    console.log('staffid' + form.value.StaffId);
+    //curret date
+    this.newDate = new Date();
+    var datePipe = new DatePipe('en-UK');
+    //formats date
+    let formattedDate: any = datePipe.transform(this.newDate, 'yyyy-MM-dd');
+    //formats to json
+    this.report = {
+      ReportDate: formattedDate,
+      PatientId: form.value.PatientId,
+      StaffId: form.value.StaffId,
+    };
+
+    console.log(this.report);
+    this.createTestReport(this.report);
+    if(form.value.PatientId>0){
+      event.target.disabled = true;
+    }
+    else{
+      this.toastr.warning("Patient Id is not selected")
+    }
+
+
+
+
+
   }
   //function to get details of patient
   getPatientById(patientId: number) {
@@ -100,8 +143,7 @@ export class LabTestReportComponent implements OnInit {
       (res) => {
         console.log(res);
         this.toastr.success(
-          'Patient details found successfully',
-          'CMS App V2022'
+          'Patient details found'
         );
 
         var datePipe = new DatePipe('en-UK');
@@ -115,7 +157,7 @@ export class LabTestReportComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        this.toastr.error('Patient not found', 'CMS App V2022');
+        this.toastr.error('Patient not found');
       }
     );
   }
@@ -143,7 +185,46 @@ export class LabTestReportComponent implements OnInit {
   createTestReport(obj: any) {
     console.log('Trying to insert values..');
 
-    this.labTestService.createTestReport(obj);
-    console.log('Report id created successfully');
+     this.labTestService.createTestReport(obj) .subscribe(
+      (result1) => {
+        console.log('generated id :'+result1);
+        this.func(result1);
+
+      },
+      (error) => {
+        console.log(error);
+      }
+
+    );
   }
+    InsertValues(obj: any) {
+      console.log('Trying to insert values..');
+
+       this.labTestService.InsertPatientValues(obj) .subscribe(
+        (result1) => {
+          console.log('inserted values : '+result1);
+          this.toastr.success('Patient Value inserted');
+
+
+
+        },
+        (error) => {
+          console.log(error);
+          this.toastr.error('Patient Value is not inserted');
+        }
+
+      );
+    }
+
+    // var a=JSON.stringify(this.reportId)
+    // console.log('Report id created successfully'+a);
+
+  func(obj:any){
+    this.reportId=Number(JSON.stringify(obj));
+    console.log(' Report id created successfully'+this.reportId);
+  }
+  reset(form) {
+    window.location.reload();
+  }
+
 }

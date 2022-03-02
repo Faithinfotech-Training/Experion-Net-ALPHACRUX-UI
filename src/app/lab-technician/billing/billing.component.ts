@@ -1,13 +1,10 @@
 import { DatePipe } from '@angular/common';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/shared/auth.service';
-import { Labbills } from 'src/app/shared/labbills';
-import { Labtest } from 'src/app/shared/labtest';
 import { LabtestService } from '../../shared/labtest.service';
 import { jsPDF } from 'jspdf';
 
@@ -18,9 +15,10 @@ import { jsPDF } from 'jspdf';
 })
 export class BillingComponent implements OnInit {
   //Variables
-
+  totalAmount:number;
   page: number = 1;
   total = 0;
+  billId:number;
   lab: {} = {
     LabBillDateTime: '',
     TestListId: '',
@@ -40,7 +38,9 @@ export class BillingComponent implements OnInit {
     private auth: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   //calling function to get patient details
 
@@ -51,7 +51,7 @@ export class BillingComponent implements OnInit {
     //patient id validation
     if (PatientId <= 0) {
       //invaid
-      this.toastr.error('Invalid Patient Id', 'CMS App V2022');
+      this.toastr.error('Invalid Patient Id');
       this.resetForm(form);
     } else if (PatientId != 0 || PatientId != null) {
       //valid
@@ -61,7 +61,7 @@ export class BillingComponent implements OnInit {
 
   //calling function to get test details
 
-  onClick(form: NgForm) {
+  onClick(form: NgForm, event: any) {
     //printing value in console
     console.log(form.value);
     let AdviceId = this.labTestService.formData.AdviceId;
@@ -73,9 +73,13 @@ export class BillingComponent implements OnInit {
       //invalid
       console.log('Enter valid Patient Id');
     }
+    //disable button
+    if (form.value.PatientId > 0) {
+      event.target.disabled = true;
+    }
   }
   //to call function to insert billing details to database
-  onClickClick(form: NgForm) {
+  finalSubmit(form: NgForm, testList: number,event:any) {
     //date at the time of insertion
     this.LabBillDateTime = new Date();
     var datePipe = new DatePipe('en-UK');
@@ -84,14 +88,15 @@ export class BillingComponent implements OnInit {
       this.LabBillDateTime,
       'yyyy-MM-dd'
     );
-    console.log(form.form.value.StaffName);
+
     //getting total from html page
     this.LabBillAmount = document.getElementById('total').innerHTML;
     //getting value from form
-    this.TestListId = form.value.TestListId;
+    this.TestListId = testList;
 
     console.log('Value of id' + this.TestListId);
     var numberValue = Number(this.LabBillAmount);
+    this.totalAmount=numberValue;
     //formatting to json
     this.lab = {
       LabBillDateTime: formattedDate,
@@ -103,13 +108,14 @@ export class BillingComponent implements OnInit {
     console.log(form.value.TestListId);
     //validation
     if (form.value.PatientId > 0 && numberValue > 0) {
-      this.post(this.lab);
+      this.post(form, this.lab);
     } else {
       this.toastr.error(
-        'Cannot create bill with given information',
-        'CMS App V2022'
+        'Cannot create bill with given information'
+
       );
     }
+
   }
   //function to get details of patient
   getPatientById(form?: NgForm) {
@@ -120,8 +126,8 @@ export class BillingComponent implements OnInit {
         (res) => {
           console.log(res);
           this.toastr.success(
-            'Patient details found successfully',
-            'CMS App V2022'
+            'Patient details found successfully'
+
           );
 
           var datePipe = new DatePipe('en-UK');
@@ -135,7 +141,7 @@ export class BillingComponent implements OnInit {
         },
         (err) => {
           console.log(err);
-          this.toastr.error('Patient not found', 'CMS App V2022');
+          this.toastr.error('Patient data not found');
           this.resetForm(form);
         }
       );
@@ -145,22 +151,36 @@ export class BillingComponent implements OnInit {
     console.log('Finding the tests..');
     this.labTestService.getTests(this.labTestService.formData.AdviceId);
   }
-  post(obj: any) {
+  post(form: NgForm, obj: any) {
     console.log('Trying to insert values..');
 
     this.labTestService.postBills(obj).subscribe(
       (result1) => {
-        console.log(result1);
+        console.log('inside post result'+result1);
+         this.billId=Number(result1)
 
         this.toastr.success(
-          'Billing record Inserted Successfully',
-          'CMS App V2022'
+
+          'Billing record Inserted Successfully'
+
         );
+        this.router.navigateByUrl('/lab/home/bill/'+this.billId+'/'+this.totalAmount)
+
       },
+
       (error) => {
         console.log(error);
+        this.toastr.success(
+          'Billing record cannot be Inserted '
+
+        );
+        window.location.reload();
       }
     );
+  }
+
+  reset(form) {
+    window.location.reload();
   }
   //function to logout from lab tecnician page
   logout() {
@@ -169,7 +189,7 @@ export class BillingComponent implements OnInit {
 
     this.router.navigateByUrl('/login');
   }
-  //function to reset page after inserting data
+  //function to reset page
   resetForm(form?: NgForm) {
     if (form != null) {
       form.resetForm();
@@ -179,7 +199,7 @@ export class BillingComponent implements OnInit {
   @ViewChild('bill', { static: false }) el1: ElementRef;
 
   generatePDF() {
-    let pdf = new jsPDF('p', 'pt', 'a3');
+    let pdf = new jsPDF('p', 'pt', 'a2');
 
     pdf.html(this.el1.nativeElement, {
       callback: (pdf) => {
