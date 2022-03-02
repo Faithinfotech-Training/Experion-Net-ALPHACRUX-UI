@@ -19,9 +19,9 @@
       <li class="navbar-item">
         <a class="navbar-brand" href="pharmacy/home"><i class="bi bi-house-fill" style="font-size: 1.5rem"></i></a>
       </li>
-      <!--<li class="navbar-item">
-        <a class="nav-link active" href="pharmacy/reports"><i class="bi bi-book-half" style="font-size: 1.5rem"></i></a>
-      -->
+      <li class="navbar-item">
+        <a class="navbar-brand" href="pharmacy/meddata"><i class="bi bi-clipboard" style="font-size: 1.5rem"></i></a>
+      </li>
       <li class="nav-item dropup">
         <a class="nav-link dropdown-toggle" (click)="logout()" role="button" data-bs-toggle="dropdown"><i
             class="bi bi-person-circle" style="font-size: 1.5rem"></i></a>
@@ -69,73 +69,7 @@
 
             <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3"
               (ngSubmit)="onClickClick(form)">
-              <div class="form-group row align-items-center">
-                <h1>PATIENT DETAILS</h1>
-                <br /><br />
-              </div>
-              <hr />
-
-              <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3">
-                <div class="form-group row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">ID</h2>
-                  </div>
-
-                  <div class="col-md-9 pe-5">
-                    <input type="text" class="form-control form-control-lg" placeholder="Patient_Id"
-                      style="width: 500px" id="PatientId" name="PatientId" #PatientId="ngModel"
-                      disabled
-                      [(ngModel)]="pharmacyService.formData1.PatientId" />
-                  </div>
-                </div>
-
-                <div class="form-group row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">NAME</h2>
-                  </div>
-
-                  <div class="col-md-9 pe-5">
-                    <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
-                      style="width: 500px" name="PatientName" #PatientName="ngModel"
-                      disabled
-                      [(ngModel)]="pharmacyService.formData1.PatientName" />
-                  </div>
-                </div>
-
-                <input type="hidden" class="form-control form-control-lg" name="MedicineListId" id="MedicineListId"
-                  #TestListId="ngModel" [(ngModel)]="pharmacyService.formData1.MedicineListId" />
-
-
-
-                <div class="form-group row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">REF BY</h2>
-                  </div>
-
-                  <div class="col-md-9 pe-5">
-                    <input type="text" class="form-control form-control-lg" placeholder="Patient_StaffName"
-                      style="width: 500px" name="StaffName" #StaffName="ngModel"
-                      disabled
-                      [(ngModel)]="pharmacyService.formData1.StaffName" />
-                  </div>
-                </div>
-
-                <div class="row align-items-center pt-4 pb-3">
-                  <div class="col-md-3 ps-5">
-                    <h2 class="mb-0">DATE</h2>
-                  </div>
-                  <div class="form-group col-md-9 pe-5">
-                    <input type="datetime" class="form-control form-control-lg" name="ReportDateTime"
-                      #ReportDateTime="ngModel" [(ngModel)]="pharmacyService.formData1.PrescriptionDateTime"
-                      placeholder="Date"
-                      disabled style="width: 500px" />
-                  </div>
-                </div>
-              </form>
-              <br />
-              <br />
-
-              <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3" (ngSubmit)="onClick(form)">
+              <div id="medbill" #medbill>
                 <div class="form-group row align-items-center">
 
                   <h4>PATIENT DETAILS</h4>
@@ -240,14 +174,7 @@
                             <span type="text" id="amnt">{{users.MedicinePrice*users.MedicineQuantity}}</span>
                           </td>
                         </tr>
-                        <tr>
-                          <td colspan="1"><b>Total:</b></td>
-                          <td colspan="1" id="total" name="total">
-                            <b>{{GrandtotalPrice}}</b>
 
-                          </td>
-
-                        </tr>
                       </tbody>
                     </table>
 
@@ -264,9 +191,10 @@
                   PROCEED
                 </button>
               </div>
+              </div>
               </form>
 
-            </form>
+
 
           </div>
         </div>

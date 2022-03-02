@@ -1,19 +1,21 @@
 <div class="container">
   
   <h1>Add Medicines</h1>
-  
+
+  <div class="card mx-auto">
+  <div class="card-body m-4">
   <form [formGroup]="medicineForm" (ngSubmit)="onSubmit()">
 
     <p>
         <input type="hidden" name="InventoryId" formControlName="InventoryId" value="InventoryId">
     </p>
-
+<div class="row">
     <div class="form-group">
         <label for="ManufactureId" class="form-label">Manufacture: </label>
         <select
           name="ManufactureId"
           id="ManufactureId"
-          class="form-select"
+          class="form-select border-end-0 border-top-0 border-start-0"
           formControlName="ManufactureId"
           required
         >
@@ -63,6 +65,9 @@
     </table>
    
     <button type="submit" class="btn btn-success"[disabled]="medicineForm.invalid" >Submit</button>
-    
+    </div>
   </form>
+  
+</div>
+</div>
 </div>

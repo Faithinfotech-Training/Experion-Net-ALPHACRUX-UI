@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import {Payment} from './payment';
 
@@ -24,14 +26,19 @@ export class PaymentsService {
     });
   }
 
-  savebill(id:number)
+  savebill(payments:any)
   {
     return this.httpClient
-      .post(environment.apiUrl + 'receptionist/token', id)
-      .toPromise()
-      .then((data) => {
-        console.log(data);
-        console.log('Token Generated Successfully');
-      });
+      .post(environment.apiUrl + 'receptionist/bill', payments)
+      ;
   }
+/*
+  insertPayment(payment:Payment): Observable<any>{
+    return this.httpClient.post(
+      environment.apiUrl+'receptionist/bill',
+      payment
+
+    )
+  }
+  */
 }

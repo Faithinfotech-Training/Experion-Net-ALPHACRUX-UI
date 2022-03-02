@@ -36,9 +36,9 @@
             <h1>Payment</h1>
             <div>
             <div id="bill">
-            <button class="btn btn-secondary "  (click)=" generatebill()">
-              Save Bill
-            </button>
+              <button class="btn btn-secondary " (click)="savebill(receptionService.token.PatientId,receptionService.token.StaffId)"  >
+                Save Bill
+              </button>
             <br>
             </div>
             <div id="pdf" >
@@ -47,7 +47,7 @@
           </div>
           <br>
           <br>
-          <form [formGroup]="checkoutForm">
+          <form [formGroup]="checkoutForm" >
             <div id="content" #content>
               <div id="content" #content class="col-sm-6 p-4 ms-3 border rounded border-bottom-0">
                 <h3>Payment details</h3>
@@ -57,21 +57,18 @@
 
                     <tbody>
                       <tr>
-                        <th scope="row">Patient id:</th>
-                        <td>{{receptionService.token.PatientId}}</td>
+                        <th scope="row"  >Patient id:</th>
+                        <td >{{receptionService.token.PatientId}}</td>
                       </tr>
                       <tr>
                         <th scope="row">Patient name:</th>
                         <td>{{receptionService.token.PatientName}}</td>
                       </tr>
-                      <tr>
-                        <th scope="row">Doctor name: </th>
-                        <td>{{receptionService.token.DoctorName}}</td>
-                      </tr>
+
                       <tr>
                         <th scope="row">Amount:</th>
                         <td>
-                          <h6>200 &#x20b9;</h6>
+                          <h3>200 &#x20b9;</h3>
                         </td>
                       </tr>
                       <tr>
@@ -88,6 +85,7 @@
 
 
             </div>
+
           </form>
 
           </div>

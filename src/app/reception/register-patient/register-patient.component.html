@@ -45,9 +45,9 @@
 
                 <div class="col-md-9 pe-5">
 
-                  <input type="text" class="form-control form-control-lg" placeholder="Patient_Name"
-                    style="width: 500px;" name="PatientName" #PatientName="ngModel" required
-                    [(ngModel)]="updatePatientService.formData.PatientName" required minlength="5" maxlength="25"
+                  <input type="text" class="form-control form-control-lg" placeholder="Enter patient name"
+                    style="width: 500px;" name="PatientName" #PatientName="ngModel" required pattern="[a-zA-Z]+[\w ]+[a-zA-Z]"
+                    [(ngModel)]="updatePatientService.formData.PatientName" required minlength="3" maxlength="25"
                     [ngClass]="{ 'is-invalid': PatientName.touched && PatientName.invalid }" />
 
 
