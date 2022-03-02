@@ -26,7 +26,7 @@ export class ListStaffsComponent implements OnInit {
   //Edit/Update staff
   editStaff(staffId: number) {
     console.log(staffId);
-    // this.staffs.edit();
+    this.admin.getStaffs();
     //Redirects to edit form with staffId
     this.router.navigate(['admin/staffs/edit', staffId]);
   }

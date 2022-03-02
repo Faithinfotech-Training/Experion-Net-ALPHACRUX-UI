@@ -30,6 +30,8 @@ import { ListMedicinesComponent } from './administrator/medicines/list-medicines
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { CanActivateGuard } from './shared/can-activate.guard';
+import { MedicineDetailsComponent } from './administrator/medicines/medicine-details/medicine-details.component';
+import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
 
 const routes: Routes = [
   {path:'',component:AppHomeComponent},
@@ -47,9 +49,11 @@ const routes: Routes = [
     path: 'admin/medicine',
     component: MedicinesComponent,
     children: [
-      { path: 'list', component: ListMedicinesComponent,canActivate: [CanActivateGuard],data:{StaffId:'10'}  },
-      { path: 'inventory', component: InventoryComponent,canActivate: [CanActivateGuard],data:{StaffId:'10'}  },
-      { path: 'new', component: NewMedicineComponent,canActivate: [CanActivateGuard],data:{StaffId:'10'}  },
+      { path: 'list', component: ListMedicinesComponent },
+      { path: 'inventory', component: InventoryComponent },
+      { path: 'new', component: NewMedicineComponent },
+      { path: 'medicines', component: MedicineDetailsComponent },
+      { path: 'manufacturers', component: ManufacturersComponent },
     ],
   },
   {

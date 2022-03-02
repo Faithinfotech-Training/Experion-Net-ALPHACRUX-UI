@@ -10,6 +10,8 @@ import { AdminService } from 'src/app/shared/admin.service';
 })
 export class InventoryComponent implements OnInit {
   medicineForm: FormGroup;
+  formValues: any;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -50,8 +52,25 @@ export class InventoryComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.medicineForm.value);
-    this.medicineForm.reset();
-    this.toast.success('Inventory Added Successfully', 'Success');
+    this.formValues = this.medicineForm.value;
+    this.insertInventory();
+  }
+
+  insertInventory() {
+    for (let index = 0; index <= this.formValues.quantities.length; index++) {
+      this.admin.formData.ManufactureId = this.formValues.ManufactureId;
+      this.admin.formData.MedicineQuantity = this.formValues.quantities[index].MedicineQuantity;
+      this.admin.formData.MedicineType = this.formValues.quantities[index].MedicineType;
+      this.admin.formData.MedicineId = this.formValues.quantities[index].MedicineId;
+      console.log(this.admin.formData);
+      this.admin.addInventory(this.admin.formData).subscribe(
+        (res) => { console.log(res); },
+        (err) => { console.log(err); }
+      );
+
+  this.medicineForm.reset();
+  this.toast.success('Inventory Added Successfully', 'Success');
+    }
   }
 }
+

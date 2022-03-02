@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <input type="search" id="search" class="form-control mt-3 ms-2" placeholder="Search text here..." [(ngModel)]="filter">
+            </div>
+            <table class="table mt-4">
+                <thead>
+                    <th>ID</th>
+                    <th>Manufacturer</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let mfg of admin.mfgs |sortBy: 'desc':'ManufactureId'  |filter: filter | paginate:{itemsPerPage:5, currentPage: page}">
+                        <td>{{mfg.ManufactureId}}</td>
+                        <td>{{mfg.ManufactureName}}</td>
+                        <td>{{mfg.ManufactureEmail}}</td>
+                        <td>{{mfg.ManufacturePhone}}</td>
+                        <td>{{mfg.ManufactureAddress}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-info" (click)="open(content)">Edit</button> 
+                            &nbsp;
+                            <button class="btn btn-sm btn-outline-danger" (click)="del(mfg.ManufactureId)">Del</button> 
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="footer">
+                <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+   
+</div>

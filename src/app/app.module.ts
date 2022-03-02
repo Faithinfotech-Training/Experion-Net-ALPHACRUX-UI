@@ -47,6 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CanActivateGuard } from './shared/can-activate.guard';
 import { NgpSortModule } from 'ngp-sort-pipe';
 import { AppHomeComponent } from './app-home/app-home.component';
+import { MedicineDetailsComponent } from './administrator/medicines/medicine-details/medicine-details.component';
+import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
 
 
 
@@ -84,6 +86,8 @@ import { AppHomeComponent } from './app-home/app-home.component';
     NewMedicineComponent,
     InventoryComponent,
     AppHomeComponent,
+    MedicineDetailsComponent,
+    ManufacturersComponent,
   ],
   imports: [
 
