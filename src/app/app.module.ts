@@ -49,6 +49,10 @@ import { NgpSortModule } from 'ngp-sort-pipe';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { MedicineDetailsComponent } from './administrator/medicines/medicine-details/medicine-details.component';
 import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
+import { ViewReportComponent } from './lab-technician/view-report/view-report.component';
+import { IndiviualreportComponent } from './lab-technician/indiviualreport/indiviualreport.component';
+import { LabreportComponent } from './lab-technician/labreport/labreport.component';
+import { BillgenerationComponent } from './lab-technician/billgeneration/billgeneration.component';
 
 
 
@@ -88,6 +92,10 @@ import { ManufacturersComponent } from './administrator/medicines/manufacturers/
     AppHomeComponent,
     MedicineDetailsComponent,
     ManufacturersComponent,
+    ViewReportComponent,
+    IndiviualreportComponent,
+    LabreportComponent,
+    BillgenerationComponent,
   ],
   imports: [
 

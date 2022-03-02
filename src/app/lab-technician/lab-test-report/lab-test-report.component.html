@@ -3,7 +3,7 @@
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="http://localhost:4200/lab/home/billing">
+      <a class="navbar-brand" href="lab/home/reports">
         <h3>Lab Technician</h3>
       </a>
       <form class="d-flex mt-2" action="submit">
@@ -33,7 +33,7 @@
           <li class="navbar-item">
             <a
               class="nav-link active"
-              href="http://localhost:4200/lab/home/billing"
+              href="http://localhost:4200/lab/home/reports"
               ><i class="bi bi-house" style="font-size: 1.5rem"></i
             ></a>
           </li>
@@ -64,12 +64,14 @@
     </div>
   </div>
 </header>
-
-<div class="container-sm">
+<body>
+<div style="background-color: rgb(216, 216, 216);">
+  <div class="container-sm " style="width: 70%;">
   <div class="row mt-5">
     <div class="col mt-5">
       <div class="card" style="border-radius: 15px">
-        <div class="card-body">
+        <div class="card-body"><br>
+          <div style="text-align: center;"><h1>LAB REPORT</h1></div><hr>
           <form
             #form="ngForm"
             name="ngForm"
@@ -91,7 +93,7 @@
                   type="number"
                   class="form-control form-control-lg"
                   placeholder="Patient_Id"
-                  style="width: 500px"
+                  style="width: 70%"
                   name="PatientId"
                   #PatientId="ngModel"
                   [(ngModel)]="labTestService.formData.PatientId"
@@ -102,6 +104,8 @@
                     'is-invalid': PatientId.touched && PatientId.invalid
                   }"
                 />
+
+
                 <!--patient id validation-->
                 <p
                   *ngIf="PatientId.touched && PatientId.invalid"
@@ -120,7 +124,7 @@
                   <button
                     type="submit"
                     class="btn btn-secondary btn-lg me-3"
-                    (click)="onSubmit(PatientId.value)"
+                    (click)="onSubmit(form,PatientId.value)"
                   >
                     SEARCH</button
                   ><br /><br />
@@ -147,7 +151,7 @@
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Patient_Name"
-                    style="width: 500px"
+                    style="width: 75%"
                     name="PatientName"
                     #PatientName="ngModel"
                     [(ngModel)]="labTestService.formData.PatientName"
@@ -166,7 +170,7 @@
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Patient_Phone_Number"
-                    style="width: 500px"
+                    style="width: 75%"
                     name="PatientPhone"
                     #PatientPhone="ngModel"
                     [(ngModel)]="labTestService.formData.PatientPhone"
@@ -186,7 +190,7 @@
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Patient_StaffName"
-                    style="width: 500px"
+                    style="width: 75%"
                     name="StaffName"
                     #StaffName="ngModel"
                     [(ngModel)]="labTestService.formData.StaffName"
@@ -207,7 +211,7 @@
                     #ReportDateTime="ngModel"
                     [(ngModel)]="labTestService.formData.ReportDateTime"
                     disabled
-                    style="width: 500px"
+                    style="width: 75%"
                   />
                 </div>
               </div>
@@ -236,16 +240,19 @@
               <div class="form-group row align-items-center">
                 <!--button to get test details-->
                 <button
-                  (click)="onClick(TestListId.value)"
+                  (click)="onClick(TestListId.value,form,$event)"
+
                   type="submit"
-                  class="form-group btn btn-secondary btn-lg me-3 btn-block float-end"
+                  class="form-group btn btn-secondary btn-lg me-3 btn-block float-end ms-3"
+                  style="width: 93.5%"
                 >
                   TEST DETAILS
                 </button>
               </div>
+
               <br />
 
-              <table class="table table-bordered m-2 table-active">
+              <table class="table table-bordered m-2 table-active" style="width: 95%">
                 <thead class="table-lg thead-light">
                   <tr>
                     <th scope="col">Test Id</th>
@@ -278,12 +285,19 @@
                         type="number"
                         class="form-control form-control-s"
                         placeholder="Add Value"
+                        required pattern="[0-9]+"
                         style="width: 120px"
+                        value="users.PatientValue"
                         name="PatientValue"
                         id="PatientValue"
+                        [(ngModel)]="labTestService.testReport.PatientValue"
                         required
                       />
                     </td>
+
+
+
+
 
                     <td>{{ users.TestUnit }}</td>
 
@@ -294,8 +308,8 @@
                       <!--button to save observed value to database-->
                       <button
                         type="submit"
-                        class="btn btn-secondary btn-xs me-3"
-                        (click)="save(form)"
+                        class="btn btn-secondary btn-xs me-3 text-black"
+                        (click)="save(form,users.TestId)"
                       >
                         SAVE
                       </button>
@@ -309,6 +323,7 @@
                   (pageChange)="page = $event"
                 ></pagination-controls>
               </div>
+
             </div>
 
             <br />
@@ -317,26 +332,33 @@
             <br />
 
             <div class="px-5 py-4">
+              <button
+                  (click)="reset(form)"
+                  type="submit"
+                  class="btn btn-secondary btn-lg me-3 float-end"
+                >
+                  RESET
+                </button>
               <!--button to submit-->
               <button
                 (click)="testReport(form)"
                 type="submit"
                 class="btn btn-secondary btn-lg me-3 float-end"
               >
-                PROCEED
+                VIEW TEST REPORT
               </button>
-              <!--button to generate pdf-->
-              <button
-                (click)="generatePDF()"
-                type="submit"
-                class="btn btn-secondary btn-lg me-3 float-end"
-              >
-                DOWNLOAD PDF
-              </button>
+
+
+
+
+
+              <br />
+
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div><br><br>
+</div></body>
