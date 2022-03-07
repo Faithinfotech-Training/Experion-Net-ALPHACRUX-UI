@@ -10,34 +10,39 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class ListMedicinesComponent implements OnInit {
   page: number = 1;
   filter: string;
-
+  id: number = 0;
+  inventory: any = [];
 
   constructor(public admin: AdminService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     //Get list of medicines
     this.admin.getMedicines();
-
-
-
-
-    // if (this.staffId != 0 || this.staffId != null) {
-    //   //Get stffId by id
-    //   this.admin.getStaffById(this.staffId).subscribe(
-    //     (response) => {
-    //       console.log(response);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   );
-    // }
   }
 
   open(content, id:number) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' });
-    this.admin.getInventoryById(id);
+    this.admin.getInventoryById(id).subscribe(
+      (response) => {
+        console.log(response);
+        this.inventory = response;
+      }
+    );
+  }
+
+  updateQuantity(quantity: number) {
+    this.inventory.MedicineQuantity = quantity;
+    console.log(this.inventory);
+    this.admin.updateInventory(this.inventory).subscribe(
+      (response) => {
+        console.log(response);
+        this.admin.getMedicines();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   //Delete Inventory
@@ -46,7 +51,7 @@ export class ListMedicinesComponent implements OnInit {
        this.admin.deleteInventory(id).subscribe(
          (response) => {
            this.admin.getMedicines();
-           window.location.reload();
+           console.log(response);
          },
          (error) => {
            console.log(error);

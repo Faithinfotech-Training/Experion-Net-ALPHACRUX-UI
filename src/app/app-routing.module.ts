@@ -30,6 +30,8 @@ import { ListMedicinesComponent } from './administrator/medicines/list-medicines
 import { NewMedicineComponent } from './administrator/medicines/new-medicine/new-medicine.component';
 import { InventoryComponent } from './administrator/medicines/inventory/inventory.component';
 import { CanActivateGuard } from './shared/can-activate.guard';
+import { MedicineDetailsComponent } from './administrator/medicines/medicine-details/medicine-details.component';
+import { ManufacturersComponent } from './administrator/medicines/manufacturers/manufacturers.component';
 import { ViewReportComponent } from './lab-technician/view-report/view-report.component';
 import { IndiviualreportComponent } from './lab-technician/indiviualreport/indiviualreport.component';
 import { LabreportComponent } from './lab-technician/labreport/labreport.component';
@@ -51,9 +53,11 @@ const routes: Routes = [
     path: 'admin/medicine',
     component: MedicinesComponent,
     children: [
-      { path: 'list', component: ListMedicinesComponent,canActivate: [CanActivateGuard],data:{RoleId:'5'}  },
-      { path: 'inventory', component: InventoryComponent,canActivate: [CanActivateGuard],data:{RoleId:'5'}  },
-      { path: 'new', component: NewMedicineComponent,canActivate: [CanActivateGuard],data:{RoleId:'5'}  },
+      { path: 'list', component: ListMedicinesComponent },
+      { path: 'inventory', component: InventoryComponent },
+      { path: 'new', component: NewMedicineComponent },
+      { path: 'medicines', component: MedicineDetailsComponent },
+      { path: 'manufacturers', component: ManufacturersComponent },
     ],
   },
   {
