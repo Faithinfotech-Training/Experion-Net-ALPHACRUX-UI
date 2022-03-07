@@ -53,9 +53,7 @@ export class IndiviualreportComponent implements OnInit { page:number=1;
     this.labTestService.getPatientById(Number(patientId)).subscribe(
       (res) => {
         console.log(res);
-        this.toastr.success(
-          'Test History found'
-        );
+
 
         var datePipe = new DatePipe('en-UK');
         let formattedDate: any = datePipe.transform(
@@ -68,9 +66,13 @@ export class IndiviualreportComponent implements OnInit { page:number=1;
       },
       (err) => {
         console.log(err);
-        this.toastr.error('Test History Not found');
+       
       }
     );
+  }
+  close(){
+    this.router.navigateByUrl('/lab/home/reports')
+
   }
 
 }

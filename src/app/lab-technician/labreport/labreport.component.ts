@@ -48,7 +48,7 @@ export class LabreportComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
   close(){
-    this.router.navigateByUrl('lab/home/reports');
+    this.router.navigateByUrl('/lab/home/reports');
   }
   @ViewChild('report', { static: false }) el1: ElementRef;
 

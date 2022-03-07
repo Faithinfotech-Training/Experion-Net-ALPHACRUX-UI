@@ -43,6 +43,14 @@ export class LabtestService {
       environment.apiUrl + 'labtechnician/getpatient?id=' + id
     );
   }
+
+//Get patient by id
+getAdviceId(id: number): Observable<any> {
+  return this.httpClient.get(
+    environment.apiUrl + 'labtechnician/adviceid?id=' + id
+  );
+}
+
   //get tests by list id
   getTests(id: number) {
     this.httpClient
@@ -50,9 +58,13 @@ export class LabtestService {
       .toPromise()
       .then((res) => {
         console.log('from service');
+        console.log('trying to find total')
         console.log(res);
+
+
         this.labtests2 = res as Labtests2[];
         this.users = this.labtests2;
+
         this.findsum(this.users);
       });
   }
@@ -74,7 +86,7 @@ export class LabtestService {
     console.log(this.value);
     for (let j = 0; j < data.length; j++) {
       this.total += this.value[j].TestAmount;
-      console.log(this.total);
+      console.log('Total is '+this.total);
       document.getElementById('total').innerHTML = String(this.total);
     }
   }
@@ -90,6 +102,7 @@ export class LabtestService {
     return this.httpClient
       .post(environment.apiUrl + 'labtechnician/reportid', test)
   }
+
   InsertPatientValues(test: Testreport):Observable<any> {
     console.log('inside service' + test);
     return this.httpClient
@@ -134,6 +147,19 @@ export class LabtestService {
         console.log(res);
         this.allTestReports= res as AllTestReports[];
         this.users = this.allTestReports;
+      });
+  }
+
+  postInactive(testlist:Labtests2){
+    console.log(testlist);
+    this.httpClient
+      .put(environment.apiUrl + 'labtechnician/',testlist)
+      .toPromise()
+      .then((res) => {
+        console.log('from service');
+        console.log('result from inactive'+res);
+        //this.allTestReports= res as AllTestReports[];
+        //this.users = this.allTestReports;
       });
   }
 

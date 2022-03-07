@@ -15,8 +15,10 @@ export class AuthService {
   public login(user:Users){
 
     this.userName!=user.UserName;
+
     this.password!=user.UserPassword;
-    return this.httClient.get(environment.apiUrl+'labtechnician/login/'+this.userName+'&'+this.password);
+    console.log(this.userName+this.password);
+    return this.httClient.get(environment.apiUrl+'labtechnician/login/'+user.UserName+'&'+user.UserPassword);
 
 }
 //LOGOUT

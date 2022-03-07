@@ -78,13 +78,10 @@
                   </div>
 
 
-                  <input type="hidden" formControlName="StaffId"
-                  name="StaffId" id="StaffId" class="form-control " value="1"/>
-
 
 
                   <div class="form-group pt-1 mb-4">
-                    <button routerLink="doctor/app" class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                    <button  class="btn btn-dark btn-lg btn-block" type="submit" (click)="loginCredentials()">Login</button>
                   </div>
 
                   <a class="small text-muted" href="login">Forgot password?</a>

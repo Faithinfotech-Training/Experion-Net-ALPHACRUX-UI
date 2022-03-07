@@ -1,171 +1,120 @@
-<header>
-  <!-- Nav bar -->
+<app-lab-technician></app-lab-technician>
 
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="lab/home/reports">
-        <h3>Lab Technician</h3>
-      </a>
-      <form class="d-flex mt-2" action="submit">
-        <input class="form-control me-2" type="text" placeholder="Search" />
-        <button class="btn btn-outline-success" type="button">Search</button>
-      </form>
-    </div>
-  </nav>
+<body style="background-color: rgb(216, 216, 216)">
+  <div>
+    <div class="container-sm" style="width: 95%">
+      <section>
+        <div class="row mt-5">
+          <div class="col mt-5">
+            <div class="card" style="border-radius: 15px">
+              <div class="card-body">
+                <br />
 
-  <!-- Side bar -->
-  <div class="d-flex align-items-start">
-    <div class="container-fluid-sm position-fixed mt-5">
-      <nav
-        class="bg-light navbar-light p-1"
-        style="min-width: fit-content; min-height: 100vh"
-      >
-        <ul class="navbar-nav ms-2 gap-5">
-          <!--Home page-->
-          <li class="navbar-item">
-            <a
-              class="navbar-brand"
-              href="http://localhost:4200/lab/home/billing"
-            >
-            </a>
-          </li>
-          <!--Home page-->
-          <li class="navbar-item">
-            <a
-              class="nav-link active"
-              href="http://localhost:4200/lab/home/reports"
-              ><i class="bi bi-house" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <!--Billing page-->
-          <li class="navbar-item">
-            <a class="nav-link" href="http://localhost:4200/lab/home/billing"
-              ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <!--Test report page-->
-          <li class="navbar-item">
-            <a class="nav-link" href="http://localhost:4200/lab/home/test"
-              ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <!--Logout -->
-          <li class="nav-item dropup">
-            <a
-              class="nav-link dropdown-toggle"
-              (click)="logout()"
-              role="button"
-              data-bs-toggle="dropdown"
-              ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+                <div style="text-align: center"><h1>TESTS HISTORY</h1></div>
+                <hr />
+                <div class="container ms-2">
+                  <H2
+                    >Patient ID : {{ labTestService.formData.PatientId }}
+                    <br />
+                    Patient Name : {{ labTestService.formData.PatientName }}
+                  </H2>
+                </div>
+                <hr />
 
-
-
-<body style="background-color:  rgb(216, 216, 216);">
-<div >
-  <div class="container-sm " style="width: 95%;">
-    <section>
-  <div class="row mt-5">
-    <div class="col mt-5">
-      <div class="card" style="border-radius: 15px">
-        <div class="card-body"><br>
-
-          <div style="text-align: center;"><h1>TESTS HISTORY</h1></div><hr>
-          <div class="container ms-2">
-          <H2 >Patient ID : {{labTestService.formData.PatientId}}
-            <br>
-            Patient Name : {{labTestService.formData.PatientName}}
-
-          </H2>
-
-        </div>
-<hr>
-
-
-
-          <!-- <div clas="form-control">
+                <!-- <div clas="form-control">
 
             <input class="form-control ms-2" type="search" style="width: 25%; background-color: #f3f1f1; border-color: rgb(134, 134, 134);" placeholder="search " [(ngModel)]="filter">
 
         </div><br> -->
-<table class="table table-bordered m-2 table-active" style="width: 95%; background-color: #e7e7e7;">
+                <table
+                  class="table table-bordered m-2 table-active"
+                  style="width: 95%; background-color: #e7e7e7"
+                >
+                  <thead class="table-lg thead-light">
+                    <tr>
+                     
+                      <th scope="col">Report Date</th>
 
-  <thead class="table-lg thead-light">
-    <tr>
-      <th scope="col">Report Date</th>
+                      <th scope="col">Test Name</th>
+                      <th scope="col" colspan="2">Result</th>
+                      <th scope="col" colspan="4">
+                        Biological Reference Interval
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="table" style="background-color: #e7e7e7">
+                    <tr
+                      *ngFor="
+                        let users of labTestService.allTestReports
+                          | filter: filter
+                          | paginate: { itemsPerPage: 6, currentPage: page }
+                      "
+                    >
 
-      <th scope="col">Test Name</th>
-      <th scope="col" colspan="2">Result</th>
-      <th scope="col" colspan="4">Biological Reference Interval</th>
+                      <td [value]="users.ReportDate" id="ReportDate">
+                        {{ users.ReportDate }}
+                      </td>
 
+                      <td [value]="users.TestName" id="TestName">
+                        {{ users.TestName }}
+                      </td>
+                      <td
+                        style="text-align: center"
+                        [value]="users.PatientValue"
+                        id="PatientValue"
+                      >
+                        {{ users.PatientValue }}
+                      </td>
+                      <td [value]="users.TestUnit" id="TestUnit">
+                        {{ users.TestUnit }}
+                      </td>
+                      <td
+                        style="text-align: right"
+                        [value]="users.MinimumValue"
+                        id="MinimumValue"
+                      >
+                        {{ users.MinimumValue }}
+                      </td>
+                      <td style="text-align: center">-</td>
+                      <td
+                        style="text-align: center"
+                        [value]="users.MaximumValue"
+                        id="MaximumValue"
+                      >
+                        {{ users.MaximumValue }}
+                      </td>
 
-
-
-    </tr>
-  </thead>
-  <tbody class="table" style="background-color: #e7e7e7">
-    <tr
-      *ngFor="
-        let users of labTestService.allTestReports
-          | filter: filter
-          | paginate: { itemsPerPage: 6, currentPage: page }
-      "
-    >
-    <td [value]="users.ReportDate" id="ReportDate">
-      {{ users.ReportDate }}
-    </td>
-
-
-      <td [value]="users.TestName" id="TestName">
-        {{ users.TestName }}
-      </td>
-      <td style="text-align: center;" [value]="users.PatientValue" id="PatientValue">
-        {{ users.PatientValue }}
-      </td>
-      <td [value]="users.TestUnit" id="TestUnit">
-        {{ users.TestUnit }}
-      </td>
-      <td style="text-align: right;" [value]="users.MinimumValue" id="MinimumValue">
-        {{ users.MinimumValue }}
-      </td>
-      <td style="text-align: center;">-</td>
-      <td style="text-align: center;" [value]="users.MaximumValue" id="MaximumValue">
-        {{ users.MaximumValue }}
-      </td>
-
-      <td style="text-align: left;" [value]="users.TestUnit" id="TestUnit">
-        {{ users.TestUnit }}
-      </td>
-
-
-
-
-
-
-
-
-    </tr>
-  </tbody>
-</table>
-<div class="footer">
-  <pagination-controls
-    (pageChange)="page = $event"
-  ></pagination-controls>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-<br><br></section>
-</div>
-
-</div>
-
+                      <td
+                        style="text-align: left"
+                        [value]="users.TestUnit"
+                        id="TestUnit"
+                      >
+                        {{ users.TestUnit }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="col mt-3 me-4">
+                  <button
+                    style="float: right"
+                    (click)="close()"
+                    type="submit"
+                    class="btn btn-secondary btn-xs ms-2 me-4"
+                  >
+                    CLOSE
+                  </button>
+                </div>
+                <div class="footer">
+                  <pagination-controls
+                    (pageChange)="page = $event"
+                  ></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+      </section>
+    </div>
+  </div>
 </body>

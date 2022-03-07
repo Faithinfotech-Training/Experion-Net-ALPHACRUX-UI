@@ -8,4 +8,5 @@ export class Labtests2 {
         TestAmount:number=0;
         UnitId:number=0;
         AdviceId:number=0;
+        Isactive:boolean;
 }

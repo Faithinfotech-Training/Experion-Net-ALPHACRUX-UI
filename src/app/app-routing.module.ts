@@ -77,7 +77,7 @@ const routes: Routes = [
   {path:'pharmacy/home',component:HomeComponent },
   { path: 'lab/home/reports', component:ViewReportComponent,canActivate: [CanActivateGuard],data:{RoleId:'4'}},
   { path: 'lab/home/billing', component:BillingComponent,canActivate: [CanActivateGuard],data:{RoleId:'4'}},
-  { path: 'doctor/app', component:AppointmentsComponent,canActivate: [CanActivateGuard],data:{RoleId:'2'}},
+  { path: 'doctor/app', component:AppointmentsComponent},
   { path: 'lab/home/:PatientId', component: IndiviualreportComponent,canActivate: [CanActivateGuard],data:{RoleId:'4'}},
   { path: 'lab/home/report/:ReportId', component: LabreportComponent,canActivate: [CanActivateGuard],data:{RoleId:'4'}},
   { path: 'lab/home/bill/:BillId/:Total', component:  BillgenerationComponent,canActivate: [CanActivateGuard],data:{RoleId:'4'}},

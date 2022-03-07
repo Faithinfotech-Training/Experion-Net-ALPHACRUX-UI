@@ -37,7 +37,26 @@ export class ViewReportComponent implements OnInit {
   }
   gotoUser(id:number)
   {
-    this.router.navigateByUrl('/lab/home/'+id)
+    this.labTestService.getPatientById(Number(id)).subscribe(
+      (res) => {
+        console.log(res);
+        this.toastr.success(
+          'Test History found'
+        );
+        this.router.navigateByUrl('/lab/home/'+id)
+
+
+      },
+      (err) => {
+        console.log(err);
+        this.toastr.error('Test History Not found');
+      }
+    );
+
+
+
+
+
   }
 
 }
