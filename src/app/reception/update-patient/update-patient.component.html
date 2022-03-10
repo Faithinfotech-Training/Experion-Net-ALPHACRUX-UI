@@ -1,195 +1,191 @@
 <app-reception></app-reception>
-<div class="container-fluid-sm d-flex align-items-stretch ">
-  <div class="float-start bg-light navbar-light p-1 position-fixed">
-    <ul class="navbar-nav ms-2 gap-3">
-      <li class="navbar-item">
-        <a class="navbar-brand" href="reception/home"><i class="bi bi-house-fill" style="font-size: 1.5rem"></i></a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill"
-            style="font-size: 1.5rem"></i></a>
-      <li class="navbar-item">
-        <a class="nav-link active" href="reception/register-patient"><i class="bi bi-person-plus-fill"
-            style="font-size: 1.5rem"></i></a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link active" href="reception/update-patient"><i class="bi bi-pencil-square"
-            style="font-size: 1.5rem"></i></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link active" (click)="logout()" role="button"><i class="bi bi-person-circle"
-            style="font-size: 1.5rem"></i></a>
-      </li>
-    </ul>
-  </div>
-  <div class="container-sm container-fluid">
-    <div class="row mt-5">
-      <div class="row mt-5">
-        <div class="col mt-5">
-          <div class="card">
-            <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm"
-              (ngSubmit)="onSubmit(checkoutForm.value)">
 
-              <!--Using ng-option and for loop-->
-              <ng-select class="col-4 me-3 mt-3" placeholder="Patient ID/Name/Location/Phone" appearance="outline"
-                formControlName="PatientId">
-
-                <ng-option *ngFor="let pat of reception.patients" [value]="pat.PatientId">
-                  {{pat.PatientId}} &nbsp;
-                  {{pat.PatientName}} &nbsp;
-                  {{pat.PatientLocation}} &nbsp;
-                  {{pat.PatientPhone}}
-                </ng-option>
-              </ng-select>
-
-              <!-- (click)="onClick(checkoutForm.value)"  -->
-              <button type="submit" class="btn btn-secondary btn-lg me-3">
-                SEARCH</button>
-
-
-
-            </form>
-
+<body style="background-color: rgb(216, 216, 216)">
+  <div class="container-fluid-sm d-flex align-items-stretch ">
+    <div class="container-sm container-fluid">
+      <div id="font">
+        <div class="row mt-5">
+          <div class="col mt-5">
+            <h2 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align:center">Update
+              Patient &nbsp; <i class="bi bi-person-badge"></i></h2>
+            </div>
             <br>
-            <br>
-            <div class="card" style="border-radius: 15px;">
-              <div class="card" style="border-radius: 15px;">
-                <div class="card-body">
+            <div class="card" style="border-radius: 15px;" id="update">
+                 <form class="d-flex ml-2 mt-3" name="tokenForm" [formGroup]="checkoutForm"
+                  (ngSubmit)="onSubmit(checkoutForm.value)">
+                  &nbsp;&nbsp;
+                  <!--Using ng-option and for loop-->
+                  <ng-select class="col-4 me-3 mt-3" placeholder="Patient ID/Name/Location/Phone" appearance="outline"
+                    formControlName="PatientId">
+
+                    <ng-option *ngFor="let pat of reception.patients" [value]="pat.PatientId">
+                      {{pat.PatientId}} &nbsp;
+                      {{pat.PatientName}} &nbsp;
+                      {{pat.PatientLocation}} &nbsp;
+                      {{pat.PatientPhone}}
+                    </ng-option>
+                  </ng-select>
+
+                  <!-- (click)="onClick(checkoutForm.value)"  -->
+                  <button type="submit" class="btn btn-secondary btn-lg me-3 mt-3">
+                    SEARCH</button>
 
 
-                  <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3"
-                    (ngSubmit)="updatePatientRecord(form)">
 
-                    <input type="hidden" name="PatientId" [(ngModel)]="Patient.PatientId" />
-                    <!--Name of patient-->
-                    <div class="form-group row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-                        <h3 class="mb-0">NAME</h3>
-                      </div>
-                      <div class="col-md-9 pe-5">
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter patient name"
-                          style="width: 500px;" name="PatientName" #PatientName="ngModel" required
-                          pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" [(ngModel)]="Patient.PatientName" required minlength="3"
-                          maxlength="25" />
+                </form>
+
+                <br>
+                <br>
+                  <div class="card" style="border-radius: 15px;">
+                    <div id="update">
+                      <div class="card-body">
+
+
+
+                        <form #form="ngForm" name="ngForm" autocomplete="off" class="form-group p-3"
+                          (ngSubmit)="updatePatientRecord(form)">
+
+                          <input type="hidden" name="PatientId" [(ngModel)]="Patient.PatientId" />
+                          <!--Name of patient-->
+                          <div class="form-group row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                              <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                                class="mb-0">NAME</h3>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                              <input type="text" class="form-control form-control-lg" placeholder="Enter patient name"
+                                style="width: 500px;" name="PatientName" #PatientName="ngModel" required
+                                pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" [(ngModel)]="Patient.PatientName" required
+                                minlength="3" maxlength="25" />
+                            </div>
+                          </div>
+                          <!--Location-->
+                          <div class="form-group row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                              <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                                class="mb-0">LOCATION</h3>
+                            </div>
+
+                            <div class="form-group col-md-9 pe-5">
+                              <input type="text" class="form-control form-control-lg" name="PatientLocation" required
+                                pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" #PatientLocation="ngModel"
+                                [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
+                                [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
+                                placeholder="Patient Location" style="width: 500px" />
+                              <!-- Validation -->
+                              <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
+                                <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
+                                  required!</span>
+                              </p>
+                            </div>
+                          </div>
+
+
+                          <!--Gender-->
+                          <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                              <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                                class="mb-0">GENDER</h3>
+                            </div>
+                            <div class="form-group col-md-9 pe-5">
+                              <div class="radio-inline" [(ngModel)]="Patient.PatientGender" name="PatientGender"
+                                id="PatientGender" placeholder="Patient Gender" #PatientGender="ngModel" required
+                                style="width: 500px">
+
+
+                                <input type="radio" value="Male" name="gender" ngModel> Male
+                                <input type="radio" value="Female" name="gender" ngModel> Female
+                                <input type="radio" value="Other" name="gender" ngModel> Other
+
+
+                              </div>
+
+
+
+                            </div>
+                          </div>
+                          <!-- Date of birth -->
+                          <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                              <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                                class="mb-0">DOB</h3>
+                            </div>
+                            <div class="form-group col-md-9 pe-5">
+                              <input type="date" class="form-control form-control-lg" name="PatientDob"
+                                #PatientDob="ngModel" [(ngModel)]="Patient.PatientDob" required
+                                onfocus="this.max=new Date().toISOString().split('T')[0]" min="1915-01-01"
+                                placeholder="Patient DOB" style="width: 500px" />
+                            </div>
+                          </div>
+                          <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                              <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                                class="mb-0">BLOOD GROUP</h3>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+                              <select class="form-select" [(ngModel)]="Patient.PatientBlood"
+                                [value]="Patient.PatientBlood" name="PatientBlood" id="PatientBlood"
+                                placeholder="Patient Blood group" class="form-control" #PatientBlood="ngModel" required
+                                aria-label="Default select" style="width: 500px">
+                                <option selected>Select Blood Group</option>
+                                <option value="A+ve">A+ve</option>
+                                <option value="A-ve">A-ve</option>
+                                <option value="B+ve">B+ve</option>
+                                <option value="B-ve">B-ve</option>
+                                <option value="AB+ve">AB+ve</option>
+                                <option value="AB-ve">AB-ve</option>
+                                <option value="O+ve">O+ve</option>
+                                <option value="O-ve">O-ve</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+
+                              <h3 class="mb-0">PHONE NUMBER</h3>
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                              <input type="text" name="PatientPhone" #PatientPhone="ngModel" required pattern="[0-9]+"
+                                [(ngModel)]="Patient.PatientPhone" required minlength="10" maxlength="10"
+                                class="  form-control form-control-lg" placeholder="Patient_Phonenumber"
+                                style="width: 500px" />
+                            </div>
+                          </div>
+                          <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                              <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                                class="mb-0">WEIGHT</h3>
+                            </div>
+
+                            <div class="col-md-9 pe-5">
+                              <input type="text" name="PatientWeight" #PatientWeight="ngModel" required pattern="[0-9]+"
+                                [(ngModel)]="Patient.PatientWeight" placeholder="Patient Weight" required minlength="1"
+                                maxlength="3" class="form-control form-control-lg" style="width: 500px" />
+                            </div>
+                          </div>
+
+                          <hr class="mx-n3">
+
+                          <div class="px-5 py-4">
+                            <!--Clear Button-->
+                            <button type="reset" class="btn btn-light">CLEAR</button>
+                            <!--Submit Button-->
+                            <button type="submit" class="btn btn-dark" class="btn btn-primary btn-lg"
+                              [disabled]="!(form.valid )">SAVE</button>
+                          </div>
+
+                        </form>
                       </div>
                     </div>
-                    <!--Location-->
-                    <div class="form-group row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-                        <h3 class="mb-0">LOCATION</h3>
-                      </div>
-
-                      <div class="form-group col-md-9 pe-5">
-                        <input type="text" class="form-control form-control-lg" name="PatientLocation" required
-                          pattern="[a-zA-Z]+[\w ]+[a-zA-Z]" #PatientLocation="ngModel"
-                          [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
-                          [(ngModel)]="Patient.PatientLocation" required minlength="5" maxlength="25"
-                          placeholder="Patient Location" style="width: 500px" />
-                        <!-- Validation -->
-                        <p *ngIf="PatientLocation.touched && PatientLocation.invalid" class="validation-error">
-                          <span *ngIf="PatientLocation.errors.required" style="color: crimson">Location is
-                            required!</span>
-                        </p>
-                      </div>
-                    </div>
 
 
-                    <!--Gender-->
-                    <div class="row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-                        <h3 class="mb-0">GENDER</h3>
-                      </div>
-                      <div class="form-group col-md-9 pe-5">
-                        <div class="radio-inline" [(ngModel)]="Patient.PatientGender" name="PatientGender"
-                          id="PatientGender" placeholder="Patient Gender" #PatientGender="ngModel" required
-                          style="width: 500px">
-
-
-                          <input type="radio" value="Male" name="gender" ngModel> Male
-                          <input type="radio" value="Female" name="gender" ngModel> Female
-                          <input type="radio" value="Other" name="gender" ngModel> Other
-
-
-                        </div>
-
-
-
-                      </div>
-                    </div>
-                    <!-- Date of birth -->
-                    <div class="row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-                        <h3 class="mb-0">DOB</h3>
-                      </div>
-                      <div class="form-group col-md-9 pe-5">
-                        <input type="date" class="form-control form-control-lg" name="PatientDob" #PatientDob="ngModel"
-                          [(ngModel)]="Patient.PatientDob" required
-                          onfocus="this.max=new Date().toISOString().split('T')[0]" min="1915-01-01"
-                          placeholder="Patient DOB" style="width: 500px" />
-                      </div>
-                    </div>
-                    <div class="row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-                        <h3 class="mb-0">BLOOD GROUP</h3>
-
-                      </div>
-                      <div class="col-md-9 pe-5">
-                        <select class="form-select" [(ngModel)]="Patient.PatientBlood" [value]="Patient.PatientBlood"
-                          name="PatientBlood" id="PatientBlood" placeholder="Patient Blood group" class="form-control"
-                          #PatientBlood="ngModel" required aria-label="Default select" style="width: 500px">
-                          <option selected>Select Blood Group</option>
-                          <option value="A+ve">A+ve</option>
-                          <option value="A-ve">A-ve</option>
-                          <option value="B+ve">B+ve</option>
-                          <option value="B-ve">B-ve</option>
-                          <option value="AB+ve">AB+ve</option>
-                          <option value="AB-ve">AB-ve</option>
-                          <option value="O+ve">O+ve</option>
-                          <option value="O-ve">O-ve</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-
-                        <h3 class="mb-0">PHONE NUMBER</h3>
-                      </div>
-                      <div class="col-md-9 pe-5">
-
-                        <input type="text" name="PatientPhone" #PatientPhone="ngModel" required pattern="[0-9]+"
-                          [(ngModel)]="Patient.PatientPhone" required minlength="10" maxlength="10"
-                          class="  form-control form-control-lg" placeholder="Patient_Phonenumber"
-                          style="width: 500px" />
-                      </div>
-                    </div>
-                    <div class="row align-items-center pt-4 pb-3">
-                      <div class="col-md-3 ps-5">
-                        <h3 class="mb-0">WEIGHT</h3>
-                      </div>
-
-                      <div class="col-md-9 pe-5">
-                        <input type="text" name="PatientWeight" #PatientWeight="ngModel" required pattern="[0-9]+"
-                          [(ngModel)]="Patient.PatientWeight" placeholder="Patient Weight" required minlength="1"
-                          maxlength="3" class="form-control form-control-lg" style="width: 500px" />
-                      </div>
-                    </div>
-
-                    <hr class="mx-n3">
-
-                    <div class="px-5 py-4">
-                      <!--Clear Button-->
-                      <button type="reset" class="btn btn-light">CLEAR</button>
-                      <!--Submit Button-->
-                      <button type="submit" class="btn btn-dark" class="btn btn-primary btn-lg"
-                        [disabled]="!(form.valid )">SAVE</button>
-                    </div>
-                  </form>
                 </div>
-              </div>
 
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+</body>

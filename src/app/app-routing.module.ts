@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'login', component:LoginComponent},
   { path: 'doctor/advice', component: AdviceComponent,canActivate: [CanActivateGuard],data:{StaffId:'1'} },
   { path: 'reception/home', component: HomePageComponent},
-  { path: 'reception/payments', component: PaymentsComponent  },
+  { path: 'reception/payments/:PatientId/:StaffId', component: PaymentsComponent  },
   { path: 'reception/register-patient', component: RegisterPatientComponent },
   { path: 'reception/transactions', component: TransactionsComponent},
   { path: 'reception/update-patient', component: UpdatePatientComponent},

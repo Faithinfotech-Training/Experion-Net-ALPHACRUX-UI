@@ -29,4 +29,8 @@ export class ListComponent implements OnInit {
 
     this.router.navigateByUrl('/login');
   }
+  getdata(id:number){
+    this.pharmacyService.getMedData(id);
+
+  }
 }

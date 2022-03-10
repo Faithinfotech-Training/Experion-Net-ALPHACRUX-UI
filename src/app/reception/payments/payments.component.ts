@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/auth.service';
 import { jsPDF } from 'jspdf';
@@ -17,6 +17,7 @@ import { DatePipe } from '@angular/common';
 })
 export class PaymentsComponent implements OnInit {
   patientID: number;
+  staffID: number;
   patientName: string;
   StaffName: string;
   Amount: number;
@@ -27,13 +28,13 @@ export class PaymentsComponent implements OnInit {
     ConsultationDateTime: '',
     ConsultationAmount: 200,
     PatientId: '',
-    StaffId: '',
+    StaffId: ''
   };
 
-  @ViewChild('content', { static: false }) el1: ElementRef;
+  @ViewChild('bill', { static: false }) el1: ElementRef;
 
   makePDF() {
-    let pdf = new jsPDF('p', 'pt', 'a4');
+    let pdf = new jsPDF('p', 'pt', 'a2');
     pdf.html(this.el1.nativeElement, {
       callback: (pdf) => {
         pdf.save('Reception-Bill.pdf');
@@ -44,6 +45,7 @@ export class PaymentsComponent implements OnInit {
 
   constructor(
     public receptionService: ReceptionService,
+    private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
@@ -52,19 +54,23 @@ export class PaymentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.receptionService.$isPass.subscribe((data) => {
-      console.log('I got in console', data.PatientId);
-      this.receptionService
-        .getpatientwithid(data.PatientId)
-        .subscribe((res) => {
-          console.log(res);
-          this.receptionService.token = Object.assign({}, res);
-        });
+
+    this.route.paramMap.subscribe(params=>{
+      this.patientID=Number(params.get('PatientId'));
+      this.staffID=Number(params.get('StaffId'));
+
     });
+    console.log("from url",this.patientID);
+    this.receptionService.getpatientwithid(this.patientID).subscribe((res)=>
+    {
+      this.receptionService.token=Object.assign({}, res);
+    })
   }
 
   savebill(patientId: number, staffId: number) {
     this.today = new Date();
+    console.log('save bill',patientId);
+    console.log('save bill',staffId);
     var datePipe = new DatePipe('en-UK');
 
     let formattedDate: any = datePipe.transform(
@@ -76,13 +82,12 @@ export class PaymentsComponent implements OnInit {
       ConsultationDateTime: formattedDate,
       ConsultationAmount: 200,
       PatientId: patientId,
-      StaffId: 1,
+      StaffId: this.staffID
     };
     console.log('From console', this.Bill);
-    this.paymentService.savebill(this.Bill);
+  //  this.paymentService.savebill(this.Bill);
+    this.post(this.Bill);
 
-    this.toastr.success('Bill Saved');
-    this.router.navigateByUrl('reception/home');
   }
 
   logout() {
@@ -90,5 +95,12 @@ export class PaymentsComponent implements OnInit {
     this.auth.logOut();
 
     this.router.navigateByUrl('/login');
+  }
+  post(obj:any){
+    this.paymentService.savebill(obj).subscribe((res)=>{
+      console.log('inside post',res);
+      this.toastr.success('Bill Saved');
+      this.router.navigateByUrl('reception/home');
+    })
   }
 }

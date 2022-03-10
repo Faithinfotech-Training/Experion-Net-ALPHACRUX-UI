@@ -8,6 +8,7 @@ import { Medlist } from './medlist';
 import { Pharmacist } from './pharmacist';
 import {Medbills} from '../shared/medbills';
 import {MedPrescriptionList} from '../shared/med-prescription-list'
+import {PharmacistView} from '../shared/pharmacist-view'
 import { QueryValueType } from '@angular/compiler/src/core';
 import { FormArray } from '@angular/forms';
 
@@ -19,6 +20,7 @@ export class PharmacistService {
   formData1: Pharmacist=new Pharmacist();
 
   MedList:Medlist[];
+  PharmList:PharmacistView[];
   medicineList:MedPrescriptionList[];
   formData2:Medlist=new Medlist();
 
@@ -43,17 +45,18 @@ export class PharmacistService {
         console.log("from service");
         console.log(res);
         this.MedList=res as Medlist[];
+        console.log(this.MedList.length);
         this.users=this.MedList
 
-     this.findprod(this.users);
-     this.findsum(this.users);
+     //this.findprod(this.users);
+     //this.findsum(this.users);
 
 
 
       }
     )
   }
-
+/*
   findprod(data){
     this.value=data;
     console.log(this.value.MedicineQuantity);
@@ -72,6 +75,7 @@ export class PharmacistService {
 
     }
   }
+*/
   postBills(med:any){
     console.log(med)
     this.httpClient.post(
@@ -92,6 +96,12 @@ getAllMedicines(){
 
 deletePrescription(id:number){
   return this.httpClient.delete(environment.apiUrl + '/api/employees/' + id);
+}
+getMedData(id:number){
+  return this.httpClient.get(environment.apiUrl + '/pharmacist/medicinedetails/'+id)
+  .subscribe((res)=>{
+    this.PharmList=res as PharmacistView[];
+  });
 }
 
 }

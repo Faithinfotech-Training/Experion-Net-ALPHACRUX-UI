@@ -39,8 +39,7 @@ export class UpdatePatientComponent implements OnInit {
   onSubmit(form: NgForm): void {
     //Insert or update
     console.log(this.checkoutForm.value.PatientId);
-      this.getPatientwithPatientId();
-
+    this.getPatientwithPatientId();
 
     if (this.checkoutForm.value.PatientId != null) {
     } else {
@@ -82,41 +81,42 @@ export class UpdatePatientComponent implements OnInit {
   //Update Method
   updatePatientRecord(form?: NgForm) {
     console.log('Updating a record....');
+    this.updatePatientService.UpdatePatient(form.value).subscribe(
+      (res) => {
+        console.log(res);
+        console.log('Success');
+        this.toastr.success(
+          'Patient record Updated Successfully',
+          'CMS App V2022'
+        );
+        this.router.navigateByUrl('reception/home');
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  getPatientwithPatientId() {
     this.updatePatientService
-      .UpdatePatient(form.value)
-      .subscribe(
-        (res) => {
-          console.log(res);
-          console.log('Success');
-          this.toastr.success(
-            'Patient record Updated Successfully',
-            'CMS App V2022'
+      .getPatientById(this.checkoutForm.value.PatientId)
+      .toPromise()
+      .then(
+        (data) => {
+          //Format date
+          var datePipe = new DatePipe('en-UK');
+          let formattedDate: any = datePipe.transform(
+            data.PatientDob,
+            'yyyy-MM-dd'
           );
-          this.router.navigateByUrl('reception/home');
+          data.PatientDob = formattedDate;
+          //Assign this response to empservice formData
+          this.Patient = Object.assign({}, data);
+          console.log(this.Patient);
         },
         (err) => {
           console.log(err);
         }
       );
-  }
-  getPatientwithPatientId() {
-      this.updatePatientService.getPatientById(
-        this.checkoutForm.value.PatientId
-      ).toPromise().then((data) => {
-        //Format date
-        var datePipe = new DatePipe('en-UK');
-        let formattedDate: any = datePipe.transform(
-          data.PatientDob,
-          'yyyy-MM-dd'
-        );
-        data.PatientDob = formattedDate;
-        //Assign this response to empservice formData
-        this.Patient = Object.assign({}, data);
-        console.log(this.Patient);
-      },
-      (err) => {
-        console.log(err);
-      });
   }
 
   //Clear all contents after submit

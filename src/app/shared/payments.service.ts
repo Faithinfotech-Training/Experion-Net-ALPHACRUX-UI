@@ -26,8 +26,9 @@ export class PaymentsService {
     });
   }
 
-  savebill(payments:any)
+  savebill(payments:Payment):Observable<any>
   {
+    console.log('from service',payments);
     return this.httpClient
       .post(environment.apiUrl + 'receptionist/bill', payments)
       ;

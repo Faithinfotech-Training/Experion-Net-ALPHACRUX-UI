@@ -1,16 +1,49 @@
 
 <header>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+  <div id="header">
+  <!-- Nav bar -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
     <div class="container-fluid ">
       <ul class="navbar-nav  ">
         <li class="nav-item active mt-1">
-          <a class="navbar-brand" href="reception/home">Reception</a>
+          <a class="navbar-brand" href="reception/home">Reception <i class="bi bi-people" style="color: white;"></i></a>
         </li>
       </ul>
-      <form class="d-flex ml-2">
-        <input class="form-control me-2" type="text" placeholder="Search" [(ngModel)]="filter" >
-        <button class="btn btn-outline-success" type="button">Search</button>
-      </form>
     </div>
   </nav>
+</div>
 </header>
+
+  <!-- Side bar -->
+  <div class="container-fluid-sm mt-3 align-items-stretch fixed-right ">
+    <div class="float-start bg-light navbar-light p-1 position-fixed"  id="container" >
+      <ul class="navbar-nav ms-2  mt-5 gap-3"  >
+
+        <li class="navbar-item">
+          <a class="navbar-brand" href="reception/home"><i class="bi bi-house-fill" style="font-size: 1.5rem"></i></a>
+        </li>
+
+        <li class="navbar-item">
+          <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill"
+              style="font-size: 1.5rem"></i></a>
+              </li>
+
+        <li class="navbar-item">
+          <a class="nav-link active" href="reception/register-patient"><i class="bi bi-person-plus-fill"
+              style="font-size: 1.5rem"></i></a>
+        </li>
+        <li class="navbar-item">
+          <a class="nav-link active" href="reception/update-patient"><i class="bi bi-pencil-square"
+              style="font-size: 1.5rem"></i></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link active" href="http://localhost:4200/login" role="button"><i class="bi bi-person-circle"
+              style="font-size: 1.5rem"></i></a>
+
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+

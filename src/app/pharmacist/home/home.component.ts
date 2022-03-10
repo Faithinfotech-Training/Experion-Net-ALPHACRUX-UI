@@ -154,6 +154,7 @@ this.post(this.lab);
     this.pharmacyService
       .getTests(this.pharmacyService.formData1.PrescriptionId)
     }
+
     post(med){
       console.log('Trying to insert values..');
       this.pharmacyService.postBills(med);
@@ -181,6 +182,30 @@ this.post(this.lab);
       form.resetForm();
     }
   }
+   //to calculate and display the total price information in Shopping cart.
+   getItemTotalresult() {
+
+    console.log('from fn in for loop',this.pharmacyService.users.length);
+    this.totalPrice = 0;
+    this.totalQty = 0;
+    this.GrandtotalPrice =0;
+    var count: number = 0;
+   // console.log('from length in for loop',this.Med.length);
+    for (count = 0; count < this.pharmacyService.users.length; count++) {
+      console.log('Count in for loop',count);
+        this.totalPrice += this.pharmacyService.users[count].MedicinePrice;
+        this.totalQty += (this.pharmacyService.users[count].MedicineQuantity);
+
+        this.GrandtotalPrice += this.pharmacyService.users[count].MedicinePrice * this.pharmacyService.users[count].MedicineQuantity;
+        console.log('totalPrice ',this.totalPrice);
+        console.log('totalQty',this.totalQty);
+
+    }
+    console.log(this.GrandtotalPrice);
+
+
+
+}
 
   }
 

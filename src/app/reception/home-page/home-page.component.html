@@ -1,42 +1,9 @@
 <app-reception></app-reception>
 
-
-<div class="container-fluid-sm d-flex align-items-stretch ">
-  <div class="float-start bg-light navbar-light p-1 position-fixed">
-    <ul class="navbar-nav ms-2 gap-3">
-      <li class="navbar-item">
-        <a class="navbar-brand" href="reception/home"><i class="bi bi-house-fill" style="font-size: 1.5rem"></i></a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link active" href="reception/transactions"><i class="bi bi-bag-check-fill"
-            style="font-size: 1.5rem"></i></a>
-
-      <li class="navbar-item">
-        <a class="nav-link active" href="reception/register-patient"><i class="bi bi-person-plus-fill"
-            style="font-size: 1.5rem"></i></a>
-      </li>
-      <li class="navbar-item">
-        <a class="nav-link active" href="reception/update-patient"><i class="bi bi-pencil-square"
-            style="font-size: 1.5rem"></i></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link active" href="http://localhost:4200/login" role="button"><i class="bi bi-person-circle"
-            style="font-size: 1.5rem"></i></a>
-
-      </li>
-    </ul>
-  </div>
-
-
-
+<body >
   <div class="container-fluid bg-light bg-opacity-10 float-right">
+    <div id="font">
     <div class="row">
-
-
-
-
-
-
 
       <div class="text-center col-sm-2 mt-5 pt-5">
         <h3>TOKEN<br />NO</h3>
@@ -73,17 +40,19 @@
         </form>
 
         <div class="table-wrapper-scroll-y my-custom-scrollbar mt-4">
-          <table class="table bg-white border  table-lg text-center">
-            <br />
-            <thead>
-              <th scope="col">Patient ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Token</th>
-              <th scope="col">Age</th>
-              <th scope="col">Doctor</th>
-              <th scope="col">Action</th>
+          <table class="table table-bordered m-2 table-active" style="background-color: darkgray; width:99%; ">
+
+            <thead class="table-lg thead-light">
+              <tr>
+                <th scope="col">Patient ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Token</th>
+                <th scope="col">Age</th>
+                <th scope="col">Doctor</th>
+                <th scope="col">Action</th>
+              </tr>
             </thead>
-            <tbody>
+            <tbody class="table" style="background-color: #e7e7e7">
               <tr *ngFor="let queue of reception.queueList | filter:filter|paginate:{itemsPerPage:5, currentPage:page}">
                 <th>{{queue.PatientId}}</th>
                 <td>{{queue.PatientName}}</td>
@@ -103,7 +72,9 @@
             <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
           </div>
         </div>
+
       </div>
     </div>
+    </div>
   </div>
-</div>
+</body>

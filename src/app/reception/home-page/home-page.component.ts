@@ -27,9 +27,10 @@ export class HomePageComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.reception.getTokenQueue();
+
     this.reception.getPatients();
     this.reception.getDoctors();
+    this.reception.getTokenQueue();
   }
 
   checkoutForm = this.formBuilder.group({
@@ -50,8 +51,9 @@ export class HomePageComponent implements OnInit {
       this.toastr.success('Token successfully generated', 'Successfull!');
       this.reception.generateToken(this.checkoutForm.value);
       this.reception.pat.PatientId = this.checkoutForm.value.PatientId;
-      this.reception.$isPass.emit(this.reception.pat);
-      this.router.navigate(['/reception/payments']);
+     // this.reception.$isPass.emit(this.reception.pat);
+      this.router.navigateByUrl('/reception/payments/'+ this.reception.pat.PatientId+'/'+this.checkoutForm.value.StaffId);
+     //this.router.navigate(['/reception/payments']);
     }
     else {
       this.toastr.error('Please select a patient and a doctor', 'Error!');

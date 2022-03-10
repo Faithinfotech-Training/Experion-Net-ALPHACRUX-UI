@@ -48,6 +48,7 @@ import { CanActivateGuard } from './shared/can-activate.guard';
 import { NgpSortModule } from 'ngp-sort-pipe';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { ListComponent } from './pharmacist/list/list.component';
+import { ViewComponent } from './pharmacist/view/view.component';
 
 
 
@@ -86,6 +87,7 @@ import { ListComponent } from './pharmacist/list/list.component';
     InventoryComponent,
     AppHomeComponent,
     ListComponent,
+    ViewComponent,
   ],
   imports: [
 

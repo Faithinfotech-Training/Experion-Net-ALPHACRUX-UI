@@ -1,29 +1,21 @@
-<app-reception></app-reception>
+<!-- <app-pharmacist></app-pharmacist>
 <body style="background-color: rgb(216, 216, 216)">
   <br /><br />
   <div>
     <div class="container-sm" style="width: 55%">
-      <div id="font">
       <section>
         <div class="row mt-5">
           <div class="card" style="border-radius: 15px">
             <div class="col mt-3">
               <button
                 style="float: right"
-                (click)="savebill(receptionService.token.PatientId,receptionService.token.StaffId)"
+                (click)="close()"
                 type="submit"
                 class="btn btn-secondary btn-xs ms-2"
               >
-                Save Payment
+                CLOSE
               </button>
-              <button
-                style="float: right"
-                (click)="makePDF()"
-                type="submit"
-                class="btn btn-secondary btn-xs ms-2"
-              >
-                Print Bill
-              </button>
+
             </div>
             <div class="col mt-1">
               <div #bill id="bill">
@@ -43,32 +35,59 @@
                   <div class="row">
                     <div class="col mx-4">
                       <H3>
-                        Patient ID : {{ receptionService.token.PatientId }}
+                        Patient ID : {{ labTestService.formData.PatientId }}
 
                         <br />
 
-                        Patient Name : {{ receptionService.token.PatientName }}
+                        Patient Name : {{ labTestService.formData.PatientName }}
                       </H3>
                     </div>
                     <div class="col mx-2">
                       <H3>
-                        Appointment for : Dr.{{ receptionService.token.DoctorName }}
+                        Ref By : Dr.{{ labTestService.formData.StaffName }}
 
                         <br />
-                        Date : {{Billdate | date: 'dd-MMM-yy HH:mm:ss'}}
+                        Date : {{ today }}
                         <br />
-
-
                       </H3>
                     </div>
                   </div>
-
                   <hr />
 
+                  <table
+                    class="table table-bordered table-active"
+                    style="width: 95%; background-color: #e7e7e7"
+                  >
+                    <thead class="table-lg thead-light">
+                      <tr>
+                        <th scope="col">Test Name</th>
+                        <th scope="col">Test Amount</th>
+                      </tr>
+                    </thead>
 
-
+                    <tbody class="table" style="background-color: #f7f7f7">
+                      <tr
+                        *ngFor="
+                          let users of labTestService.labtests2
+                            | filter: this.app.filter
+                            | paginate: { itemsPerPage: 5, currentPage: page }
+                        "
+                      >
+                        <!-- Display Test name-->
+                        <!-- <td>{{ users.TestName }}</td>
+                        Display Test amount-->
+                        <!-- <td>{{ users.TestAmount }}</td>
+                      </tr> -->
+                      <!--Display Total amount-->
+                      <!-- <tr>
+                        <td colspan="1"><b>Total:</b></td>
+                        <td colspan="1" id="total" name="total">
+                          <b>₹{{ total }}</b>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <br /><br />
-                  &nbsp;<h3 style="font-size: larger;">Consultation fee: 200 /-</h3>
 
                   <br /><br />
 
@@ -83,7 +102,6 @@
         </div>
       </section>
     </div>
-    </div>
   </div>
 </body>
-
+ --> --> -->
