@@ -1,0 +1,120 @@
+<app-lab-technician></app-lab-technician>
+
+<body style="background-color: rgb(216, 216, 216)">
+  <div>
+    <div class="container-sm" style="width: 95%">
+      <section>
+        <div class="row mt-5">
+          <div class="col mt-5">
+            <div class="card" style="border-radius: 15px">
+              <div class="card-body">
+                <br />
+
+                <div style="text-align: center"><h1>TESTS HISTORY</h1></div>
+                <hr />
+                <div class="container ms-2">
+                  <H2
+                    >Patient ID : {{ labTestService.formData.PatientId }}
+                    <br />
+                    Patient Name : {{ labTestService.formData.PatientName }}
+                  </H2>
+                </div>
+                <hr />
+
+                <!-- <div clas="form-control">
+
+            <input class="form-control ms-2" type="search" style="width: 25%; background-color: #f3f1f1; border-color: rgb(134, 134, 134);" placeholder="search " [(ngModel)]="filter">
+
+        </div><br> -->
+                <table
+                  class="table table-bordered m-2 table-active"
+                  style="width: 95%; background-color: #e7e7e7"
+                >
+                  <thead class="table-lg thead-light">
+                    <tr>
+                     
+                      <th scope="col">Report Date</th>
+
+                      <th scope="col">Test Name</th>
+                      <th scope="col" colspan="2">Result</th>
+                      <th scope="col" colspan="4">
+                        Biological Reference Interval
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="table" style="background-color: #e7e7e7">
+                    <tr
+                      *ngFor="
+                        let users of labTestService.allTestReports
+                          | filter: filter
+                          | paginate: { itemsPerPage: 6, currentPage: page }
+                      "
+                    >
+
+                      <td [value]="users.ReportDate" id="ReportDate">
+                        {{ users.ReportDate }}
+                      </td>
+
+                      <td [value]="users.TestName" id="TestName">
+                        {{ users.TestName }}
+                      </td>
+                      <td
+                        style="text-align: center"
+                        [value]="users.PatientValue"
+                        id="PatientValue"
+                      >
+                        {{ users.PatientValue }}
+                      </td>
+                      <td [value]="users.TestUnit" id="TestUnit">
+                        {{ users.TestUnit }}
+                      </td>
+                      <td
+                        style="text-align: right"
+                        [value]="users.MinimumValue"
+                        id="MinimumValue"
+                      >
+                        {{ users.MinimumValue }}
+                      </td>
+                      <td style="text-align: center">-</td>
+                      <td
+                        style="text-align: center"
+                        [value]="users.MaximumValue"
+                        id="MaximumValue"
+                      >
+                        {{ users.MaximumValue }}
+                      </td>
+
+                      <td
+                        style="text-align: left"
+                        [value]="users.TestUnit"
+                        id="TestUnit"
+                      >
+                        {{ users.TestUnit }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="col mt-3 me-4">
+                  <button
+                    style="float: right"
+                    (click)="close()"
+                    type="submit"
+                    class="btn btn-secondary btn-xs ms-2 me-4"
+                  >
+                    CLOSE
+                  </button>
+                </div>
+                <div class="footer">
+                  <pagination-controls
+                    (pageChange)="page = $event"
+                  ></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+      </section>
+    </div>
+  </div>
+</body>

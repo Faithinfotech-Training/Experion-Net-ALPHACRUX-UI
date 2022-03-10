@@ -14,15 +14,17 @@ export class AuthService {
   constructor(private httClient:HttpClient){}
   public login(user:Users){
 
-    this.userName=user.UserName;
-    this.password=user.UserPassword;
-    return this.httClient.get(environment.apiUrl+'labtechnician/login/'+this.userName+'&'+this.password);
+    this.userName!=user.UserName;
+
+    this.password!=user.UserPassword;
+    console.log(this.userName+this.password);
+    return this.httClient.get(environment.apiUrl+'labtechnician/login/'+user.UserName+'&'+user.UserPassword);
 
 }
 //LOGOUT
 
 public logOut() {
-  
+
   console.log('inside logout from lab tech')
 
   localStorage.removeItem("USERNAME");

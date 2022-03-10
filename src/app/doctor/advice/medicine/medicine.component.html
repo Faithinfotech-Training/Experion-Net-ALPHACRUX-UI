@@ -81,9 +81,10 @@ formControlName="MedicineName">
               </tr>
             </tbody>
           </table>
-          <li class="page-item">
-            <a class="page-link" href="doctor/advice/tests">Next</a>
-          </li>
+          <ul class="button">
+            <li class="previous"><a href="doctor/advice/diagnosis">Previous</a></li>
+            <li class="button"><a href="doctor/advice/tests">Next</a></li>
+          </ul>
           <div class="footer d-flex float-end">
                 <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
               </div>

@@ -1,75 +1,12 @@
-<header>
-  <!-- Nav bar -->
-
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="http://localhost:4200/lab/home/billing">
-        <h3>Lab Technician</h3>
-      </a>
-      <form class="d-flex mt-2" action="submit">
-        <input class="form-control me-2" type="text" placeholder="Search" />
-        <button class="btn btn-outline-success" type="button">Search</button>
-      </form>
-    </div>
-  </nav>
-
-  <!-- Side bar -->
-  <div class="d-flex align-items-start">
-    <div class="container-fluid-sm position-fixed mt-5">
-      <nav
-        class="bg-light navbar-light p-1"
-        style="min-width: fit-content; min-height: 100vh"
-      >
-        <ul class="navbar-nav ms-2 gap-5">
-          <!--Home page-->
-          <li class="navbar-item">
-            <a
-              class="navbar-brand"
-              href="http://localhost:4200/lab/home/billing"
-            >
-            </a>
-          </li>
-          <!--Home page-->
-          <li class="navbar-item">
-            <a
-              class="nav-link active"
-              href="http://localhost:4200/lab/home/billing"
-              ><i class="bi bi-house" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <!--Billing page-->
-          <li class="navbar-item">
-            <a class="nav-link" href="http://localhost:4200/lab/home/billing"
-              ><i class="bi bi-plus-circle" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <!--Test report page-->
-          <li class="navbar-item">
-            <a class="nav-link" href="http://localhost:4200/lab/home/test"
-              ><i class="bi bi-plus-circle-fill" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-          <!--Logout -->
-          <li class="nav-item dropup">
-            <a
-              class="nav-link dropdown-toggle"
-              (click)="logout()"
-              role="button"
-              data-bs-toggle="dropdown"
-              ><i class="bi bi-person-circle" style="font-size: 1.5rem"></i
-            ></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
-
-<div class="container-sm">
+<app-lab-technician></app-lab-technician>
+<body>
+<div style="background-color: rgb(216, 216, 216);">
+  <div class="container-sm " style="width: 70%;">
   <div class="row mt-5">
     <div class="col mt-5">
       <div class="card" style="border-radius: 15px">
-        <div class="card-body">
+        <div class="card-body"><br>
+          <div style="text-align: center;"><h1>LAB REPORT</h1></div><hr>
           <form
             #form="ngForm"
             name="ngForm"
@@ -91,17 +28,20 @@
                   type="number"
                   class="form-control form-control-lg"
                   placeholder="Patient_Id"
-                  style="width: 500px"
+                  style="width: 70%"
                   name="PatientId"
                   #PatientId="ngModel"
                   [(ngModel)]="labTestService.formData.PatientId"
                   required
+                  pattern=[0-9]+
                   minlength="1"
                   maxlength="5"
                   [ngClass]="{
                     'is-invalid': PatientId.touched && PatientId.invalid
                   }"
                 />
+
+
                 <!--patient id validation-->
                 <p
                   *ngIf="PatientId.touched && PatientId.invalid"
@@ -120,7 +60,8 @@
                   <button
                     type="submit"
                     class="btn btn-secondary btn-lg me-3"
-                    (click)="onSubmit(PatientId.value)"
+                    [disabled]="!(form.valid && form.dirty)"
+                    (click)="onSubmit(form,PatientId.value)"
                   >
                     SEARCH</button
                   ><br /><br />
@@ -147,7 +88,7 @@
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Patient_Name"
-                    style="width: 500px"
+                    style="width: 75%"
                     name="PatientName"
                     #PatientName="ngModel"
                     [(ngModel)]="labTestService.formData.PatientName"
@@ -166,7 +107,7 @@
                     type="text"
                     class="form-control form-control-lg"
                     placeholder="Patient_Phone_Number"
-                    style="width: 500px"
+                    style="width: 75%"
                     name="PatientPhone"
                     #PatientPhone="ngModel"
                     [(ngModel)]="labTestService.formData.PatientPhone"
@@ -185,8 +126,8 @@
                   <input
                     type="text"
                     class="form-control form-control-lg"
-                    placeholder="Patient_StaffName"
-                    style="width: 500px"
+                    placeholder="Patient_Doctor"
+                    style="width: 75%"
                     name="StaffName"
                     #StaffName="ngModel"
                     [(ngModel)]="labTestService.formData.StaffName"
@@ -204,10 +145,11 @@
                     type="datetime"
                     class="form-control form-control-lg"
                     name="ReportDateTime"
+                    placeholder="Patient_DateOfVisit"
                     #ReportDateTime="ngModel"
                     [(ngModel)]="labTestService.formData.ReportDateTime"
                     disabled
-                    style="width: 500px"
+                    style="width: 75%"
                   />
                 </div>
               </div>
@@ -215,10 +157,10 @@
               <input
                 type="hidden"
                 class="form-control form-control-lg"
-                name="TestListId"
-                id="TestListId"
+                name="AdviceId"
+                id="AdviceId"
                 #TestListId="ngModel"
-                [(ngModel)]="labTestService.formData.TestListId"
+                [(ngModel)]="labTestService.formData2.AdviceId"
               />
               <!--staffid hidden-->
               <input
@@ -236,18 +178,22 @@
               <div class="form-group row align-items-center">
                 <!--button to get test details-->
                 <button
-                  (click)="onClick(TestListId.value)"
+                  (click)="onClick(TestListId.value,form,$event)"
+
                   type="submit"
-                  class="form-group btn btn-secondary btn-lg me-3 btn-block float-end"
+                  class="form-group btn btn-secondary btn-lg me-3 btn-block float-end ms-3"
+                  style="width: 93.5%"
                 >
                   TEST DETAILS
                 </button>
               </div>
+
               <br />
 
-              <table class="table table-bordered m-2 table-active">
+              <table class="table table-bordered m-2 table-active" style="width: 95%">
                 <thead class="table-lg thead-light">
                   <tr>
+                
                     <th scope="col">Test Id</th>
                     <th scope="col">Test Name</th>
                     <th scope="col">Collected Value</th>
@@ -255,6 +201,7 @@
                     <th scope="col" colspan="2">Reference Range</th>
 
                     <th scope="col">Unit</th>
+
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -266,11 +213,12 @@
                         | paginate: { itemsPerPage: 5, currentPage: page }
                     "
                   >
-                    <td [value]="users.TestId" id="TestId">
+
+                    <td  id="TestId">
                       {{ users.TestId }}
                     </td>
-                    <!--to insert observed value-->
-                    <td [value]="users.TestName" id="TestName">
+                    <!--to insert observed value [value]="users.TestName"-->
+                    <td  id="TestName">
                       {{ users.TestName }}
                     </td>
                     <td>
@@ -278,24 +226,33 @@
                         type="number"
                         class="form-control form-control-s"
                         placeholder="Add Value"
+                        required pattern="[0-9]+"
                         style="width: 120px"
+                        value="users.PatientValue"
                         name="PatientValue"
                         id="PatientValue"
+                        [(ngModel)]="users.PatientValue"
                         required
                       />
                     </td>
+
+
+
+
 
                     <td>{{ users.TestUnit }}</td>
 
                     <td>{{ users.MinimumValue }}</td>
                     <td>{{ users.MaximumValue }}</td>
                     <td>{{ users.TestUnit }}</td>
+
                     <td>
                       <!--button to save observed value to database-->
                       <button
                         type="submit"
-                        class="btn btn-secondary btn-xs me-3"
-                        (click)="save(form)"
+                        class="btn btn-secondary btn-xs me-3 text-black"
+                        (click)="save(form,users.TestId,users.PatientValue,users.TestListId,
+                        users.TestName,users.AdviceId,$event)"
                       >
                         SAVE
                       </button>
@@ -309,6 +266,7 @@
                   (pageChange)="page = $event"
                 ></pagination-controls>
               </div>
+
             </div>
 
             <br />
@@ -317,26 +275,33 @@
             <br />
 
             <div class="px-5 py-4">
+              <button
+                  (click)="reset(form)"
+                  type="submit"
+                  class="btn btn-secondary btn-lg me-3 float-end"
+                >
+                  RESET
+                </button>
               <!--button to submit-->
               <button
                 (click)="testReport(form)"
                 type="submit"
                 class="btn btn-secondary btn-lg me-3 float-end"
               >
-                PROCEED
+                VIEW TEST REPORT
               </button>
-              <!--button to generate pdf-->
-              <button
-                (click)="generatePDF()"
-                type="submit"
-                class="btn btn-secondary btn-lg me-3 float-end"
-              >
-                DOWNLOAD PDF
-              </button>
+
+
+
+
+
+              <br />
+
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div><br><br>
+</div></body>
